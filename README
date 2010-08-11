@@ -1,0 +1,13 @@
+Dominous
+
+1. How to install
+
+1.1 Linux (tested under Ubuntu 9.10):
+
+user@machine:~$ sudo aptitude install python-pygame
+user@machine:~$ sudo apt-get install python-setuptools
+user@machine:~$ sudo easy_install PyOpenGL PyOpenGL-accelerate
+
+1.2 Windows:
+
+No instructions yet
