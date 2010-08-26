@@ -46,6 +46,9 @@ class Dtools:
             else:
                 log.write('OMG, cannot load default image - this is very strange :-(')
 
+    def ai(self, player):
+        return os.path.join("players", player, "rules.clp")
+
     def sound(self, space, name):
         """ @brief helper function for getting the path of music and effect sounds.
             Mainly used from sound.py and sound object.

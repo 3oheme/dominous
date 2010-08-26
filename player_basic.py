@@ -1,4 +1,4 @@
-"""Dominoes most basic player
+"""Dominoes most basic computer player
 
 This player just puts any available tile. You may use this file to create
 your own player.

@@ -1,4 +1,4 @@
-import random
+import random, clips
 from xml.dom.minidom import Document
 from player_basic import player1
 from player_human import playerh
