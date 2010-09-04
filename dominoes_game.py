@@ -2,6 +2,7 @@ import random, clips
 from xml.dom.minidom import Document
 from player_basic import player1
 from player_human import playerh
+from ai import AI
 
 import log
 
@@ -41,6 +42,7 @@ class domino_game:
         self.players = []
         self.player_pass = 0
         self.player_type = [1, 1, 1, 1]
+        self.ai = AI()
     def create_players(self, p1, p2, p3, p4):
         """@brief generates players
 
@@ -74,6 +76,7 @@ class domino_game:
         else:
             self.players.append(player1(self.players_tiles[3]))
         self.player_type = [p1, p2, p3, p4]
+        self.ai.create_players(p1, p2, p3, p4)
     def currentplayer(self):
         return self.next_player
     def nextplayer(self):
@@ -129,6 +132,7 @@ class domino_game:
         tiles_position = 0;
         for item in self.tiles:
             self.players_tiles[tiles_position].append(item)
+            self.ia.set_player_tile(tiles_position, item)
             tiles_position = (tiles_position+1) % 4
     def create_gamelog(self):
         pass
@@ -179,8 +183,14 @@ class domino_game:
         else:
             return False
     def ask_tile(self, player_pos, new_tile = None, side = None):
+        """ Ask a player for a tile """
         if new_tile == None or side == None:
-            new_tile, side = self.players[player_pos].down_tile(self.left_tile, self.right_tile)
+            if self.player_type[player_pos] == "h":
+                new_tile, side = self.players[player_pos].down_tile(self.left_tile, self.right_tile)
+            else:
+                new_tile, side = self.ai.put_tile(player_pos, self.board, self.players_tiles)
+        # after each move, update ai facts
+        self.ai.add_move(player_pos, new_tile, side)
         log.write("player %s puts %s tile in the %s" % (player_pos + 1, new_tile, side))
         if new_tile != None or side != 'pass':
             self.player_pass = 0
