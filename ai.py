@@ -92,8 +92,8 @@ class AI:
             delete_me.Remove()
         pass
 
-    def set_player_tile(self, tile):
-        self.players[player].SetFocus()
+    def set_player_tile(self, player, tile):
+        self.players[player+1].SetFocus()
         clips.BuildDeffacts("ficha", "(jugador "+player+")(ficha_izq "+tile[0]+")(ficha_der "+tile[1]+")")
 
     def parse_tile_info(self, output):

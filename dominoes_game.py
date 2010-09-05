@@ -25,6 +25,7 @@ class domino_game:
         self.points_team_1 = 0
         self.points_team_2 = 0
         self.hand_counter = 1
+        self.step_counter = 0
         self.player_started = 0
         self.tiles = ["00", "01", "02", "03", "04", "05", "06",
                       "11", "12", "13", "14", "15", "16",
@@ -98,6 +99,7 @@ class domino_game:
             return self.player_started
         else:
             self.next_player = (self.next_player + 1) % 4
+            self.step_counter += 1
             return self.next_player
     def points_team1(self): return self.points_team_1
     def points_team2(self): return self.points_team_2
@@ -130,9 +132,10 @@ class domino_game:
         #random.seed(5) #starts player 4
         random.shuffle(self.tiles)
         tiles_position = 0;
+        self.step_counter = 0
         for item in self.tiles:
             self.players_tiles[tiles_position].append(item)
-            self.ia.set_player_tile(tiles_position, item)
+            self.ai.set_player_tile(tiles_position, item)
             tiles_position = (tiles_position+1) % 4
     def create_gamelog(self):
         pass
@@ -190,7 +193,7 @@ class domino_game:
             else:
                 new_tile, side = self.ai.put_tile(player_pos, self.board, self.players_tiles)
         # after each move, update ai facts
-        self.ai.add_move(player_pos, new_tile, side)
+        self.ai.add_move(self.step_counter, player_pos, new_tile, side)
         log.write("player %s puts %s tile in the %s" % (player_pos + 1, new_tile, side))
         if new_tile != None or side != 'pass':
             self.player_pass = 0
@@ -214,6 +217,7 @@ class domino_game:
                 elif side == 'right' and new_tile[1] == self.right_tile:
                     self.board.append(new_tile[1] + new_tile[0])
                     self.right_tile = new_tile[0]
+            self.ai.update_header(self.step_counter, self.left_tile, self.right_tile)
             return new_tile, side
         else:
             self.player_pass += 1
