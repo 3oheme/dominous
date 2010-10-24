@@ -79,8 +79,8 @@ class AI:
             d_body  = "(turno "+ str(step_counter) +")"
             d_body += "(jugador "+ str(player) +")"
             d_body += "(tiempo 3)"
-            d_body += "(ficha "+ tile +")"
-            d_body += "(lado "+ side +")"
+            d_body += "(ficha "+ str(tile) +")"
+            d_body += "(lado "+ str(side) +")"
             clips.BuildDeffacts(d_name, d_body)
 
     def update_header(self, counter, left_side, right_side):

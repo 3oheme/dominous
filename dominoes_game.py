@@ -188,12 +188,13 @@ class domino_game:
     def ask_tile(self, player_pos, new_tile = None, side = None):
         """ Ask a player for a tile """
         if new_tile == None or side == None:
-            if self.player_type[player_pos] == "h":
-                new_tile, side = self.players[player_pos].down_tile(self.left_tile, self.right_tile)
-            else:
-                new_tile, side = self.ai.put_tile(player_pos, self.board, self.players_tiles)
+            new_tile, side = self.players[player_pos].down_tile(self.left_tile, self.right_tile)
+            #if self.player_type[player_pos] == "h":
+            #    new_tile, side = self.players[player_pos].down_tile(self.left_tile, self.right_tile)
+            #else:
+            #    new_tile, side = self.ai.put_tile(player_pos, self.board, self.players_tiles)
         # after each move, update ai facts
-        self.ai.add_move(self.step_counter, player_pos, new_tile, side)
+        #self.ai.add_move(self.step_counter, player_pos, new_tile, side)
         log.write("player %s puts %s tile in the %s" % (player_pos + 1, new_tile, side))
         if new_tile != None or side != 'pass':
             self.player_pass = 0
@@ -217,7 +218,7 @@ class domino_game:
                 elif side == 'right' and new_tile[1] == self.right_tile:
                     self.board.append(new_tile[1] + new_tile[0])
                     self.right_tile = new_tile[0]
-            self.ai.update_header(self.step_counter, self.left_tile, self.right_tile)
+            #self.ai.update_header(self.step_counter, self.left_tile, self.right_tile)
             return new_tile, side
         else:
             self.player_pass += 1
