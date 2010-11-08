@@ -114,12 +114,13 @@ class domino_game:
         else:
             return False
     def print_hand(self):
-        print self.board
-        print "player 1: %s" % self.players_tiles[0]
-        print "player 2: %s" % self.players_tiles[1]
-        print "player 3: %s" % self.players_tiles[2]
-        print "player 4: %s" % self.players_tiles[3]
-        print ""
+        #print self.board
+        #print "player 1: %s" % self.players_tiles[0]
+        #print "player 2: %s" % self.players_tiles[1]
+        #print "player 3: %s" % self.players_tiles[2]
+        #print "player 4: %s" % self.players_tiles[3]
+        #print ""
+        pass
     def deal_tiles(self):
         del self.board[:]
         del self.players_tiles[0][:]

@@ -51,7 +51,7 @@ class ActivePlayer(Sprite):
 class NextPosition(Sprite):
     """@brief draws a circle in the board, so human player can know where to put the tile"""
     def __init__(self):
-        self.texture = Texture(tool.image("theme", 'tile_next.png'))
+        self.texture = Texture(tool.image("theme_tile", 'tile_next.png'))
         self.position = (0, 0)
         self.angle = 0
         self.eggs = 0
@@ -69,6 +69,16 @@ class NextPosition(Sprite):
         self.position = position
         self.angle = rotation
 
+class DebugInfo():
+    """@brief prints debug info on screen """
+    def __init__(self):
+        self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", int(config['scale']*40), False, False, 32, 255)
+        self.text = ""
+    def add(self, string):
+        self.text = self.text + string + "\n"
+    def show(self):
+        self.font_main.draw(self.text, position = (Gloss.screen_resolution[0]-200, 10), color = Color(1, 1, 1, 1))
+        self.text = ""
 
 class Scoreboard():
     """@brief prints scoreboard ingame"""
@@ -313,6 +323,7 @@ class Engine:
         self.scoreboard = Scoreboard()
         self.fullscoreboard = FullScoreboard()
         self.ingame_menu = IngameMenu()
+        self.debug = DebugInfo()
         self.fadein_amount = 0
         self.once = True
         self.new_tile = ""
@@ -372,8 +383,8 @@ class Engine:
         elif self.status == 7:
             self.active_player.draw()
             self.scoreboard.draw()
-            #self.next_left.draw()
-            #self.next_right.draw()
+            self.next_left.draw()
+            self.next_right.draw()
             draw_tiles(self.tiles)
             self.tiles[self.dragging_tile].draw()
         # Status = 8 - released mouse down
@@ -408,11 +419,12 @@ class Engine:
             draw_tiles(self.tiles)
             self.ingame_menu.draw()
         # draw info on screen
-        self.font_main.draw('Status = %s' % str(self.status), position = (10, 10), color = Color(1, 1, 1, 1))
+        self.debug.add('Status = %s' % str(self.status))
         if Gloss.running_slowly:
-            self.font_main.draw('Gloss.running_slowly', position = (10, 22), color = Color(1, 1, 1, 1))
-        self.font_main.draw('elapsed_seconds = %s' % str(Gloss.elapsed_seconds), position = (10, 34), color = Color(1, 1, 1, 1))
-        self.font_main.draw('scoreboard (%s, %s)' % (str(self.domino.points_team1()), str(self.domino.points_team2())), position = (10, 46), color = Color(1, 1, 1, 1))
+            self.debug.add('Gloss.running_slowly')
+        self.debug.add('elapsed_seconds = %s' % str(Gloss.elapsed_seconds))
+        self.debug.add('scoreboard (%s, %s)' % (str(self.domino.points_team1()), str(self.domino.points_team2())))
+        self.debug.show()
 
     def update(self):
         for key, tile in self.tiles.iteritems():
@@ -500,15 +512,13 @@ class Engine:
             pass
         # Status = 7 - dragging tile
         elif self.status == 7:
-            mousepos = mouse.get_pos()
             left_pos = self.next_tile_position(self.tiles[self.dragging_tile], "left")
             right_pos = self.next_tile_position(self.tiles[self.dragging_tile], "right")
-            self.next_left.goto(self.next_tile_position(left_pos[0], left_pos[1]))
-            #self.next_left.goto((200, 300))
-            self.next_right.goto(self.next_tile_position(right_pos[0], right_pos[1]))
-            #self.next_right.goto((300, 400))
-            #print left_pos[0]
-            #print left_pos[1]
+            self.next_left.goto(left_pos)
+            #self.next_left.goto((200, 300), 90)
+            self.next_right.goto(right_pos)
+            #self.next_right.goto((300, 400), 0)
+            mousepos = mouse.get_pos()
             self.tiles[self.dragging_tile].drag(mousepos)
         # Status = 8 - mousedown released - can player place tile here?
         elif self.status == 8:
@@ -681,7 +691,7 @@ class Engine:
         @returns array with [0] => position in (x,y) format and [1] => angle
         """
         # FIXME
-        return ((0, 0), 90)
+        return ((400, 400))
         # place first tile in board
         if len(self.domino.board) == 0:
             return [(Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2), 90]
