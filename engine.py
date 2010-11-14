@@ -12,7 +12,7 @@ import random
 class ActivePlayer(Sprite):
     """@brief draws a light circle around current player tiles.
     
-    Draws a blink translucent circle around current player tiles.
+    Draws a blinking translucent circle around current player tiles.
     """ 
     def __init__(self):
         self.current_player = 4
@@ -195,11 +195,14 @@ class Tile(Sprite):
         self.goto_angle = 0
         self.draggable = False
         self.played_sound = False
+        self.scale = config['scale']
+        self.from_scale = config['scale']
+        self.goto_scale = config['scale']
         Sprite.__init__(self, self.texture_original, (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2))
     def draw(self):
-        Sprite.draw(self, origin = (self.texture.half_width, self.texture.half_height), scale = config['scale'], rotation = self.angle)
+        Sprite.draw(self, origin = (self.texture.half_width, self.texture.half_height), scale = self.scale, rotation = self.angle)
     def update(self):
-        if self.goto_pos != self.position or self.goto_angle != self.angle:
+        if self.goto_pos != self.position or self.goto_angle != self.angle or self.scale != self.goto_scale:
             self.eggs += Gloss.elapsed_seconds
             if self.eggs > 0.8 and self.played_sound == False:
                 sound.tile()
@@ -209,12 +212,14 @@ class Tile(Sprite):
             Sprite.move_to(self, Gloss.smooth_step(self.from_pos[0], self.goto_pos[0], self.eggs), Gloss.smooth_step(self.from_pos[1], self.goto_pos[1], self.eggs))
         if self.goto_angle != self.angle:
             self.angle = Gloss.smooth_step(self.from_angle, self.goto_angle, self.eggs)
+        if self.scale != self.goto_scale:
+            self.scale = Gloss.smooth_step2(self.from_scale, self.goto_scale, self.eggs)
+            
     def drag(self, position):
         """@brief place tile in its position, without moving"""
         self.from_pos = position
         self.goto_pos = position
         self.position = position
-    
     def goto(self, position = None, rotation = None):
         """@brief move tile slowly to its position"""
         self.played_sound = False
@@ -228,9 +233,10 @@ class Tile(Sprite):
         self.goto_pos = position
         self.goto_angle = rotation
     def stopped(self):
-        if self.goto_pos == self.position and self.goto_angle == self.angle:
+        if self.goto_pos == self.position and self.goto_angle == self.angle and self.scale == self.from_scale:
             return True
         else:
+            print "tile %s not stopped" % str(self.tile)
             return False
     def reverse(self):
         """@brief flip tile"""
@@ -240,6 +246,12 @@ class Tile(Sprite):
         else:
             self.texture = self.texture_rev
             self.reversed = True
+    def pass_effect(self):
+        """@brief make a pass effect, moving up and down the tile"""
+        self.played_sound = False
+        self.eggs = 0
+        self.from_scale = self.scale 
+        self.goto_scale = self.scale * 1.5
 
 def load_tiles(domino):
     sprites = {}
@@ -247,14 +259,13 @@ def load_tiles(domino):
         sprite = Tile(tile)
         sprite.id = tile
         sprites[tile] = sprite
-    print sprites["00"].texture.width
-    print sprites["00"].texture.height
-    print config['window_width']
-    print config['window_height']
     x = float(config['window_width'] * config['window_height'])
     y = sprites["00"].texture.width * sprites["00"].texture.height
     config['scale'] = round( (((x / y ) * 0.0075) + 0.12), 2)
-    print config['scale']
+    for tile in domino.tiles:
+        sprites[tile].scale = config['scale']
+        sprites[tile].from_scale = config['scale']
+        sprites[tile].goto_scale = config['scale']
     config['tile_width'] = int(config['scale']* sprites["00"].texture.width)
     config['tile_height'] = int(config['scale']* sprites["00"].texture.height)
     return sprites
@@ -296,6 +307,7 @@ class Engine:
                     20 - human player must pass
                     21 - waiting to click pass button
                     22 - human pressed pass button
+                    23 - pass effect
                     goto 5
                 else:
                     6 - start drag n drop player tile
@@ -306,7 +318,10 @@ class Engine:
                     else:
                         goto 6
             else:
-                5 - move tile to its place
+                if computer must pass:
+                    23 - pass effect
+                else:
+                    5 - move tile to its place
                 goto 3
 
     @brief main engine class
@@ -403,6 +418,11 @@ class Engine:
             self.active_player.draw()
             self.scoreboard.draw()
             self.passbutton.draw()
+            draw_tiles(self.tiles)
+        # Status = 24 - passing effect
+        elif self.status == 24:
+            self.active_player.draw()
+            self.scoreboard.draw()
             draw_tiles(self.tiles)
         # Status = 100 - move tiles to center
         elif self.status == 100:
@@ -502,7 +522,9 @@ class Engine:
                     self.tiles[self.new_tile].reverse()
                     self.place_next_player_tile()
                     self.place_player_tiles(self.domino.currentplayer())
-                self.status = 5
+                    self.status = 5
+                else:
+                    self.status = 23
         # Status = 5 - move tile to its place
         elif self.status == 5:
             if self.new_tile == "XX" or self.tiles[self.new_tile].stopped():
@@ -579,7 +601,17 @@ class Engine:
             origin = (Gloss.screen_resolution[0]/2 + (all_tiles_width/2+1) + (config['tile_width']/2), Gloss.screen_resolution[1] - gap - (config['tile_width']/2))
             destination = (Gloss.screen_resolution[0]/2 + (all_tiles_width/2+1) + (config['tile_width']/2), Gloss.screen_resolution[1] + (config['tile_width']))
             self.passbutton.move_button(origin, destination)
-            self.status = 5
+            self.status = 23
+        # Status = 23 - start pass effect
+        elif self.status == 23:
+            currentplayer = self.domino.currentplayer()
+            for tile in self.domino.players_tiles[currentplayer]:
+                self.tiles[tile].pass_effect()
+            self.status = 24
+        # Status = 24 - passing effect
+        elif self.status == 24:
+            if stopped(self.tiles):
+                self.status = 5 # FIXME
         # Status = 99 - end hand
         elif self.status == 99:
             print "end hand - status 99"

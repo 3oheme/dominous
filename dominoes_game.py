@@ -129,7 +129,7 @@ class domino_game:
         del self.players_tiles[3][:]
         #random.seed(1) #starts player 3
         #random.seed(2) #starts player 1
-        #random.seed(4) #starts player 2
+        random.seed(4) #starts player 2
         #random.seed(5) #starts player 4
         random.shuffle(self.tiles)
         tiles_position = 0;
