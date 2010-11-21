@@ -618,6 +618,8 @@ class Engine:
                     self.timer_temp += 0.2
             else:
                 self.status = 3
+                del self.tiles_temp[:]
+                self.timer_temp = 0
         # Status = 99 - end hand
         elif self.status == 99:
             print "end hand - status 99"
