@@ -236,7 +236,6 @@ class Tile(Sprite):
         if self.goto_pos == self.position and self.goto_angle == self.angle and self.scale == self.from_scale:
             return True
         else:
-            print "tile %s not stopped" % str(self.tile)
             return False
     def reverse(self):
         """@brief flip tile"""
@@ -605,9 +604,14 @@ class Engine:
         # Status = 23 - start pass effect
         elif self.status == 23:
             currentplayer = self.domino.currentplayer()
-            for tile in self.domino.players_tiles[currentplayer]:
-                self.tiles[tile].pass_effect()
-            self.status = 24
+            tiles_effect = []
+            if tiles_effect.len != self.domino.players_tiles[currentplayer].len:
+                for tile in self.domino.players_tiles[currentplayer]:
+                    if not tile in tiles_effect:
+                        self.tiles[tile].pass_effect()
+                        tiles_effect.append(tile)
+            else:
+                self.status = 24
         # Status = 24 - passing effect
         elif self.status == 24:
             if stopped(self.tiles):
