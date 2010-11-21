@@ -249,7 +249,7 @@ class Tile(Sprite):
         self.played_sound = False
         self.eggs = 0
         self.from_scale = self.scale 
-        self.goto_scale = self.scale * 1.5
+        self.goto_scale = self.scale * 1.2
 
 def load_tiles(domino):
     sprites = {}
