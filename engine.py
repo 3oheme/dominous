@@ -606,7 +606,7 @@ class Engine:
         elif self.status == 23:
             currentplayer = self.domino.currentplayer()
             del self.tiles_temp[:]
-            self.tiles_temp = self.domino.players_tiles[currentplayer]
+            self.tiles_temp = self.domino.players_tiles[currentplayer][:]
             self.timer_temp = Gloss.total_seconds
             self.status = 24 
         # Status = 24 - passing effect
@@ -615,7 +615,7 @@ class Engine:
                 if self.timer_temp < Gloss.total_seconds:
                     newtile = self.tiles_temp.pop()
                     self.tiles[newtile].pass_effect()
-                    self.timer_temp += 2
+                    self.timer_temp += 0.5
             else:
                 self.status = 3
         # Status = 99 - end hand
