@@ -615,7 +615,7 @@ class Engine:
                 if self.timer_temp < Gloss.total_seconds:
                     newtile = self.tiles_temp.pop()
                     self.tiles[newtile].pass_effect()
-                    self.timer_temp += 0.5
+                    self.timer_temp += 0.2
             else:
                 self.status = 3
         # Status = 99 - end hand
