@@ -70,7 +70,7 @@ class NextPosition(Sprite):
         self.angle = rotation
 
 class DebugInfo():
-    """@brief prints debug info on screen """
+    """@brief prints debug info on screen"""
     def __init__(self):
         self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", int(config['scale']*40), False, False, 32, 255)
         self.text = ""
@@ -112,7 +112,7 @@ class FullScoreboard():
     def draw(self):
         Gloss.fill(top = Color(0,0,0,0.7), bottom = Color(0,0,0,9))
         output = self.text_team1 + "    " + self.text_team2 + "\n"
-        ####for item in 
+        ####for item in FIXME
     def score(self, team1, team2):
         if (team1 != 0):
             self.points_team1.append(team1)
@@ -214,7 +214,6 @@ class Tile(Sprite):
             self.angle = Gloss.smooth_step(self.from_angle, self.goto_angle, self.eggs)
         if self.scale != self.goto_scale:
             self.scale = Gloss.smooth_step2(self.from_scale, self.goto_scale, self.eggs)
-            
     def drag(self, position):
         """@brief place tile in its position, without moving"""
         self.from_pos = position
@@ -349,6 +348,8 @@ class Engine:
         self.dragging = False
         self.dragging_tile = "XX"
         self.status = 0
+        self.tiles_temp = []
+        self.timer_temp = 0
         self.game.on_mouse_down = self.mouse_down
         self.game.on_mouse_up = self.mouse_up
         self.game.on_mouse_motion = self.mouse_motion
@@ -604,18 +605,19 @@ class Engine:
         # Status = 23 - start pass effect
         elif self.status == 23:
             currentplayer = self.domino.currentplayer()
-            tiles_effect = []
-            if tiles_effect.len != self.domino.players_tiles[currentplayer].len:
-                for tile in self.domino.players_tiles[currentplayer]:
-                    if not tile in tiles_effect:
-                        self.tiles[tile].pass_effect()
-                        tiles_effect.append(tile)
-            else:
-                self.status = 24
+            del self.tiles_temp[:]
+            self.tiles_temp = self.domino.players_tiles[currentplayer]
+            self.timer_temp = Gloss.total_seconds
+            self.status = 24 
         # Status = 24 - passing effect
-        elif self.status == 24:
-            if stopped(self.tiles):
-                self.status = 5 # FIXME
+        elif self.status == 24: 
+            if len(self.tiles_temp):
+                if self.timer_temp < Gloss.total_seconds:
+                    newtile = self.tiles_temp.pop()
+                    self.tiles[newtile].pass_effect()
+                    self.timer_temp += 2
+            else:
+                self.status = 3
         # Status = 99 - end hand
         elif self.status == 99:
             print "end hand - status 99"
