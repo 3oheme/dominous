@@ -202,7 +202,9 @@ class Tile(Sprite):
     def draw(self):
         Sprite.draw(self, origin = (self.texture.half_width, self.texture.half_height), scale = self.scale, rotation = self.angle)
     def update(self):
-        if self.goto_pos != self.position or self.goto_angle != self.angle or self.scale != self.goto_scale:
+        if self.scale != self.from_scale:
+            self.scale = Gloss.smooth_step2(self.from_scale, self.goto_scale, self.eggs)
+        if self.goto_pos != self.position or self.goto_angle != self.angle or self.scale != self.from_scale:
             self.eggs += Gloss.elapsed_seconds
             if self.eggs > 0.8 and self.played_sound == False:
                 sound.tile()
@@ -212,8 +214,14 @@ class Tile(Sprite):
             Sprite.move_to(self, Gloss.smooth_step(self.from_pos[0], self.goto_pos[0], self.eggs), Gloss.smooth_step(self.from_pos[1], self.goto_pos[1], self.eggs))
         if self.goto_angle != self.angle:
             self.angle = Gloss.smooth_step(self.from_angle, self.goto_angle, self.eggs)
-        if self.scale != self.goto_scale:
-            self.scale = Gloss.smooth_step2(self.from_scale, self.goto_scale, self.eggs)
+
+    def pass_effect(self):
+        """@brief make a pass effect, moving up and down the tile"""
+        self.played_sound = False
+        self.eggs = 0
+        self.from_scale = self.scale
+        self.scale += 0.1
+        self.goto_scale = self.scale * 1.15
     def drag(self, position):
         """@brief place tile in its position, without moving"""
         self.from_pos = position
@@ -244,12 +252,6 @@ class Tile(Sprite):
         else:
             self.texture = self.texture_rev
             self.reversed = True
-    def pass_effect(self):
-        """@brief make a pass effect, moving up and down the tile"""
-        self.played_sound = False
-        self.eggs = 0
-        self.from_scale = self.scale 
-        self.goto_scale = self.scale * 1.2
 
 def load_tiles(domino):
     sprites = {}
