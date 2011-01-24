@@ -1,8 +1,6 @@
-import random, clips
-from xml.dom.minidom import Document
+import random
 from player_basic import player1
 from player_human import playerh
-from ai import AI
 
 import log
 
@@ -38,12 +36,11 @@ class domino_game:
         self.left_tile  = None
         self.right_tile = None
         self.first_tile = "00"
-        self.gamelog = Document()
+        self.gamelog = []
         self.players_tiles = [[], [], [], []]
         self.players = []
         self.player_pass = 0
         self.player_type = [1, 1, 1, 1]
-        self.ai = AI()
     def create_players(self, p1, p2, p3, p4):
         """@brief generates players
 
@@ -77,7 +74,6 @@ class domino_game:
         else:
             self.players.append(player1(self.players_tiles[3]))
         self.player_type = [p1, p2, p3, p4]
-        self.ai.create_players(p1, p2, p3, p4)
     def currentplayer(self):
         return self.next_player
     def nextplayer(self):
@@ -127,16 +123,24 @@ class domino_game:
         del self.players_tiles[1][:]
         del self.players_tiles[2][:]
         del self.players_tiles[3][:]
-        #random.seed(1) #starts player 3
+        random.seed(1) #starts player 3
         #random.seed(2) #starts player 1
-        random.seed(4) #starts player 2
+        #random.seed(4) #starts player 2
         #random.seed(5) #starts player 4
         random.shuffle(self.tiles)
         tiles_position = 0;
         self.step_counter = 0
         for item in self.tiles:
             self.players_tiles[tiles_position].append(item)
-            self.ai.set_player_tile(tiles_position, item)
+            if item == "66":
+                self.players[tiles_position].player_pos(1)
+                tiles_position = (tiles_position+1) % 4
+                self.players[tiles_position].player_pos(2)
+                tiles_position = (tiles_position+1) % 4
+                self.players[tiles_position].player_pos(3)
+                tiles_position = (tiles_position+1) % 4
+                self.players[tiles_position].player_pos(4)
+                tiles_position = (tiles_position+1) % 4
             tiles_position = (tiles_position+1) % 4
     def create_gamelog(self):
         pass
@@ -189,13 +193,7 @@ class domino_game:
     def ask_tile(self, player_pos, new_tile = None, side = None):
         """ Ask a player for a tile """
         if new_tile == None or side == None:
-            new_tile, side = self.players[player_pos].down_tile(self.left_tile, self.right_tile)
-            #if self.player_type[player_pos] == "h":
-            #    new_tile, side = self.players[player_pos].down_tile(self.left_tile, self.right_tile)
-            #else:
-            #    new_tile, side = self.ai.put_tile(player_pos, self.board, self.players_tiles)
-        # after each move, update ai facts
-        #self.ai.add_move(self.step_counter, player_pos, new_tile, side)
+            new_tile, side = self.players[player_pos].down_tile(self.left_tile, self.right_tile, None, None, None)
         log.write("player %s puts %s tile in the %s" % (player_pos + 1, new_tile, side))
         if new_tile != None or side != 'pass':
             self.player_pass = 0
@@ -219,7 +217,6 @@ class domino_game:
                 elif side == 'right' and new_tile[1] == self.right_tile:
                     self.board.append(new_tile[1] + new_tile[0])
                     self.right_tile = new_tile[0]
-            #self.ai.update_header(self.step_counter, self.left_tile, self.right_tile)
             return new_tile, side
         else:
             self.player_pass += 1

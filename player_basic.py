@@ -3,25 +3,26 @@
 This player just puts any available tile. You may use this file to create
 your own player.
 """
+from ai import *
 
 class player1:
     def __init__(self, dealed_tiles):
         self.tiles = dealed_tiles
+        self.knowledge = []
+        self.knowledge.append(put_any_double())
+        self.knowledge.append(put_anyone())
+        self.player_position = "1" # player_pos = 1 - Player that starts this hand
+                                   #              2 - Second player
+                                   #              3 - Third player, plays with player 1
+                                   #              4 - Second player
     def human(self):
-        return "False"
+        return False
     def computer(self):
         return True
-    def down_tile(self, left_tile, right_tile):
-        """place a tile"""
-        for item in self.tiles:
-            if item[0] == left_tile or item[1] == left_tile:
-                self.tiles.remove(item)
-                return item, "left"
-                break
-            elif item[0] == right_tile or item[1] == right_tile or left_tile == None:
-                self.tiles.remove(item)
-                return item, "right"
-                break
-        return None, "pass"
+    def player_pos(self, pos):
+        self.player_position = pos
+    def down_tile(self, left_tile, right_tile, board, tiles, log):
+        ai = AI(left_tile, right_tile, board, self.tiles, log)
+        return ai.go(self.knowledge)
     def game_status(self):
         pass
