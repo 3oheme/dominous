@@ -148,7 +148,7 @@ class Menu():
             self.game.on_mouse_up = self.events
         # start quick game
         elif self.status == 2:
-            self.game.goto_game()
+            self.game.goto_selectplayers()
         elif self.status == 10:
             self.options2.update()
         # exit game
