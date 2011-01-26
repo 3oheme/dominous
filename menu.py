@@ -25,7 +25,7 @@ class Options1():
         self.position = (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2)
         self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", 38, False, False, 32, 255)
         self.str_quick_game = "partida rapida"
-        self.str_tournament = "torneo"
+        self.str_tournament = "laboratorio"
         self.str_options = "opciones"
         self.str_exit = "salir"
         self.fontsize1 = self.font_main.measure_string(self.str_quick_game)

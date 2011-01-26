@@ -35,11 +35,8 @@ class put_any_double:
     def __init__(self):
         pass
     def go(self, left_tile, right_tile, board, tiles, log):
-        print "ai - trying to put a double"
         for item in tiles:
-            print "is " + item[0] + " the same as " + item[1] + "?"
             if item[0] == item[1]:
-                print "yes, " + item[0] + " is the same as " + item[1]
                 if item[0] == left_tile or item[1] == left_tile:
                     tiles.remove(item)
                     print "puttin a double, yeees!"
