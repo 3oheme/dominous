@@ -30,6 +30,10 @@ def load_config():
         config.set('Screen', 'window_favicon', os.path.join('images', 'favicon.png'))
         config.add_section('Theme')
         config.set('Theme', 'theme', 'spanish')
+        config.add_section('Game')
+        config.set('Game', 'player2', 'easy')
+        config.set('Game', 'player3', 'easy')
+        config.set('Game', 'player4', 'easy')
         # writing our configuration file to file
         with open(file, 'wb') as configfile:
             config.write(configfile)
@@ -50,6 +54,9 @@ def load_config():
         'theme': config.get('Theme', 'theme'),
         'lang': config.get('General', 'lang'),
         'gametype': 'human',
+        'player2': 'easy',
+        'player3': 'easy',
+        'player4': 'easy',
         }
     return config_default
 

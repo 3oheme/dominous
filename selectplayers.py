@@ -4,77 +4,87 @@ from pygame import *
 from gloss import *
 from config import *
 
+import random
+
 from sound import *
 from tools import *
 from os import *
 
-import md5
 import imp
-import traceback
-
-class Box():
-    def __init__(self):
-        self.box_x = Gloss.screen_resolution[0]/2
-        self.box_y = Gloss.screen_resolution[1]/2
-        self.box_width  = Gloss.screen_resolution[0]
-        self.box_height = Gloss.screen_resolution[0]*2
-        self.box_stop = 0.0
-        self.alpha = 0
-    def draw(self):
-        Gloss.draw_box((self.box_x, self.box_y), self.box_width, self.box_height, Gloss.smooth_step(0, 45, self.alpha), (self.box_width/2, self.box_height/2), 1, Color(1, 1, 1, (Gloss.smooth_step(0, 1, self.alpha))))
-    def update(self):
-        self.alpha += 0.03
 
 def load_players():
-    players = {}
+    players = []
     config = ConfigParser.RawConfigParser()
     players_dir = os.listdir(os.path.join(os.environ['PWD'], 'players'))
     for player_dir in players_dir:
         if player_dir[0] != '.':
             config.read(os.path.join(os.environ['PWD'], 'players', player_dir, 'player.ini'))
             player = {
+                'id': player_dir,
                 'ia': imp.load_source(player_dir, os.path.join(os.environ['PWD'], 'players', player_dir, 'player.py')),
                 'name': config.get('Player', 'name'),
                 'image': config.get('Player', 'image'),
                 }
-            players[player_dir] = player
-            
+            players.append(player)
+    return players
 
-    players = ['sys', 'os', 're', 'unittest'] 
-    modules = map(__import__, moduleNames)
-    config = ConfigParser.RawConfigParser()
-    config.read(file)
-    config_default = {
-        'name': config.get('General', 'name'),
+allplayers = load_players()
 
+class PlayerImage(Sprite):
+    """Player image attached to a player selector
+    @brief Player image attached to a player selector"""
+    def __init__(self, player):
+        self.status = 1 # 1 = fixed position
+                        # 2 = falling down
+        self.eggs = 0
+        self.player = player
+        self.texture = Texture(allplayers[player]['image'])
+        Sprite.__init__(self, self.texture, (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2))
+    def draw(self):
+        Sprite.draw(self, origin = (self.texture.half_width, self.texture.half_height), scale = self.scale) 
+    def update(self):
+        pass
 
+class PlayerSelector():
+    """Creates a player selector, where you can choose players just clicking on the image
+    @brief Creates a player selector
+    """
+    def __init__(self, pos):
+        """pos points about player position: 2nd, 3rd or 4th"""
+        self.pos = pos
+        self.selected = config["player" + str(pos)]
+        self.player_images = [PlayerImage(self.selected)]
+    def draw(self):
+        for image in self.player_images:
+            image.draw()
+    def update(self):
+        for image in self.player_images:
+            image.update()
+        
 class SelectPlayers():
     """Select players state.
     @brief Select players state
     """
     def __init__(self, mainp):
         self.game = mainp
-        self.box = Box()
         self.fadein = True
         self.fadein_amount = 0
         self.status = 1
-        load_players()
-        
+        self.background = Texture(tool.image("theme_bg", "background.png"))
+        self.selectors = [ PlayerSelector(2), PlayerSelector(3), PlayerSelector(4)]
     def draw(self):
-        Gloss.fill(top = Color.WHITE, bottom = Color(0.8, 0.8, 0.8, 1))
-        self.box.draw()
-        if self.fadein:
-            next = Gloss.lerp(1, 0, self.fadein_amount)
-            Gloss.draw_box((0,0), Gloss.screen_resolution[0], Gloss.screen_resolution[1], color = Color(1,1,1,next))
-            self.fadein_amount += 0.05
-            if next == 0:
-                self.fadein = False
+        Gloss.fill(self.background)
+        if self.status == 1:
+            for selector in self.selectors:
+                selector.draw()
     def update(self):
         self.game.on_mouse_up = self.events
+        if self.status == 1:
+            for selector in self.selectors:
+                selector.update()
     def start(self):
         self.fadein = True
         self.fadein_amount = 0
-        sound.credits()
     def stop(self):
         pass
     def events(self, event):
