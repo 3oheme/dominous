@@ -23,7 +23,7 @@ def load_players():
                 'id': player_dir,
                 'ia': imp.load_source(player_dir, os.path.join(os.environ['PWD'], 'players', player_dir, 'player.py')),
                 'name': config.get('Player', 'name'),
-                'image': config.get('Player', 'image'),
+                'image': os.path.join(os.environ['PWD'], 'players', player_dir, config.get('Player', 'image')),
                 }
             players.append(player)
     return players
@@ -34,11 +34,20 @@ class PlayerImage(Sprite):
     """Player image attached to a player selector
     @brief Player image attached to a player selector"""
     def __init__(self, player):
+        self.scale = 0.6
         self.status = 1 # 1 = fixed position
                         # 2 = falling down
         self.eggs = 0
-        self.player = player
+        pos = 0
+        self.id = player
+        for item in allplayers:
+            if item['id'] == player:
+                player = pos
+            pos = pos + 1
+        self.player = pos
+        print allplayers[player]['image']
         self.texture = Texture(allplayers[player]['image'])
+        self.scale = 0.3
         Sprite.__init__(self, self.texture, (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2))
     def draw(self):
         Sprite.draw(self, origin = (self.texture.half_width, self.texture.half_height), scale = self.scale) 
