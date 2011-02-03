@@ -5,7 +5,7 @@ your own player.
 """
 from ai import *
 
-class player1:
+class player:
     def __init__(self, dealed_tiles):
         self.tiles = dealed_tiles
         self.knowledge = []
