@@ -1,6 +1,7 @@
 import random
 from player_basic import player1
 from player_human import playerh
+from selectplayers import *
 
 import log
 
@@ -57,22 +58,26 @@ class domino_game:
         # me: ok, i'll fix it tomorrow
         # me: done!
         # god: ok, much better
+        
         if p1 == "h":
             self.players.append(playerh(self.players_tiles[0]))
         else:
-            self.players.append(player1(self.players_tiles[0]))
-        if p2 == "h":
-            self.players.append(playerh(self.players_tiles[1]))
-        else:
-            self.players.append(player1(self.players_tiles[1]))
-        if p3 == "h":
-            self.players.append(playerh(self.players_tiles[2]))
-        else:
-            self.players.append(player1(self.players_tiles[2]))
-        if p4 == "h":
-            self.players.append(playerh(self.players_tiles[3]))
-        else:
-            self.players.append(player1(self.players_tiles[3]))
+            for item in allplayers:
+                if item['id'] == p1:
+                    self.players.append(item['ia'].Player(self.players_tiles[0]))
+                    break
+        for item in allplayers:
+            if item['id'] == p2:
+                self.players.append(item['ia'].Player(self.players_tiles[1]))
+                break
+        for item in allplayers:
+            if item['id'] == p3:
+                self.players.append(item['ia'].Player(self.players_tiles[2]))
+                break
+        for item in allplayers:
+            if item['id'] == p4:
+                self.players.append(item['ia'].Player(self.players_tiles[3]))
+                break
         self.player_type = [p1, p2, p3, p4]
     def currentplayer(self):
         return self.next_player

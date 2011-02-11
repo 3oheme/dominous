@@ -63,40 +63,41 @@ class PlayerSelector(Sprite):
     """Player selector, where you can choose players just clicking on the image
     @brief Player selector
     """
-    def __init__(self, pos):
-        """pos points about player position: 2nd, 3rd or 4th"""
+    def __init__(self, pos, is_static = False):
+        """pos points about player position, clockwise - 1st player is bottom player"""
         self.pos = pos
-        gap = Gloss.screen_resolution[1]/20
-        if pos == 1:
-            self.x = Gloss.screen_resolution[0]-gap
-            self.y = (Gloss.screen_resolution[1]/2)-gap
-        elif pos == 2:
-            self.x = gap
-            self.y = Gloss.screen_resolution[1]/2
-        elif pos == 3:
-            self.x = Gloss.screen_resolution[0]/2
-            self.y = gap
-        elif pos == 4:
-            self.x = Gloss.screen_resolution[0]-gap
-            self.y = Gloss.screen_resolution[1]/2
         self.selected = allplayers[0]['id']
         self.player_selected = 0
-        self.scale = 0.3
-        self.position = (self.x, self.y)
         self.texture = Texture(allplayers[self.player_selected]['image'])
+        self.scale = 0.3
+        tex_width = self.texture.width * 0.3
+        tex_half_width = self.texture.half_width * 0.3
+        gap = Gloss.screen_resolution[1]/20
+        self.static = is_static
+        if pos == 1:
+            self.x = (Gloss.screen_resolution[0]/2)-tex_half_width
+            self.y = Gloss.screen_resolution[1]-gap-tex_width
+        elif pos == 2:
+            self.x = gap
+            self.y = (Gloss.screen_resolution[1]/2)-tex_half_width
+        elif pos == 3:
+            self.x = (Gloss.screen_resolution[0]/2)-tex_half_width
+            self.y = gap
+        elif pos == 4:
+            self.x = Gloss.screen_resolution[0]-gap-tex_width
+            self.y = (Gloss.screen_resolution[1]/2)-tex_half_width
+        self.position = (self.x, self.y)
         Sprite.__init__(self, self.texture, self.position)
     def draw(self):
         Sprite.draw(self, position = self.position, scale = self.scale)
     def update(self):
         pass
     def click(self):
-        self.player_selected = self.player_selected + 1
-        if self.player_selected + 1 > len(allplayers):
-            self.player_selected = 0
-        print allplayers
-        print self.player_selected
-        self.texture = Texture(allplayers[self.player_selected]['image'])
-        print "click en selector " + str(self.pos) + ", ahora tiene el valor" + str(self.player_selected)
+        if not self.static:
+            self.player_selected = self.player_selected + 1
+            if self.player_selected + 1 > len(allplayers):
+                self.player_selected = 0
+            self.texture = Texture(allplayers[self.player_selected]['image'])
     def option(self):
         return self.player_selected
         
@@ -109,11 +110,6 @@ class SelectPlayers():
         self.fadein = True
         self.fadein_amount = 0
         self.status = 0
-        self.background = Texture(tool.image("theme_bg", "background.png"))
-        if config['gametype'] == 'human':
-            self.selectors = [PlayerSelector(2), PlayerSelector(3), PlayerSelector(4)]
-        else:
-            self.selectors = [PlayerSelector(1), PlayerSelector(2), PlayerSelector(3), PlayerSelector(4)]
         self.game.on_mouse_down = self.mouse_down
         self.falling_images = []
     def draw(self):
@@ -131,14 +127,31 @@ class SelectPlayers():
         self.fadein = True
         self.fadein_amount = 0
         self.status = 1
+        self.background = Texture(tool.image("theme_bg", "background.png"))
+        if config['gametype'] == 'human':
+            self.selectors = [PlayerSelector(1, True), PlayerSelector(2), PlayerSelector(3), PlayerSelector(4)]
+        else:
+            self.selectors = [PlayerSelector(1), PlayerSelector(2), PlayerSelector(3), PlayerSelector(4)]
     def stop(self):
         self.status = 0
         pass
     def mouse_down(self, event):
         if self.status != 0:
-            print "event.pos[0] = " + str(event.pos[0])
-            if event.pos[0] > Gloss.screen_resolution[1]/2:
+            gap = Gloss.screen_resolution[1]/20
+            tex_half_width = 75
+            tex_width = 150
+            if event.pos[0] > (Gloss.screen_resolution[0]/2)-tex_half_width and event.pos[0] < (Gloss.screen_resolution[0]/2)+tex_half_width and \
+                event.pos[1] > Gloss.screen_resolution[1]-gap-tex_width and event.pos[1] < Gloss.screen_resolution[1]-gap+tex_width:
+                self.selectors[0].click()
+            elif event.pos[0] > gap and event.pos[0] < gap+tex_width and \
+                event.pos[1] > (Gloss.screen_resolution[1]/2)-tex_half_width and event.pos[1] < (Gloss.screen_resolution[1]/2)+tex_half_width:
                 self.selectors[1].click()
-            else:
+            elif event.pos[0] > (Gloss.screen_resolution[0]/2)-tex_half_width and event.pos[0] < (Gloss.screen_resolution[0]/2)+tex_half_width and \
+                event.pos[1] > gap and event.pos[1] < gap+tex_width:
                 self.selectors[2].click()
-
+            elif event.pos[0] > Gloss.screen_resolution[0]-gap-tex_width and event.pos[0] < Gloss.screen_resolution[0]-gap and \
+                event.pos[1] > (Gloss.screen_resolution[1]/2)-tex_half_width and event.pos[1] < (Gloss.screen_resolution[1]/2)+tex_half_width:
+                self.selectors[3].click()
+            elif event.pos[0] > Gloss.screen_resolution[0]-tex_width and event.pos[1] > Gloss.screen_resolution[1]-tex_width:
+                print "lets go gaming!"
+                self.game.goto_game()

@@ -467,9 +467,9 @@ class Engine:
         # Status = 0 - game start, reset all, create players
         if self.status == 0:
             if config['gametype'] == 'human':
-                self.domino.create_players("h",1,1,1)
+                self.domino.create_players("h",config['player2'],config['player3'],config['player4'])
             elif config['gametype'] == 'computer':
-                self.domino.create_players(1,1,1,1)
+                self.domino.create_players(config['player1'],config['player2'],config['player3'],config['player4'])
             self.status = 1
         # Status = 1 - fade in
         elif self.status == 1:
