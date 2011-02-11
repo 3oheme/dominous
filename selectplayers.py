@@ -69,6 +69,7 @@ class PlayerSelector(Sprite):
         self.selected = allplayers[0]['id']
         self.player_selected = 0
         self.texture = Texture(allplayers[self.player_selected]['image'])
+        self.player_selected_id = allplayers[self.player_selected]['id']
         self.scale = 0.3
         tex_width = self.texture.width * 0.3
         tex_half_width = self.texture.half_width * 0.3
