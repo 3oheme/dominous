@@ -15,15 +15,15 @@ import imp
 def load_players():
     players = []
     config = ConfigParser.RawConfigParser()
-    players_dir = os.listdir(os.path.join(os.environ['PWD'], 'players'))
+    players_dir = os.listdir(os.path.join(os.getcwd(), 'players'))
     for player_dir in players_dir:
         if player_dir[0] != '.':
-            config.read(os.path.join(os.environ['PWD'], 'players', player_dir, 'player.ini'))
+            config.read(os.path.join(os.getcwd(), 'players', player_dir, 'player.ini'))
             player = {
                 'id': player_dir,
-                'ia': imp.load_source(player_dir, os.path.join(os.environ['PWD'], 'players', player_dir, 'player.py')),
+                'ia': imp.load_source(player_dir, os.path.join(os.getcwd(), 'players', player_dir, 'player.py')),
                 'name': config.get('Player', 'name'),
-                'image': os.path.join(os.environ['PWD'], 'players', player_dir, config.get('Player', 'image')),
+                'image': os.path.join(os.getcwd(), 'players', player_dir, config.get('Player', 'image')),
                 }
             players.append(player)
     return players
