@@ -98,8 +98,9 @@ class PlayerSelector(Sprite):
             if self.player_selected + 1 > len(allplayers):
                 self.player_selected = 0
             self.texture = Texture(allplayers[self.player_selected]['image'])
+            self.player_selected_id = allplayers[self.player_selected]['id']
     def option(self):
-        return self.player_selected
+        return self.player_selected_id
         
 class SelectPlayers():
     """Select players state.
@@ -134,6 +135,10 @@ class SelectPlayers():
             self.selectors = [PlayerSelector(1), PlayerSelector(2), PlayerSelector(3), PlayerSelector(4)]
     def stop(self):
         self.status = 0
+        config['player1'] = self.selectors[0].option()
+        config['player2'] = self.selectors[1].option()
+        config['player3'] = self.selectors[2].option()
+        config['player4'] = self.selectors[3].option()
         pass
     def mouse_down(self, event):
         if self.status != 0:
