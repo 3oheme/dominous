@@ -54,6 +54,7 @@ def load_config():
         'theme': config.get('Theme', 'theme'),
         'lang': config.get('General', 'lang'),
         'gametype': 'human',
+        'player1': 'easy',
         'player2': 'easy',
         'player3': 'easy',
         'player4': 'easy',

@@ -129,7 +129,7 @@ class SelectPlayers():
         self.fadein = True
         self.fadein_amount = 0
         self.status = 1
-        self.background = Texture(tool.image("theme_bg", "background.png"))
+        self.background = Texture(tool.image("system", "select_player_bg.png"))
         if config['gametype'] == 'human':
             self.selectors = [PlayerSelector(1, True), PlayerSelector(2), PlayerSelector(3), PlayerSelector(4)]
         else:
