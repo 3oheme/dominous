@@ -46,14 +46,13 @@ class DominousGame(GlossGame):
         self.flow.stop()
         self.flow = self.intro
         self.flow.start()
+    def goto_menu(self):
+        self.flow.stop()
+        self.flow = self.menu
+        self.flow.start()
     def goto_selectplayers(self):
         self.flow.stop()
         self.flow = self.selectplayers
-        self.flow.start()
-    def goto_menu(self):
-        print "dominous.py - goto_menu"
-        self.flow.stop()
-        self.flow = self.menu
         self.flow.start()
     def goto_game(self):
         self.flow.stop()

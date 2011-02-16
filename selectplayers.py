@@ -12,6 +12,8 @@ from os import *
 
 import imp
 
+import operator 
+
 def load_players():
     players = []
     config = ConfigParser.RawConfigParser()
@@ -23,9 +25,12 @@ def load_players():
                 'id': player_dir,
                 'ia': imp.load_source(player_dir, os.path.join(os.getcwd(), 'players', player_dir, 'player.py')),
                 'name': config.get('Player', 'name'),
+                'weight': config.get('Player', 'weight'),
                 'image': os.path.join(os.getcwd(), 'players', player_dir, config.get('Player', 'image')),
                 }
             players.append(player)
+    # sort by weight
+    players.sort(key=operator.itemgetter('weight'))
     return players
 
 allplayers = load_players()
@@ -115,8 +120,8 @@ class SelectPlayers():
         self.game.on_mouse_down = self.mouse_down
         self.falling_images = []
     def draw(self):
-        Gloss.fill(self.background)
         if self.status == 1:
+            Gloss.fill(self.background)
             for selector in self.selectors:
                 selector.draw()
             for falling_image in self.falling_images:
