@@ -145,7 +145,6 @@ class SelectPlayers():
         config['player2'] = self.selectors[1].option()
         config['player3'] = self.selectors[2].option()
         config['player4'] = self.selectors[3].option()
-        pass
     def mouse_down(self, event):
         if self.status != 0:
             gap = Gloss.screen_resolution[1]/20
