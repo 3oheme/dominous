@@ -51,7 +51,7 @@ class PlayerImage(Sprite):
             temp_pos = temp_pos + 1
         self.player = temp_pos
         self.texture = Texture(allplayers[player]['image'])
-        self.scale = 0.3
+        self.scale = 1
         self.pos = (x, y)
         self.to_pos = (x, y+100)
         self.falling = False
@@ -75,9 +75,9 @@ class PlayerSelector(Sprite):
         self.player_selected = 0
         self.texture = Texture(allplayers[self.player_selected]['image'])
         self.player_selected_id = allplayers[self.player_selected]['id']
-        self.scale = 0.3
-        tex_width = self.texture.width * 0.3
-        tex_half_width = self.texture.half_width * 0.3
+        self.scale = 1
+        tex_width = self.texture.width
+        tex_half_width = self.texture.half_width
         gap = Gloss.screen_resolution[1]/20
         self.static = is_static
         if pos == 1:
@@ -101,15 +101,15 @@ class PlayerSelector(Sprite):
             falling_image.draw()
     def update(self):
         for falling_image in self.falling_images:
-            falling_image.movetime += 0.002
-            if (falling_image.movetime > 1.0): falling_image.movetime = 0.0
-            falling_image.move_to(None, Gloss.bounce_in(200, 100, falling_image.movetime, 30))
-        pass
+            falling_image.movetime += Gloss.elapsed_seconds * 0.5
+            if (falling_image.movetime > 1.0): self.falling_images.remove(falling_image)
+            # FIXME
+            falling_image.move_to(None, Gloss.lerp(falling_image.position[1], falling_image.position[1]+50, falling_image.movetime))
     def click(self):
         if not self.static:
             self.player_selected = self.player_selected + 1
             falling_image = Sprite(self.texture, self.position)
-            falling_image.movetime = 10
+            falling_image.movetime = 0
             self.falling_images.append(falling_image)
             if self.player_selected + 1 > len(allplayers):
                 self.player_selected = 0
