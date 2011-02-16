@@ -94,13 +94,23 @@ class PlayerSelector(Sprite):
             self.y = (Gloss.screen_resolution[1]/2)-tex_half_width
         self.position = (self.x, self.y)
         Sprite.__init__(self, self.texture, self.position)
+        self.falling_images = []
     def draw(self):
         Sprite.draw(self, position = self.position, scale = self.scale)
+        for falling_image in self.falling_images:
+            falling_image.draw()
     def update(self):
+        for falling_image in self.falling_images:
+            falling_image.movetime += 0.002
+            if (falling_image.movetime > 1.0): falling_image.movetime = 0.0
+            falling_image.move_to(None, Gloss.bounce_in(200, 100, falling_image.movetime, 30))
         pass
     def click(self):
         if not self.static:
             self.player_selected = self.player_selected + 1
+            falling_image = Sprite(self.texture, self.position)
+            falling_image.movetime = 10
+            self.falling_images.append(falling_image)
             if self.player_selected + 1 > len(allplayers):
                 self.player_selected = 0
             self.texture = Texture(allplayers[self.player_selected]['image'])
@@ -163,5 +173,4 @@ class SelectPlayers():
                 event.pos[1] > (Gloss.screen_resolution[1]/2)-tex_half_width and event.pos[1] < (Gloss.screen_resolution[1]/2)+tex_half_width:
                 self.selectors[3].click()
             elif event.pos[0] > Gloss.screen_resolution[0]-tex_width and event.pos[1] > Gloss.screen_resolution[1]-tex_width:
-                print "lets go gaming!"
                 self.game.goto_game()
