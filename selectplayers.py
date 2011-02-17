@@ -98,19 +98,19 @@ class PlayerSelector(Sprite):
     def draw(self):
         Sprite.draw(self, position = self.position, scale = self.scale)
         for falling_image in self.falling_images:
-            falling_image.draw()
+            falling_image.draw(origin = (75, 75), rotation = falling_image.movetime*20, color = Color(1,1,1,Gloss.smooth_step(1, 0, falling_image.movetime)))
     def update(self):
         for falling_image in self.falling_images:
-            falling_image.movetime += Gloss.elapsed_seconds * 0.5
+            falling_image.movetime += Gloss.elapsed_seconds * 2
             if (falling_image.movetime > 1.0): self.falling_images.remove(falling_image)
             # FIXME
-            falling_image.move_to(None, Gloss.lerp(falling_image.position[1], falling_image.position[1]+50, falling_image.movetime))
+            falling_image.move_to(None, Gloss.lerp(self.position[1]+75, self.position[1]+100, falling_image.movetime))
     def click(self):
         if not self.static:
             self.player_selected = self.player_selected + 1
-            falling_image = Sprite(self.texture, self.position)
+            falling_image = Sprite(self.texture, (self.position[0] + 75, self.position[1]))
             falling_image.movetime = 0
-            self.falling_images.append(falling_image)
+            self.falling_images.insert(0, falling_image)
             if self.player_selected + 1 > len(allplayers):
                 self.player_selected = 0
             self.texture = Texture(allplayers[self.player_selected]['image'])

@@ -31,7 +31,7 @@ class DominousGame(GlossGame):
         self.selectplayers = SelectPlayers(self)
         self.finish = Finish(self)
         self.flow = self.intro
-        self.flow = self.selectplayers
+        #self.flow = self.selectplayers
         #self.flow = self.finish
         self.flow.start()
     def draw_loading_screen(self):

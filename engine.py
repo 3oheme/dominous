@@ -658,7 +658,7 @@ class Engine:
             pass
         # Status = 999 - end game, goto menu
         elif self.status == 999:
-            self.game.goto_menu()
+            self.game.goto_intro()
     def next_left_tile_position(self):
         if len(self.domino.board) == 0:
             return (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2)
@@ -705,7 +705,7 @@ class Engine:
         elif self.status == 500:
             option = self.ingame_menu.click(event.pos)
             if option == 2:
-                self.game.goto_menu()
+                self.game.goto_intro()
             else:
                 self.status = self.status_backup
     def key_pressed(self, event):
