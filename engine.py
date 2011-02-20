@@ -37,14 +37,14 @@ class ActivePlayer(Sprite):
             self.position = ((Gloss.screen_resolution[0]/2)-self.texture.half_width, Gloss.screen_resolution[1]-self.texture.height)
             self.angle = 0
         elif self.current_player == 1:
-            self.position = (self.texture.height, (Gloss.screen_resolution[1]/2)-self.texture.half_width)
-            self.angle = 90
+            self.position = (Gloss.screen_resolution[0]-self.texture.height, (Gloss.screen_resolution[1]/2)+self.texture.half_width)
+            self.angle = 270
         elif self.current_player == 2:
             self.position = (Gloss.screen_resolution[0]/2+self.texture.half_width, self.texture.height)
             self.angle = 180
         elif self.current_player == 3:
-            self.position = (Gloss.screen_resolution[0]-self.texture.height, (Gloss.screen_resolution[1]/2)+self.texture.half_width)
-            self.angle = 270
+            self.position = (self.texture.height, (Gloss.screen_resolution[1]/2)-self.texture.half_width)
+            self.angle = 90
         else:
             self.current_player = 4
 
@@ -77,7 +77,7 @@ class DebugInfo():
     def add(self, string):
         self.text = self.text + string + "\n"
     def show(self):
-        self.font_main.draw(self.text, position = (Gloss.screen_resolution[0]-200, 10), color = Color(1, 1, 1, 1))
+        self.font_main.draw(self.text, position = (Gloss.screen_resolution[0]-150, 10), color = Color(1, 1, 1, 1))
         self.text = ""
 
 class Scoreboard():
@@ -1006,10 +1006,10 @@ class Engine:
                 self.tiles[tile].goto((first_x, first_y), 90)
                 first_x += gap + config['tile_height']
         elif player == 1:
-            first_x = gap + config['tile_width']/2
+            first_x = (Gloss.screen_resolution[0] - gap) - config['tile_width']/2
             first_y = Gloss.screen_resolution[1]/2 - all_tiles_width/2
             for tile in self.domino.players_tiles[1]:
-                self.tiles[tile].goto((first_x, first_y), 0.5)
+                self.tiles[tile].goto((first_x, first_y), 180)
                 first_y += gap + config['tile_height']
         elif player == 2:
             first_x = Gloss.screen_resolution[0]/2 - all_tiles_width/2
@@ -1018,9 +1018,9 @@ class Engine:
                 self.tiles[tile].goto((first_x, first_y), 90)
                 first_x += gap + config['tile_height']
         elif player == 3:
-            first_x = (Gloss.screen_resolution[0] - gap) - config['tile_width']/2
+            first_x = gap + config['tile_width']/2
             first_y = Gloss.screen_resolution[1]/2 - all_tiles_width/2
             for tile in self.domino.players_tiles[3]:
-                self.tiles[tile].goto((first_x, first_y), 180)
+                self.tiles[tile].goto((first_x, first_y), 0.5)
                 first_y += gap + config['tile_height']
 

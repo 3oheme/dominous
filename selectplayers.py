@@ -84,13 +84,13 @@ class PlayerSelector(Sprite):
             self.x = (Gloss.screen_resolution[0]/2)-tex_half_width
             self.y = Gloss.screen_resolution[1]-gap-tex_width
         elif pos == 2:
-            self.x = gap
+            self.x = Gloss.screen_resolution[0]-gap-tex_width
             self.y = (Gloss.screen_resolution[1]/2)-tex_half_width
         elif pos == 3:
             self.x = (Gloss.screen_resolution[0]/2)-tex_half_width
             self.y = gap
         elif pos == 4:
-            self.x = Gloss.screen_resolution[0]-gap-tex_width
+            self.x = gap
             self.y = (Gloss.screen_resolution[1]/2)-tex_half_width
         self.position = (self.x, self.y)
         Sprite.__init__(self, self.texture, self.position)
@@ -165,12 +165,12 @@ class SelectPlayers():
                 self.selectors[0].click()
             elif event.pos[0] > gap and event.pos[0] < gap+tex_width and \
                 event.pos[1] > (Gloss.screen_resolution[1]/2)-tex_half_width and event.pos[1] < (Gloss.screen_resolution[1]/2)+tex_half_width:
-                self.selectors[1].click()
+                self.selectors[3].click()
             elif event.pos[0] > (Gloss.screen_resolution[0]/2)-tex_half_width and event.pos[0] < (Gloss.screen_resolution[0]/2)+tex_half_width and \
                 event.pos[1] > gap and event.pos[1] < gap+tex_width:
                 self.selectors[2].click()
             elif event.pos[0] > Gloss.screen_resolution[0]-gap-tex_width and event.pos[0] < Gloss.screen_resolution[0]-gap and \
                 event.pos[1] > (Gloss.screen_resolution[1]/2)-tex_half_width and event.pos[1] < (Gloss.screen_resolution[1]/2)+tex_half_width:
-                self.selectors[3].click()
+                self.selectors[1].click()
             elif event.pos[0] > Gloss.screen_resolution[0]-tex_width and event.pos[1] > Gloss.screen_resolution[1]-tex_width:
                 self.game.goto_game()
