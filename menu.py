@@ -26,18 +26,21 @@ class Options1():
         self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", 38, False, False, 32, 255)
         self.str_quick_game = "partida rapida"
         self.str_tournament = "laboratorio"
+        self.str_tutorial = "tutorial"
         self.str_options = "opciones"
         self.str_exit = "salir"
         self.fontsize1 = self.font_main.measure_string(self.str_quick_game)
         self.fontsize2 = self.font_main.measure_string(self.str_tournament)
         self.fontsize3 = self.font_main.measure_string(self.str_options)
-        self.fontsize4 = self.font_main.measure_string(self.str_exit)
+        self.fontsize4 = self.font_main.measure_string(self.str_tutorial)
+        self.fontsize5 = self.font_main.measure_string(self.str_exit)
         self.eggs = 0
     def draw(self):
         self.font_main.draw(self.str_quick_game, position = (self.position[0]-(self.fontsize1[0]/2), self.position[1]), color = Color(0.3, 0.3, 0.3, 1))
         self.font_main.draw(self.str_tournament, position = (self.position[0]-(self.fontsize2[0]/2), self.position[1]+self.fontsize1[1]), color = Color(0.3, 0.3, 0.3, 1))
         self.font_main.draw(self.str_options, position = (self.position[0]-(self.fontsize3[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]), color = Color(0.3, 0.3, 0.3, 1))
-        self.font_main.draw(self.str_exit, position = (self.position[0]-(self.fontsize4[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50), color = Color(0.3, 0.3, 0.3, 1))
+        self.font_main.draw(self.str_tutorial, position = (self.position[0]-(self.fontsize4[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]), color = Color(0.3, 0.3, 0.3, 1))
+        self.font_main.draw(self.str_exit, position = (self.position[0]-(self.fontsize5[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+self.fontsize5[1]+20), color = Color(0.3, 0.3, 0.3, 1))
     def update(self):
         pass
     def hide(self):
@@ -49,13 +52,20 @@ class Options1():
             pos[1]>self.position[1] and pos[1]<self.position[1]+self.fontsize1[1]):
             return 2
         elif (pos[0]>self.position[0]-self.fontsize2[0]/2 and pos[0]<self.position[0]+self.fontsize2[0]/2 and \
-            pos[1]>self.position[1]+self.fontsize1[1] and pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]):
+            pos[1]>self.position[1]+self.fontsize1[1] and \
+            pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]):
             pass
         elif (pos[0]>self.position[0]-self.fontsize3[0]/2 and pos[0]<self.position[0]+self.fontsize3[0]/2 and \
-            pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1] and pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]):
+            pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1] and \
+            pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]):
             return 10
         elif (pos[0]>self.position[0]-self.fontsize4[0]/2 and pos[0]<self.position[0]+self.fontsize4[0]/2 and \
-            pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50 and pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50+self.fontsize4[1]):
+            pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1] and \
+            pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+self.fontsize4[1]):
+            return 10
+        elif (pos[0]>self.position[0]-self.fontsize5[0]/2 and pos[0]<self.position[0]+self.fontsize5[0]/2 and \
+            pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+self.fontsize4[1]+20 and \
+            pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+20+self.fontsize4[1]+self.fontsize5[1]):
             return 99
         else:
             return 1
