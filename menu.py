@@ -110,6 +110,9 @@ class Options2():
             if config['theme'] == "spanish":
                 self.str_tournament = 'classic'
                 config['theme'] = 'classic'
+            elif config['theme'] == "classic":
+                self.str_tournament = 'fruits'
+                config['theme'] = 'fruits'
             else:
                 self.str_tournament = 'spanish'
                 config['theme'] = 'spanish'

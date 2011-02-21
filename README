@@ -19,4 +19,8 @@ player.py - python file inheriting from main player class
 image.png - 500x500 image of the player. If no image is provided i'll use a default one
 Directory name will be used as player name
 
+3. Greetings
+
+This software uses a lot os GNU/Free/Creative Commons artwork and stuff:
+ * Comfortaa font from Johan Aakerlund - http://aajohan.deviantart.com/
 

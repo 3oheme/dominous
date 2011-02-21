@@ -35,35 +35,6 @@ def load_players():
 
 allplayers = load_players()
 
-class PlayerImage(Sprite):
-    """Player image attached to a player selector
-    @brief Player image attached to a player selector"""
-    def __init__(self, player, x, y):
-        self.status = 1 # 1 = fixed position
-                        # 2 = falling down
-        self.eggs = 0
-        self.speed = 1
-        temp_pos = 0
-        self.id = player
-        for item in allplayers:
-            if item['id'] == player:
-                player = temp_pos
-            temp_pos = temp_pos + 1
-        self.player = temp_pos
-        self.texture = Texture(allplayers[player]['image'])
-        self.scale = 1
-        self.pos = (x, y)
-        self.to_pos = (x, y+100)
-        self.falling = False
-        Sprite.__init__(self, self.texture, self.pos)
-    def draw(self):
-        Sprite.draw(self, position = self.pos, scale = self.scale) 
-    def update(self):
-        x, y = self.pos
-        self.pos = (x+1, y+1)
-    def remove(self):
-        self.falling = True
-
 class PlayerSelector(Sprite):
     """Player selector, where you can choose players just clicking on the image
     @brief Player selector
@@ -73,13 +44,16 @@ class PlayerSelector(Sprite):
         self.pos = pos
         self.selected = allplayers[0]['id']
         self.player_selected = 0
-        self.texture = Texture(allplayers[self.player_selected]['image'])
+        self.static = is_static
+        if not is_static:
+            self.texture = Texture(allplayers[self.player_selected]['image'])
+        else:
+            self.texture = Texture(tool.image("system", "human.png"))
         self.player_selected_id = allplayers[self.player_selected]['id']
         self.scale = 1
         tex_width = self.texture.width
         tex_half_width = self.texture.half_width
         gap = Gloss.screen_resolution[1]/20
-        self.static = is_static
         if pos == 1:
             self.x = (Gloss.screen_resolution[0]/2)-tex_half_width
             self.y = Gloss.screen_resolution[1]-gap-tex_width
