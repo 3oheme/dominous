@@ -27,20 +27,17 @@ class Lab:
         elif self.status == 1:
             while not self.current_match == self.matches:
                 while not self.domino.end_game():
-                    print "holaaaaa"
                     self.domino.deal_tiles()
                     while not self.domino.end_hand():
                         self.domino.ask_tile(self.domino.nextplayer())
-                    print "Equipo 1: "+ str(self.domino.points_team1()) + "    Equipo 2 " + str(self.domino.points_team2())
+                    # print "Equipo 1: "+ str(self.domino.points_team1()) + "    Equipo 2 " + str(self.domino.points_team2())
                 if self.domino.points_team1() > self.domino.points_team2():
                     self.team1_matches += 1
                 else:
                     self.team2_matches += 1
                 self.domino.restart()
                 self.current_match += 1
-                print ""
                 print "Equipo 1: "+ str(self.team1_matches) + "    Equipo 2 " + str(self.team2_matches)
-                print ""
             self.status = 2
         elif self.status == 2:
             if self.team1_matches > self.team2_matches:

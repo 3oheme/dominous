@@ -128,7 +128,7 @@ class domino_game:
         del self.players_tiles[1][:]
         del self.players_tiles[2][:]
         del self.players_tiles[3][:]
-        random.seed(1) #starts player 3
+        #random.seed(1) #starts player 3
         #random.seed(2) #starts player 1
         #random.seed(4) #starts player 2
         #random.seed(5) #starts player 4
@@ -151,27 +151,27 @@ class domino_game:
         pass
     def end_hand(self):
         if len(self.players_tiles[0]) == 0 or len(self.players_tiles[2]) == 0:
-            print "Team 1 wins!"
+            #print "Team 1 wins!"
             self.points_team_1 = self.points_team_1 + self.points_hand_team(1) + self.points_hand_team(2)
             self.player_pass = 0
             self.hand_counter = self.hand_counter + 1
             return True
         elif len(self.players_tiles[1]) == 0 or len(self.players_tiles[3]) == 0:
-            print "Team 2 wins!"
+            #print "Team 2 wins!"
             self.points_team_2 = self.points_team_2 + self.points_hand_team(1) + self.points_hand_team(2)
             self.player_pass = 0
             self.hand_counter = self.hand_counter + 1
             return True
         elif self.player_pass == 4:
             if self.points_hand_team(1) < self.points_hand_team(2):
-                print "after draw, team 1 wins!"
-                print "team_1: %s" % self.points_hand_team(1)
-                print "team_2: %s" % self.points_hand_team(2)
+                #print "after draw, team 1 wins!"
+                #print "team_1: %s" % self.points_hand_team(1)
+                #print "team_2: %s" % self.points_hand_team(2)
                 self.points_team_1 = self.points_team_1 + self.points_hand_team(1) + self.points_hand_team(2)
             elif self.points_hand_team(1) > self.points_hand_team(2):
-                print "after draw, team 2 wins!"
-                print "team_1: %s" % self.points_hand_team(1)
-                print "team_2: %s" % self.points_hand_team(2)
+                #print "after draw, team 2 wins!"
+                #print "team_1: %s" % self.points_hand_team(1)
+                #print "team_2: %s" % self.points_hand_team(2)
                 self.points_team_2 = self.points_team_2 + self.points_hand_team(1) + self.points_hand_team(2)
             self.player_pass = 0
             self.hand_counter = self.hand_counter + 1
