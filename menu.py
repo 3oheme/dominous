@@ -50,11 +50,14 @@ class Options1():
     def click(self, pos):
         if (pos[0]>self.position[0]-self.fontsize1[0]/2 and pos[0]<self.position[0]+self.fontsize1[0]/2 and \
             pos[1]>self.position[1] and pos[1]<self.position[1]+self.fontsize1[1]):
+            config['goto_lab'] = False
             return 2
         elif (pos[0]>self.position[0]-self.fontsize2[0]/2 and pos[0]<self.position[0]+self.fontsize2[0]/2 and \
             pos[1]>self.position[1]+self.fontsize1[1] and \
             pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]):
-            pass
+            config['gametype'] = 'computer'
+            config['goto_lab'] = True
+            return 2
         elif (pos[0]>self.position[0]-self.fontsize3[0]/2 and pos[0]<self.position[0]+self.fontsize3[0]/2 and \
             pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1] and \
             pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]):

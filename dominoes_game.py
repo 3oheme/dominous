@@ -227,3 +227,6 @@ class domino_game:
             self.player_pass += 1
             log.write("player %s pass" % (player_pos + 1))
             return "XX", "XX"
+    def restart(self):
+        self.points_team_1 = 0
+        self.points_team_2 = 0

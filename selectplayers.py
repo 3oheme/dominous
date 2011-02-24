@@ -147,4 +147,7 @@ class SelectPlayers():
                 event.pos[1] > (Gloss.screen_resolution[1]/2)-tex_half_width and event.pos[1] < (Gloss.screen_resolution[1]/2)+tex_half_width:
                 self.selectors[1].click()
             elif event.pos[0] > Gloss.screen_resolution[0]-tex_width and event.pos[1] > Gloss.screen_resolution[1]-tex_width:
-                self.game.goto_game()
+                if config['goto_lab']:
+                    self.game.goto_lab()
+                else:
+                    self.game.goto_game()

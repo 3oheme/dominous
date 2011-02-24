@@ -9,6 +9,7 @@ from menu import *
 from engine import *
 from finish import *
 from selectplayers import *
+from lab import *
 from tools import *
 
 from config import *
@@ -58,6 +59,11 @@ class DominousGame(GlossGame):
         self.flow.stop()
         self.engine = Engine(self)
         self.flow = self.engine
+        self.flow.start()
+    def goto_lab(self):
+        self.flow.stop()
+        self.lab = Lab(self)
+        self.flow = self.lab
         self.flow.start()
     def goto_finish(self):
         self.flow.stop()

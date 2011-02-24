@@ -19,7 +19,6 @@ class put_anyone:
     def __init__(self):
         pass
     def go(self, left_tile, right_tile, board, tiles, log):
-        print "ai - trying to put anyone"
         for item in tiles:
             if item[0] == left_tile or item[1] == left_tile:
                 tiles.remove(item)
@@ -39,12 +38,10 @@ class put_any_double:
             if item[0] == item[1]:
                 if item[0] == left_tile or item[1] == left_tile:
                     tiles.remove(item)
-                    print "puttin a double, yeees!"
                     return item, "left"
                     break
                 elif item[0] == right_tile or item[1] == right_tile or left_tile == None:
                     tiles.remove(item)
-                    print "puttin a double, yeees!"
                     return item, "right"
                     break
         return None, "pass"
