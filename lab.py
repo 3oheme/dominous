@@ -45,19 +45,18 @@ class Lab:
                 self.status = 3
                 self.domino.deal_tiles()
             else:
-                self.domino.restart()
                 self.current_match += 1
                 if self.domino.points_team1() > self.domino.points_team2(): 
                     self.team1_matches += 1                    
                 else:             
                     self.team2_matches += 1
+                self.domino.restart()
                 self.status = 1
         elif self.status == 3:
             # si no hemos terminado la mano actual, vamos pidiendo fichas
-            if not self.domino.end_hand():
+            while not self.domino.end_hand():
                 self.domino.ask_tile(self.domino.nextplayer())
-            else:
-                self.status = 2
+            self.status = 2
         elif self.status == 99:
             if self.team1_matches > self.team2_matches:
                 print "winner team 1"
