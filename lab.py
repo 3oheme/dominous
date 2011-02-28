@@ -28,24 +28,26 @@ class Lab:
         if self.status == 0:
             pass
         elif self.status == 1:
+            print "status 1"
             # comprobamos si hemos terminado todas las partidas
             if not self.current_match == self.matches:
-                self.status == 2
+                self.status = 2
             else:
-                self.status == 99
+                self.status = 99
         elif self.status == 2:
+            print "status 2"
             # comprobamos si hemos terminado la partida actual
             if not self.domino.end_game():
-                self.status == 3
+                self.status = 3
                 self.domino.deal_tiles()
             else:
-                self.status == 1
+                self.status = 1
         elif self.status == 3:
             # si no hemos terminado la mano actual, vamos pidiendo fichas
             if not self.domino.end_hand():
                 self.domino.ask_tile(self.domino.nextplayer())
             else:
-                self.status == 2
+                self.status = 2
         elif self.status == 99:
             if self.team1_matches > self.team2_matches:
                 print "winner team 1"
