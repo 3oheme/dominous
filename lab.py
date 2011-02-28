@@ -21,30 +21,38 @@ class Lab:
         self.team2_matches = 0
     def draw(self):
         Gloss.fill(self.background)        
+        #draw_box(position = (0, 0), width = 128, height = 128, rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE)
+        #draw_box(position = (0, 0), width = 128, height = 128, rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE)
+        #Gloss.elapsed_seconds
     def update(self):
         if self.status == 0:
             pass
         elif self.status == 1:
-            while not self.current_match == self.matches:
-                while not self.domino.end_game():
-                    self.domino.deal_tiles()
-                    while not self.domino.end_hand():
-                        self.domino.ask_tile(self.domino.nextplayer())
-                    # print "Equipo 1: "+ str(self.domino.points_team1()) + "    Equipo 2 " + str(self.domino.points_team2())
-                if self.domino.points_team1() > self.domino.points_team2():
-                    self.team1_matches += 1
-                else:
-                    self.team2_matches += 1
-                self.domino.restart()
-                self.current_match += 1
-                print "Equipo 1: "+ str(self.team1_matches) + "    Equipo 2 " + str(self.team2_matches)
-            self.status = 2
+            # comprobamos si hemos terminado todas las partidas
+            if not self.current_match == self.matches:
+                self.status == 2
+            else:
+                self.status == 99
         elif self.status == 2:
+            # comprobamos si hemos terminado la partida actual
+            if not self.domino.end_game():
+                self.status == 3
+                self.domino.deal_tiles()
+            else:
+                self.status == 1
+        elif self.status == 3:
+            # si no hemos terminado la mano actual, vamos pidiendo fichas
+            if not self.domino.end_hand():
+                self.domino.ask_tile(self.domino.nextplayer())
+            else:
+                self.status == 2
+        elif self.status == 99:
             if self.team1_matches > self.team2_matches:
                 print "winner team 1"
             else:
                 print "winner team 2"
-            self.game.goto_intro()    
+            self.game.goto_intro()
+
     def start(self):
         self.status = 0
         self.domino.create_players(config['player1'],config['player2'],config['player3'],config['player4'])
