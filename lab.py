@@ -75,9 +75,9 @@ class Lab:
         self.domino.create_players(config['player1'],config['player2'],config['player3'],config['player4'])
         print "empieza el laboratorio"
         self.status = 1
-        self.p1 = Texture(allplayers[config['player1']['image'])
-        self.p2 = Texture(allplayers[config['player2']['image'])
-        self.p3 = Texture(allplayers[config['player3']['image'])
-        self.p4 = Texture(allplayers[config['player4']['image'])
+        self.p1 = Texture(allplayers[config['player1']]['image'])
+        self.p2 = Texture(allplayers[config['player2']]['image'])
+        self.p3 = Texture(allplayers[config['player3']]['image'])
+        self.p4 = Texture(allplayers[config['player4']]['image'])
     def stop(self):
         self.status = 0
