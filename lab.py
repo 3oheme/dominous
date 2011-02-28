@@ -23,14 +23,11 @@ class Lab:
         #str(self.domino.points_team1())
         #self.team1_matches
         Gloss.fill(self.background)
-        print self.status
-        print "equipo1 " + str(self.team1_matches)
-        print "equipo2 " +  str(self.team2_matches)
         Gloss.draw_box((50, 50), self.team1_matches*4, 50, 0.0, (0, 0), 1, Color.BLUE)
         Gloss.draw_box((50, 110), self.team2_matches*4, 50, 0.0, (0, 0), 1, Color.BLUE)
 
-        Gloss.draw_box((20, 200), self.domino.points_team1()*2, 50, 0.0, (0, 0), 1, Color.RED)
-        Gloss.draw_box((20, 230), self.domino.points_team2()*2, 50, 0.0, (0, 0), 1, Color.RED)
+        Gloss.draw_box((50, 200), self.domino.points_team1()*2, 20, 0.0, (0, 0), 1, Color.RED)
+        Gloss.draw_box((50, 230), self.domino.points_team2()*2, 20, 0.0, (0, 0), 1, Color.RED)
 
         #Gloss.elapsed_seconds
     def update(self):
