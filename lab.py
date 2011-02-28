@@ -23,7 +23,6 @@ class Lab:
         #str(self.domino.points_team1())
         #self.team1_matches
         Gloss.fill(self.background)
-        allplayers[config['player1']['image']
 
         self.p1.draw((25,  25))
         self.p3.draw((185, 25))
