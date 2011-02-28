@@ -20,27 +20,40 @@ class Lab:
         self.team1_matches = 0
         self.team2_matches = 0
     def draw(self):
-        Gloss.fill(self.background)        
-        #draw_box(position = (0, 0), width = 128, height = 128, rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE)
-        #draw_box(position = (0, 0), width = 128, height = 128, rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE)
+        #str(self.domino.points_team1())
+        #self.team1_matches
+        Gloss.fill(self.background)
+        print self.status
+        print "equipo1 " + str(self.team1_matches)
+        print "equipo2 " +  str(self.team2_matches)
+        Gloss.draw_box((50, 50), self.team1_matches*2, 50, 0.0, (0, 0), 1, Color.WHITE)
+        Gloss.draw_box((50, 100), self.team2_matches*2, 50, 0.0, (0, 0), 1, Color.WHITE)
+
+        Gloss.draw_box((50, 200), self.domino.points_team1()*2, 50, 0.0, (0, 0), 1, Color.RED)
+        Gloss.draw_box((50, 250), self.domino.points_team2()*2, 50, 0.0, (0, 0), 1, Color.RED)
+
         #Gloss.elapsed_seconds
     def update(self):
         if self.status == 0:
             pass
         elif self.status == 1:
-            print "status 1"
             # comprobamos si hemos terminado todas las partidas
             if not self.current_match == self.matches:
                 self.status = 2
             else:
                 self.status = 99
         elif self.status == 2:
-            print "status 2"
             # comprobamos si hemos terminado la partida actual
             if not self.domino.end_game():
                 self.status = 3
                 self.domino.deal_tiles()
             else:
+                self.domino.restart()
+                self.current_match += 1
+                if self.domino.points_team1() > self.domino.points_team2(): 
+                    self.team1_matches += 1                    
+                else:             
+                    self.team2_matches += 1
                 self.status = 1
         elif self.status == 3:
             # si no hemos terminado la mano actual, vamos pidiendo fichas
