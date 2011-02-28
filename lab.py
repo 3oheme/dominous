@@ -23,11 +23,18 @@ class Lab:
         #str(self.domino.points_team1())
         #self.team1_matches
         Gloss.fill(self.background)
-        Gloss.draw_box((50, 50), self.team1_matches*4, 50, 0.0, (0, 0), 1, Color.BLUE)
-        Gloss.draw_box((50, 110), self.team2_matches*4, 50, 0.0, (0, 0), 1, Color.BLUE)
+        allplayers[config['player1']['image']
 
-        Gloss.draw_box((50, 200), self.domino.points_team1()*2, 20, 0.0, (0, 0), 1, Color.RED)
-        Gloss.draw_box((50, 230), self.domino.points_team2()*2, 20, 0.0, (0, 0), 1, Color.RED)
+        self.p1.draw((25,  25))
+        self.p3.draw((185, 25))
+        self.p2.draw((465, 25))
+        self.p4.draw((625, 25))
+
+        Gloss.draw_box((50, 250), self.team1_matches*4, 50, 0.0, (0, 0), 1, Color.BLUE)
+        Gloss.draw_box((50, 310), self.team2_matches*4, 50, 0.0, (0, 0), 1, Color.BLUE)
+
+        Gloss.draw_box((50, 400), self.domino.points_team1()*2, 20, 0.0, (0, 0), 1, Color.RED)
+        Gloss.draw_box((50, 430), self.domino.points_team2()*2, 20, 0.0, (0, 0), 1, Color.RED)
 
         #Gloss.elapsed_seconds
     def update(self):
@@ -69,5 +76,9 @@ class Lab:
         self.domino.create_players(config['player1'],config['player2'],config['player3'],config['player4'])
         print "empieza el laboratorio"
         self.status = 1
+        self.p1 = Texture(allplayers[config['player1']['image'])
+        self.p2 = Texture(allplayers[config['player2']['image'])
+        self.p3 = Texture(allplayers[config['player3']['image'])
+        self.p4 = Texture(allplayers[config['player4']['image'])
     def stop(self):
         self.status = 0
