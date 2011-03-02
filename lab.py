@@ -5,6 +5,7 @@ from dominoes_game import domino_game
 from sound import *
 from tools import *
 from config import *
+from selectplayers import *
 
 import log
 import random
@@ -29,11 +30,14 @@ class Lab:
         self.p2.draw((465, 25))
         self.p4.draw((625, 25))
 
-        Gloss.draw_box((50, 250), self.team1_matches*4, 50, 0.0, (0, 0), 1, Color.BLUE)
-        Gloss.draw_box((50, 310), self.team2_matches*4, 50, 0.0, (0, 0), 1, Color.BLUE)
+        po1 = 375+((self.team1_matches-self.team2_matches)*3.75)
+        po2 = 375+((self.team2_matches-self.team1_matches)*3.75)
+        Gloss.draw_box((25, 250), po1, 50, 0.0, (0, 0), 1, Color.from_html("#f9b00c"))
+        Gloss.draw_box((775-po2, 250), po2, 50, 0.0, (0, 0), 1, Color.from_html("#828282"))
 
-        Gloss.draw_box((50, 400), self.domino.points_team1()*2, 20, 0.0, (0, 0), 1, Color.RED)
-        Gloss.draw_box((50, 430), self.domino.points_team2()*2, 20, 0.0, (0, 0), 1, Color.RED)
+        # los puntos de cada partida van de 0 a 200
+        Gloss.draw_box((25, 400), (self.domino.points_team1()*375)/200, 20, 0.0, (0, 0), 1, Color.RED)
+        Gloss.draw_box((775, 400), (self.domino.points_team2()*375)/200, 20, 0.0, ((self.domino.points_team2()*375)/200, 0), 1, Color.RED)
 
         #Gloss.elapsed_seconds
     def update(self):
@@ -75,9 +79,12 @@ class Lab:
         self.domino.create_players(config['player1'],config['player2'],config['player3'],config['player4'])
         print "empieza el laboratorio"
         self.status = 1
-        self.p1 = Texture(allplayers[config['player1']]['image'])
-        self.p2 = Texture(allplayers[config['player2']]['image'])
-        self.p3 = Texture(allplayers[config['player3']]['image'])
-        self.p4 = Texture(allplayers[config['player4']]['image'])
+
+        for player in allplayers:
+            if config['player1'] == player['id']: self.p1 = Texture(player['image'])
+            if config['player2'] == player['id']: self.p2 = Texture(player['image'])
+            if config['player3'] == player['id']: self.p3 = Texture(player['image'])
+            if config['player4'] == player['id']: self.p4 = Texture(player['image'])
+
     def stop(self):
         self.status = 0
