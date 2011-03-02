@@ -32,12 +32,14 @@ class Lab:
 
         po1 = 375+((self.team1_matches-self.team2_matches)*3.75)
         po2 = 375+((self.team2_matches-self.team1_matches)*3.75)
-        Gloss.draw_box((25, 250), po1, 50, 0.0, (0, 0), 1, Color.from_html("#f9b00c"))
-        Gloss.draw_box((775-po2, 250), po2, 50, 0.0, (0, 0), 1, Color.from_html("#828282"))
+        Gloss.draw_box((25, 200), po1, 50, 0.0, (0, 0), 1, Color.from_html("#f9b00c"))
+        Gloss.draw_box((25, 200), po1, 15, 0.0, (0, 0), 1, Color.from_html("#fbcc77"))
+        Gloss.draw_box((775-po2, 200), po2, 50, 0.0, (0, 0), 1, Color.from_html("#cccccc"))
+        Gloss.draw_box((775-po2, 200), po2, 15, 0.0, (0, 0), 1, Color.from_html("#eeeeee"))
 
         # los puntos de cada partida van de 0 a 200
-        Gloss.draw_box((25, 400), (self.domino.points_team1()*375)/200, 20, 0.0, (0, 0), 1, Color.RED)
-        Gloss.draw_box((775, 400), (self.domino.points_team2()*375)/200, 20, 0.0, ((self.domino.points_team2()*375)/200, 0), 1, Color.RED)
+        Gloss.draw_box((25, 275), (self.domino.points_team1()*375)/200, 20, 0.0, (0, 0), 1, Color.from_html("#f9b00c"))
+        Gloss.draw_box((775, 275), (self.domino.points_team2()*375)/200, 20, 0.0, ((self.domino.points_team2()*375)/200, 0), 1, Color.from_html("#cccccc"))
 
         #Gloss.elapsed_seconds
     def update(self):
