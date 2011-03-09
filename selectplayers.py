@@ -50,10 +50,10 @@ class PlayerSelector(Sprite):
         else:
             self.texture = Texture(tool.image("system", "human.png"))
         self.player_selected_id = allplayers[self.player_selected]['id']
-        self.scale = 1
         tex_width = self.texture.width
         tex_half_width = self.texture.half_width
         gap = Gloss.screen_resolution[1]/20
+        self.scale = 1
         if pos == 1:
             self.x = (Gloss.screen_resolution[0]/2)-tex_half_width
             self.y = Gloss.screen_resolution[1]-gap-tex_width
@@ -119,21 +119,25 @@ class SelectPlayers():
         self.fadein_amount = 0
         self.status = 1
         self.background = Texture(tool.image("system", "select_player_bg.png"))
+        self.game.on_mouse_down = self.mouse_down
         if config['gametype'] == 'human':
             self.selectors = [PlayerSelector(1, True), PlayerSelector(2), PlayerSelector(3), PlayerSelector(4)]
         else:
             self.selectors = [PlayerSelector(1), PlayerSelector(2), PlayerSelector(3), PlayerSelector(4)]
+        print "start de selectplayers"
     def stop(self):
         self.status = 0
         config['player1'] = self.selectors[0].option()
         config['player2'] = self.selectors[1].option()
         config['player3'] = self.selectors[2].option()
         config['player4'] = self.selectors[3].option()
+        print "stop de selectplayers"
     def mouse_down(self, event):
         if self.status != 0:
             gap = Gloss.screen_resolution[1]/20
             tex_half_width = 75
             tex_width = 150
+            print "click!"
             if event.pos[0] > (Gloss.screen_resolution[0]/2)-tex_half_width and event.pos[0] < (Gloss.screen_resolution[0]/2)+tex_half_width and \
                 event.pos[1] > Gloss.screen_resolution[1]-gap-tex_width and event.pos[1] < Gloss.screen_resolution[1]-gap+tex_width:
                 self.selectors[0].click()

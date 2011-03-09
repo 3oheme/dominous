@@ -14,8 +14,10 @@ class Lab:
     def __init__(self, mainp):
         self.game = mainp
         self.domino = domino_game()
+        self.game.on_mouse_down = self.mouse_down
         self.background = Texture(tool.image("system", "lab_bg.png"))
         self.status = 0
+        self.status_backup = 0
         self.matches = 100
         self.current_match = 0
         self.team1_matches = 0
@@ -29,6 +31,12 @@ class Lab:
         self.po2_cur = 37
         self.po2_to = 375
         self.po2_eggs = 0
+        
+        self.pause_eggs = 0
+        
+        self.pause = Texture(tool.image("system", "pause.png"))
+        self.restart = Texture(tool.image("system", "restart.png"))
+        self.exit = Texture(tool.image("system", "exit.png"))
         
         self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", 24, False, False, 32, 255)
         
@@ -72,7 +80,17 @@ class Lab:
         self.font_main.draw(str(self.team1_matches), position = (35, 220), color = Color.WHITE)
         self.font_main.draw(str(self.team2_matches), position = (765-text2_size[0], 220), color = Color.WHITE)
         
-        #Gloss.elapsed_seconds
+        # pintamos los botones
+        if self.status == 99:
+            self.pause_eggs += Gloss.elapsed_seconds
+            if self.pause_eggs > 1:
+                self.pause_eggs = 0
+            self.pause.draw(position = (25, 532), color = Color(1,1,1,Gloss.smooth_step2(0.5, 1, self.pause_eggs)))
+        else:
+            self.pause.draw(position = (25, 532))
+        self.restart.draw(position = (426, 532))
+        self.exit.draw(position = (638, 532))
+        
     def update(self):
         if self.status == 0:
             pass
@@ -81,7 +99,7 @@ class Lab:
             if not self.current_match == self.matches:
                 self.status = 2
             else:
-                self.status = 99
+                self.status = 999
         elif self.status == 2:
             # comprobamos si hemos terminado la partida actual
             if not self.domino.end_game():
@@ -101,11 +119,14 @@ class Lab:
                 self.domino.ask_tile(self.domino.nextplayer())
             self.status = 2
         elif self.status == 99:
+            # modo pausa
+            pass
+        elif self.status == 999:
+            # terminamos la partida
             if self.team1_matches > self.team2_matches:
                 print "winner team 1"
             else:
                 print "winner team 2"
-            self.game.goto_intro()
 
     def start(self):
         self.status = 0
@@ -119,5 +140,24 @@ class Lab:
             if config['player3'] == player['id']: self.p3 = Texture(player['image'])
             if config['player4'] == player['id']: self.p4 = Texture(player['image'])
 
+        self.status_backup = 0
+        self.matches = 100
+        self.current_match = 0
+        self.team1_matches = 0
+        self.team2_matches = 0
+            
     def stop(self):
         self.status = 0
+
+    def mouse_down(self, event):
+        if self.status != 1 and event.pos[0] > 25 and event.pos[1] > 532 and event.pos[0] < 186 and event.pos[1] < 574:
+            if self.status == 99:
+                self.status = self.status_backup
+            else:
+                self.status_backup = self.status
+                self.status = 99
+        elif event.pos[0] > 426 and event.pos[1] > 532 and event.pos[0] < 618 and event.pos[1] < 574:
+            self.start()
+        elif event.pos[0] > 638 and event.pos[1] > 532 and event.pos[0] < 775 and event.pos[1] < 574:
+            self.game.goto_menu()
+        
