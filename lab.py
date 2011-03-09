@@ -50,8 +50,14 @@ class Lab:
         self.p2.draw((465, 25))
         self.p4.draw((625, 25))
 
-        po1_new = 375+((self.team1_matches-self.team2_matches)*3.75)
-        po2_new = 750-po1_new
+        if self.current_match != 0:
+            po1_new = 375+((self.team1_matches-self.team2_matches)*3.75)
+            po1_new2 = 750*self.team1_matches/(self.team1_matches+self.team2_matches)
+            po1_new = po1_new2/2 + po1_new/2
+            po2_new = 750-po1_new
+        else:
+            po1_new = 375
+            po2_new = 375
         
         if po1_new != self.po1_to:
             self.po1_to = po1_new

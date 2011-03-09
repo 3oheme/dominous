@@ -137,7 +137,6 @@ class SelectPlayers():
             gap = Gloss.screen_resolution[1]/20
             tex_half_width = 75
             tex_width = 150
-            print "click!"
             if event.pos[0] > (Gloss.screen_resolution[0]/2)-tex_half_width and event.pos[0] < (Gloss.screen_resolution[0]/2)+tex_half_width and \
                 event.pos[1] > Gloss.screen_resolution[1]-gap-tex_width and event.pos[1] < Gloss.screen_resolution[1]-gap+tex_width:
                 self.selectors[0].click()
