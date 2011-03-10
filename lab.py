@@ -40,6 +40,9 @@ class Lab:
         
         self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", 24, False, False, 32, 255)
         
+        self.num_tex = Texture(tool.image("system", "plus_one.png"))
+        self.num_up = []
+        
     def draw(self):
         #str(self.domino.points_team1())
         #self.team1_matches
@@ -97,7 +100,15 @@ class Lab:
         self.restart.draw(position = (426, 532))
         self.exit.draw(position = (638, 532))
         
+        # pintamos los numeros de +1
+        for number in self.num_up:
+            number.draw(color = Color(1,1,1,Gloss.smooth_step(1, 0, number.movetime)))
+        
     def update(self):
+        for number in self.num_up:
+            number.movetime += Gloss.elapsed_seconds
+            if (number.movetime > 1.0): self.num_up.remove(number)
+            number.move_to(None, Gloss.lerp(200, 180, number.movetime))
         if self.status == 0:
             pass
         elif self.status == 1:
@@ -114,11 +125,18 @@ class Lab:
             else:
                 self.current_match += 1
                 if self.domino.points_team1() > self.domino.points_team2(): 
-                    self.team1_matches += 1 
+                    self.team1_matches += 1
+                    newnumber = Sprite(self.num_tex, (30, 200))
+                    newnumber.position_from = 30
                 else:
                     self.team2_matches += 1
+                    newnumber = Sprite(self.num_tex, (744, 200))
+                    newnumber.position_from = 744
                 self.domino.restart()
                 self.status = 1
+                
+                newnumber.movetime = 0
+                self.num_up.insert(0, newnumber)
         elif self.status == 3:
             # si no hemos terminado la mano actual, vamos pidiendo fichas
             while not self.domino.end_hand():
