@@ -66,7 +66,7 @@ class Options1():
         elif (pos[0]>self.position[0]-self.fontsize4[0]/2 and pos[0]<self.position[0]+self.fontsize4[0]/2 and \
             pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1] and \
             pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+self.fontsize4[1]):
-            return 10
+            return 3
         elif (pos[0]>self.position[0]-self.fontsize5[0]/2 and pos[0]<self.position[0]+self.fontsize5[0]/2 and \
             pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+self.fontsize4[1]+20 and \
             pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+20+self.fontsize4[1]+self.fontsize5[1]):
@@ -141,9 +141,14 @@ class Menu():
         self.fadein = True
         self.fadein_amount = 0
         self.status = 1
+        self.logo = Texture(tool.image("system", "dominous.png"))
+        
     def draw(self):
         Gloss.fill(top = Color.WHITE, bottom = Color(0.8, 0.8, 0.8, 1))
         self.box.draw()
+        
+        self.logo.draw(position = (275, 77), scale = 0.32)
+        
         if self.status == 1:
             self.options1.draw()
         elif self.status == 2:
@@ -166,6 +171,9 @@ class Menu():
         # start quick game
         elif self.status == 2:
             self.game.goto_selectplayers()
+        # go to tutorial
+        elif self.status == 3:
+            self.game.goto_tutorial()
         elif self.status == 10:
             self.options2.update()
         # exit game

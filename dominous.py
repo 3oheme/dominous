@@ -9,6 +9,7 @@ from menu import *
 from engine import *
 from finish import *
 from selectplayers import *
+from tutorial import *
 from lab import *
 from tools import *
 
@@ -30,6 +31,7 @@ class DominousGame(GlossGame):
         self.intro = Intro(self)
         self.menu = Menu(self)
         self.selectplayers = SelectPlayers(self)
+        self.tutorial = Tutorial(self)
         self.finish = Finish(self)
         self.flow = self.intro
         #self.flow = self.selectplayers
@@ -54,6 +56,10 @@ class DominousGame(GlossGame):
     def goto_selectplayers(self):
         self.flow.stop()
         self.flow = self.selectplayers
+        self.flow.start()
+    def goto_tutorial(self):
+        self.flow.stop()
+        self.flow = self.tutorial
         self.flow.start()
     def goto_game(self):
         self.flow.stop()
