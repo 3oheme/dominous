@@ -147,7 +147,7 @@ class Menu():
         Gloss.fill(top = Color.WHITE, bottom = Color(0.8, 0.8, 0.8, 1))
         self.box.draw()
         
-        self.logo.draw(position = (275, 77), scale = 0.32)
+        self.logo.draw(position = (309, 99), scale = 0.22)
         
         if self.status == 1:
             self.options1.draw()

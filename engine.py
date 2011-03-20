@@ -402,8 +402,8 @@ class Engine:
         elif self.status == 7:
             self.active_player.draw()
             self.scoreboard.draw()
-            self.next_left.draw()
-            self.next_right.draw()
+            #self.next_left.draw()
+            #self.next_right.draw()
             draw_tiles(self.tiles)
             self.tiles[self.dragging_tile].draw()
         # Status = 8 - released mouse down
@@ -559,7 +559,7 @@ class Engine:
         # Status = 8 - mousedown released - can player place tile here?
         elif self.status == 8:
             self.new_tile = self.dragging_tile
-            radius = config['tile_width'] * 50
+            radius = config['tile_width'] * 130
             if len(self.domino.board) == 0:
                 # first tile in board
                 self.side = "left"
