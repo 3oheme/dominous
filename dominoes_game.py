@@ -12,7 +12,7 @@ class domino_game:
     down tiles and checking game and players are properly playing using defined
     rules.
 
-    Actually it just supports International dominoes game type, two teams of two
+    Currently it just supports International dominoes game type, two teams of two
     players playing one against the other, finishing when reaching 200 points. For
     more info you can follow the next link
     http://es.wikipedia.org/wiki/Domin%C3%B3#Modalidad_Domin.C3.B3_Internacional
@@ -42,6 +42,12 @@ class domino_game:
         self.players = []
         self.player_pass = 0
         self.player_type = [1, 1, 1, 1]
+        self.stats = {
+            'player_pass' : [0, 0, 0, 0],
+            'player_win' : [0, 0, 0, 0],
+            'game_close' : 0,
+            'greatest_close' : [0, 0]
+        }
     def create_players(self, p1, p2, p3, p4):
         """@brief generates players
 
@@ -151,13 +157,13 @@ class domino_game:
         pass
     def end_hand(self):
         if len(self.players_tiles[0]) == 0 or len(self.players_tiles[2]) == 0:
-            #print "Team 1 wins!"
+            self.stats['player_win'][self.next_player] += 1
             self.points_team_1 = self.points_team_1 + self.points_hand_team(1) + self.points_hand_team(2)
             self.player_pass = 0
             self.hand_counter = self.hand_counter + 1
             return True
         elif len(self.players_tiles[1]) == 0 or len(self.players_tiles[3]) == 0:
-            #print "Team 2 wins!"
+            self.stats['player_win'][self.next_player] += 1
             self.points_team_2 = self.points_team_2 + self.points_hand_team(1) + self.points_hand_team(2)
             self.player_pass = 0
             self.hand_counter = self.hand_counter + 1
@@ -168,11 +174,16 @@ class domino_game:
                 #print "team_1: %s" % self.points_hand_team(1)
                 #print "team_2: %s" % self.points_hand_team(2)
                 self.points_team_1 = self.points_team_1 + self.points_hand_team(1) + self.points_hand_team(2)
+                if (self.stats['greatest_close'][0] < self.points_hand_team(1) + self.points_hand_team(2)):
+                    self.stats['greatest_close'][0] = self.points_hand_team(1) + self.points_hand_team(2)
             elif self.points_hand_team(1) > self.points_hand_team(2):
                 #print "after draw, team 2 wins!"
                 #print "team_1: %s" % self.points_hand_team(1)
                 #print "team_2: %s" % self.points_hand_team(2)
                 self.points_team_2 = self.points_team_2 + self.points_hand_team(1) + self.points_hand_team(2)
+                if (self.stats['greatest_close'][1] < self.points_hand_team(1) + self.points_hand_team(2)):
+                    self.stats['greatest_close'][1] = self.points_hand_team(1) + self.points_hand_team(2)
+            self.stats['game_close'] += 1
             self.player_pass = 0
             self.hand_counter = self.hand_counter + 1
             return True    
@@ -226,7 +237,14 @@ class domino_game:
         else:
             self.player_pass += 1
             log.write("player %s pass" % (player_pos + 1))
+            self.stats['player_pass'][player_pos] += 1
             return "XX", "XX"
     def restart(self):
         self.points_team_1 = 0
         self.points_team_2 = 0
+        
+        # restart stats
+        self.stats['player_pass'] = [0, 0, 0, 0]
+        self.stats['player_win'] = [0, 0, 0, 0]
+        self.stats['game_close'] = 0
+        self.stats['greatest_close'] = [0, 0]

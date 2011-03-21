@@ -124,6 +124,7 @@ class Lab:
                 self.domino.deal_tiles()
             else:
                 self.current_match += 1
+                print self.current_match
                 if self.domino.points_team1() > self.domino.points_team2(): 
                     self.team1_matches += 1
                     newnumber = Sprite(self.num_tex, (30, 200))
@@ -147,10 +148,12 @@ class Lab:
             pass
         elif self.status == 999:
             # terminamos la partida
+            print self.domino.stats
             if self.team1_matches > self.team2_matches:
                 print "winner team 1"
             else:
                 print "winner team 2"
+            self.status = 99
 
     def start(self):
         self.status = 0
