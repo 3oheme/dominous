@@ -133,9 +133,12 @@ class Lab:
                     self.team2_matches += 1
                     newnumber = Sprite(self.num_tex, (744, 200))
                     newnumber.position_from = 744
+                    
+                # guardamos y actualizamos las estadísticas
+                # FIXME
+                
                 self.domino.restart()
                 self.status = 1
-                
                 newnumber.movetime = 0
                 self.num_up.insert(0, newnumber)
         elif self.status == 3:
