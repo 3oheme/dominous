@@ -134,7 +134,7 @@ class Lab:
                     newnumber = Sprite(self.num_tex, (744, 200))
                     newnumber.position_from = 744
                     
-                # guardamos y actualizamos las estadísticas
+                # guardamos y actualizamos las estadisticas
                 # FIXME
                 
                 self.domino.restart()
