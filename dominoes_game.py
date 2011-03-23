@@ -46,6 +46,7 @@ class domino_game:
             'player_pass' : [0, 0, 0, 0],
             'player_win' : [0, 0, 0, 0],
             'game_close' : 0,
+            'hands_played' : 0,
             'greatest_close' : [0, 0]
         }
     def create_players(self, p1, p2, p3, p4):
@@ -161,12 +162,14 @@ class domino_game:
             self.points_team_1 = self.points_team_1 + self.points_hand_team(1) + self.points_hand_team(2)
             self.player_pass = 0
             self.hand_counter = self.hand_counter + 1
+            self.stats['hands_played'] += 1
             return True
         elif len(self.players_tiles[1]) == 0 or len(self.players_tiles[3]) == 0:
             self.stats['player_win'][self.next_player] += 1
             self.points_team_2 = self.points_team_2 + self.points_hand_team(1) + self.points_hand_team(2)
             self.player_pass = 0
             self.hand_counter = self.hand_counter + 1
+            self.stats['hands_played'] += 1
             return True
         elif self.player_pass == 4:
             if self.points_hand_team(1) < self.points_hand_team(2):

@@ -9,6 +9,7 @@ from selectplayers import *
 
 import log
 import random
+import copy
 
 class Lab:
     def __init__(self, mainp):
@@ -42,6 +43,14 @@ class Lab:
         
         self.num_tex = Texture(tool.image("system", "plus_one.png"))
         self.num_up = []
+        
+        self.stats = {
+            'player_pass' : [0, 0, 0, 0],
+            'player_win' : [0, 0, 0, 0],
+            'game_close' : 0,
+            'hands_played' : 0,
+            'greatest_close' : [0, 0]
+        }
         
     def draw(self):
         #str(self.domino.points_team1())
@@ -135,7 +144,24 @@ class Lab:
                     newnumber.position_from = 744
                     
                 # guardamos y actualizamos las estadisticas
-                # FIXME
+                self.stats['player_pass'][0] += self.domino.stats['player_pass'][0]
+                self.stats['player_pass'][1] += self.domino.stats['player_pass'][1]
+                self.stats['player_pass'][2] += self.domino.stats['player_pass'][2]
+                self.stats['player_pass'][3] += self.domino.stats['player_pass'][3]
+                
+                self.stats['player_win'][0] += self.domino.stats['player_win'][0]
+                self.stats['player_win'][1] += self.domino.stats['player_win'][1]
+                self.stats['player_win'][2] += self.domino.stats['player_win'][2]
+                self.stats['player_win'][3] += self.domino.stats['player_win'][3]
+                
+                self.stats['game_close'] += self.domino.stats['game_close']
+                
+                self.stats['hands_played'] += self.domino.stats['hands_played']
+                
+                if self.stats['greatest_close'][0] < self.domino.stats['greatest_close'][0]:
+                    self.stats['greatest_close'][0] = self.domino.stats['greatest_close'][0]
+                if self.stats['greatest_close'][1] < self.domino.stats['greatest_close'][1]:
+                    self.stats['greatest_close'][1] = self.domino.stats['greatest_close'][1]
                 
                 self.domino.restart()
                 self.status = 1
@@ -151,7 +177,7 @@ class Lab:
             pass
         elif self.status == 999:
             # terminamos la partida
-            print self.domino.stats
+            print self.stats
             if self.team1_matches > self.team2_matches:
                 print "winner team 1"
             else:
