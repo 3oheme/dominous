@@ -332,6 +332,7 @@ class Engine:
         self.game = mainp
         self.domino = domino_game()
         self.background = Texture(tool.image("theme_bg", "background.png"))
+        self.button_menu = Texture(tool.image("system", "home.png"))
         self.tiles = load_tiles(self.domino)
         self.active_player = ActivePlayer()
         self.next_left = NextPosition()
@@ -360,6 +361,7 @@ class Engine:
         self.game.on_key_down = self.key_pressed
     def draw(self):
         Gloss.fill(self.background)
+        self.button_menu.draw((35, 35))
         # Status = 0 - game start, reset all, create players
         if self.status == 0:
             pass
@@ -702,6 +704,9 @@ class Engine:
         elif self.status == 101:
             self.status = 2
         # ingame menu
+        if self.status != 500 and self.status != 0 and self.status != 101 and event.pos[0] > 35 and event.pos[1] > 35 and event.pos[0] < 112 and event.pos[1] < 58:
+            self.status_backup = self.status
+            self.status = 500
         elif self.status == 500:
             option = self.ingame_menu.click(event.pos)
             if option == 2:
