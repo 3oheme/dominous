@@ -199,6 +199,8 @@ class Tile(Sprite):
         self.from_scale = config['scale']
         self.goto_scale = config['scale']
         self.speed = 1
+        self.is_passing = False
+        self.passing_status = 0
         Sprite.__init__(self, self.texture_original, (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2))
     def draw(self):
         Sprite.draw(self, origin = (self.texture.half_width, self.texture.half_height), scale = self.scale, rotation = self.angle)
@@ -213,13 +215,33 @@ class Tile(Sprite):
             Sprite.move_to(self, Gloss.smooth_step(self.from_pos[0], self.goto_pos[0], self.eggs), Gloss.smooth_step(self.from_pos[1], self.goto_pos[1], self.eggs))
         if self.goto_angle != self.angle:
             self.angle = Gloss.smooth_step(self.from_angle, self.goto_angle, self.eggs)
-
+        if self.is_passing:
+            if self.passing_status == 1: #subiendo
+                if self.goto_scale == self.goto_scale:
+                    self.passing_status == 2
+            elif self.passing_status == 2: #golpe
+                self.from_scale = config['scale']
+                self.goto_scale = config['scale'] * 2
+                self.scale = config['scale']
+            elif self.passing_status == 3: #subiendo
+                if self.goto_scale == self.goto_scale:
+                    self.passing_status == 4
+            elif self.passing_status == 4: #golpe
+                self.from_scale = config['scale']
+                self.goto_scale = config['scale']
+                self.scale = config['scale']
+                self.passing_status = 0
+                self.is_passing = False
     def pass_effect(self):
+        self.is_passing = True
+        self.passing_status = 1
         """@brief make a pass effect, moving up and down the tile"""
         self.played_sound = False
         self.eggs = 0
-        self.from_angle = self.angle
-        self.goto_angle = self.angle+5
+        self.from_scale = config['scale']
+        self.goto_scale = config['scale'] *2
+    def is_passing(self):
+        return self.is_passing
     def drag(self, position):
         """@brief place tile in its position, without moving"""
         self.from_pos = position
@@ -621,13 +643,14 @@ class Engine:
         # Status = 23 - start pass effect
         elif self.status == 23:
             currentplayer = self.domino.currentplayer()
-            del self.tiles_temp[:]
+            # FIXME
+            """del self.tiles_temp[:]
             self.tiles_temp = self.domino.players_tiles[currentplayer][:]
-            self.timer_temp = Gloss.total_seconds
+            self.timer_temp = Gloss.total_seconds"""
             self.status = 24 
         # Status = 24 - passing effect
         elif self.status == 24: 
-            if len(self.tiles_temp):
+            """if len(self.tiles_temp):
                 if self.timer_temp < Gloss.total_seconds:
                     newtile = self.tiles_temp.pop()
                     self.tiles[newtile].pass_effect()
@@ -635,7 +658,8 @@ class Engine:
             else:
                 self.status = 3
                 del self.tiles_temp[:]
-                self.timer_temp = 0
+                self.timer_temp = 0"""
+            self.status = 3
         # Status = 99 - end hand
         elif self.status == 99:
             print "end hand - status 99"
