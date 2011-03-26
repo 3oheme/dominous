@@ -139,7 +139,7 @@ class domino_game:
         #random.seed(2) #starts player 1
         #random.seed(4) #starts player 2
         #random.seed(5) #starts player 4
-        random.seed(6)
+        
         random.shuffle(self.tiles)
         tiles_position = 0;
         self.step_counter = 0

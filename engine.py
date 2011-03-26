@@ -107,19 +107,24 @@ class FullScoreboard():
         self.text_team2 = "Equipo 2"
         self.points_team1 = []
         self.points_team2 = []
-        self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", int(config['scale']*60), False, False, 32, 255)
+        self.font_main = SpriteFont("fonts/handsean.ttf", 19, False, False, 32, 255)
         self.position = (Gloss.screen_resolution[0], Gloss.screen_resolution[1])
     def draw(self):
         Gloss.fill(top = Color(0,0,0,0.7), bottom = Color(0,0,0,9))
         output = self.text_team1 + "    " + self.text_team2 + "\n"
-        ####for item in FIXME
+        #for item in self.points
+        #TEMP
+        self.points_team1 = [0, 12, 12, 12, 12, 65, 71, 91, 104, 112,  112, 112, 112, 165, 171, 191, 210]
+        self.points_team2 = [0, 0,  32, 48, 81, 81, 81, 97, 100, 100,  132, 148, 181, 181, 181, 197, 230]
         count = 0
         for x in self.points_team1:
-            print "E1:" + str(self.points_team1) + " - E2:" + str(self.points_team2)
+            #print "E1:" + str(self.points_team1[count]) + " - E2:" + str(self.points_team2[count])
+            self.font_main.draw(str(self.points_team1[count]), position = (self.position[0],self.position[1]+(count*26)))
+            self.font_main.draw(str(self.points_team2[count]), position = (self.position[0]+100,self.position[1]+(count*26)))))
+            count += 1
     def update_score(self, team1, team2):
         self.points_team1.append(team1)
         self.points_team2.append(team2)
-        # FIXME
     def update(self):
         pass
 
@@ -490,7 +495,9 @@ class Engine:
         elif self.status == 500:
             self.scoreboard.draw()
             draw_tiles(self.tiles)
-            self.ingame_menu.draw()
+            #TEMP
+            #self.ingame_menu.draw()
+            self.fullscoreboard.draw()
         # draw info on screen
         self.debug.add('Status = %s' % str(self.status))
         if Gloss.running_slowly:

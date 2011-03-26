@@ -51,6 +51,9 @@ class Lab:
             'hands_played' : 0,
             'greatest_close' : [0, 0]
         }
+            
+        # temp - media y maxima de manos hasta terminar una partida
+        self.t_num = [0]
         
     def draw(self):
         #str(self.domino.points_team1())
@@ -132,6 +135,9 @@ class Lab:
                 self.status = 3
                 self.domino.deal_tiles()
             else:
+                #temp manos por partida
+                self.t_num.append(0)
+                
                 self.current_match += 1
                 print self.current_match
                 if self.domino.points_team1() > self.domino.points_team2(): 
@@ -172,9 +178,12 @@ class Lab:
             while not self.domino.end_hand():
                 self.domino.ask_tile(self.domino.nextplayer())
             self.status = 2
+            # TEMP manos por partida
+            self.t_num[-1] += 1
         elif self.status == 99:
             # modo pausa
-            pass
+            print max(self.t_num)
+
         elif self.status == 999:
             # terminamos la partida
             print self.stats
