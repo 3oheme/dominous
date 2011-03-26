@@ -21,7 +21,9 @@ class Sound:
         self.menu_sound = pygame.mixer.Sound(tool.sound("system", "menu.ogg"))
         self.credits_sound = pygame.mixer.Sound(tool.sound("system", "credits.ogg"))
     def tile(self):
+        val = random.randrange(0,7)
         self.tile_sound[random.randrange(0,7)].play()
+        print val
     def intro(self):
         self.intro_sound.play()
     def menu(self):

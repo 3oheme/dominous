@@ -113,11 +113,13 @@ class FullScoreboard():
         Gloss.fill(top = Color(0,0,0,0.7), bottom = Color(0,0,0,9))
         output = self.text_team1 + "    " + self.text_team2 + "\n"
         ####for item in FIXME
-    def score(self, team1, team2):
-        if (team1 != 0):
-            self.points_team1.append(team1)
-        else:
-            self.points_team2.append(team2)
+        count = 0
+        for x in self.points_team1:
+            print "E1:" + str(self.points_team1) + " - E2:" + str(self.points_team2)
+    def update_score(self, team1, team2):
+        self.points_team1.append(team1)
+        self.points_team2.append(team2)
+        # FIXME
     def update(self):
         pass
 
@@ -201,6 +203,7 @@ class Tile(Sprite):
         self.speed = 1
         self.is_passing = False
         self.passing_status = 0
+        self.play_sound = True
         Sprite.__init__(self, self.texture_original, (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2))
     def draw(self):
         Sprite.draw(self, origin = (self.texture.half_width, self.texture.half_height), scale = self.scale, rotation = self.angle)
@@ -208,7 +211,8 @@ class Tile(Sprite):
         if self.goto_pos != self.position or self.goto_angle != self.angle:
             self.eggs += Gloss.elapsed_seconds * self.speed
             if self.eggs > 0.8 and self.played_sound == False:
-                sound.tile()
+                if self.play_sound:
+                    sound.tile()
                 self.played_sound = True
             if self.eggs > 1.0:
                 self.eggs = 1.0
@@ -216,20 +220,22 @@ class Tile(Sprite):
         if self.goto_angle != self.angle:
             self.angle = Gloss.smooth_step(self.from_angle, self.goto_angle, self.eggs)
         if self.is_passing:
-            self.scale = Gloss.smooth_step(self.from_scale, self.goto_scale, self.eggs)
-            self.eggs += Gloss.elapsed_seconds * self.speed * 2 
             if self.passing_status == 1: #subiendo
-                if self.scale >= self.goto_scale:
+                self.scale = Gloss.smooth_step(self.from_scale, self.goto_scale, self.eggs)
+                self.eggs += Gloss.elapsed_seconds * self.speed * 2
+                if abs(self.scale-self.goto_scale) < 0.01:
                     self.passing_status = 2
             elif self.passing_status == 2: #golpe
                 self.eggs = 0
                 self.from_scale = config['scale']
-                self.goto_scale = config['scale'] * 2
+                self.goto_scale = config['scale'] * 1.2
                 self.scale = config['scale']
                 self.passing_status = 3
                 sound.tile()
             elif self.passing_status == 3: #subiendo
-                if self.scale >= self.goto_scale:
+                self.scale = Gloss.smooth_step(self.from_scale, self.goto_scale, self.eggs)
+                self.eggs += Gloss.elapsed_seconds * self.speed * 5
+                if abs(self.scale-self.goto_scale) < 0.01:
                     self.passing_status = 4
             elif self.passing_status == 4: #golpe
                 self.eggs = 0
@@ -247,7 +253,7 @@ class Tile(Sprite):
         self.played_sound = False
         self.eggs = 0
         self.from_scale = config['scale']
-        self.goto_scale = config['scale'] * 2
+        self.goto_scale = config['scale'] * 1.5
     def tile_is_passing(self):
         return self.is_passing
     def drag(self, position):
@@ -255,7 +261,7 @@ class Tile(Sprite):
         self.from_pos = position
         self.goto_pos = position
         self.position = position
-    def goto(self, position = None, rotation = None, speed = None):
+    def goto(self, position = None, rotation = None, speed = None, sound = True):
         """@brief move tile slowly to its position"""
         self.played_sound = False
         if position is None:
@@ -271,6 +277,7 @@ class Tile(Sprite):
         self.from_angle = self.angle
         self.goto_pos = position
         self.goto_angle = rotation
+        self.play_sound = sound
     def stopped(self):
         if self.goto_pos == self.position and self.goto_angle == self.angle and self.scale == self.from_scale:
             return True
@@ -681,6 +688,7 @@ class Engine:
                 if not self.tiles[key].reversed:
                     self.tiles[key].reverse()
             self.scoreboard.update_score(str(self.domino.points_team1()), str(self.domino.points_team2()))
+            self.fullscoreboard.update_score(str(self.domino.points_team1()), str(self.domino.points_team2()))
         # Status = 100 - move tiles to center
         elif self.status == 100:
             if self.tiles['00'].stopped():
@@ -1041,24 +1049,27 @@ class Engine:
             first_x = Gloss.screen_resolution[0]/2 - all_tiles_width/2
             first_y = Gloss.screen_resolution[1] - gap - (config['tile_width']/2)
             for tile in self.domino.players_tiles[0]:
-                self.tiles[tile].goto((first_x, first_y), 90)
+                self.tiles[tile].goto((first_x, first_y), 90, sound = False)
                 first_x += gap + config['tile_height']
         elif player == 1:
             first_x = (Gloss.screen_resolution[0] - gap) - config['tile_width']/2
             first_y = Gloss.screen_resolution[1]/2 - all_tiles_width/2
             for tile in self.domino.players_tiles[1]:
-                self.tiles[tile].goto((first_x, first_y), 180)
+                if self.status == 2:
+                    self.tiles[tile].goto((first_x, first_y), 180, sound = True)
+                else:
+                    self.tiles[tile].goto((first_x, first_y), 180, sound = False)
                 first_y += gap + config['tile_height']
         elif player == 2:
             first_x = Gloss.screen_resolution[0]/2 - all_tiles_width/2
             first_y = gap + config['tile_width']/2
             for tile in self.domino.players_tiles[2]:
-                self.tiles[tile].goto((first_x, first_y), 90)
+                self.tiles[tile].goto((first_x, first_y), 90, sound = False)
                 first_x += gap + config['tile_height']
         elif player == 3:
             first_x = gap + config['tile_width']/2
             first_y = Gloss.screen_resolution[1]/2 - all_tiles_width/2
             for tile in self.domino.players_tiles[3]:
-                self.tiles[tile].goto((first_x, first_y), 0.5)
+                self.tiles[tile].goto((first_x, first_y), 0.5, sound = False)
                 first_y += gap + config['tile_height']
 
