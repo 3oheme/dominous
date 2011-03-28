@@ -108,19 +108,23 @@ class FullScoreboard():
         self.points_team1 = []
         self.points_team2 = []
         self.font_main = SpriteFont("fonts/handsean.ttf", 19, False, False, 32, 255)
-        self.position = (Gloss.screen_resolution[0], Gloss.screen_resolution[1])
+        self.points_team1 = [0, 12, 12, 12, 12, 65, 71, 91, 104, 112,  112, 1, 122, 124, 155, 210]
+        self.points_team2 = [0, 0,  32, 48, 81, 81, 81, 97, 100, 100,  132, 1, 181, 181, 197, 230]
+        self.position = (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2 )
+        self.position = ((Gloss.screen_resolution[0]/2)-100, (Gloss.screen_resolution[1]/2)-(len(self.points_team1)*26)/2)
+        
     def draw(self):
         Gloss.fill(top = Color(0,0,0,0.7), bottom = Color(0,0,0,9))
         output = self.text_team1 + "    " + self.text_team2 + "\n"
         #for item in self.points
         #TEMP
-        self.points_team1 = [0, 12, 12, 12, 12, 65, 71, 91, 104, 112,  112, 112, 112, 165, 171, 191, 210]
-        self.points_team2 = [0, 0,  32, 48, 81, 81, 81, 97, 100, 100,  132, 148, 181, 181, 181, 197, 230]
         count = 0
+        self.font_main.draw(self.text_team1, position = (self.position[0], self.position[1]-30))
+        self.font_main.draw(self.text_team2, position = (self.position[0]+100, self.position[1]-30))
         for x in self.points_team1:
             #print "E1:" + str(self.points_team1[count]) + " - E2:" + str(self.points_team2[count])
-            self.font_main.draw(str(self.points_team1[count]), position = (self.position[0],self.position[1]+(count*26)))
-            self.font_main.draw(str(self.points_team2[count]), position = (self.position[0]+100,self.position[1]+(count*26)))))
+            self.font_main.draw(str(self.points_team1[count]), position = (self.position[0]+40+(random.randrange(-2,2)),self.position[1]+(count*26)))
+            self.font_main.draw(str(self.points_team2[count]), position = (self.position[0]+140+(random.randrange(-2,2)),self.position[1]+(count*26)))
             count += 1
     def update_score(self, team1, team2):
         self.points_team1.append(team1)
