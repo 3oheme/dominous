@@ -119,18 +119,30 @@ class FullScoreboard():
         #for item in self.points
         #TEMP
         count = 0
+        
         self.font_main.draw(self.text_team1, position = (self.position[0], self.position[1]-30))
         self.font_main.draw(self.text_team2, position = (self.position[0]+100, self.position[1]-30))
         for x in self.points_team1:
             #print "E1:" + str(self.points_team1[count]) + " - E2:" + str(self.points_team2[count])
-            self.font_main.draw(str(self.points_team1[count]), position = (self.position[0]+40+(random.randrange(-2,2)),self.position[1]+(count*26)))
-            self.font_main.draw(str(self.points_team2[count]), position = (self.position[0]+140+(random.randrange(-2,2)),self.position[1]+(count*26)))
+            size1 = self.font_main.measure_string(str(self.points_team1[count]))
+            size2 = self.font_main.measure_string(str(self.points_team2[count]))
+            self.font_main.draw(str(self.points_team1[count]), position = (self.position[0]+40-size1[0]/2,self.position[1]+(count*26)))
+            self.font_main.draw(str(self.points_team2[count]), position = (self.position[0]+140-size2[0]/2,self.position[1]+(count*26)))
             count += 1
     def update_score(self, team1, team2):
         self.points_team1.append(team1)
         self.points_team2.append(team2)
     def update(self):
-        pass
+        # FIXME
+        val = random.randrange(1, 20)
+        del self.points_team1[:]
+        del self.points_team2[:]
+        while val > 0:
+            self.points_team1.append(random.randrange(0,300))
+            self.points_team2.append(random.randrange(0,300))
+            val -= 1
+        self.position = ((Gloss.screen_resolution[0]/2)-90, (Gloss.screen_resolution[1]/2)-(len(self.points_team1)*26)/2)
+        print "update"
 
 class PassButton(Sprite):
     """@brief Button to pass your turn"""
@@ -759,6 +771,8 @@ class Engine:
         if self.status != 500 and self.status != 0 and self.status != 101 and event.pos[0] > 35 and event.pos[1] > 35 and event.pos[0] < 112 and event.pos[1] < 58:
             self.status_backup = self.status
             self.status = 500
+            # FIXME
+            self.fullscoreboard.update()
         elif self.status == 500:
             option = self.ingame_menu.click(event.pos)
             if option == 2:
