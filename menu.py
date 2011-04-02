@@ -87,6 +87,14 @@ class Options2():
         self.fontsize3 = self.font_main.measure_string(self.str_options)
         self.fontsize4 = self.font_main.measure_string(self.str_exit)
         self.eggs = 0
+            
+        # read all themes from HD and store in a list
+        self.themes = []
+        themes_dir = os.listdir(os.path.join(os.getcwd(), 'themes'))
+        for theme_dir in themes_dir:
+            if theme_dir[0] != '.':
+                self.themes.append(theme_dir)
+        self.themes.sort() # python rules :-D
     def draw(self):
         self.font_main.draw(self.str_quick_game, position = (self.position[0]-(self.fontsize1[0]/2), self.position[1]), color = Color(0.3, 0.3, 0.3, 1))
         self.font_main.draw(self.str_tournament, position = (self.position[0]-(self.fontsize2[0]/2), self.position[1]+self.fontsize1[1]), color = Color(0.3, 0.3, 0.3, 1))
@@ -111,15 +119,11 @@ class Options2():
             return 10
         elif (pos[0]>self.position[0]-self.fontsize2[0]/2 and pos[0]<self.position[0]+self.fontsize2[0]/2 and \
             pos[1]>self.position[1]+self.fontsize1[1] and pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]):
-            if config['theme'] == "spanish":
-                self.str_tournament = 'classic'
-                config['theme'] = 'classic'
-            elif config['theme'] == "classic":
-                self.str_tournament = 'fruits'
-                config['theme'] = 'fruits'
-            else:
-                self.str_tournament = 'spanish'
-                config['theme'] = 'spanish'
+            theme_index = self.themes.index(config['theme']) +1
+            if theme_index == len(self.themes):
+                theme_index = 0
+            config['theme'] = self.themes[theme_index]
+            self.str_tournament = self.themes[theme_index]
             self.fontsize2 = self.font_main.measure_string(self.str_tournament)
             return 10
         elif (pos[0]>self.position[0]-self.fontsize3[0]/2 and pos[0]<self.position[0]+self.fontsize3[0]/2 and \
