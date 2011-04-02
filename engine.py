@@ -125,9 +125,10 @@ class FullScoreboard():
             self.font_main.draw(str(self.points_team2[count]), position = (self.position[0]+140-size2[0]/2,self.position[1]+(count*26)))
             count += 1
         # underline winner (or both if they are tied)
-        if self.points_team1[-1] >= self.points_team2[-1]:
-            Gloss.draw_box(position = (self.position[0]+20-size1[0]/2,self.position[1]+((count-1)*26)), width = 80, height = 30, rotation = 3, color = Color(255,255,0,0.3))
-        if self.points_team2[-1] >= self.points_team1[-1]:
+        if int(self.points_team1[-1]) >= int(self.points_team2[-1]):
+            Gloss.draw_box(position = (self.position[0]+20-size1[0]/2,self.position[1]+((count-1)*26)), width = 80, height = 30, rotation = 3, color = Color(255
+,255,0,0.3))
+        if int(self.points_team2[-1]) >= int(self.points_team1[-1]):
             Gloss.draw_box(position = (self.position[0]+120-size1[0]/2,self.position[1]+((count-1)*26)), width = 80, height = 30, rotation = -2, color = Color(255,255,0,0.3))
         
         # if final = true, print winner team
@@ -291,9 +292,7 @@ class Tile(Sprite):
             position = self.position
         if rotation is None:
             rotation = self.angle
-        if speed is None:
-            self.speed = self.uberspeed
-        else:
+        if speed is not None:
             self.speed = speed
         self.eggs = 0
         self.from_pos = self.position
