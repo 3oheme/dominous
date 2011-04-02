@@ -51,12 +51,12 @@ class Options1():
         if (pos[0]>self.position[0]-self.fontsize1[0]/2 and pos[0]<self.position[0]+self.fontsize1[0]/2 and \
             pos[1]>self.position[1] and pos[1]<self.position[1]+self.fontsize1[1]):
             config['goto_lab'] = False
-            config['gametype'] = 'human'
+            config['gametype_current'] = 'single'
             return 2
         elif (pos[0]>self.position[0]-self.fontsize2[0]/2 and pos[0]<self.position[0]+self.fontsize2[0]/2 and \
             pos[1]>self.position[1]+self.fontsize1[1] and \
             pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]):
-            config['gametype'] = 'computer'
+            config['gametype_current'] = 'lab'
             config['goto_lab'] = True
             return 2
         elif (pos[0]>self.position[0]-self.fontsize3[0]/2 and pos[0]<self.position[0]+self.fontsize3[0]/2 and \

@@ -120,7 +120,7 @@ class SelectPlayers():
         self.status = 1
         self.background = Texture(tool.image("system", "select_player_bg.png"))
         self.game.on_mouse_down = self.mouse_down
-        if config['gametype'] == 'human':
+        if config['gametype_current'] == 'single' and config['gametype'] == 'human':
             self.selectors = [PlayerSelector(1, True), PlayerSelector(2), PlayerSelector(3), PlayerSelector(4)]
         else:
             self.selectors = [PlayerSelector(1), PlayerSelector(2), PlayerSelector(3), PlayerSelector(4)]

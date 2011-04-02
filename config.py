@@ -23,6 +23,7 @@ def load_config():
         config.set('General', 'name', 'Dominous')
         config.set('General', 'window_caption', 'Dominous, an open source dominoes simulator')
         config.set('General', 'lang', 'en')
+        config.set('General', 'points_per_game', '200')
         config.add_section('Screen')
         config.set('Screen', 'window_width', '800')
         config.set('Screen', 'window_height', '600')
@@ -53,7 +54,9 @@ def load_config():
         'scale': 0.2,
         'theme': config.get('Theme', 'theme'),
         'lang': config.get('General', 'lang'),
+        'points_per_game': config.get('General', 'points_per_game'),
         'gametype': 'human',
+        'gametype_current': 'single',
         'player1': 'easy',
         'player2': 'easy',
         'player3': 'easy',
@@ -67,6 +70,7 @@ def save_config(config_new):
     config.set('General', 'name', 'Dominous')
     config.set('General', 'window_caption', 'Dominous, an open source dominoes simulator')
     config.set('General', 'lang', config_new['lang'])
+    config.set('General', 'points_per_game', config_new['points_per_game'])
     config.add_section('Screen')
     config.set('Screen', 'window_width', config_new['window_width'])
     config.set('Screen', 'window_height', config_new['window_height'])

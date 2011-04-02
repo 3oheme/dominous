@@ -19,7 +19,7 @@ class domino_game:
     """
     # Methods
     def __init__(self):
-        self.points = 200
+        self.points = config['points_per_game']
         self.next_player = 0
         self.points_team_1 = 0
         self.points_team_2 = 0
@@ -190,11 +190,11 @@ class domino_game:
             self.stats['game_close'] += 1
             self.player_pass = 0
             self.hand_counter = self.hand_counter + 1
-            return True    
+            return True
         else:
             return False
     def end_game(self):
-        if self.points_team_1 > self.points or self.points_team_2 > self.points:
+        if int(self.points_team_1) > int(self.points) or int(self.points_team_2) > int(self.points):
             return True
         else:
             return False
@@ -205,7 +205,7 @@ class domino_game:
         return True
     def can_i_put_this_tile_in_this_side(self, tile, side):
         "This function was created after Feria del Puerto de Santa Maria fair"
-        print "trying to put %s in %s - left_tile = %s - right_tile = %s" % (tile, side, self.left_tile, self.right_tile)
+        #print "trying to put %s in %s - left_tile = %s - right_tile = %s" % (tile, side, self.left_tile, self.right_tile)
         if (side == 'left' and (tile[0] == self.left_tile or tile[1] == self.left_tile)) or (side == 'right' and (tile[0] == self.right_tile or tile[1] == self.right_tile)):
             return True
         else:

@@ -108,14 +108,10 @@ class FullScoreboard():
         self.points_team1 = []
         self.points_team2 = []
         self.font_main = SpriteFont("fonts/handsean.ttf", 19, False, False, 32, 255)
-        self.points_team1 = [0, 12, 12, 12, 12, 65, 71, 91, 104, 112,  112, 1, 122, 124, 155, 210]
-        self.points_team2 = [0, 0,  32, 48, 81, 81, 81, 97, 100, 100,  132, 1, 181, 181, 197, 230]
-        self.position = (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2 )
+        self.font_big = SpriteFont("fonts/handsean.ttf", 38, False, False, 32, 255)
         self.position = ((Gloss.screen_resolution[0]/2)-100, (Gloss.screen_resolution[1]/2)-(len(self.points_team1)*26)/2)
-        
-    def draw(self):
+    def draw(self, final = False):
         Gloss.fill(top = Color(0,0,0,0.7), bottom = Color(0,0,0,9))
-        output = self.text_team1 + "    " + self.text_team2 + "\n"
         #for item in self.points
         #TEMP
         count = 0
@@ -132,21 +128,19 @@ class FullScoreboard():
         if self.points_team1[-1] >= self.points_team2[-1]:
             Gloss.draw_box(position = (self.position[0]+20-size1[0]/2,self.position[1]+((count-1)*26)), width = 80, height = 30, rotation = 3, color = Color(255,255,0,0.3))
         if self.points_team2[-1] >= self.points_team1[-1]:
-            Gloss.draw_box(position = (self.position[0]+120-size1[0]/2,self.position[1]+((count-1)*26)+10), width = 80, height = 30, rotation = -2, color = Color(255,255,0,0.3))
+            Gloss.draw_box(position = (self.position[0]+120-size1[0]/2,self.position[1]+((count-1)*26)), width = 80, height = 30, rotation = -2, color = Color(255,255,0,0.3))
+        
+        # if final = true, print winner team
+        if final:
+            size = self.font_big.measure_string("Ganador equipo 1")
+            Gloss.draw_box(position = (0, ((Gloss.screen_resolution[1]/2)-(size[1]/2))), width = Gloss.screen_resolution[0], height = size[1]+15, color = Color(0,0,0,0.9))
+            self.font_big.draw("Ganador equipo 1", ((Gloss.screen_resolution[0]/2)-size[0]/2, (Gloss.screen_resolution[1]/2)-size[1]/2))
+            
     def update_score(self, team1, team2):
         self.points_team1.append(team1)
         self.points_team2.append(team2)
     def update(self):
-        # FIXME
-        val = random.randrange(1, 20)
-        del self.points_team1[:]
-        del self.points_team2[:]
-        while val > 0:
-            self.points_team1.append(random.randrange(0,300))
-            self.points_team2.append(random.randrange(0,300))
-            val -= 1
-        self.position = ((Gloss.screen_resolution[0]/2)-90, (Gloss.screen_resolution[1]/2)-(len(self.points_team1)*26)/2)
-        print "update"
+        self.position = ((Gloss.screen_resolution[0]/2)-100, (Gloss.screen_resolution[1]/2)-(len(self.points_team1)*26)/2)
 
 class PassButton(Sprite):
     """@brief Button to pass your turn"""
@@ -225,7 +219,11 @@ class Tile(Sprite):
         self.scale = config['scale']
         self.from_scale = config['scale']
         self.goto_scale = config['scale']
-        self.speed = 1
+        self.uberspeed = 10
+        if config['gametype'] == 'computer':
+            self.speed = self.uberspeed
+        else:
+            self.speed = 1
         self.is_passing = False
         self.passing_status = 0
         self.play_sound = True
@@ -294,7 +292,7 @@ class Tile(Sprite):
         if rotation is None:
             rotation = self.angle
         if speed is None:
-            self.speed = 1
+            self.speed = self.uberspeed
         else:
             self.speed = speed
         self.eggs = 0
@@ -506,7 +504,7 @@ class Engine:
         elif self.status == 100:
             self.scoreboard.draw()
             draw_tiles(self.tiles)
-        # Status = 101 - move tiles to center
+        # Status = 101 - show full scoreboard
         elif self.status == 101:
             self.scoreboard.draw()
             draw_tiles(self.tiles)
@@ -515,9 +513,11 @@ class Engine:
         elif self.status == 500:
             self.scoreboard.draw()
             draw_tiles(self.tiles)
-            #TEMP
-            #self.ingame_menu.draw()
-            self.fullscoreboard.draw()
+            self.ingame_menu.draw()
+        elif self.status == 999:
+            self.scoreboard.draw()
+            draw_tiles(self.tiles)
+            self.fullscoreboard.draw(final = True)
         # draw info on screen
         self.debug.add('Status = %s' % str(self.status))
         if Gloss.running_slowly:
@@ -532,9 +532,9 @@ class Engine:
         self.passbutton.update()
         # Status = 0 - game start, reset all, create players
         if self.status == 0:
-            if config['gametype'] == 'human':
+            if config['gametype_current'] == 'single' and config['gametype'] == 'human':
                 self.domino.create_players("h",config['player2'],config['player3'],config['player4'])
-            elif config['gametype'] == 'computer':
+            else:
                 self.domino.create_players(config['player1'],config['player2'],config['player3'],config['player4'])
             self.status = 1
         # Status = 1 - fade in
@@ -572,12 +572,9 @@ class Engine:
                 self.status = 999
         # Status = 3 - draw available positions
         elif self.status == 3:
-            print "status = 3"
             if self.domino.end_hand():
-                print "end.hand"
                 self.status = 99
             elif self.domino.end_game():
-                print "end.game"
                 self.status = 999
             else:
                 self.status = 4
@@ -593,10 +590,6 @@ class Engine:
             else:
                 self.new_tile, self.side = self.domino.ask_tile(nextplayer)
                 self.active_player.player(self.domino.currentplayer())
-                # draw board
-                print " "
-                self.domino.print_hand()
-                print " "
                 # move tile to its position
                 if self.new_tile != "XX":
                     self.tiles[self.new_tile].reverse()
@@ -685,27 +678,13 @@ class Engine:
         # Status = 23 - start pass effect
         elif self.status == 23:
             self.tiles[self.domino.players_tiles[self.domino.currentplayer()][-1]].pass_effect()
-            # FIXME
-            """del self.tiles_temp[:]
-            self.tiles_temp = self.domino.players_tiles[currentplayer][:]
-            self.timer_temp = Gloss.total_seconds"""
             self.status = 24 
         # Status = 24 - passing effect
         elif self.status == 24: 
-            """if len(self.tiles_temp):
-                if self.timer_temp < Gloss.total_seconds:
-                    newtile = self.tiles_temp.pop()
-                    self.tiles[newtile].pass_effect()
-                    self.timer_temp += 0.2
-            else:
-                self.status = 3
-                del self.tiles_temp[:]
-                self.timer_temp = 0"""
             if self.tiles[self.domino.players_tiles[self.domino.currentplayer()][-1]].tile_is_passing() == False:
                 self.status = 3
         # Status = 99 - end hand
         elif self.status == 99:
-            print "end hand - status 99"
             self.status = 100
             self.once = True
             self.right_dir = "right"
@@ -716,6 +695,7 @@ class Engine:
                     self.tiles[key].reverse()
             self.scoreboard.update_score(str(self.domino.points_team1()), str(self.domino.points_team2()))
             self.fullscoreboard.update_score(str(self.domino.points_team1()), str(self.domino.points_team2()))
+            self.fullscoreboard.update()
         # Status = 100 - move tiles to center
         elif self.status == 100:
             if self.tiles['00'].stopped():
@@ -728,7 +708,7 @@ class Engine:
             pass
         # Status = 999 - end game, goto menu
         elif self.status == 999:
-            self.game.goto_intro()
+            pass
     def next_left_tile_position(self):
         if len(self.domino.board) == 0:
             return (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2)
@@ -746,7 +726,8 @@ class Engine:
     def start(self):
         pass
     def stop(self):
-        pass
+        self.status = 0
+        print "ponemos el status a ceroooooo"
     def tile_clicked(self, pos):
         for key, tile in self.tiles.iteritems():
             if pos[0] < (self.tiles[key].position[0]+(config['tile_height']/2)) and \
@@ -775,26 +756,28 @@ class Engine:
         if self.status != 500 and self.status != 0 and self.status != 101 and event.pos[0] > 35 and event.pos[1] > 35 and event.pos[0] < 112 and event.pos[1] < 58:
             self.status_backup = self.status
             self.status = 500
-            # FIXME
-            self.fullscoreboard.update()
         elif self.status == 500:
             option = self.ingame_menu.click(event.pos)
             if option == 2:
                 self.game.goto_intro()
             else:
                 self.status = self.status_backup
+        elif self.status == 999:
+            self.game.goto_intro()
     def key_pressed(self, event):
         # show ingame menu
-        if event.key == K_ESCAPE and self.status != 500 and self.status != 101:
+        if event.key == K_ESCAPE and self.status != 500 and self.status != 101 and self.status != 0:
             self.status_backup = self.status
             self.status = 500
-        elif event.key == K_ESCAPE:
+        elif event.key == K_ESCAPE and self.status != 0:
             self.status = self.status_backup
-        elif event.key == K_r:
+        elif event.key == K_r and self.status != 0:
             # cheat mode :-D
             for key, tile in self.tiles.iteritems():
                 if self.tiles[key].reversed:
                     self.tiles[key].reverse()
+        elif self.status == 999:
+            self.game.goto_intro()
     def mouse_motion(self, event):
         if self.status == 21:
             if self.mouse_on_button_pass():
