@@ -119,7 +119,6 @@ class FullScoreboard():
         #for item in self.points
         #TEMP
         count = 0
-        
         self.font_main.draw(self.text_team1, position = (self.position[0], self.position[1]-30))
         self.font_main.draw(self.text_team2, position = (self.position[0]+100, self.position[1]-30))
         for x in self.points_team1:
@@ -129,6 +128,11 @@ class FullScoreboard():
             self.font_main.draw(str(self.points_team1[count]), position = (self.position[0]+40-size1[0]/2,self.position[1]+(count*26)))
             self.font_main.draw(str(self.points_team2[count]), position = (self.position[0]+140-size2[0]/2,self.position[1]+(count*26)))
             count += 1
+        # underline winner (or both if they are tied)
+        if self.points_team1[-1] >= self.points_team2[-1]:
+            Gloss.draw_box(position = (self.position[0]+20-size1[0]/2,self.position[1]+((count-1)*26)), width = 80, height = 30, rotation = 3, color = Color(255,255,0,0.3))
+        if self.points_team2[-1] >= self.points_team1[-1]:
+            Gloss.draw_box(position = (self.position[0]+120-size1[0]/2,self.position[1]+((count-1)*26)+10), width = 80, height = 30, rotation = -2, color = Color(255,255,0,0.3))
     def update_score(self, team1, team2):
         self.points_team1.append(team1)
         self.points_team2.append(team2)
