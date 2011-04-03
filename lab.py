@@ -164,6 +164,8 @@ class Lab:
                 
                 self.stats['hands_played'] += self.domino.stats['hands_played']
                 
+                print "llevamos jugadas " + str(self.stats['hands_played']) + " manos"
+                
                 if self.stats['greatest_close'][0] < self.domino.stats['greatest_close'][0]:
                     self.stats['greatest_close'][0] = self.domino.stats['greatest_close'][0]
                 if self.stats['greatest_close'][1] < self.domino.stats['greatest_close'][1]:

@@ -4,6 +4,7 @@ from player_human import playerh
 from selectplayers import *
 
 import log
+import copy
 
 class domino_game:
     """@brief Game class to manage a full dominoes game
@@ -139,7 +140,6 @@ class domino_game:
         #random.seed(2) #starts player 1
         #random.seed(4) #starts player 2
         #random.seed(5) #starts player 4
-        
         random.shuffle(self.tiles)
         tiles_position = 0;
         self.step_counter = 0
@@ -213,7 +213,7 @@ class domino_game:
     def ask_tile(self, player_pos, new_tile = None, side = None):
         """ Ask a player for a tile """
         if new_tile == None or side == None:
-            new_tile, side = self.players[player_pos].down_tile(self.left_tile, self.right_tile, None, None, None)
+            new_tile, side = self.players[player_pos].down_tile(self.left_tile, self.right_tile, copy.deepcopy(self.board), None, None)
         log.write("player %s puts %s tile in the %s" % (player_pos + 1, new_tile, side))
         if new_tile != None or side != 'pass':
             self.player_pass = 0

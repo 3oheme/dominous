@@ -45,3 +45,25 @@ class put_any_double:
                     return item, "right"
                     break
         return None, "pass"
+
+class starting_classic:
+    def __init__(self):
+        pass
+    def go(self, left_tile, right_tile, board, tiles, log):
+        #print "try go with" + str(left_tile) + " and " + str(right_tile)
+        if not board:
+            # count how many tiles we have of each number
+            counter = [0,0,0,0,0,0,0]
+            for item in tiles:
+                counter[int(item[0])] += 1
+                counter[int(item[1])] += 1
+            print ""
+            print tiles
+            print counter
+            print tiles[1]
+            print " MAX " + str(counter.index(max(counter)))
+            raw_input()
+            tiles.remove(tiles[1])
+            return tiles[1], "right"
+        else:
+            return None, "pass"
