@@ -75,8 +75,8 @@ class GlossGame(object):
 
 	def gloss_initialise(self):
 		os.environ['SDL_VIDEO_CENTERED'] = '1'
-		os.environ['SDL_AUDIODRIVER'] = 'esd'
-		pygame.mixer.pre_init(44100, 16, 2, 4096)
+		#os.environ['SDL_AUDIODRIVER'] = 'esd'
+		#pygame.mixer.pre_init(44100, 16, 2, 4096)
 		pygame.init()
 
  		pygame.joystick.init()
