@@ -16,7 +16,8 @@ class Player:
         self.global_knowledge = [[], [], [], []]
         
         # if I am hand player - player 1
-        self.global_knowledge[0].append(starting_classic())
+        #self.global_knowledge[0].append(starting_classic())
+        self.global_knowledge[0].append(put_any_double())
         self.global_knowledge[0].append(put_anyone())
         
         # I am second player, im trying to break p1 game

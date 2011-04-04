@@ -124,14 +124,14 @@ class SelectPlayers():
             self.selectors = [PlayerSelector(1, True), PlayerSelector(2), PlayerSelector(3), PlayerSelector(4)]
         else:
             self.selectors = [PlayerSelector(1), PlayerSelector(2), PlayerSelector(3), PlayerSelector(4)]
-        print "start de selectplayers"
+        #print "start de selectplayers"
     def stop(self):
         self.status = 0
         config['player1'] = self.selectors[0].option()
         config['player2'] = self.selectors[1].option()
         config['player3'] = self.selectors[2].option()
         config['player4'] = self.selectors[3].option()
-        print "stop de selectplayers"
+        #print "stop de selectplayers"
     def mouse_down(self, event):
         if self.status != 0:
             gap = Gloss.screen_resolution[1]/20

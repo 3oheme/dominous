@@ -139,7 +139,7 @@ class Lab:
                 self.t_num.append(0)
                 
                 self.current_match += 1
-                print self.current_match
+                #print self.current_match
                 if self.domino.points_team1() > self.domino.points_team2(): 
                     self.team1_matches += 1
                     newnumber = Sprite(self.num_tex, (30, 200))
@@ -164,7 +164,7 @@ class Lab:
                 
                 self.stats['hands_played'] += self.domino.stats['hands_played']
                 
-                print "llevamos jugadas " + str(self.stats['hands_played']) + " manos"
+                #print "llevamos jugadas " + str(self.stats['hands_played']) + " manos"
                 
                 if self.stats['greatest_close'][0] < self.domino.stats['greatest_close'][0]:
                     self.stats['greatest_close'][0] = self.domino.stats['greatest_close'][0]
@@ -184,21 +184,24 @@ class Lab:
             self.t_num[-1] += 1
         elif self.status == 99:
             # modo pausa
-            print max(self.t_num)
+            #print max(self.t_num)
+            pass
 
         elif self.status == 999:
             # terminamos la partida
             print self.stats
+            """
             if self.team1_matches > self.team2_matches:
                 print "winner team 1"
             else:
                 print "winner team 2"
+            """
             self.status = 99
 
     def start(self):
         self.status = 0
         self.domino.create_players(config['player1'],config['player2'],config['player3'],config['player4'])
-        print "empieza el laboratorio"
+        #print "empieza el laboratorio"
         self.status = 1
 
         for player in allplayers:

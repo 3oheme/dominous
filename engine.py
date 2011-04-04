@@ -726,7 +726,7 @@ class Engine:
         pass
     def stop(self):
         self.status = 0
-        print "ponemos el status a ceroooooo"
+        #print "ponemos el status a ceroooooo"
     def tile_clicked(self, pos):
         for key, tile in self.tiles.iteritems():
             if pos[0] < (self.tiles[key].position[0]+(config['tile_height']/2)) and \
