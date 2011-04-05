@@ -189,7 +189,7 @@ class Lab:
 
         elif self.status == 999:
             # terminamos la partida
-            print self.stats
+            #print self.stats
             """
             if self.team1_matches > self.team2_matches:
                 print "winner team 1"
