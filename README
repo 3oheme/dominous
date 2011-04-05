@@ -4,14 +4,11 @@ Dominous
 
 1.1 Linux (tested under Ubuntu 9.10):
 
-user@machine:~$ sudo aptitude install python-pygame
-user@machine:~$ sudo apt-get install python-setuptools
-user@machine:~$ sudo easy_install PyOpenGL PyOpenGL-accelerate
+user@machine:~$ sudo aptitude install python-pygame python-setuptools && sudo easy_install PyOpenGL PyOpenGL-accelerate
 
 1.2 Windows:
 
 No instructions yet
-
 
 2. Creating new computer players
 
@@ -20,6 +17,8 @@ image.png - 500x500 image of the player. If no image is provided i'll use a defa
 Directory name will be used as player name
 
 3. Greetings
+
+FSero - testing, giving advices - http://blog.fsero.com/
 
 This software uses a lot os GNU/Free/Creative Commons artwork and stuff:
  * 'Comfortaa' font from Johan Aakerlund - http://aajohan.deviantart.com/
