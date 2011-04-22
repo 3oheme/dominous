@@ -38,7 +38,7 @@ class Sound:
         else:
             return False
     def credits(self):
-        if _sound_ok():
+        if sound_ok():
             pygame.mixer.fadeout(1000)
             self.credits_sound.play()
 
