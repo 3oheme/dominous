@@ -154,3 +154,5 @@ class SelectPlayers():
                     self.game.goto_lab()
                 else:
                     self.game.goto_game()
+            elif event.pos[0] > 30 and event.pos[0] < 180 and event.pos[1] > 477 and event.pos[1] < 521 :
+                self.game.goto_menu()
