@@ -46,6 +46,7 @@ class Lab:
         self.exit = Texture(tool.image("system", "exit.png"))
         
         self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", 24, False, False, 32, 255)
+        self.font_small = SpriteFont("fonts/Comfortaa Regular.ttf", 16, False, False, 32, 255)
         
         self.num_tex = Texture(tool.image("system", "plus_one.png"))
         self.num_up = []
@@ -124,6 +125,15 @@ class Lab:
         for number in self.num_up:
             number.draw(color = Color(1,1,1,Gloss.smooth_step(1, 0, number.movetime)))
     
+        # partida terminada
+        if self.status == 999:
+            if self.team1_matches > self.team2_matches:
+                Gloss.draw_box((465, 25), 150, 150, 0, (0,0), 1, Color(1, 1, 1, 0.8))
+                Gloss.draw_box((625, 25), 150, 150, 0, (0,0), 1, Color(1, 1, 1, 0.8))
+            elif self.team1_matches < self.team2_matches:
+                Gloss.draw_box((25, 25), 150, 150, 0, (0,0), 1, Color(1, 1, 1, 0.8))
+                Gloss.draw_box((185, 25), 150, 150, 0, (0,0), 1, Color(1, 1, 1, 0.8))
+        
     def print_graph(self):
         mod_points1 = []
         mod_points2 = []
@@ -133,17 +143,15 @@ class Lab:
             mod_points2.append((point[0]+self.graph['position'][0], 181-((point[1]*181)/self.matches)+self.graph['position'][1]))
         
         #pintamos las letras de equipo ganador si alguien pasa de las 50 victorias
-        
-        if self.team1_matches <= self.matches/2:
+        if self.team1_matches >= self.matches/2:
             for point in mod_points1:
-                print point[1]
-                if point[1] <= 416:
-                    self.font_main.draw("Ganador equipo 1", position = (point[0], 391), color = Color.from_html("#f9b00c"))
+                if point[1] == 416 or int(point[1]) < 416:
+                    self.font_small.draw("Ganador equipo 1", position = (point[0]-139, 398), color = Color.from_html("#f9b00c"))
                     break
-        elif self.team2_matches <= self.matches/2:
+        elif self.team2_matches >= self.matches/2:
             for point in mod_points2:
                 if point[1] <= 416:
-                    self.font_main.draw("Ganador equipo 2", position = (point[0], 391), color = Color.from_html("#cccccc"))
+                    self.font_small.draw("Ganador equipo 2", position = (point[0]-139, 398), color = Color.from_html("#cccccc"))
                     break
         
         # lineas de la grafica
@@ -194,7 +202,7 @@ class Lab:
                     newnumber.position_from = 744
                 
                 #temp
-                self.team1_matches += 1
+                #self.team1_matches += 3
                 
                 # guardamos y actualizamos las estadisticas
                 self.stats['player_pass'][0] += self.domino.stats['player_pass'][0]
@@ -248,7 +256,7 @@ class Lab:
             else:
                 print "winner team 2"
             """
-            self.status = 99
+            #self.status = 99
 
     def start(self):
         self.status = 0
