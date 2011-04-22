@@ -16,6 +16,9 @@ __________________________________________
 		<jugador id="1">
 			<ficha side="right">66</ficha>
 		</jugador>
+        <jugador id="2">
+			<ficha side="left">56</ficha>
+		</jugador>
 	</mano>
 	<mano>	
 		<...>

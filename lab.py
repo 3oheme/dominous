@@ -24,6 +24,12 @@ class Lab:
         self.team1_matches = 0
         self.team2_matches = 0
         
+        self.graph = {
+            'position' : (25,325),
+            'points1' : [(0, 0)],
+            'points2' : [(0, 0)],
+        }
+        
         self.po1_from = 375
         self.po1_cur = 375
         self.po1_to = 375
@@ -101,6 +107,8 @@ class Lab:
         self.font_main.draw(str(self.team1_matches), position = (35, 220), color = Color.WHITE)
         self.font_main.draw(str(self.team2_matches), position = (765-text2_size[0], 220), color = Color.WHITE)
         
+        self.print_graph()
+        
         # pintamos los botones
         if self.status == 99:
             self.pause_eggs += Gloss.elapsed_seconds
@@ -115,6 +123,42 @@ class Lab:
         # pintamos los numeros de +1
         for number in self.num_up:
             number.draw(color = Color(1,1,1,Gloss.smooth_step(1, 0, number.movetime)))
+    
+    def print_graph(self):
+        mod_points1 = []
+        mod_points2 = []
+        for point in self.graph['points1']:
+            mod_points1.append((point[0]+self.graph['position'][0], 181-((point[1]*181)/self.matches)+self.graph['position'][1]))
+        for point in self.graph['points2']:
+            mod_points2.append((point[0]+self.graph['position'][0], 181-((point[1]*181)/self.matches)+self.graph['position'][1]))
+        
+        #pintamos las letras de equipo ganador si alguien pasa de las 50 victorias
+        
+        if self.team1_matches <= self.matches/2:
+            for point in mod_points1:
+                print point[1]
+                if point[1] <= 416:
+                    self.font_main.draw("Ganador equipo 1", position = (point[0], 391), color = Color.from_html("#f9b00c"))
+                    break
+        elif self.team2_matches <= self.matches/2:
+            for point in mod_points2:
+                if point[1] <= 416:
+                    self.font_main.draw("Ganador equipo 2", position = (point[0], 391), color = Color.from_html("#cccccc"))
+                    break
+        
+        # lineas de la grafica
+        Gloss.draw_line((25, 507), (775, 507), color = Color.from_html("#d2d2d2"), width = 2.0)
+        Gloss.draw_line((25, 507), (25, 325), color = Color.from_html("#d2d2d2"), width = 2.0)
+        
+        # algunas lineas de referencia
+        Gloss.draw_line((25, 416), (775, 416), color = Color.from_html("#d2d2d2"), width = 1.0)
+        
+        Gloss.draw_line((400, 495), (400, 519), color = Color.from_html("#d2d2d2"), width = 1.0)
+        Gloss.draw_line((212, 495), (212, 519), color = Color.from_html("#d2d2d2"), width = 1.0)
+        Gloss.draw_line((612, 495), (612, 519), color = Color.from_html("#d2d2d2"), width = 1.0)
+        
+        Gloss.draw_lines(mod_points1, color = Color.from_html("#f9b00c"), width = 3.0)
+        Gloss.draw_lines(mod_points2, color = Color.from_html("#cccccc"), width = 3.0)
         
     def update(self):
         for number in self.num_up:
@@ -137,7 +181,7 @@ class Lab:
             else:
                 #temp manos por partida
                 self.t_num.append(0)
-                
+
                 self.current_match += 1
                 #print self.current_match
                 if self.domino.points_team1() > self.domino.points_team2(): 
@@ -148,7 +192,10 @@ class Lab:
                     self.team2_matches += 1
                     newnumber = Sprite(self.num_tex, (744, 200))
                     newnumber.position_from = 744
-                    
+                
+                #temp
+                self.team1_matches += 1
+                
                 # guardamos y actualizamos las estadisticas
                 self.stats['player_pass'][0] += self.domino.stats['player_pass'][0]
                 self.stats['player_pass'][1] += self.domino.stats['player_pass'][1]
@@ -175,6 +222,11 @@ class Lab:
                 self.status = 1
                 newnumber.movetime = 0
                 self.num_up.insert(0, newnumber)
+                
+                # calculos para grafica
+                self.graph['points1'].append(((750*self.current_match)/self.matches, self.team1_matches))
+                self.graph['points2'].append(((750*self.current_match)/self.matches, self.team2_matches))
+                
         elif self.status == 3:
             # si no hemos terminado la mano actual, vamos pidiendo fichas
             while not self.domino.end_hand():
@@ -215,6 +267,18 @@ class Lab:
         self.current_match = 0
         self.team1_matches = 0
         self.team2_matches = 0
+        self.graph = {
+            'position' : (25,325),
+            'points1' : [(0, 0)],
+            'points2' : [(0, 0)],
+        }
+        self.stats = {
+            'player_pass' : [0, 0, 0, 0],
+            'player_win' : [0, 0, 0, 0],
+            'game_close' : 0,
+            'hands_played' : 0,
+            'greatest_close' : [0, 0]
+        }
             
     def stop(self):
         self.status = 0
