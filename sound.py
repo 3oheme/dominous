@@ -8,7 +8,7 @@ import random
 
 class Sound:
     def __init__(self):
-        if os.environ['OS'] == 'Windows_NT':
+        if _sound_ok():
             pygame.mixer.init(44100, 16, 2, 4096)
             self.tile_sound = [
                 pygame.mixer.Sound(tool.sound("theme_tile", "tile1.ogg")),
@@ -22,18 +22,25 @@ class Sound:
             self.menu_sound = pygame.mixer.Sound(tool.sound("system", "menu.ogg"))
             self.credits_sound = pygame.mixer.Sound(tool.sound("system", "credits.ogg"))
     def tile(self):
-        if os.environ['OS'] == 'Windows_NT':
+        if _sound_ok():
             self.tile_sound[random.randrange(0,7)].play()
     def intro(self):
-        if os.environ['OS'] == 'Windows_NT':
+        if _sound_ok():
             self.intro_sound.play()
     def menu(self):
-        if os.environ['OS'] == 'Windows_NT':
+        if _sound_ok():
             pygame.mixer.fadeout(500)
             self.menu_sound.play()
     def credits(self):
-        if os.environ['OS'] == 'Windows_NT':
+        if _sound_ok():
             pygame.mixer.fadeout(1000)
             self.credits_sound.play()
 
 sound = Sound()
+
+def _sound_ok():
+    val = os.environ.get('OS', default)
+    if val == 'Windows_NT':
+        return True
+    else:
+        return False
