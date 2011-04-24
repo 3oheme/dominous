@@ -8,11 +8,31 @@ class AI:
         self.tiles = tiles
         self.log = log
     def go(self, knowledge):
-        for step in knowledge:
-            tile, side = step.go(self.left_tile, self.right_tile, self.board, self.tiles, self.log)
-            if tile != None:
-                return tile, side
-                break
+        # primero vemos cuantas podemos poner
+        tiles_i_can_put = []
+        for item in self.tiles:
+            if item[0] == self.left_tile or item[1] == self.left_tile or item[0] == self.right_tile or item[1] == self.right_tile or self.left_tile == None:
+                tiles_i_can_put.append(item)
+        
+        # si no podemos poner ninguna
+        if len(tiles_i_can_put) == 0:
+            return None, "pass"
+        # si podemos poner solo una
+        elif len(tiles_i_can_put) == 1:
+            item = tiles_i_can_put[0]
+            if item[0] == self.left_tile or item[1] == self.left_tile:
+                self.tiles.remove(item)
+                return item, "left"
+            elif item[0] == self.right_tile or item[1] == self.right_tile or self.left_tile == None:
+                self.tiles.remove(item)
+                return item, "right"
+        # si podemos poner varias, usamos la IA
+        else:
+            for step in knowledge:
+                tile, side = step.go(self.left_tile, self.right_tile, self.board, self.tiles, self.log)
+                if tile != None:
+                    return tile, side
+                    break
         return None, "pass"
 
 class put_anyone:

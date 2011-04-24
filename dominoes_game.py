@@ -24,7 +24,7 @@ class domino_game:
         self.next_player = 0
         self.points_team_1 = 0
         self.points_team_2 = 0
-        self.hand_counter = 1
+        self.hand_counter = 0
         self.step_counter = 0
         self.player_started = 0
         self.tiles = ["00", "01", "02", "03", "04", "05", "06",
@@ -105,6 +105,11 @@ class domino_game:
         elif len(self.board) == 0:
             self.player_started = (self.player_started + 1) % 4
             self.next_player = self.player_started
+            
+            self.players[self.next_player].player_pos(1)
+            self.players[(self.next_player+1)%4].player_pos(2)
+            self.players[(self.next_player+2)%4].player_pos(3)
+            self.players[(self.next_player+3)%4].player_pos(4)
             return self.player_started
         else:
             self.next_player = (self.next_player + 1) % 4
@@ -131,6 +136,7 @@ class domino_game:
         #print ""
         pass
     def deal_tiles(self):
+        self.hand_counter += 1
         del self.board[:]
         del self.players_tiles[0][:]
         del self.players_tiles[1][:]
@@ -143,9 +149,11 @@ class domino_game:
         random.shuffle(self.tiles)
         tiles_position = 0;
         self.step_counter = 0
+        self.left_tile = None
+        self.right_tile = None
         for item in self.tiles:
             self.players_tiles[tiles_position].append(item)
-            if item == "66":
+            if item == "66" and self.hand_counter == 1:
                 self.players[tiles_position].player_pos(1)
                 tiles_position = (tiles_position+1) % 4
                 self.players[tiles_position].player_pos(2)
@@ -154,7 +162,10 @@ class domino_game:
                 tiles_position = (tiles_position+1) % 4
                 self.players[tiles_position].player_pos(4)
                 tiles_position = (tiles_position+1) % 4
+            else:
+                self.players[self.player_started].player_pos(1)
             tiles_position = (tiles_position+1) % 4
+            
     def create_gamelog(self):
         pass
     def end_hand(self):
@@ -162,7 +173,6 @@ class domino_game:
             self.stats['player_win'][self.next_player] += 1
             self.points_team_1 = self.points_team_1 + self.points_hand_team(1) + self.points_hand_team(2)
             self.player_pass = 0
-            self.hand_counter = self.hand_counter + 1
             self.stats['hands_played'] += 1
             return True
         elif len(self.players_tiles[1]) == 0 or len(self.players_tiles[3]) == 0:
@@ -246,6 +256,9 @@ class domino_game:
     def restart(self):
         self.points_team_1 = 0
         self.points_team_2 = 0
+        
+        self.left_tile = None
+        self.right_tile = None
         
         # restart stats
         self.stats['player_pass'] = [0, 0, 0, 0]

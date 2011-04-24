@@ -241,6 +241,11 @@ class Lab:
                 self.domino.ask_tile(self.domino.nextplayer())
             self.status = 2
             # TEMP manos por partida
+            print "----"
+            print "hemos terminado una mano"
+            print "empezo el jugador " + str(self.domino.player_started)
+            raw_input()
+            
             self.t_num[-1] += 1
         elif self.status == 99:
             # modo pausa
