@@ -65,25 +65,80 @@ class put_any_double:
                     return item, "right"
                     break
         return None, "pass"
-
+        
 class starting_classic:
     def __init__(self):
         pass
     def go(self, left_tile, right_tile, board, tiles, log):
         #print "try go with" + str(left_tile) + " and " + str(right_tile)
         if not board:
-            # count how many tiles we have of each number
-            counter = [0,0,0,0,0,0,0]
-            for item in tiles:
-                counter[int(item[0])] += 1
-                counter[int(item[1])] += 1
-            print ""
-            print tiles
-            print counter
-            print tiles[1]
-            print " MAX " + str(counter.index(max(counter)))
-            raw_input()
-            tiles.remove(tiles[1])
-            return tiles[1], "right"
+            # generamos la matriz
+            matriz = _weight_matrix(tiles)
+            fin = _max_matrix(matriz)
+            tiles.remove(fin)
+            return fin, "right"
         else:
             return None, "pass"
+
+class always_matrix:
+    def __init__(self):
+        pass
+    def go(self, left_tile, right_tile, board, tiles, log):
+        matriz = _weight_matrix(tiles)
+        fin = _max_matrix(matriz)
+        if fin != "00":
+            tiles.remove(fin)
+            return fin, "right"
+        else:
+            return None, "pass"
+
+#
+# Helping functions
+#
+
+def _weight_matrix(tiles, number = 1000, double = 100, siblings = 10, size = 1):
+    """@brief returns a weight matrix
+    
+    @param tiles must be an array of tiles strings
+    @param number defines weight for just having this tile
+    @param double defines weight if the tile is a double
+    @param siblings defines weight added for each brother tile
+    @param size defines weight added depending of number height 
+    """ 
+    table = [ [ 0 for i in range(7) ] for j in range(7) ]
+    counter = [0,0,0,0,0,0,0]
+    # calculamos peso de numeros y dobles
+    for item in tiles:
+        table[int(item[0])][int(item[1])] += number
+        if item[0] != item[1]:
+            table[int(item[1])][int(item[0])] += number
+            counter[int(item[0])] += 1
+            counter[int(item[1])] += 1
+        else:
+            table[int(item[1])][int(item[0])] += double
+            counter[int(item[0])] += 1
+            
+    # calculamos los hermanos
+    for i in range(7):
+        for j in range(7):
+            if table[i][j] != 0 and i != j:
+                table[i][j] += (counter[i] + counter[j]) * siblings
+            if table[i][j] != 0 and i == j:
+                table[i][j] += counter[i] * siblings
+
+    # valoramos las mas pesadas
+    for i in range(7):
+        for j in range(7):
+            if table[i][j] != 0:
+                table[i][j] += (j + i) * size
+    return table
+    
+def _max_matrix(matrix):
+    allmax = []
+    for i in range(7):
+        allmax.append(max(matrix[i]))
+    mightymax = max(allmax)
+    for i in range(7):
+        for j in range(7):
+            if matrix[i][j] == mightymax:
+                return str(i)+str(j)
