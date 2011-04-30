@@ -29,11 +29,13 @@ class GameLog:
         }
         self.hands = [[]]
         self.current_hand = 0
-    def move(self, player, tile, side):
+    def move(self, player, tile, side, left, right):
         movement = {
             'player' : player,
             'tile' : tile,
             'side' : side,
+            'left' : left,
+            'right' : right,
         }
         self.hands[self.current_hand].append(movement)
     def end_hand(self, team1_points, team2_points):
@@ -56,7 +58,8 @@ class GameLog:
             print "MANO NUM " + str(iter)
             iter += 1
             for move in hand:
-                print " " + str(move['player']) + " - " + str(move['tile']) + " - " + str(move['side'])
+                print " " + str(move['player']) + " - " + str(move['tile']) + " - " + str(move['side']) \
+                    + " - " + str(move['left']) + " - " + str(move['right'])
             print ""
         return ""
 
@@ -288,7 +291,7 @@ class domino_game:
         if new_tile == None or side == None:
             new_tile, side = self.players[player_pos].down_tile(self.left_tile, self.right_tile, copy.deepcopy(self.board), None, None)
         log.write("player %s puts %s tile in the %s" % (player_pos + 1, new_tile, side))
-        self.gamelog.move(player_pos+1, new_tile, side)
+        self.gamelog.move(player_pos+1, new_tile, side, self.left_tile, self.right_tile)
         if new_tile != None or side != 'pass':
             self.player_pass = 0
             if len(self.board) == 0:
