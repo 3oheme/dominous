@@ -81,17 +81,20 @@ class starting_classic:
             return None, "pass"
 
 class always_matrix:
-    def __init__(self):
-        pass
+    def __init__(self, mnumber = 1000, mdouble = 100, msiblings = 10, msize = 1):
+        self.number = mnumber
+        self.double = mdouble
+        self.siblings = msiblings
+        self.size = msize
     def go(self, left_tile, right_tile, board, tiles, log):
-        matriz = _weight_matrix(tiles)
+        matriz = _weight_matrix(tiles, self.number, self.double, self.siblings, self.size)
         fin = _max_matrix(matriz)
         if fin != "00":
             tiles.remove(fin)
             return fin, "right"
         else:
             return None, "pass"
-
+            
 #
 # Helping functions
 #

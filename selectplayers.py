@@ -35,6 +35,38 @@ def load_players():
 
 allplayers = load_players()
 
+class PlayerCounter():
+    def __init__(self, counter_players, pos = (0,0)):
+        self.pos = (pos[0] + 3, pos[1] + 135)
+        self.pos_to = self.pos
+        self.pos_orig = self.pos
+        self.pos_from = self.pos
+        self.counter = counter_players
+        self.current = 0
+        self.font_fixed = SpriteFont("fonts/SVBasicManual.ttf", 8, False, False, 32, 255)
+        self.eggs = 0
+        self.step = 134/(self.counter-1)
+        """if (134/self.counter > :
+            self.step = 
+        else:
+            self.step = """
+    def next(self):
+        self.eggs = 0
+        self.current = (self.current + 1) % self.counter
+        self.pos_from = self.pos
+        self.pos_to = (self.pos_orig[0]+(self.current*self.step), self.pos_orig[1])
+    def draw(self):
+        self.eggs += Gloss.elapsed_seconds * 2
+        if (self.eggs > 1.0):
+            self.eggs = 1.0
+        self.pos = (Gloss.smooth_step(self.pos[0], self.pos_to[0], self.eggs), self.pos_orig[1])
+        newpos = self.pos
+        newpos2 = (newpos[0]+1, newpos[1]+1)
+        newpos3 = (newpos[0]+4, newpos[1]+2)
+        Gloss.draw_box(position = newpos2, width = 12, height = 12, color = Color.from_html("#d6d6d6"))
+        Gloss.draw_box(position = newpos, width = 12, height = 12, color = Color.from_html("#FFFFFF"))
+        self.font_fixed.draw(text = str(self.current+1), position = newpos3, color = Color.from_html("#555555"))
+
 class PlayerSelector(Sprite):
     """Player selector, where you can choose players just clicking on the image
     @brief Player selector
@@ -67,12 +99,16 @@ class PlayerSelector(Sprite):
             self.x = gap
             self.y = (Gloss.screen_resolution[1]/2)-tex_half_width
         self.position = (self.x, self.y)
+        if not self.static:
+            self.player_counter = PlayerCounter(len(allplayers), self.position)
         Sprite.__init__(self, self.texture, self.position)
         self.falling_images = []
     def draw(self):
         Sprite.draw(self, position = self.position, scale = self.scale)
         for falling_image in self.falling_images:
             falling_image.draw(origin = (75, 75), rotation = falling_image.movetime*20, color = Color(1,1,1,Gloss.smooth_step(1, 0, falling_image.movetime)))
+        if not self.static:
+            self.player_counter.draw()
     def update(self):
         for falling_image in self.falling_images:
             falling_image.movetime += Gloss.elapsed_seconds * 2
@@ -89,6 +125,7 @@ class PlayerSelector(Sprite):
                 self.player_selected = 0
             self.texture = Texture(allplayers[self.player_selected]['image'])
             self.player_selected_id = allplayers[self.player_selected]['id']
+            self.player_counter.next()
     def option(self):
         return self.player_selected_id
         
