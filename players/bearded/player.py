@@ -1,4 +1,4 @@
-"""Dominoes lonely computer player
+"""Dominoes bearded computer player
 
 """
 from ai import *
@@ -8,7 +8,7 @@ class Player:
         self.tiles = dealed_tiles
         self.player_position = "1"
         self.knowledge = []
-        self.knowledge.append(weight_matrix())
+        self.knowledge.append(weight_matrix(1000, 1000, 100, 50))
         self.knowledge.append(put_anyone())
 
     def human(self):

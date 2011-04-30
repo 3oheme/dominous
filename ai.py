@@ -70,7 +70,6 @@ class starting_classic:
     def __init__(self):
         pass
     def go(self, left_tile, right_tile, board, tiles, log):
-        #print "try go with" + str(left_tile) + " and " + str(right_tile)
         if not board:
             # generamos la matriz
             matriz = _weight_matrix(tiles)
@@ -80,7 +79,7 @@ class starting_classic:
         else:
             return None, "pass"
 
-class always_matrix:
+class weight_matrix:
     def __init__(self, mnumber = 1000, mdouble = 100, msiblings = 10, msize = 1):
         self.number = mnumber
         self.double = mdouble
@@ -88,13 +87,13 @@ class always_matrix:
         self.size = msize
     def go(self, left_tile, right_tile, board, tiles, log):
         matriz = _weight_matrix(tiles, self.number, self.double, self.siblings, self.size)
-        fin = _max_matrix(matriz)
-        if fin != "00":
+        fin, side = _max_matrix(matriz, left_tile, right_tile)
+        if fin != None:
             tiles.remove(fin)
-            return fin, "right"
+            return fin, side
         else:
             return None, "pass"
-            
+
 #
 # Helping functions
 #
@@ -136,12 +135,30 @@ def _weight_matrix(tiles, number = 1000, double = 100, siblings = 10, size = 1):
                 table[i][j] += (j + i) * size
     return table
     
-def _max_matrix(matrix):
+def _max_matrix(matrix, left_tile, right_tile):
+    """@brief returns max tile for a weight matrix
+    """
+   
+    # quitamos de la matriz las fichas que no podemos colocar
+    if left_tile != None:
+        for i in range(7):
+            for j in range(7):
+                if i != int(left_tile) and i != int(right_tile) and j != int(left_tile) and j != int(right_tile):
+                    matrix[i][j] = 0
+
     allmax = []
     for i in range(7):
         allmax.append(max(matrix[i]))
     mightymax = max(allmax)
+    
+    if mightymax == 0:
+        return None, "pass"
+    
     for i in range(7):
         for j in range(7):
             if matrix[i][j] == mightymax:
-                return str(i)+str(j)
+                if left_tile == str(i) or left_tile == str(j):
+                    return str(i)+str(j), "left"
+                else:
+                    return str(i)+str(j), "right"
+    return None, "pass"
