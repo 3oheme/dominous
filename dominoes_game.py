@@ -6,6 +6,60 @@ from selectplayers import *
 import log
 import copy
 
+import datetime
+
+class GameLog:
+    """@brief Log class to save a complete game
+    """
+    def __init__(self, date, place, max_points, player1, player2, player3, player4, description):
+        self.info = {
+            "date" : date,
+            "place" : place,
+            "max_points" : max_points,
+            "player1" : player1,
+            "player2" : player2,
+            "player3" : player3,
+            "player4" : player4,
+            "team1" : player1 + " " + player3,
+            "team2" : player2 + " " + player4,
+            "description" : description,
+            "winner_team" : "",
+            "team1_points" : 0,
+            "team2_points" : 0,
+        }
+        self.hands = [[]]
+        self.current_hand = 0
+    def move(self, player, tile, side):
+        movement = {
+            'player' : player,
+            'tile' : tile,
+            'side' : side,
+        }
+        self.hands[self.current_hand].append(movement)
+    def end_hand(self, team1_points, team2_points):
+        self.current_hand += 1
+        self.hands.append([])
+        self.info['team1_points'] = team1_points
+        self.info['team2_points'] = team2_points
+    def end_game(self):
+        if int(self.info['team1_points']) > self.info['max_points']:
+            self.info['winner_team'] = self.info['player1'] + " " + self.info['player3'] 
+        else:
+            self.info['winner_team'] = self.info['player2'] + " " + self.info['player4'] 
+    def __str__(self):
+        print "INFORMACION"
+        for k, v in self.info.items():
+            print k + ": " + str(v)
+        print ""
+        iter = 1
+        for hand in self.hands:
+            print "MANO NUM " + str(iter)
+            iter += 1
+            for move in hand:
+                print " " + str(move['player']) + " - " + str(move['tile']) + " - " + str(move['side'])
+            print ""
+        return ""
+
 class domino_game:
     """@brief Game class to manage a full dominoes game
     
@@ -38,11 +92,12 @@ class domino_game:
         self.left_tile  = None
         self.right_tile = None
         self.first_tile = "00"
-        self.gamelog = []
         self.players_tiles = [[], [], [], []]
         self.players = []
         self.player_pass = 0
         self.player_type = [1, 1, 1, 1]
+        # FIXME rellenar con valores reales
+        self.gamelog = GameLog(datetime.datetime.now(), "home", self.points, "hola1", "hola2", "hola3", "hola4", "lorem ipsum")
         self.stats = {
             'player_pass' : [0, 0, 0, 0],
             'player_win' : [0, 0, 0, 0],
@@ -174,6 +229,8 @@ class domino_game:
             self.points_team_1 = self.points_team_1 + self.points_hand_team(1) + self.points_hand_team(2)
             self.player_pass = 0
             self.stats['hands_played'] += 1
+            self.gamelog.end_hand(self.points_team_1, self.points_team_2)
+            print self.gamelog
             return True
         elif len(self.players_tiles[1]) == 0 or len(self.players_tiles[3]) == 0:
             self.stats['player_win'][self.next_player] += 1
@@ -181,6 +238,8 @@ class domino_game:
             self.player_pass = 0
             self.hand_counter = self.hand_counter + 1
             self.stats['hands_played'] += 1
+            self.gamelog.end_hand(self.points_team_1, self.points_team_2)
+            print self.gamelog
             return True
         elif self.player_pass == 4:
             if self.points_hand_team(1) < self.points_hand_team(2):
@@ -200,23 +259,27 @@ class domino_game:
             self.stats['game_close'] += 1
             self.player_pass = 0
             self.hand_counter = self.hand_counter + 1
+            self.gamelog.end_hand(self.points_team_1, self.points_team_2)
+            print self.gamelog
             return True
         else:
             return False
     def end_game(self):
         if int(self.points_team_1) > int(self.points) or int(self.points_team_2) > int(self.points):
+            self.gamelog.end_game()
             return True
         else:
             return False
     def player_must_pass(self, player_id):
         for item in self.players_tiles[player_id]:
-            if item[0] == self.left_tile or item[1] == self.left_tile or item[0] == self.right_tile or item[1] == self.right_tile or self.left_tile == None:
+            if item[0] == self.left_tile or item[1] == self.left_tile or item[0] == self.right_tile \
+                or item[1] == self.right_tile or self.left_tile == None:
                 return False
         return True
     def can_i_put_this_tile_in_this_side(self, tile, side):
         "This function was created after Feria del Puerto de Santa Maria fair"
-        #print "trying to put %s in %s - left_tile = %s - right_tile = %s" % (tile, side, self.left_tile, self.right_tile)
-        if (side == 'left' and (tile[0] == self.left_tile or tile[1] == self.left_tile)) or (side == 'right' and (tile[0] == self.right_tile or tile[1] == self.right_tile)):
+        if (side == 'left' and (tile[0] == self.left_tile or tile[1] == self.left_tile)) \
+            or (side == 'right' and (tile[0] == self.right_tile or tile[1] == self.right_tile)):
             return True
         else:
             return False
@@ -225,6 +288,7 @@ class domino_game:
         if new_tile == None or side == None:
             new_tile, side = self.players[player_pos].down_tile(self.left_tile, self.right_tile, copy.deepcopy(self.board), None, None)
         log.write("player %s puts %s tile in the %s" % (player_pos + 1, new_tile, side))
+        self.gamelog.move(player_pos+1, new_tile, side)
         if new_tile != None or side != 'pass':
             self.player_pass = 0
             if len(self.board) == 0:
