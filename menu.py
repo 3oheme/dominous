@@ -35,12 +35,13 @@ class Options1():
         self.fontsize4 = self.font_main.measure_string(self.str_tutorial)
         self.fontsize5 = self.font_main.measure_string(self.str_exit)
         self.eggs = 0
+        self.color = 1
     def draw(self):
-        self.font_main.draw(self.str_quick_game, position = (self.position[0]-(self.fontsize1[0]/2), self.position[1]), color = Color(0.3, 0.3, 0.3, 1))
-        self.font_main.draw(self.str_tournament, position = (self.position[0]-(self.fontsize2[0]/2), self.position[1]+self.fontsize1[1]), color = Color(0.3, 0.3, 0.3, 1))
-        self.font_main.draw(self.str_options, position = (self.position[0]-(self.fontsize3[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]), color = Color(0.3, 0.3, 0.3, 1))
-        self.font_main.draw(self.str_tutorial, position = (self.position[0]-(self.fontsize4[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]), color = Color(0.3, 0.3, 0.3, 1))
-        self.font_main.draw(self.str_exit, position = (self.position[0]-(self.fontsize5[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+self.fontsize5[1]+20), color = Color(0.3, 0.3, 0.3, 1))
+        self.font_main.draw(self.str_quick_game, position = (self.position[0]-(self.fontsize1[0]/2), self.position[1]), color = Color(0.3, 0.3, 0.3, self.color))
+        self.font_main.draw(self.str_tournament, position = (self.position[0]-(self.fontsize2[0]/2), self.position[1]+self.fontsize1[1]), color = Color(0.3, 0.3, 0.3, self.color))
+        self.font_main.draw(self.str_options, position = (self.position[0]-(self.fontsize3[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]), color = Color(0.3, 0.3, 0.3, self.color))
+        self.font_main.draw(self.str_tutorial, position = (self.position[0]-(self.fontsize4[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]), color = Color(0.3, 0.3, 0.3, self.color))
+        self.font_main.draw(self.str_exit, position = (self.position[0]-(self.fontsize5[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+self.fontsize5[1]+20), color = Color(0.3, 0.3, 0.3, self.color))
     def update(self):
         pass
     def hide(self):
@@ -62,7 +63,7 @@ class Options1():
         elif (pos[0]>self.position[0]-self.fontsize3[0]/2 and pos[0]<self.position[0]+self.fontsize3[0]/2 and \
             pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1] and \
             pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]):
-            return 10
+            return 110
         elif (pos[0]>self.position[0]-self.fontsize4[0]/2 and pos[0]<self.position[0]+self.fontsize4[0]/2 and \
             pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1] and \
             pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+self.fontsize4[1]):
@@ -78,8 +79,11 @@ class Options2():
     def __init__(self):
         self.position = (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2)
         self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", 38, False, False, 32, 255)
-        self.str_quick_game = config['gametype']
-        self.str_tournament = config['theme'] 
+        if config['gametype'] == 'computer':
+            self.str_quick_game = 'modo de juego solo computadora'
+        else:
+            self.str_quick_game = 'modo de juego un jugador'
+        self.str_tournament = "tema grafico " + config['theme'] 
         self.str_options = "   "
         self.str_exit = "volver"
         self.fontsize1 = self.font_main.measure_string(self.str_quick_game)
@@ -87,6 +91,7 @@ class Options2():
         self.fontsize3 = self.font_main.measure_string(self.str_options)
         self.fontsize4 = self.font_main.measure_string(self.str_exit)
         self.eggs = 0
+        self.color = 1
             
         # read all themes from HD and store in a list
         self.themes = []
@@ -96,10 +101,10 @@ class Options2():
                 self.themes.append(theme_dir)
         self.themes.sort() # python rules :-D
     def draw(self):
-        self.font_main.draw(self.str_quick_game, position = (self.position[0]-(self.fontsize1[0]/2), self.position[1]), color = Color(0.3, 0.3, 0.3, 1))
-        self.font_main.draw(self.str_tournament, position = (self.position[0]-(self.fontsize2[0]/2), self.position[1]+self.fontsize1[1]), color = Color(0.3, 0.3, 0.3, 1))
-        self.font_main.draw(self.str_options, position = (self.position[0]-(self.fontsize3[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]), color = Color(0.3, 0.3, 0.3, 1))
-        self.font_main.draw(self.str_exit, position = (self.position[0]-(self.fontsize4[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50), color = Color(0.3, 0.3, 0.3, 1))
+        self.font_main.draw(self.str_quick_game, position = (self.position[0]-(self.fontsize1[0]/2), self.position[1]), color = Color(0.3, 0.3, 0.3, self.color))
+        self.font_main.draw(self.str_tournament, position = (self.position[0]-(self.fontsize2[0]/2), self.position[1]+self.fontsize1[1]), color = Color(0.3, 0.3, 0.3, self.color))
+        self.font_main.draw(self.str_options, position = (self.position[0]-(self.fontsize3[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]), color = Color(0.3, 0.3, 0.3, self.color))
+        self.font_main.draw(self.str_exit, position = (self.position[0]-(self.fontsize4[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50), color = Color(0.3, 0.3, 0.3, self.color))
     def update(self):
         pass
     def hide(self):
@@ -110,10 +115,10 @@ class Options2():
         if (pos[0]>self.position[0]-self.fontsize1[0]/2 and pos[0]<self.position[0]+self.fontsize1[0]/2 and \
             pos[1]>self.position[1] and pos[1]<self.position[1]+self.fontsize1[1]):
             if config['gametype'] == "human":
-                self.str_quick_game = 'computer'
+                self.str_quick_game = 'modo de juego solo computadora'
                 config['gametype'] = 'computer'
             else:
-                self.str_quick_game = 'human'
+                self.str_quick_game = 'modo de juego un jugador'
                 config['gametype'] = 'human'
             self.fontsize1 = self.font_main.measure_string(self.str_quick_game)
             return 10
@@ -123,7 +128,7 @@ class Options2():
             if theme_index == len(self.themes):
                 theme_index = 0
             config['theme'] = self.themes[theme_index]
-            self.str_tournament = self.themes[theme_index]
+            self.str_tournament = "tema grafico " + self.themes[theme_index]
             self.fontsize2 = self.font_main.measure_string(self.str_tournament)
             return 10
         elif (pos[0]>self.position[0]-self.fontsize3[0]/2 and pos[0]<self.position[0]+self.fontsize3[0]/2 and \
@@ -131,10 +136,9 @@ class Options2():
             pass
         elif (pos[0]>self.position[0]-self.fontsize4[0]/2 and pos[0]<self.position[0]+self.fontsize4[0]/2 and \
             pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50 and pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50+self.fontsize4[1]):
-            return 1
+            return 101
         else:
             return 10
-
 
 class Menu():
     def __init__(self, mainp):
@@ -146,6 +150,7 @@ class Menu():
         self.fadein_amount = 0
         self.status = 1
         self.logo = Texture(tool.image("system", "dominous.png"))
+        self.eggs = 0
         
     def draw(self):
         Gloss.fill(top = Color.WHITE, bottom = Color(0.8, 0.8, 0.8, 1))
@@ -155,9 +160,15 @@ class Menu():
         
         if self.status == 1:
             self.options1.draw()
+        elif self.status == 110:
+            self.options1.draw()
+            self.options2.draw()
         elif self.status == 2:
             self.options1.draw()
         elif self.status == 10:
+            self.options2.draw()
+        elif self.status == 101:
+            self.options1.draw()
             self.options2.draw()
 
         if self.fadein:
@@ -169,9 +180,20 @@ class Menu():
     def update(self):
         # options 1
         if self.status == 1:
+            self.eggs = 0
             self.box.update()
             self.options1.update()
             self.game.on_mouse_up = self.events
+        # from options 1 to 10
+        if self.status == 110:
+            self.eggs += Gloss.elapsed_seconds * 2
+            if self.eggs > 1:
+                self.status = 10
+            self.options1.position = (Gloss.smooth_step(400, 350, self.eggs), 300)
+            self.options1.color = Gloss.smooth_step(1, 0, self.eggs)
+            
+            self.options2.position = (Gloss.smooth_step(450, 400, self.eggs), 300)
+            self.options2.color = Gloss.smooth_step(0, 1, self.eggs)
         # start quick game
         elif self.status == 2:
             self.game.goto_selectplayers()
@@ -179,7 +201,17 @@ class Menu():
         elif self.status == 3:
             self.game.goto_tutorial()
         elif self.status == 10:
+            self.eggs = 0
             self.options2.update()
+        elif self.status == 101:
+            self.eggs += Gloss.elapsed_seconds * 2
+            if self.eggs > 1:
+                self.status = 1
+            self.options1.position = (Gloss.smooth_step(350, 400, self.eggs), 300)
+            self.options1.color = Gloss.smooth_step(0, 1, self.eggs)
+            
+            self.options2.position = (Gloss.smooth_step(400, 450, self.eggs), 300)
+            self.options2.color = Gloss.smooth_step(1, 0, self.eggs)
         # exit game
         elif self.status == 99:
             # before exit, lets save options
@@ -187,6 +219,7 @@ class Menu():
             self.game.goto_finish()
         else:
             self.status = 1
+
     def start(self):
         self.box = Box()
         self.options1 = Options1()

@@ -45,12 +45,10 @@ class put_anyone:
         for item in tiles:
             if item[0] == left_tile or item[1] == left_tile:
                 tiles.remove(item)
-                print "1"
                 return item, "left", 1
                 break
             elif item[0] == right_tile or item[1] == right_tile or left_tile == None:
                 tiles.remove(item)
-                print "2"
                 return item, "right", 1
                 break
         return None, "pass", 0
