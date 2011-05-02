@@ -414,6 +414,8 @@ class Engine:
         self.status = 0
         self.tiles_temp = []
         self.timer_temp = 0
+        self.waiting_time = 0
+        self.mtime = 0
         self.game.on_mouse_down = self.mouse_down
         self.game.on_mouse_up = self.mouse_up
         self.game.on_mouse_motion = self.mouse_motion
@@ -444,6 +446,12 @@ class Engine:
             draw_tiles(self.tiles)
         # Status = 4 - ask tile next player
         elif self.status == 4:
+            self.active_player.draw()
+            self.scoreboard.draw()
+            self.passbutton.draw()
+            draw_tiles(self.tiles)
+        # Status = 45 - wait time
+        elif self.status == 45:
             self.active_player.draw()
             self.scoreboard.draw()
             self.passbutton.draw()
@@ -587,9 +595,15 @@ class Engine:
                     self.status = 6
                 self.active_player.player(0)
             else:
-                self.new_tile, self.side = self.domino.ask_tile(nextplayer)
+                self.new_tile, self.side, self.mtime = self.domino.ask_tile(nextplayer)
                 self.active_player.player(self.domino.currentplayer())
-                # move tile to its position
+                self.status = 45
+                self.waiting_time = Gloss.total_seconds
+                
+        # status = 45 - wait and move tiles, depending of mtime
+        elif self.status == 45:
+            if Gloss.total_seconds - self.waiting_time > self.mtime:
+            # move tile to its position
                 if self.new_tile != "XX":
                     self.tiles[self.new_tile].reverse()
                     self.place_next_player_tile()
@@ -622,7 +636,9 @@ class Engine:
                 # first tile in board
                 self.side = "left"
                 self.domino.players_tiles[0].remove(self.new_tile)
-                self.new_tile, self.side = self.domino.ask_tile(self.domino.currentplayer(), self.new_tile, self.side)
+                # FIXME - give a real value for player thinking time
+                mtime = 1
+                self.new_tile, self.side, mtime = self.domino.ask_tile(self.domino.currentplayer(), self.new_tile, self.side)
                 self.place_next_player_tile()
                 self.place_player_tiles(self.domino.currentplayer())
                 self.status = 5
@@ -645,7 +661,7 @@ class Engine:
                 if self.side != "null":
                     if self.domino.can_i_put_this_tile_in_this_side(self.new_tile, self.side):
                         self.domino.players_tiles[0].remove(self.new_tile)
-                        self.new_tile, self.side = self.domino.ask_tile(self.domino.currentplayer(), self.new_tile, self.side)
+                        self.new_tile, self.side, mtime = self.domino.ask_tile(self.domino.currentplayer(), self.new_tile, self.side)
                         self.place_next_player_tile()
                         self.place_player_tiles(self.domino.currentplayer())
                         self.status = 5

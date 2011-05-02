@@ -32,9 +32,9 @@ class AI:
         # si podemos poner varias, usamos la IA
         else:
             for step in knowledge:
-                tile, side, time = step.go(self.left_tile, self.right_tile, self.board, self.tiles, self.log)
+                tile, side, mtime = step.go(self.left_tile, self.right_tile, self.board, self.tiles, self.log)
                 if tile != None:
-                    return tile, side, time
+                    return tile, side, mtime
                     break
         return None, "pass", 0
 
@@ -45,10 +45,12 @@ class put_anyone:
         for item in tiles:
             if item[0] == left_tile or item[1] == left_tile:
                 tiles.remove(item)
+                print "1"
                 return item, "left", 1
                 break
             elif item[0] == right_tile or item[1] == right_tile or left_tile == None:
                 tiles.remove(item)
+                print "2"
                 return item, "right", 1
                 break
         return None, "pass", 0
@@ -90,10 +92,10 @@ class weight_matrix:
         self.size = msize
     def go(self, left_tile, right_tile, board, tiles, log):
         matriz = _weight_matrix(tiles, self.number, self.double, self.siblings, self.size)
-        fin, side = _max_matrix(matriz, left_tile, right_tile)
+        fin, side, mtime = _max_matrix(matriz, left_tile, right_tile)
         if fin != None:
             tiles.remove(fin)
-            return fin, side, 2
+            return fin, side, mtime
         else:
             return None, "pass", 0
 

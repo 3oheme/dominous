@@ -29,7 +29,7 @@ class GameLog:
         }
         self.hands = [[]]
         self.current_hand = 0
-    def move(self, player, tile, side, left, right, time = 0):
+    def move(self, player, tile, side, left, right, mtime = 0):
         # time is the time player took while thinking.
         # values:   0 = I din't have to think, just one tile available to play
         #           1 = I have many posibilities
@@ -40,7 +40,7 @@ class GameLog:
             'side' : side,
             'left' : left,
             'right' : right,
-            'time' : time,
+            'mtime' : mtime,
         }
         self.hands[self.current_hand].append(movement)
     def end_hand(self, team1_points, team2_points):
@@ -64,7 +64,7 @@ class GameLog:
             iter += 1
             for move in hand:
                 print " " + str(move['player']) + " - " + str(move['tile']) + " - " + str(move['side']) \
-                    + " - " + str(move['left']) + " - " + str(move['right'])
+                    + " - " + str(move['left']) + " - " + str(move['right']) + " - " + str(move['mtime'])
             print ""
         return ""
 
@@ -238,7 +238,6 @@ class domino_game:
             self.player_pass = 0
             self.stats['hands_played'] += 1
             self.gamelog.end_hand(self.points_team_1, self.points_team_2)
-            print self.gamelog
             return True
         elif len(self.players_tiles[1]) == 0 or len(self.players_tiles[3]) == 0:
             self.stats['player_win'][self.next_player] += 1
@@ -247,7 +246,6 @@ class domino_game:
             self.hand_counter = self.hand_counter + 1
             self.stats['hands_played'] += 1
             self.gamelog.end_hand(self.points_team_1, self.points_team_2)
-            print self.gamelog
             return True
         elif self.player_pass == 4:
             if self.points_hand_team(1) < self.points_hand_team(2):
@@ -268,7 +266,6 @@ class domino_game:
             self.player_pass = 0
             self.hand_counter = self.hand_counter + 1
             self.gamelog.end_hand(self.points_team_1, self.points_team_2)
-            print self.gamelog
             return True
         else:
             return False
@@ -291,12 +288,12 @@ class domino_game:
             return True
         else:
             return False
-    def ask_tile(self, player_pos, new_tile = None, side = None):
+    def ask_tile(self, player_pos, new_tile = None, side = None, mtime = 1):
         """ Ask a player for a tile """
         if new_tile == None or side == None:
-            new_tile, side, time = self.players[player_pos].down_tile(self.left_tile, self.right_tile, copy.deepcopy(self.board), None, None)
+            new_tile, side, mtime = self.players[player_pos].down_tile(self.left_tile, self.right_tile, copy.deepcopy(self.board), None, None)
         log.write("player %s puts %s tile in the %s" % (player_pos + 1, new_tile, side))
-        self.gamelog.move(player_pos+1, new_tile, side, self.left_tile, self.right_tile, time)
+        self.gamelog.move(player_pos+1, new_tile, side, self.left_tile, self.right_tile, mtime)
         if new_tile != None or side != 'pass':
             self.player_pass = 0
             if len(self.board) == 0:
@@ -319,12 +316,12 @@ class domino_game:
                 elif side == 'right' and new_tile[1] == self.right_tile:
                     self.board.append(new_tile[1] + new_tile[0])
                     self.right_tile = new_tile[0]
-            return new_tile, side
+            return new_tile, side, mtime
         else:
             self.player_pass += 1
             log.write("player %s pass" % (player_pos + 1))
             self.stats['player_pass'][player_pos] += 1
-            return "XX", "XX"
+            return "XX", "XX", 0
     def restart(self):
         self.points_team_1 = 0
         self.points_team_2 = 0
