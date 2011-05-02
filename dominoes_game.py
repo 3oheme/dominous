@@ -29,13 +29,18 @@ class GameLog:
         }
         self.hands = [[]]
         self.current_hand = 0
-    def move(self, player, tile, side, left, right):
+    def move(self, player, tile, side, left, right, time = 0):
+        # time is the time player took while thinking.
+        # values:   0 = I din't have to think, just one tile available to play
+        #           1 = I have many posibilities
+        #           2 = Really long time thinking
         movement = {
             'player' : player,
             'tile' : tile,
             'side' : side,
             'left' : left,
             'right' : right,
+            'time' : time,
         }
         self.hands[self.current_hand].append(movement)
     def end_hand(self, team1_points, team2_points):
@@ -289,9 +294,9 @@ class domino_game:
     def ask_tile(self, player_pos, new_tile = None, side = None):
         """ Ask a player for a tile """
         if new_tile == None or side == None:
-            new_tile, side = self.players[player_pos].down_tile(self.left_tile, self.right_tile, copy.deepcopy(self.board), None, None)
+            new_tile, side, time = self.players[player_pos].down_tile(self.left_tile, self.right_tile, copy.deepcopy(self.board), None, None)
         log.write("player %s puts %s tile in the %s" % (player_pos + 1, new_tile, side))
-        self.gamelog.move(player_pos+1, new_tile, side, self.left_tile, self.right_tile)
+        self.gamelog.move(player_pos+1, new_tile, side, self.left_tile, self.right_tile, time)
         if new_tile != None or side != 'pass':
             self.player_pass = 0
             if len(self.board) == 0:

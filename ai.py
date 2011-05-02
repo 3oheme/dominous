@@ -11,29 +11,32 @@ class AI:
         # primero vemos cuantas podemos poner
         tiles_i_can_put = []
         for item in self.tiles:
-            if item[0] == self.left_tile or item[1] == self.left_tile or item[0] == self.right_tile or item[1] == self.right_tile or self.left_tile == None:
+            if item[0] == self.left_tile or item[1] == self.left_tile or \
+                item[0] == self.right_tile or item[1] == self.right_tile or self.left_tile == None:
                 tiles_i_can_put.append(item)
         
         # si no podemos poner ninguna
         if len(tiles_i_can_put) == 0:
-            return None, "pass"
+            return None, "pass", 0
+            
         # si podemos poner solo una
         elif len(tiles_i_can_put) == 1:
             item = tiles_i_can_put[0]
             if item[0] == self.left_tile or item[1] == self.left_tile:
                 self.tiles.remove(item)
-                return item, "left"
+                return item, "left", 0
             elif item[0] == self.right_tile or item[1] == self.right_tile or self.left_tile == None:
                 self.tiles.remove(item)
-                return item, "right"
+                return item, "right", 0
+                
         # si podemos poner varias, usamos la IA
         else:
             for step in knowledge:
-                tile, side = step.go(self.left_tile, self.right_tile, self.board, self.tiles, self.log)
+                tile, side, time = step.go(self.left_tile, self.right_tile, self.board, self.tiles, self.log)
                 if tile != None:
-                    return tile, side
+                    return tile, side, time
                     break
-        return None, "pass"
+        return None, "pass", 0
 
 class put_anyone:
     def __init__(self):
@@ -42,13 +45,13 @@ class put_anyone:
         for item in tiles:
             if item[0] == left_tile or item[1] == left_tile:
                 tiles.remove(item)
-                return item, "left"
+                return item, "left", 1
                 break
             elif item[0] == right_tile or item[1] == right_tile or left_tile == None:
                 tiles.remove(item)
-                return item, "right"
+                return item, "right", 1
                 break
-        return None, "pass"
+        return None, "pass", 0
 
 class put_any_double:
     def __init__(self):
@@ -58,13 +61,13 @@ class put_any_double:
             if item[0] == item[1]:
                 if item[0] == left_tile or item[1] == left_tile:
                     tiles.remove(item)
-                    return item, "left"
+                    return item, "left", 1
                     break
                 elif item[0] == right_tile or item[1] == right_tile or left_tile == None:
                     tiles.remove(item)
-                    return item, "right"
+                    return item, "right", 1
                     break
-        return None, "pass"
+        return None, "pass", 0
         
 class starting_classic:
     def __init__(self):
@@ -75,9 +78,9 @@ class starting_classic:
             matriz = _weight_matrix(tiles)
             fin = _max_matrix(matriz)
             tiles.remove(fin)
-            return fin, "right"
+            return fin, "right", 1
         else:
-            return None, "pass"
+            return None, "pass", 0
 
 class weight_matrix:
     def __init__(self, mnumber = 1000, mdouble = 100, msiblings = 10, msize = 1):
@@ -90,9 +93,9 @@ class weight_matrix:
         fin, side = _max_matrix(matriz, left_tile, right_tile)
         if fin != None:
             tiles.remove(fin)
-            return fin, side
+            return fin, side, 2
         else:
-            return None, "pass"
+            return None, "pass", 0
 
 #
 # Helping functions
@@ -152,13 +155,13 @@ def _max_matrix(matrix, left_tile, right_tile):
     mightymax = max(allmax)
     
     if mightymax == 0:
-        return None, "pass"
+        return None, "pass", 0
     
     for i in range(7):
         for j in range(7):
             if matrix[i][j] == mightymax:
                 if left_tile == str(i) or left_tile == str(j):
-                    return str(i)+str(j), "left"
+                    return str(i)+str(j), "left", 2
                 else:
-                    return str(i)+str(j), "right"
-    return None, "pass"
+                    return str(i)+str(j), "right", 2
+    return None, "pass", 0
