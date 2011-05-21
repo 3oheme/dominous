@@ -1,15 +1,11 @@
 from pygame import *
 from gloss import *
-from dominoes_game import domino_game
 
 from sound import *
 from tools import *
 from config import *
 from os import *
 from selectplayers import *
-
-import log
-import random
 
 class Tutorial:
     def __init__(self, mainp):
