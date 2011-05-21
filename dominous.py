@@ -14,7 +14,6 @@ from lab import *
 from tools import *
 
 from config import *
-import log
 
 class DominousGame(GlossGame):
     """

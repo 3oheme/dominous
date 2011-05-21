@@ -6,9 +6,6 @@ from sound import *
 from tools import *
 from config import *
 
-import log
-import random
-
 class ActivePlayer(Sprite):
     """@brief draws a light circle around current player tiles.
     

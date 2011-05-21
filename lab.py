@@ -7,10 +7,6 @@ from tools import *
 from config import *
 from selectplayers import *
 
-import log
-import random
-import copy
-
 class Lab:
     def __init__(self, mainp):
         self.game = mainp

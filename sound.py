@@ -3,7 +3,6 @@ from gloss import *
 
 from tools import *
 
-import os
 import random
 
 class Sound:

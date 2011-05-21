@@ -1,5 +1,4 @@
 import random
-from player_basic import player1
 from player_human import playerh
 from selectplayers import *
 

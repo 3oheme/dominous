@@ -4,8 +4,6 @@ from pygame import *
 from gloss import *
 from config import *
 
-import random
-
 from sound import *
 from tools import *
 from os import *
