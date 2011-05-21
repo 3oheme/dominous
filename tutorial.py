@@ -64,8 +64,9 @@ class Tutorial:
             fall.move_to(None, Gloss.lerp(0, 10, fall.movetime))
         
     def start(self):
+        self.game.on_mouse_down = self.mouse_down
         self.status = 1
-            
+
     def stop(self):
         self.status = 0
 
