@@ -6,6 +6,8 @@ from sound import *
 from tools import *
 from config import *
 
+skip_thinking_time = True
+
 class ActivePlayer(Sprite):
     """@brief draws a light circle around current player tiles.
     
@@ -39,7 +41,6 @@ class ActivePlayer(Sprite):
         # 1 player = right
         gap = config['tile_height'] / 4
         all_tiles_width = (len_tiles * config['tile_height']) + (len_tiles-1)*gap
-        print len_tiles
         if self.current_player == 0:
             self.position = ((Gloss.screen_resolution[0]/2)-self.texture.half_width, Gloss.screen_resolution[1]-self.texture.height)
             self.angle = 0
@@ -212,7 +213,7 @@ class PassButton(Sprite):
         self.eggs = 0
     def update(self):
         pass
-
+        
 class IngameMenu():
     """@brief shows an ingame menu"""
     def __init__(self):
@@ -545,6 +546,10 @@ class Engine:
             self.active_player.draw()
             self.scoreboard.draw()
             draw_tiles(self.tiles)
+        # Status = 99 - show tiles upside up
+        elif self.status == 99:
+            self.scoreboard.draw()
+            draw_tiles(self.tiles)
         # Status = 100 - move tiles to center
         elif self.status == 100:
             self.scoreboard.draw()
@@ -618,7 +623,7 @@ class Engine:
         # Status = 3 - draw available positions
         elif self.status == 3:
             if self.domino.end_hand():
-                self.status = 99
+                self.status = 98
             elif self.domino.end_game():
                 self.status = 999
             else:
@@ -640,7 +645,7 @@ class Engine:
                 
         # status = 45 - wait and move tiles, depending of mtime
         elif self.status == 45:
-            if Gloss.total_seconds - self.waiting_time > self.mtime:
+            if Gloss.total_seconds - self.waiting_time > self.mtime or skip_thinking_time:
             # move tile to its position
                 if self.new_tile != "XX":
                     self.tiles[self.new_tile].reverse()
@@ -736,9 +741,9 @@ class Engine:
         elif self.status == 24: 
             if self.tiles[self.domino.players_tiles[self.domino.currentplayer()][-1]].tile_is_passing() == False:
                 self.status = 3
-        # Status = 99 - end hand
-        elif self.status == 99:
-            self.status = 100
+        # Status = 98 - end hand
+        elif self.status == 98:
+            self.status = 99
             self.once = True
             self.right_dir = "right"
             self.left_dir = "left"
@@ -749,6 +754,10 @@ class Engine:
             self.scoreboard.update_score(str(self.domino.points_team1()), str(self.domino.points_team2()))
             self.fullscoreboard.update_score(str(self.domino.points_team1()), str(self.domino.points_team2()))
             self.fullscoreboard.update()
+            self.tiles_upside_count_points()
+        # Status = 99 - show tiles upside up
+        elif self.status == 99:
+            print "estamos en status 99"
         # Status = 100 - move tiles to center
         elif self.status == 100:
             if self.tiles['00'].stopped():
@@ -802,6 +811,9 @@ class Engine:
         elif self.status == 21:
             if self.mouse_on_button_pass():
                 self.status = 22
+        # count points with tiles upside
+        elif self.status == 99:
+            self.status = 100
         # fullscreen scoreboard
         elif self.status == 101:
             self.status = 2
@@ -1137,4 +1149,31 @@ class Engine:
             for tile in self.domino.players_tiles[3]:
                 self.tiles[tile].goto((first_x, first_y), 0.5, sound = False)
                 first_y += gap + config['tile_height']
-
+   
+    def tiles_upside_count_points(self):
+        gap = config['tile_height'] / 4
+        team1_tiles = len(self.domino.players_tiles[0]) + len(self.domino.players_tiles[2])
+        team2_tiles = len(self.domino.players_tiles[1]) + len(self.domino.players_tiles[3])
+        
+        first1_x = Gloss.screen_resolution[0]/2 - team1_tiles/2
+        first1_y = Gloss.screen_resolution[1]/2 - gap - (config['tile_width']/2)
+        first2_x = Gloss.screen_resolution[0]/2 - team2_tiles/2
+        first2_y = Gloss.screen_resolution[1]/2 + gap + (config['tile_width']/2)
+        
+        for tile in self.domino.players_tiles[0]:
+            self.tiles[tile].goto((first1_x, first1_y), 90, sound = False)
+            self.tiles[tile].reverse()
+            first1_x += gap + config['tile_height']
+        for tile in self.domino.players_tiles[2]:
+            self.tiles[tile].goto((first1_x, first1_y), 90, sound = False)
+            self.tiles[tile].reverse()
+            first1_x += gap + config['tile_height']
+            
+        for tile in self.domino.players_tiles[1]:
+            self.tiles[tile].goto((first2_x, first2_y), 90, sound = False)
+            self.tiles[tile].reverse()
+            first2_y += gap + config['tile_height']
+        for tile in self.domino.players_tiles[3]:
+            self.tiles[tile].goto((first2_x, first2_y), 90, sound = False)
+            self.tiles[tile].reverse()
+            first2_y += gap + config['tile_height']
