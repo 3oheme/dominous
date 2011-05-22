@@ -18,33 +18,74 @@ class ActivePlayer(Sprite):
         self.scale = 1
         self.eggs = 0
         Sprite.__init__(self, self.texture, (-self.texture.width, -self.texture.width))
-    def draw(self):
+        self.dotsthinking = DotsThinking()
+    def draw(self, print_dots = False):
+        Sprite.draw(self, scale = self.scale, rotation = self.angle, color = Color(1,1,1,Gloss.smooth_step2(0.5, 1, self.eggs)))
         if self.current_player is not 4:
+            if print_dots:
+                self.dotsthinking.draw()
+                self.dotsthinking.update()
             self.eggs += Gloss.elapsed_seconds * 0.5
             if self.eggs > 1:
                 self.eggs = 0
-        Sprite.draw(self, scale = self.scale, rotation = self.angle, color = Color(1,1,1,Gloss.smooth_step2(0.5, 1, self.eggs)))
+            
     def update(self):
         pass
     def get_player(self):
         return self.current_player
-    def player(self, pos):
+    def player(self, pos, len_tiles):
         self.current_player = pos
+        # 0 player = bottom
+        # 1 player = right
+        gap = config['tile_height'] / 4
+        all_tiles_width = (len_tiles * config['tile_height']) + (len_tiles-1)*gap
+        print len_tiles
         if self.current_player == 0:
             self.position = ((Gloss.screen_resolution[0]/2)-self.texture.half_width, Gloss.screen_resolution[1]-self.texture.height)
             self.angle = 0
+            self.dotsthinking.new_position(((Gloss.screen_resolution[0]/2)+all_tiles_width/2, 537))
         elif self.current_player == 1:
             self.position = (Gloss.screen_resolution[0]-self.texture.height, (Gloss.screen_resolution[1]/2)+self.texture.half_width)
             self.angle = 270
+            self.dotsthinking.new_position((737, 14+(Gloss.screen_resolution[1]/2)+all_tiles_width/2))
         elif self.current_player == 2:
             self.position = (Gloss.screen_resolution[0]/2+self.texture.half_width, self.texture.height)
             self.angle = 180
+            self.dotsthinking.new_position((14+(Gloss.screen_resolution[0]/2)+all_tiles_width/2, 55))
         elif self.current_player == 3:
             self.position = (self.texture.height, (Gloss.screen_resolution[1]/2)-self.texture.half_width)
             self.angle = 90
+            self.dotsthinking.new_position((7, 14+(Gloss.screen_resolution[1]/2)+all_tiles_width/2))
         else:
             self.current_player = 4
-
+        
+        self.dotsthinking.start()
+        
+class DotsThinking():
+    """@brief draws some dots, to know how many time has been thinking"""
+    def __init__(self):
+        self.position = (0, 0)
+        self.eggs = 0
+        self.steps = 0
+        self.time = Gloss.total_seconds
+    def draw(self):
+        for i in range(self.steps):
+            Gloss.draw_box(position = (self.position[0]+(i*12), self.position[1]), width = 8, height = 8, color = Color(0,0,0,0.3))
+            #print "cuadrado numero " + str(i)
+    def update(self):
+        if Gloss.total_seconds - self.time > 0.5:
+            self.steps += 1
+            self.time = Gloss.total_seconds
+        if self.steps > 5:
+            self.steps = 0
+    def start(self):
+        self.time = Gloss.total_seconds
+        self.steps = 0
+    def new_position(self, pos):
+        self.position = pos
+    def reset(self):
+        self.time = 0
+            
 class NextPosition(Sprite):
     """@brief draws a circle in the board, so human player can know where to put the tile"""
     def __init__(self):
@@ -449,7 +490,7 @@ class Engine:
             draw_tiles(self.tiles)
         # Status = 45 - wait time
         elif self.status == 45:
-            self.active_player.draw()
+            self.active_player.draw(print_dots = True)
             self.scoreboard.draw()
             self.passbutton.draw()
             draw_tiles(self.tiles)
@@ -461,12 +502,12 @@ class Engine:
             draw_tiles(self.tiles)
         # Status = 6 - drag n drop player tile
         elif self.status == 6:
-            self.active_player.draw()
+            self.active_player.draw(print_dots = True)
             self.scoreboard.draw()
             draw_tiles(self.tiles)
         # Status = 7 - dragging tile self.dragging_tile
         elif self.status == 7:
-            self.active_player.draw()
+            self.active_player.draw(print_dots = True)
             self.scoreboard.draw()
             #self.next_left.draw()
             #self.next_right.draw()
@@ -590,10 +631,10 @@ class Engine:
                     self.status = 20
                 else:
                     self.status = 6
-                self.active_player.player(0)
+                self.active_player.player(0, len(self.domino.players_tiles[0]))
             else:
                 self.new_tile, self.side, self.mtime = self.domino.ask_tile(nextplayer)
-                self.active_player.player(self.domino.currentplayer())
+                self.active_player.player(self.domino.currentplayer(), len(self.domino.players_tiles[nextplayer]))
                 self.status = 45
                 self.waiting_time = Gloss.total_seconds
                 
