@@ -217,13 +217,13 @@ class PassButton(Sprite):
 class IngameMenu():
     """@brief shows an ingame menu"""
     def __init__(self):
-        self.position = (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2)
+        self.position = (Gloss.screen_resolution[0]/2, (Gloss.screen_resolution[1]/2)-20)
         self.text1 = "continuar la partida"
         self.text2 = "volver al menu"
-        self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", int(config['scale']*60), False, False, 32, 255)
+        self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", 32, False, False, 32, 255)
         self.textsize1 = self.font_main.measure_string(self.text1)
         self.textsize2 = self.font_main.measure_string(self.text2)
-        self.gap = self.textsize1[1]*2
+        self.gap = self.textsize1[1]*1.2
     def draw(self):
         Gloss.fill(top = Color(0,0,0,0.7), bottom = Color(0,0,0,9))
         # Gloss.draw_box((0,0), Gloss.screen_resolution[0], Gloss.screen_resolution[1], color = Color(0,0,0,0.8))
