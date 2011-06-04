@@ -61,6 +61,7 @@ def load_config():
         'player2': 'easy',
         'player3': 'easy',
         'player4': 'easy',
+        'speed': '1',
         }
     return config_default
 

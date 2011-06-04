@@ -83,8 +83,13 @@ class Options2():
             self.str_quick_game = 'modo de juego solo computadora'
         else:
             self.str_quick_game = 'modo de juego un jugador'
-        self.str_tournament = "tema grafico " + config['theme'] 
-        self.str_options = "   "
+        self.str_tournament = "tema grafico " + config['theme']
+        if config['speed'] == '1':
+            self.str_options = "velocidad normal"
+        elif config['speed'] == '2':
+            self.str_options = "velocidad rapida"
+        else:
+            self.str_options = "velocidad extra rapida"
         self.str_exit = "volver"
         self.fontsize1 = self.font_main.measure_string(self.str_quick_game)
         self.fontsize2 = self.font_main.measure_string(self.str_tournament)
@@ -93,7 +98,7 @@ class Options2():
         self.eggs = 0
         self.color = 1
             
-        # read all themes from HD and store in a list
+        # read all themes from disk and store in a list
         self.themes = []
         themes_dir = os.listdir(os.path.join(os.getcwd(), 'themes'))
         for theme_dir in themes_dir:
@@ -133,7 +138,17 @@ class Options2():
             return 10
         elif (pos[0]>self.position[0]-self.fontsize3[0]/2 and pos[0]<self.position[0]+self.fontsize3[0]/2 and \
             pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1] and pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]):
-            pass
+            if self.str_options == "velocidad normal":
+                config['speed'] = '2'
+                self.str_options = "velocidad rapida"
+            elif self.str_options == "velocidad rapida":
+                config['speed'] = '3'
+                self.str_options = "velocidad extra rapida"
+            else:
+                self.str_options = "velocidad normal"
+                config['speed'] = '1'
+            self.fontsize3 = self.font_main.measure_string(self.str_options)
+            return 10
         elif (pos[0]>self.position[0]-self.fontsize4[0]/2 and pos[0]<self.position[0]+self.fontsize4[0]/2 and \
             pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50 and pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50+self.fontsize4[1]):
             return 101

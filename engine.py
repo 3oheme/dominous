@@ -6,9 +6,6 @@ from sound import *
 from tools import *
 from config import *
 
-skip_thinking_time = False
-uberspeed_warptime = False
-
 class ActivePlayer(Sprite):
     """@brief draws a light circle around current player tiles.
     
@@ -260,7 +257,7 @@ class Tile(Sprite):
         self.from_scale = config['scale']
         self.goto_scale = config['scale']
         self.uberspeed = 10
-        if uberspeed_warptime:
+        if config['speed'] == '3':
             self.speed = self.uberspeed
         else:
             self.speed = 1
@@ -664,7 +661,7 @@ class Engine:
                 
         # status = 45 - wait and move tiles, depending of mtime
         elif self.status == 45:
-            if Gloss.total_seconds - self.waiting_time > self.mtime or skip_thinking_time:
+            if Gloss.total_seconds - self.waiting_time > self.mtime or config['speed'] == '2' or config['speed'] == '3':
             # move tile to its position
                 if self.new_tile != "XX":
                     self.tiles[self.new_tile].reverse()
