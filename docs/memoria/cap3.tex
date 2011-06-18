@@ -9,3 +9,51 @@
 
 \section{Planificación}
 
+Para el desarrollo de \textbf{Dominous} se decidió utilizar el modelo evolutivo iterativo incremental para el ciclo de
+vida del proyecto. La decisión fue tomada ya que, a pesar de tener acotado el ámbito y los requisitos del programa,
+la funcionalidad concreta de cada uno de los apartados se desconocía en un principio.
+
+El modelo iterativo incremental es un modelo de tipo evolutivo que está basado en varios ciclos cascada realimentados aplicados
+repetidamente, con una filosofía iterativa. Como se comenta en CITE, al final de cada iteración se le
+realiza una entrega al cliente final; en este caso, el cliente ha sido el tutor del proyecto, que a cada iteración iba
+dictando las líneas maestras generales a tomar a cada nuevo paso.
+
+Las ventajas de utilizar un modelo iterativo incremental son básicamente los siguientes:
+\begin{enumerate}
+    \item Construir un sistema pequeño es siempre menos costoso en términos de riesgo.
+    \item Al ir desarrollando parte de las funcionalidades, es más fácil determinar si los requerimientos
+            planeados para los niveles subsiguientes son correctos.
+    \item Si se comete algún error grave, sólo la última iteración necesita ser descartada.
+    \item Reduciendo el tiempo de desarrollo de un sistema (en este caso en incremento del sistema) decrecen las
+            probabilidades que esos requerimientos de usuarios puedan cambiar durante el desarrollo.
+    \item Los errores de desarrollo realizados en un incremento, pueden ser arreglados antes del comienzo del próximo incremento.
+\end{enumerate}
+
+El proyecto \textbf{Dominous} consta de tres subsistemas que son los que ocupan el grueso del desarrollo:
+\begin{enumerate}
+    \item El primero es el motor de la partida: Controla los jugadores, las fichas en la mesa, la partida, situaciones irregulares
+            y cualquier otro elemento referente únicamente al ámbito del dominó.
+    \item Por otro lado está el motor gráfico, que será la interfaz entre la partida y el usuario, permitiendo el movimiento
+            fluído por las diferentes secciones del programa e interactuando de forma directa con el motor de la partida,
+            mostrando las fichas actuales y habilitando la interacción del jugador con el mundo.
+    \item Y por último tenemos el motor de Inteligencia Artificial. Este motor será el que alimente la inteligencia
+            y las acciones y decisiones de los jugadores controlados por el ordenador.
+
+\subsection{Incrementos realizados}
+
+A continuación se citan los diferentes incrementos que se han ido realizando en el desarrollo del proyecto.
+
+\subsubsection{Preliminares}
+
+El primer paso a la hora de enfrentarse a un proyecto es decidir las herramientas que vamos a utilizar. En principio se
+pensó utilizar el lenguage C++ por dos sencillas razones:
+\begin{enumerate}
+    \item Por un lado es un lenguaje que hemos aprendido en la carrera, se ha utilizado en varias asignaturas de
+            diferentes ramas, con lo cual la comodidad y familiaridad que podemos tener a la hora de programar
+            es un punto importante a tener en cuenta.
+    \item Tampoco podemos olvidar que, al ser un lenguaje compilado, la velocidad de ejecución que se consigue
+            es interesante, y mucho más tratándose de temas como la inteligencia artificial (donde puede ser
+            necesario un uso intensivo de los recursos del sistema) o el desarrollo de videojuegos (en el que
+            la potencia del ordenador repercute en una mejor experiencia del usuario)
+\end{enumerate}
+    
