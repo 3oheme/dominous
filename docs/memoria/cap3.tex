@@ -11,10 +11,10 @@
 
 Para el desarrollo de \textbf{Dominous} se decidió utilizar el modelo evolutivo iterativo incremental para el ciclo de
 vida del proyecto. La decisión fue tomada ya que, a pesar de tener acotado el ámbito y los requisitos del programa,
-la funcionalidad concreta de cada uno de los apartados se desconocía en un principio.
+la funcionalidad concreta de cada uno de los apartados se desconocía en un principio.\\
 
 El modelo iterativo incremental es un modelo de tipo evolutivo que está basado en varios ciclos cascada realimentados aplicados
-repetidamente, con una filosofía iterativa. Como se comenta en CITE, al final de cada iteración se le
+repetidamente, con una filosofía iterativa. Como se comenta en BUSCAR CITE, al final de cada iteración se le
 realiza una entrega al cliente final; en este caso, el cliente ha sido el tutor del proyecto, que a cada iteración iba
 dictando las líneas maestras generales a tomar a cada nuevo paso.
 
@@ -34,20 +34,57 @@ El proyecto \textbf{Dominous} consta de tres subsistemas que son los que ocupan 
     \item El primero es el motor de la partida: Controla los jugadores, las fichas en la mesa, la partida, situaciones irregulares
             y cualquier otro elemento referente únicamente al ámbito del dominó.
     \item Por otro lado está el motor gráfico, que será la interfaz entre la partida y el usuario, permitiendo el movimiento
-            fluído por las diferentes secciones del programa e interactuando de forma directa con el motor de la partida,
+            fluido por las diferentes secciones del programa e interactuando de forma directa con el motor de la partida,
             mostrando las fichas actuales y habilitando la interacción del jugador con el mundo.
     \item Y por último tenemos el motor de Inteligencia Artificial. Este motor será el que alimente la inteligencia
             y las acciones y decisiones de los jugadores controlados por el ordenador.
 \end{enumerate}
 
+
+
 \subsection{Incrementos realizados}
 
 A continuación se citan los diferentes incrementos que se han ido realizando en el desarrollo del proyecto.
 
-\subsubsection{Preliminares}
 
-El primer paso a la hora de enfrentarse a un proyecto es decidir las herramientas que vamos a utilizar. En principio se
-pensó utilizar el lenguage C++ por dos sencillas razones:
+\subsubsection{Preliminares y herramientas}
+
+El primer paso a la hora de enfrentarse a un proyecto es decidir las herramientas que vamos a utilizar.
+
+Para todo el tema del aspecto gráfico, mi tutor me recomendó que utilizara las librerías SDL\footnote{Simple
+Directmedia Layer}, ya que son unas librerías orientadas al desarrollo de videojuegos con varias particularidades:
+\begin{enumerate}
+    \item Son completas, ya que permiten gestionar operaciones de dibujo en dos dimensiones, efectos de
+            sonido y música, carga y gestión de imágenes, subsistemas de control de métodos de entrada,
+            etcétera, por lo que contamos con una solución global para desarrollar videojuegos.
+    \item Están programas en C, por lo que se puede esperar un buen rendimiento de las librerías en
+            diferentes entornos.
+    \item Multiplataforma: es compatible oficialmente con los sistemas Microsoft Windows, GNU/Linux,
+            Mac OS y QNX, además de otras arquitecturas y sistemas menos comunes como Sega Dreamcast, Sony PSP,
+            WebOS, Google Android o Symbian entre otros.
+    \item Tampoco hay que mantener al margen la característica de que cuenta con wrapper a otros lenguajes
+            de programación como entre los que se encuentran C++, Ada, C\#, BASIC, Erlang, Lua, Java o Python, por
+            lo que nos da bastante libertad para elegir un lenguaje de programación principal
+    \item Publicado bajo licencia LGPL, con todas las ventajas que conlleva.
+    \item Y por último no hay que menospreciar que mi tutor emplea SDL a la hora de impartir la asignatura
+            de diseño de videojuegos, y contar con esa base de conocimiento nos ayudará a desarrollar más rápidamente
+            y solucionar antes nuestros posible problemas.
+\end{enumerate}
+
+\begin{figure}[h]
+  \label{logo-sdl}
+  \begin{center}
+    \includegraphics[scale=0.5]{SDL.png}
+  \end{center}
+  \caption{Logotipo de la librería Simple DirectMedia Layer}
+\end{figure}
+
+En este aspecto, la utilización de las librerías SDL estaba clara. Potencia, comodidad, multiplataforma y con la posibilidad
+de utilizar diferentes lenguajes de programación.
+
+Y una vez que tocamos el tema de los lenguajes de programación, entra en escena la problemática sobre qué lenguaje
+utilizar. En principio se pensó emplear el lenguaje C++ por dos sencillas razones:
+
 \begin{enumerate}
     \item Por un lado es un lenguaje que hemos aprendido en la carrera, se ha utilizado en varias asignaturas de
             diferentes ramas, con lo cual la comodidad y familiaridad que podemos tener a la hora de programar
@@ -57,4 +94,24 @@ pensó utilizar el lenguage C++ por dos sencillas razones:
             necesario un uso intensivo de los recursos del sistema) o el desarrollo de videojuegos (en el que
             la potencia del ordenador repercute en una mejor experiencia del usuario)
 \end{enumerate}
-    
+
+Pero hay que detenerse un momento y pensar en la naturaleza del proyecto. Aunque el programa a desarrollar sea un
+videojuego, no hay que olvidar que hay diferentes tipos de juegos, que pueden condicionar o influir en nuestra forma
+de programarlo. En el caso del dominó, lo primero que debemos tener en cuenta es que el apartado gráfico no va a
+requerir de una gran potencia o despliegue de efectos: el dominó es un juego pausado y a diferencia de otros
+videojuegos lo importante en este caso es mostrar al usuario la información de la partida de una forma clara y sencilla,
+para que el jugador evalúe las posibilidades de acción y actúe en consecuencia.\\
+
+Si tenemos en cuenta estas circunstancias, existen otros lenguajes que también deben entrar en juego,
+como por ejemplo \textbf{Python}. Buscando las diferencias, ventajas y desventajas de Python frente a C++,
+obtenemos el siguiente listado:
+
+\begin{enumerate}
+    \item Python es un lenguaje interpretado, a diferencia de C++ que es compilado. Este aspecto podría suponer una
+            desventaja  ya que al ser interpretado puede resultar más lento, pero analicemos pausadamente estos
+            factores:
+        \begin{itemize}
+            \item Como ya hemos comentado previamente, no
+            \item Como ya hemos comentado previamente, no
+        \end{itemize}
+\end{enumerate}
