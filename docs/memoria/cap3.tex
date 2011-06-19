@@ -46,14 +46,13 @@ El proyecto \textbf{Dominous} consta de tres subsistemas que son los que ocupan 
 
 A continuación se citan los diferentes incrementos que se han ido realizando en el desarrollo del proyecto.
 
-
 \subsubsection{Preliminares y herramientas}
 
-El primer paso a la hora de enfrentarse a un proyecto es decidir las herramientas que vamos a utilizar.
+El primer paso a la hora de enfrentarse a un proyecto es decidir las herramientas que vamos a utilizar.\\
 
 Para todo el tema del aspecto gráfico, mi tutor me recomendó que utilizara las librerías SDL\footnote{Simple
 Directmedia Layer}, ya que son unas librerías orientadas al desarrollo de videojuegos con varias particularidades:
-\begin{enumerate}
+\begin{itemize}
     \item Son completas, ya que permiten gestionar operaciones de dibujo en dos dimensiones, efectos de
             sonido y música, carga y gestión de imágenes, subsistemas de control de métodos de entrada,
             etcétera, por lo que contamos con una solución global para desarrollar videojuegos.
@@ -69,7 +68,7 @@ Directmedia Layer}, ya que son unas librerías orientadas al desarrollo de video
     \item Y por último no hay que menospreciar que mi tutor emplea SDL a la hora de impartir la asignatura
             de diseño de videojuegos, y contar con esa base de conocimiento nos ayudará a desarrollar más rápidamente
             y solucionar antes nuestros posible problemas.
-\end{enumerate}
+\end{itemize}
 
 \begin{figure}[h]
   \label{logo-sdl}
@@ -80,7 +79,7 @@ Directmedia Layer}, ya que son unas librerías orientadas al desarrollo de video
 \end{figure}
 
 En este aspecto, la utilización de las librerías SDL estaba clara. Potencia, comodidad, multiplataforma y con la posibilidad
-de utilizar diferentes lenguajes de programación.
+de utilizar diferentes lenguajes de programación.\\
 
 Y una vez que tocamos el tema de los lenguajes de programación, entra en escena la problemática sobre qué lenguaje
 utilizar. En principio se pensó emplear el lenguaje C++ por dos sencillas razones:
@@ -107,11 +106,25 @@ como por ejemplo \textbf{Python}. Buscando las diferencias, ventajas y desventaj
 obtenemos el siguiente listado:
 
 \begin{enumerate}
+    \item Python es un lenguaje de programación multiparadigma ya que soporta orientación a objetos,
+            programación imperativa y, en menor medida, programación funcional.
+    \item Al igual que C++ es multiplataforma, y está publicado con la licencia \textbf{Python Software Foundation
+            License}, que es una licencia de software libre permisiva, compatible con la GPL.
+    \item La sintaxis de Python es muy clara, simple, expresiva y legible, con lo cual los programas
+            desarrollados bajo Python son más sencillos de entender.
     \item Python es un lenguaje interpretado, a diferencia de C++ que es compilado. Este aspecto podría suponer una
-            desventaja  ya que al ser interpretado puede resultar más lento, pero analicemos pausadamente estos
+            desventaja ya que al ser interpretado puede resultar más lento, pero analicemos pausadamente estos
             factores:
         \begin{itemize}
-            \item Como ya hemos comentado previamente, no
-            \item Como ya hemos comentado previamente, no
+            \item Como ya hemos comentado previamente, nuestra aplicación, a pesar de enmarcarse dentro de las
+                    facciones de un videojuego, no requiere de grandes alardes de potencia gráfica como podría
+                    suponerse, ya que es un tipo de juego pausado y donde cómo se muestra la información
+                    es mucho más importante que la velocidad o los efectos de vídeo e imágenes.
+            \item A pesar de ser interpretado, un gran conjunto de las funcionalidades de python --- como librerías o
+                    funciones básicas del lenguaje --- están programadas internamente en C, así que podríamos
+                    verlo como que estamos utilizando la comodidad de Python sobre la potencia de C, uniendo
+                    lo mejor de ambos mundos.
         \end{itemize}
 \end{enumerate}
+
+
