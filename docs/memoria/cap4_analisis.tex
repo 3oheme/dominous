@@ -7,6 +7,40 @@ que realizaba el papel de cliente potencial de la misma. Después de varias reun
 que se muestra en las siguientes secciones:
 
 \subsection{Requisitos de interfaces externas}
+
+En este apartado se van a describir los requisitos de conexión entre el software y el hardware, así como la interfaz
+del usuario.\\
+
+De la interfaz entre el software y el hardware se encarga la librería SDL, mediante el wrapper pygame --- y por encima
+la capa que añade Gloss--- que, al ser un sistema preestablecido, no será necesario analizarlo ni diseñarlo,
+simplemente haremos uso de él.\\
+
+Así que pasamos a definir el interfaz entre el videojuego y el usuario. Todas las ventanas de la aplicación podrán
+ser mostradas a pantalla completa o en formato de ventana con una resolución de 800 por 600 píxeles. A
+continuación se definen las distintas ventanas con las que el usuario se puede encontrar:
+
+\begin{description}
+    \item[Ventana de introducción] Esta primera ventana mostrará únicamente el logotipo de Dominous, situando al usuario
+            en contexto para iniciarlo en la ejecución del programa
+    \item[Ventana del menú principal] La ventana del menú principal muestra el menú de inicio de Dominous, en el que
+            el usuario podrá elegir entre las opciones más generales del juego, entre las que se encuentran:
+            \begin{itemize}
+                \item Partida clásica
+                \item Laboratorio
+                \item Opciones
+                \item Tutorial
+                \item Salir
+            \end{itemize}
+            Este menú y los siguientes que se describan serán completamente manejados por el ratón y bastará
+            un clic encima de una opción para acceder a ella.
+    \item[Ventana de selección de personaje] Esta ventana mostrará una interfaz que permite al usuario elegir los
+            diferentes participantes que se enfrentarán en la siguiente partida. En caso del modo laboratorio
+            se elegirán los cuatro jugadores, y en caso de partida clásica serán tres jugadores controlados por
+            el ordenador más el jugador humano
+    \item[Ventana de partida] Esta será la ventana principal de todo el juego. Mostrará una partida de dominó
+            de dos equipos, el tablero e información de la partida
+\end{description}
+
 \subsection{Requisitos funcionales}
 \subsection{Requisitos de rendimiento}
 \subsection{Requisitos del sistema software}
@@ -19,5 +53,6 @@ La aplicación debe cumplir con los siguientes requisitos de sistema:
             \item En sistemas GNU/Linux --- Utilizando la distribución Ubuntu en su versión 10.04 con su instalación
                     por defecto y con todas las actualizaciones del sistema
         \end{itemize}
-    \item Lorem ipsum
+    \item El código de la aplicación no debe ser dependiente del sistema operativo en el que se desarrolle la aplicación,
+            y debe ser un código mantenible y fácilmente ampliable para futuras mejoras y versiones
 \end{itemize}
