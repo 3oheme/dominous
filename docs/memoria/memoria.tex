@@ -34,9 +34,9 @@
 
 % Renombramos las figuras y las tablas
 \renewcommand{\figurename}{Figura}
-\renewcommand{\listfigurename}{Indice de figuras}
+\renewcommand{\listfigurename}{Índice de figuras}
 \renewcommand{\tablename}{Tabla}
-\renewcommand{\listtablename}{Indice de tablas}
+\renewcommand{\listtablename}{Índice de tablas}
 
 \pagestyle{empty}
 \input{portada.tex}
@@ -83,14 +83,13 @@
 
 \backmatter % Apéndices, bibliografia ...
 
+\appendix
 
-\clearpage
-\addcontentsline{toc}{chapter}{Bibliografia y referencias}
-\bibliographystyle{plain}
-\bibliography{bibliografia}
-
-\chapter{Apéndice1}
+\chapter{Manual de instalación}
 \input{apendice1.tex}
+
+\chapter{Manual de usuario}
+\input{apendice2.tex}
 
 \addcontentsline{toc}{chapter}{Software usado}
 \chapter*{Software utilizado}
@@ -99,6 +98,11 @@
 \addcontentsline{toc}{chapter}{Instalación de \LaTeX}
 \chapter*{Instalación de \LaTeX}
 \input{instalacion.tex}
+
+\clearpage
+\addcontentsline{toc}{chapter}{Bibliografia y referencias}
+\bibliographystyle{plain}
+\bibliography{bibliografia}
 
 \input{fdl-1.3.tex}
 
