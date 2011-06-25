@@ -27,7 +27,7 @@ def load_config():
         config.add_section('Screen')
         config.set('Screen', 'window_width', '800')
         config.set('Screen', 'window_height', '600')
-        config.set('Screen', 'full_screen', 'false')
+        config.set('Screen', 'full_screen', 'False')
         config.set('Screen', 'window_favicon', os.path.join('images', 'favicon.png'))
         config.add_section('Theme')
         config.set('Theme', 'theme', 'spanish')
@@ -47,7 +47,7 @@ def load_config():
         'window_caption': config.get('General', 'window_caption'),
         'window_width': config.getint('Screen', 'window_width'),
         'window_height': config.getint('Screen', 'window_height'),
-        'full_screen': config.getboolean('Screen', 'full_screen'),
+        'full_screen': config.get('Screen', 'full_screen'),
         'window_favicon': config.get('Screen', 'window_favicon'),
         'tile_width': 525,
         'tile_height': 270,

@@ -81,5 +81,8 @@ if __name__ == '__main__':
     """ Dominous main game function """
     game = DominousGame(config['window_caption'])
     Gloss.screen_resolution = config['window_width'], config['window_height']
-    Gloss.full_screen = config['full_screen']
+    if config['full_screen'] == 'True':
+        Gloss.full_screen = 1
+    else:
+        Gloss.full_screen = 0
     game.run()

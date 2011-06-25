@@ -90,11 +90,16 @@ class Options2():
             self.str_options = "velocidad rapida"
         else:
             self.str_options = "velocidad extra rapida"
+        if config['full_screen'] == 'True':
+            self.str_full = 'Pantalla completa'
+        else:
+            self.str_full = 'Modo ventana'
         self.str_exit = "volver"
         self.fontsize1 = self.font_main.measure_string(self.str_quick_game)
         self.fontsize2 = self.font_main.measure_string(self.str_tournament)
         self.fontsize3 = self.font_main.measure_string(self.str_options)
         self.fontsize4 = self.font_main.measure_string(self.str_exit)
+        self.fontsize5 = self.font_main.measure_string(self.str_full)
         self.eggs = 0
         self.color = 1
             
@@ -109,7 +114,8 @@ class Options2():
         self.font_main.draw(self.str_quick_game, position = (self.position[0]-(self.fontsize1[0]/2), self.position[1]), color = Color(0.3, 0.3, 0.3, self.color))
         self.font_main.draw(self.str_tournament, position = (self.position[0]-(self.fontsize2[0]/2), self.position[1]+self.fontsize1[1]), color = Color(0.3, 0.3, 0.3, self.color))
         self.font_main.draw(self.str_options, position = (self.position[0]-(self.fontsize3[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]), color = Color(0.3, 0.3, 0.3, self.color))
-        self.font_main.draw(self.str_exit, position = (self.position[0]-(self.fontsize4[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50), color = Color(0.3, 0.3, 0.3, self.color))
+        self.font_main.draw(self.str_full, position = (self.position[0]-(self.fontsize5[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]), color = Color(0.3, 0.3, 0.3, self.color))
+        self.font_main.draw(self.str_exit, position = (self.position[0]-(self.fontsize4[0]/2), self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+self.fontsize5[1]+50), color = Color(0.3, 0.3, 0.3, self.color))
     def update(self):
         pass
     def hide(self):
@@ -149,18 +155,45 @@ class Options2():
                 config['speed'] = '1'
             self.fontsize3 = self.font_main.measure_string(self.str_options)
             return 10
+        elif (pos[0]>self.position[0]-self.fontsize5[0]/2 and pos[0]<self.position[0]+self.fontsize5[0]/2 and \
+            pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1] and pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+self.fontsize5[1]):
+            if self.str_full == 'Pantalla completa':
+                config['full_screen'] = 'False'
+                self.str_full = 'Modo ventana'
+                self.fontsize5 = self.font_main.measure_string(self.str_full)
+                return 10
+            else:
+                config['full_screen'] = 'True'
+                self.str_full = 'Pantalla completa'
+                self.fontsize5 = self.font_main.measure_string(self.str_full)
+                return 9
         elif (pos[0]>self.position[0]-self.fontsize4[0]/2 and pos[0]<self.position[0]+self.fontsize4[0]/2 and \
-            pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50 and pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50+self.fontsize4[1]):
+            pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+self.fontsize5[1]+50 and pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50+self.fontsize4[1]+self.fontsize5[1]):
             return 101
         else:
             return 10
 
+class Overlay():
+    def __init__(self):
+        self.position = (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2)
+        self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", 28, False, False, 32, 255)
+        self.text = "Para poder activar el modo de \npantalla completa debes salir \ny volver a ejecutar la aplicación \n \n                         aceptar"
+        self.fontsize = self.font_main.measure_string(self.text)
+    def draw(self):
+        Gloss.fill(top = Color(0,0,0,0.7), bottom = Color(0,0,0,9))
+        self.font_main.draw(self.text, position = (self.position[0]-(self.fontsize[0]/2), self.position[1]), color = Color(1, 1, 1, 1))
+    def update(self):
+        pass
+    def click(self, pos):
+        return 10
+       
 class Menu():
     def __init__(self, mainp):
         self.game = mainp
         self.box = Box()
         self.options1 = Options1()
         self.options2 = Options2()
+        self.overlay = Overlay()
         self.fadein = True
         self.fadein_amount = 0
         self.status = 1
@@ -180,6 +213,8 @@ class Menu():
             self.options2.draw()
         elif self.status == 2:
             self.options1.draw()
+        elif self.status == 9:
+            self.overlay.draw()
         elif self.status == 10:
             self.options2.draw()
         elif self.status == 101:
@@ -215,6 +250,9 @@ class Menu():
         # go to tutorial
         elif self.status == 3:
             self.game.goto_tutorial()
+        # show info overlay - restart program to have fullscreen
+        elif self.status == 9:
+            self.overlay.update()
         elif self.status == 10:
             self.eggs = 0
             self.options2.update()
@@ -248,5 +286,7 @@ class Menu():
     def events(self, event):
         if self.status == 1:
             self.status = self.options1.click(event.pos)
+        elif self.status == 9:
+            self.status = self.overlay.click(event.pos)
         elif self.status == 10:
             self.status = self.options2.click(event.pos)
