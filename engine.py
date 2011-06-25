@@ -337,7 +337,9 @@ class Tile(Sprite):
         self.goto_angle = rotation
         self.play_sound = sound
     def stopped(self):
-        if self.goto_pos == self.position and self.goto_angle == self.angle and self.scale == self.from_scale:
+        if (self.goto_pos[0]-self.position[0])<0.1 and (self.goto_pos[1]-self.position[1])<0.1 \
+            and self.goto_angle == self.angle and self.scale == self.from_scale:
+            self.position = self.goto_pos
             return True
         else:
             return False
@@ -783,11 +785,8 @@ class Engine:
             pass
        # Status = 102 - move tiles to center again
         elif self.status == 102:
-            if stopped(self.tiles):
+            if self.tiles['00'].stopped():
                 self.status = 2
-                print "si"
-            else:
-                print "no"
         # Status = 500 - show ingame menu
         elif self.status == 500:
             pass
@@ -851,7 +850,6 @@ class Engine:
             for tile in self.domino.players_tiles[3]:
                 self.tiles[tile].goto(((Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2)), 90, sound = False)
                 self.tiles[tile].reverse()
-            print "nos vamos a status 102"
             self.status = 102
         # ingame menu
         if self.status != 500 and self.status != 0 and self.status != 101 and event.pos[0] > 35 and event.pos[1] > 35 and event.pos[0] < 112 and event.pos[1] < 58:
