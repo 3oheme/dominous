@@ -160,13 +160,11 @@ class Options2():
             if self.str_full == 'Pantalla completa':
                 config['full_screen'] = 'False'
                 self.str_full = 'Modo ventana'
-                self.fontsize5 = self.font_main.measure_string(self.str_full)
-                return 10
             else:
                 config['full_screen'] = 'True'
                 self.str_full = 'Pantalla completa'
-                self.fontsize5 = self.font_main.measure_string(self.str_full)
-                return 9
+            self.fontsize5 = self.font_main.measure_string(self.str_full)
+            return 9
         elif (pos[0]>self.position[0]-self.fontsize4[0]/2 and pos[0]<self.position[0]+self.fontsize4[0]/2 and \
             pos[1]>self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+self.fontsize5[1]+50 and pos[1]<self.position[1]+self.fontsize1[1]+self.fontsize2[1]+self.fontsize3[1]+50+self.fontsize4[1]+self.fontsize5[1]):
             return 101
@@ -177,7 +175,7 @@ class Overlay():
     def __init__(self):
         self.position = (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2)
         self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", 28, False, False, 32, 255)
-        self.text = "Para poder activar el modo de \npantalla completa debes salir \ny volver a ejecutar la aplicación \n \n                         aceptar"
+        self.text = "Para poder intercambiar entre\nlos modos de pantalla completa\ny modo ventana debes salir y\nvolver a ejecutar la aplicacion \n\n                      aceptar"
         self.fontsize = self.font_main.measure_string(self.text)
     def draw(self):
         Gloss.fill(top = Color(0,0,0,0.7), bottom = Color(0,0,0,9))

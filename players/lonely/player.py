@@ -8,8 +8,8 @@ class Player:
         self.tiles = dealed_tiles
         self.player_position = "1"
         self.knowledge = []
-        self.knowledge.append(weight_matrix())
-        self.knowledge.append(put_anyone())
+        self.knowledge.append([weight_matrix()])
+        self.knowledge.append([put_anyone()])
 
     def human(self):
         return False

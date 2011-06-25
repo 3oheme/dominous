@@ -15,11 +15,11 @@ class AI:
                 item[0] == self.right_tile or item[1] == self.right_tile or self.left_tile == None:
                 tiles_i_can_put.append(item)
         
-        # si no podemos poner ninguna
+        # si no podemos poner ninguna pasamos y listo
         if len(tiles_i_can_put) == 0:
             return None, "pass", 0
             
-        # si podemos poner solo una
+        # si podemos poner solo una la ponemos y listo
         elif len(tiles_i_can_put) == 1:
             item = tiles_i_can_put[0]
             if item[0] == self.left_tile or item[1] == self.left_tile:
@@ -31,11 +31,19 @@ class AI:
                 
         # si podemos poner varias, usamos la IA
         else:
-            for step in knowledge:
-                tile, side, mtime = step.go(self.left_tile, self.right_tile, self.board, self.tiles, self.log)
-                if tile != None:
-                    return tile, side, mtime
-                    break
+            for priority in knowledge:
+                if len(priority) > 1:
+                    iterator = random.sample(range(0, len(priority)), len(priority))
+                    for step in iterator:
+                        tile, side, mtime = priority[step].go(self.left_tile, self.right_tile, self.board, self.tiles, self.log)
+                        if tile != None:
+                            return tile, side, mtime
+                            break
+                else:
+                    tile, side, mtime = priority[0].go(self.left_tile, self.right_tile, self.board, self.tiles, self.log)
+                    if tile != None:
+                        return tile, side, mtime
+                        break
         return None, "pass", 0
 
 class put_anyone:

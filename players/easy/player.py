@@ -9,8 +9,8 @@ class Player:
     def __init__(self, dealed_tiles):
         self.tiles = dealed_tiles
         self.knowledge = []
-        self.knowledge.append(put_any_double())
-        self.knowledge.append(put_anyone())
+        self.knowledge.append([put_any_double()])
+        self.knowledge.append([put_anyone()])
         self.player_position = "1" # player_pos = 1 - Player that starts this hand
                                    #              2 - Second player
                                    #              3 - Third player, plays with player 1
