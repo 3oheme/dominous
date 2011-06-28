@@ -125,4 +125,37 @@ obtenemos el siguiente listado:
         \end{itemize}
 \end{enumerate}
 
+Por otro lado, para gestionar toda la documentación del proyecto se decidió utilizar las siguientes herramientas:
+\begin{itemize}
+    \item \LaTeX\ para escribir la memoria, ya que es una forma robusta y fiable de escribir una memoria para
+            un Proyecto Fin de Carrera, descartándose otras posibles opciones por no ser adecuadas para la escritura
+            de un documento de estas características
+    \item Doxygen para la documentación del código fuente, porque además de documentar de manera sencilla y fácil
+            de leer el mismo código fuente, genera una documentación en diferentes formatos. Además,
+        \begin{itemize}
+            \item Doxygen funciona con lenguajes como C++, C, Java, Objective-C, Python, Fortran, VHDL, PHP o C#
+                    (entre otros), por lo que se puede acomodar a nuestras necesidades. Incluso existe una
+                    herramienta llamada \textbf{Doxypy} que nos permite reutilizar los comentarios \emph{tipo Python}
+                    y adaptarlos a Doxygen, con lo cual ahorramos trabajo y cumplimos con la normativa
+                    de código Python
+        \end{itemize}
+\end{itemize}
 
+
+\subsection{Organización de las partes básicas de la aplicación}
+
+Después de analizar minuciosamente los requisitos de la aplicación, se decidió atacar al grueso de la misma,
+es decir, la gestión de una partida de dominó en sí, y se estimó que esta debería dividirse en los siguientes
+apartados:
+\begin{description}
+    \item[Subsistema de gestión de la partida] Este subsistema se encarga de gestionar todo lo relacionado
+            con el control de la partida que se desarrolla actualmente. Desde el conteo de puntos por parte
+            de cada equipo hasta las fichas de cada jugador, pasando por comprobaciones de que la partida
+            se desarrolla con normalidad y no se producen violaciones de las reglas y normas, barajar las
+            fichas, comprobar que se cierra la partida o pedir fichas a los diferentes jugadores.
+    \item[Subsistema gráfico] Su labor es mostrar por pantalla la información que controla el subsistema
+            de gestión de la partida. Debe dibujar en la pantalla el tablero con las fichas colocadas
+            actualmente, las fichas de cada jugador, los puntos de cada equipo y demás información que
+            sea necesario mostrar.
+    \item[Subsistema de Inteligencia Artificial] Este apartado se encarga de 
+\end{itemize}
