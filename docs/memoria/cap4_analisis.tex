@@ -2,9 +2,10 @@
 
 \section{Toma de requisitos}
 
-En el desarrollo de esta aplicación la toma de requisitos se hizo mediante reuniones con el director del proyecto,
+En el desarrollo de esta aplicación la toma de requisitos se hizo mediante reuniones con el tutor del proyecto,
 que realizaba el papel de cliente potencial de la misma. Después de varias reuniones se obtuvo el listado de requisitos
 que se muestra en las siguientes secciones:
+
 
 \subsection{Requisitos de interfaces externas}
 
@@ -50,8 +51,55 @@ continuación se definen las distintas ventanas con las que el usuario se puede 
             más sobre el mundo del dominó sin necesidad de salir de la aplicación.
 \end{description}
 
+
 \subsection{Requisitos funcionales}
+
+Los requisitos funcionales que el sistema debe ofrecer al usuario son los siguientes:
+\begin{itemize}
+    \item Poder jugar una partida de dominó con tres jugadores más controlados por el ordenador.
+    \item Enfrentar a dos parejas de jugadores controlados por ordenador, haciendo que jueguen un gran número
+            de partidas seguidas en modo automático (esto es, sin visualizar la partida que se desarrolla y
+            mostrando únicamente las victorias), con la finalidad de poder decidir qué pareja posee una
+            inteligencia artificial más avanzada.
+    \item Acceder al modo tutorial, para realizar un aprendizaje de las normas, técnicas y usos del dominó.
+    \item Cambiar el tipo de juego para que cuatro jugadores manejados por la máquina puedan desarrollar una
+            partida en modo visual.
+    \item Seleccionar otro tema gráfico para que, tanto fichas como tablero como otros elementos gráficos, cambien
+            a gusto del usuario, eligiendo entre cierto abanico de temas.
+    \item Cambiar de modo ventana a modo pantalla completa.
+\end{itemize}
+
+
 \subsection{Requisitos de rendimiento}
+
+El rendimiento de la aplicación debe ser tal que permita un desempeño agradable de la partida. Este requisito
+hace referencia principalmente a los siguientes asuntos:
+\begin{itemize}
+    \item El sistema de inteligencia artificial debe ser lo suficientemente ágil y estar ajustado y
+            perfeccionado para que los tiempos empleados en cálculos de toma de decisiones no ralenticen
+            la partida. Se cuenta como asunto el que, en el desarrollo de una partida de dominó, los tiempos de
+            espera también se interpretan, por lo que debemos realizar los cálculos dentro de un cierto
+            margen de tiempo.
+    \item Por otro lado, el motor gráfico debe estar optimizado para que el usuario no aprecie movimientos
+            bruscos a la hora de manejar la aplicación. No olvidemos que estamos desarrollando un videojuego,
+            así que el programa debe mostrar cierta agilidad a la hora de realizar movimientos y transiciones
+            entre los diferentes estados de la partida, incluyendo menús, fichas, o asuntos relativos a la
+            interfaz, como puede ser el arrastrar una ficha a su lugar correspondiente.
+\end{itemize}
+
+Es importante recordar en todo momento que estamos desarrollando una aplicación en tiempo real, por lo que
+debe primar la velocidad sobre otros factores como el consumo de memoria principal.
+
+
+\subsection{Restricciones de diseño}
+Como bien comentábamos en el punto anterior, a la hora de realizar el diseño de la aplicación tienen que
+primar los tiempos de respuesta sobre el consumo de recursos de la memoria principal o secundaria. Esta
+es la principal restricción que tendrá el diseño de nuestra aplicación.\\
+
+Los videojuegos están pensados para ejecutarse como aplicación principal, no para compartir recurssos
+con otros programas; por esta razón se permite que consuman muchos recursos.
+
+
 \subsection{Requisitos del sistema software}
 
 La aplicación debe cumplir con los siguientes requisitos de sistema:
