@@ -155,7 +155,7 @@ un usuario que no sea experto.
     \item[Caso de uso] Menú principal
     \item[Descripción] Se muestra el menú principal de la aplicación, desde donde es posible acceder a los
         diferentes modos de juego y a las opciones.
-    \item[Actores] Usuario, Sistema
+    \item[Actores] Usuario
     \item[Precondiciones] Ninguna
     \item[Postcondiciones] Ninguna
     \item[Escenario principal]
@@ -166,17 +166,37 @@ un usuario que no sea experto.
         \end{enumerate}
     \item[Extensiones --- flujo alternativo] $\quad$
         \begin{description}
-            \item[1a ] Lorem ipsum dolor
-            \item[2a ] Lorem ipsum dolor
-            \item[3a ] Lorem ipsum dolor
-            \item[3b ] Lorem ipsum dolor
+            \item[*a ] El usuario cierra la ventana de la aplicación y sale de la aplicación
+            \item[2a ] El usuario pulsa sobre el botón de laboratorio, dirigiéndose a ese apartado de la aplicación
+            \item[2b ] El usuario pulsa el botón de tutorial, dirigiéndose a ese apartado de la aplicación
+            \item[2c ] El usuario pulsa sobre las opciones, dirigiéndose a ese apartado de la aplicación
+            \item[2d ] El usuario pulsa sobre el botón de salir, cerrándose la aplicación
         \end{description}
-    
+   
 \end{description}
 
 \subsubsection{Caso de uso: Salir}
 
-
+\begin{description}
+    \item[Caso de uso] Salir
+    \item[Descripción] Primeramente se muestra la pantalla de información de la aplicación --- con más datos
+            sobre desarrolladores, licencias y cualquier otra información que pueda resultar de interés para
+            el usuario.
+    \item[Actores] Usuario.
+    \item[Precondiciones] Ninguna.
+    \item[Postcondiciones] Se sale de la aplicación.
+    \item[Escenario principal]
+        \begin{enumerate}
+            \item El sistema muestra la pantalla de información
+            \item El usuario pulsa sobre cualquier lugar de la aplicación
+            \item La aplicación se cierra
+        \end{enumerate}
+    \item[Extensiones --- flujo alternativo] $\quad$
+        \begin{description}
+            \item[*a ] El usuario cierra la ventana de la aplicación y sale de la aplicación
+        \end{description}
+\end{description}
+ 
 
 \subsubsection{Caso de uso: Partida simple}
 \subsubsection{Caso de uso: Laboratorio}
