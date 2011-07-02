@@ -24,7 +24,7 @@ class Options1():
     def __init__(self):
         self.position = (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2)
         self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", 38, False, False, 32, 255)
-        self.str_quick_game = "partida rapida"
+        self.str_quick_game = "partida simple"
         self.str_tournament = "laboratorio"
         self.str_tutorial = "tutorial"
         self.str_options = "opciones"
