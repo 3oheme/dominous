@@ -137,7 +137,7 @@ El esquema utilizado es el siguiente:
 \begin{figure}[h]
   \label{diagrama-casos-uso}
   \begin{center}
-    \includegraphics[scale=0.5]{diagrama_casos_de_uso.png}
+    \includegraphics[scale=0.7]{diagrama_casos_de_uso.png}
   \end{center}
   \caption{Diagrama de casos de uso del sistema}
 \end{figure}
@@ -145,7 +145,40 @@ El esquema utilizado es el siguiente:
 
 \subsection{Descripción de los casos de uso}
 
-Ut vel urna a mi pretium dignissim. Donec facilisis mi at nunc faucibus vulputate. Integer erat
-turpis, congue et viverra et, commodo nec ipsum. Integer a laoreet tellus. Proin commodo, neque
-a volutpat cursus, lectus neque consectetur sem, eget auctor ante elit non dolor. Morbi eget
-nibh at tortor faucibus malesuada et nec erat. Pellentesque in adipiscing purus.
+A continuación pasamos a la descripción de los casos de uso. Para ello se va a utilizar una notación formal
+usando plantillas, con la intención y finalidad de que este texto sea legible y comprensible por
+un usuario que no sea experto.
+
+\subsubsection{Caso de uso: Menú principal}
+
+\begin{description}
+    \item[Caso de uso] Menú principal
+    \item[Descripción] Se muestra el menú principal de la aplicación, desde donde es posible acceder a los
+        diferentes modos de juego y a las opciones.
+    \item[Actores] Usuario, Sistema
+    \item[Precondiciones] Ninguna
+    \item[Postcondiciones] Ninguna
+    \item[Escenario principal]
+        \begin{enumerate}
+            \item El sistema muestra el menú principal del juego en la pantalla
+            \item El usuario selecciona el modo \textbf{partida simple}
+            \item El sistema inicia el modo de elección de jugadores
+        \end{enumerate}
+    \item[Extensiones --- flujo alternativo] $\quad$
+        \begin{description}
+            \item[1a ] Lorem ipsum dolor
+            \item[2a ] Lorem ipsum dolor
+            \item[3a ] Lorem ipsum dolor
+            \item[3b ] Lorem ipsum dolor
+        \end{description}
+    
+\end{description}
+
+\subsubsection{Caso de uso: Salir}
+
+
+
+\subsubsection{Caso de uso: Partida simple}
+\subsubsection{Caso de uso: Laboratorio}
+\subsubsection{Caso de uso: Opciones}
+\subsubsection{Caso de uso: Selección de personaje}
