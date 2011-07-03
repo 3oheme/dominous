@@ -158,7 +158,7 @@ un usuario que no sea experto.
     \item[Actores] Usuario
     \item[Precondiciones] Ninguna
     \item[Postcondiciones] Ninguna
-    \item[Escenario principal]
+    \item[Escenario principal] $\quad$
         \begin{enumerate}
             \item El sistema muestra el menú principal del juego en la pantalla
             \item El usuario selecciona el modo \textbf{partida simple}
@@ -185,7 +185,7 @@ un usuario que no sea experto.
     \item[Actores] Usuario.
     \item[Precondiciones] Ninguna.
     \item[Postcondiciones] Se sale de la aplicación.
-    \item[Escenario principal]
+    \item[Escenario principal] $\quad$
         \begin{enumerate}
             \item El sistema muestra la pantalla de información.
             \item El usuario pulsa sobre cualquier lugar de la aplicación.
@@ -209,7 +209,7 @@ un usuario que no sea experto.
     \item[Actores] Usuario.
     \item[Precondiciones] Ninguna.
     \item[Postcondiciones] Se jugará una partida de \textbf{Dominous}
-    \item[Escenario principal]
+    \item[Escenario principal] $\quad$
         \begin{enumerate}
             \item El usuario desea jugar una partida.
             \item El usuario selecciona la opción de menú \textbf{partida simple}.
@@ -244,7 +244,7 @@ un usuario que no sea experto.
     \item[Precondiciones] Ninguna.
     \item[Postcondiciones] Se realizará una competición a 100 partidas, cada partida jugada a 200 puntos, enfrentando
             a las dos parejas de jugadores seleccionados previamente.
-    \item[Escenario principal]
+    \item[Escenario principal] $\quad$
         \begin{enumerate}
             \item El usuario desea acceder al modo laboratorio.
             \item El usuario selecciona la opción de menú \textbf{laboratorio}.
@@ -279,7 +279,7 @@ un usuario que no sea experto.
     \item[Precondiciones] Ninguna.
     \item[Postcondiciones] Se cambian las opciones que se desean modificar por parte del usuario, y se vuelve
             de nuevo al menú principal.
-    \item[Escenario principal]
+    \item[Escenario principal] $\quad$
         \begin{enumerate}
             \item El usuario desea acceder y cambiar las opciones del juego.
             \item El usuario selecciona la opción de menú \textbf{opciones}.
@@ -319,34 +319,30 @@ un usuario que no sea experto.
 
 \begin{description}
     \item[Caso de uso] Selección de personaje.
-    \item[Descripción] El usuario pulsa el botón partida simple con la intención de comenzar una partida
-            de dominó con las opciones por defecto, esto es, jugando por parejas con tres jugadores más
-            controlados por el ordenador. El usuario selecciona su pareja de equipo y sus dos adversarios, y
-            da comienzo la partida
+    \item[Descripción] El usuario desea seleccionar los jugadores que participarán en el siguiente juego
+            a desarrollar, ya sea \textbf{partida simple} o modo \textbf{laboratorio}.
     \item[Actores] Usuario.
-    \item[Precondiciones] Ninguna.
-    \item[Postcondiciones] Se jugará una partida de \textbf{Dominous}
-    \item[Escenario principal]
+    \item[Precondiciones] El usuario ha pulsado previamente una de estas dos opciones del menú principal:
+            \textbf{partida simple} o modo \textbf{laboratorio}.
+    \item[Postcondiciones] Se guardará en configuración los jugadores seleccionados por el usuario para el
+            posterior desarrollo del juego.
+    \item[Escenario principal] $\quad$
         \begin{enumerate}
-            \item El usuario desea jugar una partida.
-            \item El usuario selecciona la opción de menú \textbf{partida simple}.
-            \item \texttt{include} \textsc{selección de jugadores}.
-            \item El sistema inicializa y muestra la partida actual por pantalla
-            \item Por cada mano que se desarrolle:
-                \begin{enumerate}
-                    \item El usuario y el sistema interactúan durante la partida.
-                    \item El sistema muestra quién ha ganado la mano.
-                \end{enumerate}
-            \item El sistema muestra quién ha ganado al final de la partida.
-            \item El sistema cierra la partida y muestra de nuevo el menú principal.
+            \item El usuario debe seleccionar los personajes que participarán en el juego
+            \item El sistema muestra los jugadores actuales.
+            \item El usuario selecciona los personajes que jugarán la partida o partidas siguientes.
+            \item El usuario está satisfecho con su elección y pulsa el botón de jugar.
+            \item El sistema guarda la información de los jugadores seleccionados.
+            \item El sistema pasa al siguiente paso, que puede ser \textbf{partida simple} o modo
+                    \textbf{laboratorio}, dependiendo del estado de la precondición.
         \end{enumerate}
     \item[Extensiones --- flujo alternativo] $\quad$
         \begin{description}
             \item[*a ] El usuario cierra la ventana de la aplicación y sale de la aplicación.
-            \item[2a ] El usuario pulsa sobre cualquier otra opción del menú que no sea la de realizar una
-                    partida simple --- se rompe el flujo y se redirige al usuario a la opción elegida. 
-            \item[5a ] El usuario pulsa el botón de menú y pulsa en salir de la partida. Se termina la partida
-                    actual y se vuelve al menú principal.
+            \item[*b ] El usuario pulsa el botón de volver, con lo que se retorna al menú principal.
+            \item[3a ] El usuario pulsa sobre cada jugador, con la intención de seleccionar aquellos que
+                    jugarán la partida o partidas siguientes. A cada pulsación, el sistema mostrará el
+                    siguiente jugador existente en el sistema, de forma cíclica.
         \end{description}
 \end{description}
 
