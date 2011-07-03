@@ -178,7 +178,7 @@ un usuario que no sea experto.
 \subsubsection{Caso de uso: Salir}
 
 \begin{description}
-    \item[Caso de uso] Salir
+    \item[Caso de uso] Salir.
     \item[Descripción] Primeramente se muestra la pantalla de información de la aplicación --- con más datos
             sobre desarrolladores, licencias y cualquier otra información que pueda resultar de interés para
             el usuario.
@@ -187,18 +187,121 @@ un usuario que no sea experto.
     \item[Postcondiciones] Se sale de la aplicación.
     \item[Escenario principal]
         \begin{enumerate}
-            \item El sistema muestra la pantalla de información
-            \item El usuario pulsa sobre cualquier lugar de la aplicación
-            \item La aplicación se cierra
+            \item El sistema muestra la pantalla de información.
+            \item El usuario pulsa sobre cualquier lugar de la aplicación.
+            \item La aplicación se cierra.
         \end{enumerate}
     \item[Extensiones --- flujo alternativo] $\quad$
         \begin{description}
-            \item[*a ] El usuario cierra la ventana de la aplicación y sale de la aplicación
+            \item[*a ] El usuario cierra la ventana de la aplicación y sale de la aplicación.
         \end{description}
 \end{description}
  
 
 \subsubsection{Caso de uso: Partida simple}
+
+\begin{description}
+    \item[Caso de uso] Partida simple.
+    \item[Descripción] El usuario pulsa el botón partida simple con la intención de comenzar una partida
+            de dominó con las opciones por defecto, esto es, jugando por parejas con tres jugadores más
+            controlados por el ordenador. El usuario selecciona su pareja de equipo y sus dos adversarios, y
+            da comienzo la partida
+    \item[Actores] Usuario.
+    \item[Precondiciones] Ninguna.
+    \item[Postcondiciones] Se jugará una partida de \textbf{Dominous}
+    \item[Escenario principal]
+        \begin{enumerate}
+            \item El usuario desea jugar una partida.
+            \item El usuario selecciona la opción de menú \textbf{partida simple}.
+            \item \texttt{include} \textsc{selección de jugadores}.
+            \item El sistema inicializa y muestra la partida actual por pantalla
+            \item Por cada mano que se desarrolle:
+                \begin{enumerate}
+                    \item El usuario y el sistema interactúan durante la partida.
+                    \item El sistema muestra quién ha ganado la mano.
+                \end{enumerate}
+            \item El sistema muestra quién ha ganado al final de la partida.
+            \item El sistema cierra la partida y muestra de nuevo el menú principal.
+        \end{enumerate}
+    \item[Extensiones --- flujo alternativo] $\quad$
+        \begin{description}
+            \item[*a ] El usuario cierra la ventana de la aplicación y sale de la aplicación.
+            \item[2a ] El usuario pulsa sobre cualquier otra opción del menú que no sea la de realizar una
+                    partida simple --- se rompe el flujo y se redirige al usuario a la opción elegida. 
+            \item[5a ] El usuario pulsa el botón de menú y pulsa en salir de la partida. Se termina la partida
+                    actual y se vuelve al menú principal.
+        \end{description}
+\end{description}
+
 \subsubsection{Caso de uso: Laboratorio}
+
+\begin{description}
+    \item[Caso de uso] Laboratorio
+    \item[Descripción] El usuario desea realizar pruebas y análisis sobre las diferentes habilidades de cada jugador
+            controlado por la Inteligencia Artificial del programa, enfrentando a dos equipos de jugadores a un alto
+            número de partidas, y calculando el mejor equipo según el número de victorias alcanzadas.
+    \item[Actores] Usuario.
+    \item[Precondiciones] Ninguna.
+    \item[Postcondiciones] Se realizará una competición a 100 partidas, cada partida jugada a 200 puntos, enfrentando
+            a las dos parejas de jugadores seleccionados previamente.
+    \item[Escenario principal]
+        \begin{enumerate}
+            \item El usuario desea acceder al modo laboratorio.
+            \item El usuario selecciona la opción de menú \textbf{laboratorio}.
+            \item \texttt{include} \textsc{selección de jugadores}.
+            \item El sistema comienza con los enfrentamientos entre ambas parejas
+            \item El sistema finaliza los enfrentamientos y destaca al equipo ganador
+            \item El sistema cierra el modo laboratorio y muestra de nuevo el menú principal.
+        \end{enumerate}
+    \item[Extensiones --- flujo alternativo] $\quad$
+        \begin{description}
+            \item[*a ] El usuario cierra la ventana de la aplicación y sale de la aplicación.
+            \item[*b ] El usuario pulsa el botón de salir del modo laboratorio y se vuelve al menú principal.
+            \item[2a ] El usuario pulsa sobre cualquier otra opción del menú que no sea la de realizar una
+                    partida simple --- se rompe el flujo y se redirige al usuario a la opción elegida.
+            \item[4a ] El usuario pulsa el botón de pausa --- se realiza una pausa en el desarrollo de las
+                    partidas, hasta el momento en el que el usuario vuelve a pulsar el botón de pausa y se
+                    reanudan los enfrentamientos
+            \item[4b ] El usuario pulsa el botón de reiniciar --- se resetean a cero los contadores de partidas,
+                    puntos y cualquier otra estadística sobre la que se realice el conteo, y se comienza a
+                    desarrollar de nuevo un nuevo conjunto de enfrentamientos.
+            \item[6a ] El usuario pulsa el botón de salir del modo laboratorio y se vuelve al menú principal.
+        \end{description}
+\end{description}
+
 \subsubsection{Caso de uso: Opciones}
+
+\begin{description}
+    \item[Caso de uso] Opciones
+    \item[Descripción] El usuario decide cambiar alguna elemento de la configuración con la que se desarrollan
+            las partidas y que modifican el comportamiento transversal de la aplicación.
+    \item[Actores] Usuario.
+    \item[Precondiciones] Ninguna.
+    \item[Postcondiciones] Se cambian las opciones que se desean modificar por parte del usuario, y se vuelve
+            de nuevo al menú principal.
+    \item[Escenario principal]
+        \begin{enumerate}
+            \item El usuario desea acceder al modo laboratorio.
+            \item El usuario selecciona la opción de menú \textbf{laboratorio}.
+            \item El sistema comienza con los enfrentamientos entre ambas parejas
+            \item El sistema finaliza los enfrentamientos y destaca al equipo ganador
+            \item El sistema cierra el modo laboratorio y muestra de nuevo el menú principal.
+        \end{enumerate}
+    \item[Extensiones --- flujo alternativo] $\quad$
+        \begin{description}
+            \item[*a ] El usuario cierra la ventana de la aplicación y sale de la aplicación.
+            \item[*b ] El usuario pulsa el botón de salir del modo laboratorio y se vuelve al menú principal.
+            \item[2a ] El usuario pulsa sobre cualquier otra opción del menú que no sea la de realizar una
+                    partida simple --- se rompe el flujo y se redirige al usuario a la opción elegida.
+            \item[4a ] El usuario pulsa el botón de pausa --- se realiza una pausa en el desarrollo de las
+                    partidas, hasta el momento en el que el usuario vuelve a pulsar el botón de pausa y se
+                    reanudan los enfrentamientos
+            \item[4b ] El usuario pulsa el botón de reiniciar --- se resetean a cero los contadores de partidas,
+                    puntos y cualquier otra estadística sobre la que se realice el conteo, y se comienza a
+                    desarrollar de nuevo un nuevo conjunto de enfrentamientos.
+            \item[6a ] El usuario pulsa el botón de salir del modo laboratorio y se vuelve al menú principal.
+        \end{description}
+\end{description}
+
+
 \subsubsection{Caso de uso: Selección de personaje}
