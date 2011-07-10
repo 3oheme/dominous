@@ -360,7 +360,7 @@ relaciones de integridad.
 En este apartado se presenta una lista de las principales clases que formarán parte del sistema y una pequeña
 descripción sobre la labor que desempeña cada una.
 
-\begin{itemize}
+\begin{description}
     \item[AI]
     \item[Config]
     \item[Dominoes]
@@ -375,7 +375,7 @@ descripción sobre la labor que desempeña cada una.
     \item[Sound]
     \item[Tools]
     \item[Tutorial]
-\end{itemize}
+\end{description}
 
 Y en la siguiente imagen podemos observar el diagrama de clase asociado a los requisitos obtenidos.
 
@@ -399,21 +399,21 @@ engloba a todos los objetos, y el modelo consta de dos partes:
         del sistema.
 \end{itemize}
 
-\subsubsection{Modelo de comportamiento menú principal}
+\subsubsection{Modelo de comportamiento partida simple}
 
 \begin{figure}[h]
   \label{diagrama_clases}
   \begin{center}
-    \includegraphics[scale=0.7]{diagrama_clases.png}
+    \includegraphics[scale=0.7]{diagrama_clases_partida.png}
   \end{center}
-  \caption{Diagrama de secuencia para el caso de uso Menú principal}
+  \caption{Diagrama de secuencia para el caso de uso Partida simple}
 \end{figure}
 
 \textbf{Contrato de operaciones}
 \begin{description}
-    \item[Operación]
+    \item[Operación] Menú principal
     \item[Actores] Usuario, sistema 
-    \item[Responsabilidades]
+    \item[Responsabilidades] Seleccionar los personajes que intervendrán en la partida actual
     \item[Precondiciones] Ninguna
-    \item[Postcondiciones] Ninguna
+    \item[Postcondiciones] Selección de personajes para la partida, comienzo de partida
 \end{description}
