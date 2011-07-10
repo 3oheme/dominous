@@ -360,7 +360,7 @@ relaciones de integridad.
 En este apartado se presenta una lista de las principales clases que formarán parte del sistema y una pequeña
 descripción sobre la labor que desempeña cada una.
 
-\begin{description}
+\begin{itemize}
     \item[AI]
     \item[Config]
     \item[Dominoes]
@@ -375,4 +375,45 @@ descripción sobre la labor que desempeña cada una.
     \item[Sound]
     \item[Tools]
     \item[Tutorial]
+\end{itemize}
+
+Y en la siguiente imagen podemos observar el diagrama de clase asociado a los requisitos obtenidos.
+
+\begin{figure}[h]
+  \label{diagrama_clases}
+  \begin{center}
+    \includegraphics[scale=0.7]{diagrama_clases.png}
+  \end{center}
+  \caption{Diagrama de clases para los requisitos obtenidos}
+\end{figure}
+
+
+\subsection{Modelo de comportamiento del sistema}
+
+El modelo de comportamiento define cómo debe actuar un sistema; este sistema a considerar es el que
+engloba a todos los objetos, y el modelo consta de dos partes:
+\begin{itemize}
+    \item El Diagrama de secuencias del sistema el cual muestra la secuencia de eventos entre los actores
+        y el sistema.
+    \item Los Contrato de las operaciones del sistema que describen el efecto que producen las operaciones
+        del sistema.
+\end{itemize}
+
+\subsubsection{Modelo de comportamiento menú principal}
+
+\begin{figure}[h]
+  \label{diagrama_clases}
+  \begin{center}
+    \includegraphics[scale=0.7]{diagrama_clases.png}
+  \end{center}
+  \caption{Diagrama de secuencia para el caso de uso Menú principal}
+\end{figure}
+
+\textbf{Contrato de operaciones}
+\begin{description}
+    \item[Operación]
+    \item[Actores] Usuario, sistema 
+    \item[Responsabilidades]
+    \item[Precondiciones] Ninguna
+    \item[Postcondiciones] Ninguna
 \end{description}
