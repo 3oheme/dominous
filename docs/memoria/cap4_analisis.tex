@@ -357,24 +357,34 @@ relaciones de integridad.
 
 \subsection{Diagrama de clases conceptuales}
 
-En este apartado se presenta una lista de las principales clases que formarán parte del sistema y una pequeña
-descripción sobre la labor que desempeña cada una.
+En este apartado se presenta una lista de las principales clases que formarán parte del sistema. Junto a
+cada nombre aparece una pequeña descripción sobre la labor que desempeña cada una, y la jerarquía se describe
+mediante la indentación de cada ítem del listado.
 
 \begin{description}
-    \item[AI]
-    \item[Config]
-    \item[Dominoes]
-    \item[Dominous]
-    \item[Engine]
-    \item[Finish]
-    \item[Gloss]
-    \item[Intro]
-    \item[Lab]
-    \item[Menu]
-    \item[Selectplayers]
-    \item[Sound]
-    \item[Tools]
-    \item[Tutorial]
+    \item[Juego] Clase global, que inicia todo el programa y controla el flujo entre unos apartados y otros.
+    \begin{description}
+        \item[Motor gráfico] Encargado de gestionar el apartado de la representación de la información por pantalla.
+        \begin{description}
+            \item[Ficha] Las fichas que utiliza el motor gráfico no son fichas lógicas, sino que simplemente se
+                emplean para colocarlas por pantalla y que el usuario pueda hacer un uso cómodo de la aplicación
+        \end{description}
+        \item[Partida] Se encarga de llevar el control de la partida a nivel lógico, vigilando que se cumplan
+                en todo momento las reglas de juego y guardando información detallada sobre toda la partida.
+        \begin{description}
+            \item[Tablero] El tablero contiene las fichas que ya se han colocado sobre la mesa.
+            \item[Ficha] Por otro lado, cada ficha es la unidad mínima para el transcurso del juego, pudiendo
+                encontrarse en manos de los jugadores o bien depositadas sobre la mesa.
+        \end{description}
+        \item[Inteligencia artificial] Su labor es hacer que los personajes desempeñados por la máquina realicen
+                jugadas y comportamientos simulando la inteligencia humana.
+        \begin{description}
+            \item[Reglas] Las reglas definen diferentes jugadas o estrategias.
+            \item[Jugadores] Los jugadores emplean reglas para participar en la partida.
+        \end{description}
+        \item[Música] Conjunto de músicas que amenizan la partida.
+        \item[Sonido] Efectos de sonido que añaden feedback al usuario de las acciones realizadas.
+    \end{description}
 \end{description}
 
 Y en la siguiente imagen podemos observar el diagrama de clase asociado a los requisitos obtenidos.
@@ -414,6 +424,25 @@ engloba a todos los objetos, y el modelo consta de dos partes:
     \item[Operación] Menú principal
     \item[Actores] Usuario, sistema 
     \item[Responsabilidades] Seleccionar los personajes que intervendrán en la partida actual
+    \item[Precondiciones] Ninguna
+    \item[Postcondiciones] Selección de personajes para la partida, comienzo de partida
+\end{description}
+
+\subsubsection{Modelo de comportamiento modo laboratorio}
+
+\begin{figure}[h]
+  \label{diagrama_clases}
+  \begin{center}
+    \includegraphics[scale=0.15]{diagrama_clases_partida.png}
+  \end{center}
+  \caption{Diagrama de secuencia para el caso de uso del modo laboratorio}
+\end{figure}
+
+\textbf{Contrato de operaciones}
+\begin{description}
+    \item[Operación] Menú principal
+    \item[Actores] Usuario, sistema
+    \item[Responsabilidades] Desarrollar un número elevado de partidas automatizadas
     \item[Precondiciones] Ninguna
     \item[Postcondiciones] Selección de personajes para la partida, comienzo de partida
 \end{description}
