@@ -76,7 +76,7 @@ de utilizar diferentes lenguajes de programación.\\
 
 \subsection{Lenguaje de programación}
 
-una vez que tocamos el tema de los lenguajes de programación, entra en escena la problemática sobre qué lenguaje
+Una vez que tocamos el tema de los lenguajes de programación, entra en escena la problemática sobre qué lenguaje
 utilizar. En principio se pensó emplear el lenguaje C++ por dos sencillas razones:
 
 \begin{enumerate}
@@ -124,7 +124,12 @@ obtenemos el siguiente listado:
 
 \subsection{Diseño y estilo visual de interfaces}
 
-El diseño visual 
+El diseño visual que se ha desarrollado para la interfaz se ha creado desde cero, buscando los siguientes objetivos:
+\begin{itemize}
+    \item Líneas sencillas, minimalistas, sin recargar innecesariamente la pantalla
+    \item Botones grandes, para que sea fácil de utilizar por usuarios de edad avanzada.
+    \item Textos con un punto de letra elevado, facilitando la rápida lectura y legibilidad del texto.
+\end{itemize}
 
 \begin{figure}[h]
   \label{interfaz}
@@ -133,13 +138,15 @@ El diseño visual
   \end{center}
   \caption{Diferentes elementos utilizados en la interfaz}
 \end{figure}
+
 \subsection{Documentación del código}
 
 Por otro lado, para gestionar toda la documentación del proyecto se decidió utilizar las siguientes herramientas:
 \begin{itemize}
     \item \LaTeX\ para escribir la memoria, ya que es una forma robusta y fiable de escribir una memoria para
             un Proyecto Fin de Carrera, descartándose otras posibles opciones por no ser adecuadas para la escritura
-            de un documento de estas características. Para facilitar la compilación dispone de la herramienta GNU Make~\cite{pdf:make}.
+            de un documento de estas características. Para facilitar la compilación dispone de la herramienta
+            GNU Make~\cite{pdf:make}.
     \item Doxygen para la documentación del código fuente, porque además de documentar de manera sencilla y fácil
             de leer el mismo código fuente, genera una documentación en diferentes formatos. Además,
         \begin{itemize}
@@ -160,7 +167,29 @@ Subversion permite llevar un control exahustivo de todos los ficheros e iteracio
 permitiendo volver a versiones anteriores de código, comprobar diferencias entre versiones o ficheros y cualquier otra
 operación propia de un sistema de control de versiones. \\
 
-Se evaluaron otros sistemas de control de versiones como GIT o CVS, pero se desecharon básicamente porque, por un lado,
-este proyecto cuenta únicamente con un desarrollador, y multitud de ventajas que ofrece GIT en este aspecto dejan de tener
-sentido, y por otro lado la integración de SVN con Rediris (con las ventajas de visualización de código y versiones
+Se evaluaron otros sistemas de control de versiones distribuidos como GIT, Bazaar o Mercurial, pero se desecharon
+básicamente porque, por un lado, este proyecto cuenta únicamente con un desarrollador, y multitud de ventajas que
+ofrecen los sistemas de control de versiones distribuidos dejan de tener sentido, si tenemos en cuenta esta circunstancia
+del proyecto, y por otro lado la integración de SVN con Rediris (con las ventajas de visualización de código y versiones
 que ofrece ViewCVS) decantaron la decisión sobre el lado de SVN.
+
+\section{Interfaz gráfica}
+
+Tomando los resultados obtenidos en la fase de análisis es necesario diseñar una interfaz gráfica amigable
+para el usuario y desde la cual se pueda interactuar con la aplicación. Para el diseño de las interfaces
+se intentará en todo momento que sean usables además de intentar conseguir que el usuario no pueda
+introducir datos erróneas para que no produzca comportamientos anómalos
+
+\subsection{Diagrama de interacción entre interfaces gráficas}
+
+En el siguiente diagrama podemos observar la interacción entre las distintas interfaces gráficas desarrolladas
+para la aplicación: \\
+
+\begin{figure}[h]
+  \label{diagrama_interaccion_interfaces}
+  \begin{center}
+    \includegraphics[scale=0.3]{diagrama_interfaces.png}
+  \end{center}
+  \caption{}
+\end{figure}
+
