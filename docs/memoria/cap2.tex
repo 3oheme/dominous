@@ -196,12 +196,83 @@ de la cara llevan un tornillito con cabeza redondeada, que es el que apoya en la
 el movimiento de las fichas cuando éstas han de ser movidas (barajadas), para que los participantes
 cojan sus fichas e inicien la jugada o la mano correspondiente. Tiene siete fichas denominadas
 dobles, por en sus medias partes de la cara la misma cantidad de puntitos, a excepción de la
-doble blanca, que no lleva ninguno”.
+doble blanca, que no lleva ninguno”. \\
 
 \subsection{Reglas básicas}
-\subsection{Estructura de una partida simple}
+
+Aunque las reglas del dominó son sencillas y conocidas por un gran conjunto de lectores, daremos una
+serie de pinceladas rápidas sobre las reglas más básicas, siempre recordando que estamos desarrollando
+una partida de dominó siguiendo las reglas de la modalidad \emph{Dominó Internacional}. \\
+
+El objetivo del juego es alcanzar una determinada puntuación previamente fijada, jugando para ello las
+manos o rondas que sean precisas. En el caso del Dominó Internacional, el número de puntos son 200. \\
+
+En esta modalidad se enfrentan dos equipos, cada uno formado por una pareja de jugadores dispuestos en
+la mesa de forma alternativa. \\
+
+Antes de empezar, las fichas se colocan boca abajo sobre la mesa y se revuelven para que los jugadores
+las recojan al azar en igual número cada uno. Cada jugador cogerá 7 fichas. La primera ronda la comenzará
+el jugador que posea el seis doble. En las siguientes rondas, empezará el jugador a la derecha del que
+empezó la ronda anterior. Podrá utilizar cualquier ficha, no tiene porqué ser doble. \\
+
+En su turno cada jugador colocará una de sus piezas con la restricción de que dos piezas sólo pueden
+colocarse juntas cuando los cuadrados adyacentes sean del mismo valor. Si un jugador no puede colocar
+ninguna ficha en su turno tendrá que pasar el turno al siguiente jugador. \\
+
+La mano continúa hasta que se da alguna de las dos situaciones:
+\begin{itemize}
+    \item Alguno de los jugadores se queda sin fichas por colocar en la mesa. En este caso el jugador se
+        dice que dominó la partida y la pareja ganadora sumará la totalidad de los puntos no jugados,
+        es decir, la suma de los puntos en las fichas que resten por jugar a ambas parejas.
+    \item En caso de cierre --- es decir, cuando a pesar de quedar fichas en juego ninguna pueda colocarse ---
+        ganará la pareja cuyas fichas sumen menos puntos. Esta situación solamente ocurre cuando el mismo número
+        está en ambos extremos del juego, y las siete fichas de ese número ya han sido jugadas. En este caso
+        gana la pareja/jugador que menos puntos tenga en sus fichas, y se le suman los puntos del perdedor al ganador.
+        Al igual que en el anterior caso, la pareja ganadora sumará la totalidad de los puntos no jugados,
+        es decir, la suma de todos los puntos en las fichas que resten por jugar a ambos equipos.
+\end{itemize}
+
+\begin{figure}[h]
+  \label{cierre}
+  \begin{center}
+    \includegraphics[scale=0.3]{cierre.png}
+  \end{center}
+  \caption{Ejemplo de partida terminada en cierre. Se han colocado todas las blancas, por lo que no es posible
+            que algún jugador continúe la partida}
+\end{figure}
+
+
+La partida finaliza una vez que un equipo ha alcanzado o superado los 200 puntos. \\
+
 \subsection{El dominó es un juego de señores}
+
+Una gran frase que resume la filosofía del Dominó es que \emph{el dominó es un juego de señores}. Esta frase
+viene a describir tanto la filosofía del juego como parte de las reglas que lo normalizan, y tendrá mucha
+repercusión en cuanto al diseño del sistema experto, por lo que que pasamos a explicarla a continuación. \\
+
+Durante el transcurso de una partida de dominó las parejas no pueden comunicar ningún tipo de información
+que pueda afectar al desarrollo normal de la partida, estando totalmente prohibidos cualquier tipo de gestos
+entre jugadores destinados a comunicar futuras intenciones, fichas o estrategias conjuntas. Pero existe
+una excepción a esta regla. \\
+
+La única seña o gesto válido en el juego del dominó es \emph{la pensada}. Cuando toca el turno de jugar, se tiene la
+opción de pensar durante un tiempo relativamente largo para hacerle entender al compañero que se tienen
+varias fichas del mismo número que va a tapar o que va a cuadrar. O por el contrario, jugar de inmediato,
+sin pensar, indica que no se tienen más fichas de ese número. \\
+
+Por lo tanto, a la hora de colocar una ficha sobre la mesa podemos --- aunque quizás tendríamos que decir que 
+debemos --- comunicar cierto tipo de información a todos los jugadores de la mesa. Esta información resulta
+tremendamente valiosa, y puede hacer que la partida se decante sobre un equipo o sobre el otro. \\
+
+Hemos re resaltar y aclarar que, como bien dicta la frase de que \emph{el dominó es un juego de señores},
+esta seña no puede utilizarse para confundir o engañar al contrario, y en los diferentes torneos o campeonatos
+de dominó supone la descalificación inmediata
+
+
 \subsection{Juego por parejas}
+
+El juego por parejas, a diferencia de otros tipos de 
+
 \subsection{Técnicas avanzadas}
 
 \section{Inteligencia artificial}
