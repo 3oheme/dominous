@@ -230,7 +230,85 @@ A continuación se muestra el diagrama de clases de diseño para \textbf{Dominou
 
 \section{Análisis de las principales clases de la aplicación}
 
-En este apartado realizaremos un repaso a las principales clases que intervienen en el diseño de \textbf{Dominous}
+En este apartado realizaremos un repaso a las principales clases que intervienen en el diseño de \textbf{Dominous},
+definiendo los métodos y atributos que se requieren para el correcto desarrollo de la aplicación y comentando
+todos los apartados cuya funcionalidad merezca ser destacada.
+
+\subsection{Clase dominous}
+
+La clase dominous genera el objeto principal que soporta el peso principal de toda la aplicación. Al inicio de la
+ejecución se crea un objeto de esta clase; este objeto va creando --- según las necesidades del flujo que tome
+la ejecución de la misma --- los diferentes objetos, controlando y dando paso a la interfaz activa, llamando a
+las principales funciones y permitiendo la captura de los eventos de entrada. \\
+
+Al igual que la gran mayoría de videojuegos, para el desarrollo de Dominous se han utilizado dos métodos principales
+que permiten controlar la aplicación en tiempo real. Estos dos métodos son:
+\begin{description}
+    \item[draw] El primer método se encarga de dibujar en pantalla todos los elementos de la interfaz. El funcionamiento
+        básico es recorrer todos los objetos activos y pintarlos según la posición, rotación y escala que tengan en
+        ese preciso momento. 
+    \item[update] El segundo método se ocupa de realizar los cálculos para el movimiento de los elementos gráficos. 
+        En cada iteración cambiará el estado de los objetos activos, modificando la imagen o los valores posición,
+        rotación y/o escala, estudiando las posibles colisiones, eventos y cualquier otra circunstancia que cambie
+        el estado de la aplicación, para que en el siguiente ciclo se dibujen los elementos en su posición correcta.
+\end{description}
+
+Una vez que este objeto principal toma el control de la aplicación, su función es llamar a los métodos \comando{draw}
+y \comando{update} del objeto encargado de la interfaz que estemos mostrando actualmente, de forma alternativa.
+
+Este juego de llamadas a ambos métodos se realizará hasta un máximo de 60 veces por segundo, dependiendo del rendimiento
+que se obtenga de los recursos del sistema. De esta forma conseguiremos un máximo de 60 frames o cuadros por segundo,
+que serán los encargados de generar la sensación de movimiento.
+
+Como vemos, el objeto de la clase dominous no realiza ningún dibujado en pantalla ni cálculos, sino que su único
+cometido es redireccionar el flujo de la aplicación al objeto correspondiente.
+
+\subsection{Clase dominoes\_game}
+
+La labor de esta clase es llevar el control de una partida completa de dominó, siguiendo las reglas del \textbf{dominó
+internacional}. Dependiendo de la configuración de la partida, creará los jugadores según la selección que se haya
+realizado en la pantalla de selección de personajes y comenzará con el bucle principal: \\
+
+Repartirá las fichas entre los diferentes participantes del juego e irá pidiendo fichas a los jugadores de forma
+consecutiva, hasta que se de alguna circunstancia de finalización de la mano. \\
+
+Este bucle se repetirá hasta que alguno de los dos equipos alcance o supere los 200 puntos, momento en el cual la partida
+se dará por finalizada. \\
+
+Esta clase también mantendrá activo y actualizado un fichero de log con toda la información generada en la partida. Esta
+información se utilizará más tarde en el apartado de inteligencia artificial, y almacenará los datos utilizando
+la siguiente estructura: \\
+
+Por un lado tenemos la información global de la partida: 
+
+\begin{description}
+    \item[date] Fecha de desarrollo de la partida.
+    \item[place] Lugar donde tuvo lugar la partida.
+    \item[max\_points] Límite superior de puntos necesarios para ganar el encuentro. Como se utilizan las reglas del
+        \textbf{dominó internacional}, esta cota estará situada en los doscientos puntos.
+    \item[player1] Datos del jugador 1.
+    \item[player2] Datos del jugador 2.
+    \item[player3] Datos del jugador 3.
+    \item[player4] Datos del jugador 4.
+    \item[team1] Pareja que forma el equipo 1.
+    \item[team2] Pareja que forma el equipo 2.
+    \item[points\_team1] Puntos actuales que tiene el equipo 1.
+    \item[points\_team2] Puntos actuales que tiene el equipo 2.
+    \item[winner\_team] Pareja que finalmente ha sido ganadora de la partida.
+\end{description}
+
+Y por otro lado tenemos información relativa a la mano que se está desarrollando actualmente. Esta información se repite
+por cada movimiento que se realice en la partida, y se agrupa por manos:
+
+\begin{description}
+    \item[player] Jugador que ha realizado el movimiento.
+    \item[tile] Ficha que ha colocado.
+    \item[side] Lado del tablero por donde ha colocado la ficha.
+    \item[left] Cifra, del cero al siete, que se tiene como resultante del movimiento por el lado izquierdo del tablero.
+    \item[right] Cifra, del cero al siete, que se tiene como resultante del movimiento por el lado derecho del tablero.
+    \item[mtime] Tiempo (en segundos) que ha estado pensando el jugador antes de colocar la ficha.
+\end{description}
+
 
 \section{Sistemas expertos}
 
