@@ -254,11 +254,11 @@ que permiten controlar la aplicación en tiempo real. Estos dos métodos son:
 \end{description}
 
 Una vez que este objeto principal toma el control de la aplicación, su función es llamar a los métodos \comando{draw}
-y \comando{update} del objeto encargado de la interfaz que estemos mostrando actualmente, de forma alternativa.
+y \comando{update} del objeto encargado de la interfaz que estemos mostrando actualmente, de forma alternativa. \\
 
 Este juego de llamadas a ambos métodos se realizará hasta un máximo de 60 veces por segundo, dependiendo del rendimiento
 que se obtenga de los recursos del sistema. De esta forma conseguiremos un máximo de 60 frames o cuadros por segundo,
-que serán los encargados de generar la sensación de movimiento.
+que serán los encargados de generar la sensación de movimiento. \\
 
 Como vemos, el objeto de la clase dominous no realiza ningún dibujado en pantalla ni cálculos, sino que su único
 cometido es redireccionar el flujo de la aplicación al objeto correspondiente.
@@ -312,4 +312,44 @@ por cada movimiento que se realice en la partida, y se agrupa por manos:
 
 \section{Sistemas expertos}
 
+En este apartado de la memoria requiere de una especial explicación, ya que a la hora de realizar un videojuego de
+dominó goza de gran importancia los diferentes sistemas expertos que participarán en la partida. Estos sistemas expertos,
+como bien su nombre indica, simulan el comportamiento de un ser humano experto en una materia, en este caso del juego
+de dominó, y su realismo debe hacer sentir al jugador humano que está desempeñando una partida real contra jugadores
+también humanos. \\
 
+Enfrentarse a una simulación de inteligencia artificial es una de las empresas más difíciles y complicadas pero a la
+vez placenteras y satisfactorias de abarcar en un proyecto de Ingeniería del Software. Los seres humanos utilizan
+multitud de métodos y herramientas para razonar y obtener soluciones a problemas concretos, y en muchas ocasiones
+este tipo de comportamientos son imposibles de simular, bien por la complejidad computacional que supone, bien por
+desconocimiento del funcionamiento exacto que sigue el cerebro para obtener esa solución, o bien por limitaciones de
+recursos, ya sea de disco, tiempo de desarrollo o metodologías que simulen ese comportamiento. \\
+
+Por otro lado, aunque el público neófito en la materia pueda suponer que el dominó es un juego de suerte, con un
+abanico muy corto de opciones de juego o con una libertad de movimientos muy limitada, nada más lejos de la realidad. \\
+
+El dominó es un juego muy profundo, con normas, técnicas y muchas dosis de psicología, un deporte que obliga al
+jugador a estar concentrado al cien por cien durante todo el desarrollo del juego, y un arte con una curva de
+aprendizaje poco escarpada, que permite que jugadores nóveles puedan adentrarse en el juego, pero que presenta
+mucha complicación convertirse en un gran jugador de dominó. \\
+
+Y, si estas razones que explican la complejidad del mismo no fueran suficientes, no hay más que echarle un vistazo
+a los torneos locales o de ámbitos más abiertos para descubrir que las parejas de grandes jugadores sabios y con
+una gran compenetración son los que suelen ganar, descartando de forma tajante la posibilidad de que sea la suerte
+la que empuje la balanza de la partida hacia un equipo u otro. \\
+
+A la hora de afrontar este problema, el primer paso fue empaparse de cultura y conocimiento sobre el dominó. Las
+principales herramientas que se utilizaron fueron:
+
+\begin{description}
+    \item[El Libro del dominó], de Benito Ruipérez \cite{mora90}, un libro ameno y profundo sobre el mundo del dominó,
+        con multitud de partidas explicadas movimiento a movimiento, trucos, ejemplos, técnicas básicas y avanzadas y
+        mucha información.
+    \item[Don Manuel Palomo Fernández de Bobadilla], jugador de dominó y participante en torneos durante más de cuarenta
+        años, con un gran conocimiento de técnicas y métodos de juego, mucha experiencia y una gran facilidad para
+        comunicar toda esa sabiduría y conocimiento.
+\end{description}
+
+Después de profundizar en el mundo del dominó, y tener cierto conocimiento sobre el mismo --- aunque nada comparado
+con el que pueden tener jugadores más experimentados de este juego --- podemos intentar definir las pautas sobre
+las que va a llevarse a cabo la simulación del sistema experto de dominó.
