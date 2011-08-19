@@ -313,27 +313,77 @@ Desde el punto de vista de un jugador concreto, las posibilidades son: \\
 
 \section{Inteligencia artificial}
 
-A la hora de afrontar un proyecto que simule cierto comportamiento \emph{humano}, debemos acercarnos a esa rama de la
-Informática llamada Inteligencia Artificial, en busca de herramientas, técnicas y metodologías que nos ayuden a afrontar este
-difícil problema, probablemente uno de los más complicados dentro de la Ingeniería Informática
+A la hora de afrontar un proyecto que simule cierto comportamiento \emph{humano}, debemos usar técnicas de Inteligencia Artificial, en busca de herramientas, técnicas y metodologías que nos ayuden a afrontar este
+difícil problema, probablemente uno de los más complicados dentro de la Ingeniería Informática.
 
 \subsection{Sistemas expertos}
 
-Para impregnar de inteligencia a los contrincantes de Dominous se utilizará un
+Para implementar la inteligencia de los contrincantes de Dominous se utilizará un
 \textbf{sistema experto}~\cite{Giarratano:1989:ESP:583478}.
-Los sistemas expertos son una rama de la Inteligencia Artificial, que se basa en imitar los mecanismos y la forma de
-pensar de un experto en cierta materia para resolver problemas de distinta índole.\\
+El desarrollo de sistemas expertos es una rama de la Inteligencia Artificial, que imita los mecanismos y la forma de
+pensar de un experto en cierta materia para resolver problemas de su campo de aplicación. Estos sistemas tiene un gran implantación en diversas ramas de la ciencia, como medicina, ingeniería o sistemas de decisiones para negocios.\\
 
-De los diversos tipos de sistemas expertos que existen~\cite{ShuHsienLiao200593} este trabajo se centrará en los sistemas expertos basados en reglas. Un Sistema Experto Basado en Reglas está conformado por:
+De los diversos tipos de sistemas expertos que existen~\cite{ShuHsienLiao200593} este trabajo se centrará en los sistemas expertos basados en reglas. Estos son los más adecuados para un simulador de dominó al ser este un problema con conocimiento parcial del entorno (esto es, se saben las fichas que hay en la partida, pero no qué jugador tiene cada una de ellas) y cuya inteligencia está bien estudiada y expresada en reglas concretas (como se ha comentado en el apartado anterior). \\
+
+Un sistema experto basado en reglas está conformado por:
 \begin{description}
-    \item[Base de conocimientos] Contiene conocimiento modelado extraído del diálogo con un experto.
+    \item[Base de conocimiento] Contiene conocimiento modelado extraído del diálogo con un experto.
     \item[Base de hechos (Memoria de trabajo)] Contiene los hechos sobre un problema que se ha descubierto durante el análisis.
     \item[Motor de inferencia] Modela el proceso de razonamiento humano.
     \item[Módulos de justificación] Explica el razonamiento utilizado por el sistema para llegar a una determinada conclusión.
-    \item[Interfaz de usuario] Es la interacción entre el SE y el usuario, y se realiza mediante el lenguaje natural.
+    \item[Interfaz de usuario] Es la interacción entre el sistema experto y el usuario, y se realiza mediante el lenguaje natural.
 \end{description}
 
-Añadir gráfico
+\subsubsection{Arquitectura general}
+
+A nivel conceptual el usuario del sistema experto sólo tiene que
+proporcionarle información sobre el campo en concreto y recibirá como
+respuesta el consejo del sistema. Para ello el sistema incorpora
+internamente dos elementos: la base de conocimiento (donde se almacena
+la información conocida) y el motor de inferencia (que permite obtener
+las respuestas adecuadas a partir de la información que el usuario
+introdujo y la base de conocimiento).
+
+\begin{figure}[h]
+  \label{sistexp}
+  \begin{center}
+    \includegraphics[scale=0.2]{sistexp.eps}
+  \end{center}
+  \caption{Esquema conceptual de un sistema experto}
+\end{figure}
+
+\subsubsection{Desarrollo de un sistema experto}
+
+El proceso de construcción de un sistema experto se denomina
+ingeniería del conocimiento. Se basa en una serie de fases que se
+repiten hasta conseguir un sistema adecuado (figura
+\ref{fig:des_sistexp}). En una primera etapa el ingeniero de
+conocimiento tiene una entrevista con el experto, en la que intenta
+obtener sus conocimientos. Después los implementa en el sistema. Y,
+por último, el experto evalúa el sistema. Si la evaluación no es del
+todo satisfactoria, se repite el proceso para refinar el resultado.
+
+\begin{figure}[h]
+  \label{des_sistexp}
+  \begin{center}
+    \includegraphics[scale=0.2]{des_sistexp.eps}
+  \end{center}
+  \caption{Desarrollo de un sistema experto}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection{Aplicaciones}
 
