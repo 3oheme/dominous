@@ -408,19 +408,70 @@ Comparemos la anterior regla con la siguiente, extraída también de \textbf{El 
 \end{quote}
 
 Podría decirse que existen diferentes reglas que debemos comprobar si se cumplen, y en caso afirmativo, realizar \emph{la
-más importante de ellas}, es decir, con la que consigamos un mayor distanciamiento o ventaja respecto al equipo contrario.
+más importante de ellas}, es decir, con la que consigamos un mayor distanciamiento o ventaja respecto al equipo contrario. \\
 
 Por lo tanto nos vemos en la necesidad de establecer pesos o prioridades a cada una de las reglas que se puedan contemplar
 en cada momento, para que la toma de decisiones esté razonada y sea competitiva.
+
+\subsection{Aleatoriedad}
+
+Uno de los problemas que pueden aparecer a la hora de diseñar este sistema experto es la posibilidad de ser predecible. \\
+
+Como vemos, los jugadores posee un conjunto de reglas con prioridades que deben comprobarse y, si se pueden llevar a cabo,
+realizar el movimiento descrito en ellas. Esto puede llevar a que, dependiendo de los movimientos que realizan los jugadores,
+saber qué fichas poseen (o qué estrategia están siguiendo). \\
+
+Una de las formas de evitar este problema es dotar al sistema de cierta aleatoriedad. Una aleatoriedad que no sea completa,
+sino que, para un determinado momento, elija una entre las mejores opciones. Esto se puede simular (e implementar) de forma
+sencilla otorgando el mismo peso o prioridad a varias reglas y seleccionando una de ellas. De esta forma los jugadores
+humanos no podrán saber ni predecir los movimientos de los jugadores controlados por el ordenador, y el sistema experto
+realizará movimientos que pueden ser igual de buenos pero en diferente orden, añadiendo \emph{humanidad} a la programación
+de los jugadores.
+
+\subsection{Generación de errores - sistemas imperfectos}
+
+\textbf{Dominous} pretende ser un juego divertido, con el cual aprender a jugar al dominó. Es por ello que una de las
+prioridades que se buscan es no crear un sistema que sea imposible de vencer, o que ofrezca una resistencia muy fuerte,
+sino un juego que permita adaptar el nivel del jugador humano al de los jugadores manejados por el ordenador. \\
+
+Como vemos, el sistema experto debe permitir dos opciones:
+\begin{itemize}
+    \item Que los jugadores puedan cometer fallos (simulando por completo el comportamiento de un jugador humano)
+    \item O bien que la descripción de las reglas que siga el jugador (o el conjunto de prioridades que se definan
+            en las reglas) no sea el adecuado para realizar un juego profesional.
+\end{itemize}
+
+Por lo tanto, nuestro sistema experto debe permitir definir cómodamente el conjunto de reglas o los pesos de las mismas.
+
+\subsection{Diferentes jugadores}
+
+Para simplificar y humanizar comportamientos, y representar los diferentes tipos de inteligencias o sistemas expertos,
+se ha optado por definir un conjunto de jugadores que se podrán elegir como adversario o pareja a la hora de jugar
+una partida de dominó.
+
+\begin{figure}[h]
+  \label{fig:jugadores_dominous}
+  \begin{center}
+    \includegraphics[scale=0.5]{jugadores_dominous.png}
+  \end{center}
+  \caption{Diferentes imágenes que identifican al conjunto de jugadores de Dominous}
+\end{figure}
+
+Cada jugador poseerá unas reglas y unos pesos asociados a esas reglas, con la intención de que el jugador humano pueda
+elegir compañeros y adversarios adaptados al nivel concreto que posea el mismo, y de este modo identificamos de forma
+sencilla y rápida una \emph{inteligencia} con un avatar definido.
+
+Así pues, nuestro sistema debe permitir la generación de diferentes niveles de dificultad o pilas de reglas y pesos,
+y asociarlos de forma cómoda a un jugador.
 
 \subsection{Modelado}
 
 Tras realizar un análisis del sistema, se han identificado los siguientes hechos necesarios para que el sistema experto razone:
 
 \begin{description}
-\item[Ficha]
-\item[Turno]
-\item[Jugador que manda]
+    \item[Ficha]
+    \item[Turno]
+    \item[Jugador que manda]
 \end{description}
 
 En cuanto al motor de inferencia se ha implementado un sencillo motor basado en prioridades de las reglas.
