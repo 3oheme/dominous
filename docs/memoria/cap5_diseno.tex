@@ -372,12 +372,12 @@ una partida de dominó.
 
 Lo primero que observamos es que la estrategia que debe seguir cada jugador depende enteramente del rol que desempeñe el mismo.
 Como vimos en el capítulo ~\ref{juegoporparejas} es importante definir una estrategia personalizada para cada jugador,
-dependiendo del lugar respecto al jugador mano. \\
+dependiendo del lugar respecto al jugador mano, por lo que nuestro sistema debe 
 
-Dependiendo de si somos j1, j2, j3 o j4, la táctica a emplear (o, dicho de otro modo, las reglas según las cuales
-debemos utilizar una ficha u otra) son totalmente distintas. Si leemos el apartado \emph{Normas fundamentales para el
-juego del dominó por parejas} de \textbf{El Libro del dominó} de Benito Ruipérez \cite{mora90}, la primera regla que se
-destaca es la siguiente:
+\subsection{Reglas de obligado cumplimiento}
+
+Si leemos el apartado \emph{Normas fundamentales para el juego del dominó por parejas} de \textbf{El Libro del dominó} de
+Benito Ruipérez \cite{mora90}, la primera regla que se destaca es la siguiente:
 
 \begin{quote}
     \textbf{Defender el doble del palo iniciado por el compañero} \\
@@ -391,7 +391,27 @@ destaca es la siguiente:
     palos largos, y ayudar a que el compañero pueda entrar con el suyo: \emph{vuestros palos fuertes}
 \end{quote}
 
-Como vemos, lorem ipsum
+Como vemos, hay reglas que son de obligado cumplimiento, podríamos decir que \emph{objetivamente} \footnote{Debemos de
+reconocer que un recurso válido y muchas veces efectivo a la hora de participar en un juego es utilizar el engaño, pero
+como norma general lo evitaremos, ya que también estaríamos engañando a nuestro compañero, pudiendo obtenerse resultados
+nefastos.} siempre deben seguirse (sea cual sea la posición del jugador) y, únicamente debemos evitarlas por motivos de
+fuerza mayor (ausencia de fichas que nos permitan cumplir esa regla).
+
+\subsection{Pesos de las diferentes reglas}
+
+Comparemos la anterior regla con la siguiente, extraída también de \textbf{El Libro del dominó} \cite{mora90}:
+
+\begin{quote}
+    Si el j1 sale con una ficha que no es doble, y el j2 se dobla a una de ellas, el j3 se debe doblar a la otra, si
+    lleva el doble, de lo contrario, si no lleva el doble, como la que mate por cualquier lado ha de ser de la
+    salida de su compañero, debe poner (cruzar) por el lado de la no doblada.
+\end{quote}
+
+Podría decirse que existen diferentes reglas que debemos comprobar si se cumplen, y en caso afirmativo, realizar \emph{la
+más importante de ellas}, es decir, con la que consigamos un mayor distanciamiento o ventaja respecto al equipo contrario.
+
+Por lo tanto nos vemos en la necesidad de establecer pesos o prioridades a cada una de las reglas que se puedan contemplar
+en cada momento, para que la toma de decisiones esté razonada y sea competitiva.
 
 \subsection{Modelado}
 
