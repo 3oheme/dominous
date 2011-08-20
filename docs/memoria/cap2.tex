@@ -313,8 +313,7 @@ Desde el punto de vista de un jugador concreto, las posibilidades son: \\
 
 \section{Inteligencia artificial}
 
-A la hora de afrontar un proyecto que simule cierto comportamiento \emph{humano}, debemos usar técnicas de Inteligencia Artificial, en busca de herramientas, técnicas y metodologías que nos ayuden a afrontar este
-difícil problema, probablemente uno de los más complicados dentro de la Ingeniería Informática.
+A la hora de afrontar un proyecto que simule cierto comportamiento \emph{humano}, debemos usar técnicas de Inteligencia Artificial, en busca de herramientas, técnicas y metodologías que nos ayuden a afrontar este difícil problema, probablemente uno de los más complicados dentro de la Ingeniería Informática. 
 
 \subsection{Sistemas expertos}
 
@@ -325,10 +324,10 @@ pensar de un experto en cierta materia para resolver problemas de su campo de ap
 
 \subsubsection{Arquitectura general}
 
-Si consideramos el sistema una caja negra, el usuario del sistema experto sólo tiene que proporcionarle información sobre el problema y recibirá como respuesta el consejo del sistema. Para ello el sistema incorpora internamente dos elementos: la base de conocimiento (donde se almacena la información conocida) y el motor de inferencia (que permite obtener las respuestas adecuadas a partir de la información que el usuario introdujo y la base de conocimiento). La figura~\ref{sistexp} muestra esta arquitectura. \\
+Si consideramos el sistema una caja negra, el usuario del sistema experto sólo tiene que proporcionarle información sobre el problema y recibirá como respuesta el consejo del sistema. Para ello el sistema incorpora internamente dos elementos: la base de conocimiento (donde se almacena la información conocida) y el motor de inferencia (que permite obtener las respuestas adecuadas a partir de la información que el usuario introdujo y la base de conocimiento). La figura~\ref{fig:sistexp} muestra esta arquitectura. \\
 
 \begin{figure}[h]
-  \label{sistexp}
+  \label{fig:sistexp}
   \begin{center}
     \includegraphics[scale=0.6]{sistexp.png}
   \end{center}
@@ -337,33 +336,23 @@ Si consideramos el sistema una caja negra, el usuario del sistema experto sólo 
 
 \subsubsection{Desarrollo de un sistema experto}
 
-El proceso de construcción de un sistema experto se denomina ingeniería del conocimiento. Se basa en una serie de fases que se iteran hasta conseguir un sistema adecuado (figura~\vref{des_sistexp}). En una primera etapa el ingeniero de conocimiento tiene una entrevista con el experto, en la que intenta obtener sus conocimientos. Después los implementa en el sistema. Y, por último, el experto evalúa el sistema. Si la evaluación no es del todo satisfactoria, se repite el proceso para refinar el resultado. \\
+El proceso de construcción de un sistema experto se denomina ingeniería del conocimiento. Se basa en una serie de fases que se iteran hasta conseguir un sistema adecuado (figura~\vref{fig:des_sistexp}). En una primera etapa el ingeniero de conocimiento tiene una entrevista con el experto, del que intenta obtener sus conocimientos. Después los implementa en el sistema. Y, por último, el experto evalúa el sistema. Si la evaluación no es del todo satisfactoria, se repite el proceso para refinar el resultado. \\
 
 \begin{figure}[h]
-  \label{des_sistexp}
+  \label{fig:des_sistexp}
   \begin{center}
     \includegraphics[scale=0.8]{des_sistexp.png}
   \end{center}
   \caption{Desarrollo de un sistema experto}
 \end{figure}
 
+
+\subsection{Sistemas expertos basados en reglas}
+
 De los diversos tipos de sistemas expertos que existen~\cite{ShuHsienLiao200593} este trabajo se centrará en los sistemas expertos basados en reglas. Estos son los más adecuados para un simulador de dominó al ser este un problema con conocimiento parcial del entorno (esto es, se saben las fichas que hay en la partida, pero no qué jugador tiene cada una de ellas) y cuya inteligencia está bien estudiada y expresada en reglas concretas (como se ha comentado en el apartado anterior). \\
 
-\subsection{Sistemas expertos basados en reglas}
+No este el primer trabajo en este sentido, pues existen diferentes aplicaciones de los sistemas expertos basados en reglas a todo tipos de juegos, desde sistemas en tiempo real~\cite{DBLP:conf/robocup/FathzadehMMS05} a diversos juegos de tablero (como~\cite{PFCRecio} o~\cite{PFCChaves}). \\
 
-Existen diferentes aplicaciones de los sistemas expertos basados en reglas a todo tipos de juegos, desde sistemas en tiempo real~\cite{DBLP:conf/robocup/FathzadehMMS05} a diversos juegos de tablero (como~\cite{PFCRecio} o~\cite{PFCChaves}). \\
-
-Un sistema experto basado en reglas está conformado por:
-\begin{description}
-    \item[Base de conocimiento] Contiene conocimiento modelado extraído del diálogo con un experto.
-    \item[Base de hechos (Memoria de trabajo)] Contiene los hechos sobre un problema que se ha descubierto durante el análisis.
-    \item[Motor de inferencia] Modela el proceso de razonamiento humano.
-    \item[Módulos de justificación] Explica el razonamiento utilizado por el sistema para llegar a una determinada conclusión.
-    \item[Interfaz de usuario] Es la interacción entre el sistema experto y el usuario, y se realiza mediante el lenguaje natural.
-\end{description}
-
-
-\subsection{Sistemas expertos basados en reglas}
 Los sistemas expertos basados en reglas (sistemas expertos a partir de
 ahora) suelen estar dividido en seis partes principales, como se
 observa en la figura \ref{fig:arq_sistexp_reg}. A continuación se
@@ -378,28 +367,26 @@ detallan cada una de ellas.
 \end{figure}
 
 \begin{description}
-\item[Interfaz de usuario:] permite la interacción con el sistema. La
-  interacción la puede realizar tanto una persona como otro sistema
-  que desee hacer uso del sistema experto.
-\item[Medio de explicación:] explica al usuario el razonamiento del
-  sistema. No siempre está presente en todos los sistemas.
-\item[Memoria activa:] es una base de datos con la información que
-  usarán las reglas.
-\item[Mecanismo de inferencia:] comprueba las reglas que satisface la
-  memoria activa y ejecuta la de mayor prioridad. La agenda es el
-  conjunto de reglas satisfechas en un momento dado.
-\item[Base de conocimiento: ] contiene los conocimientos que el
-  sistema ha aprendido en forma de reglas.
-\item[Medio para la adquisición de conocimiento:] permite al usuario
-  introducir nuevo conocimiento en el sistema sin tener que mediar el
-  ingeniero de conocimiento. El sistema suele recibir ejemplos para
-  aprender de ellos.
+    \item[Base de conocimiento] Contiene conocimiento modelado extraído del experto.
+    \item[Base de hechos (o Memoria activa de trabajo)] Contiene los hechos sobre un problema que se conocen.
+    \item[Mecanismo de inferencia] Motor que implementa el proceso de
+      razonamiento humano. Comprueba las reglas que satisface la
+      memoria activa y ejecuta la que corresponda. Incluye la Agenda,
+      que es el conjunto de reglas satisfechas en un momento dado.
+    \item[Módulo de justificación (o Medio de explicación)] Detalla el razonamiento utilizado por
+      el sistema para llegar a la conclusión proporcionada al usuario.
+    \item[Medio para la adquisición de conocimiento] permite al
+      usuario introducir nuevo conocimiento en el sistema sin tener
+      que mediar el ingeniero de conocimiento. El sistema suele
+      recibir ejemplos para aprender de ellos.
+    \item[Interfaz de usuario] permite la interacción del usuario con
+      el sistema. La interacción la puede realizar tanto una persona
+      como otro sistema que desee hacer uso del sistema experto.
 \end{description}
 
 En los siguientes apartados se desarrollan los elementos más
 importantes: la memoria activa, la base de conocimiento y el motor de
 inferencia.
-
 
 \subsubsection{Memoria activa}
 
@@ -410,14 +397,15 @@ interna que modifiquen las reglas de la base de conocimiento. \\
 
 Está formada por dos tipos de elementos: las plantillas y los
 objetos. Las plantillas definen la estructura de la información que se
-almacena. En concreto se especifican los atributos (del inglés
-\emph{slots}) de cada objeto. Y los objetos almacenan información
-con la estructura indicada en las plantillas.
+almacena. En concreto especifican los atributos (del inglés
+\emph{slots}) que podrán tener los objetos. Y los objetos en sí
+almacenan información de acuerdo a la estructura indicada en las
+plantillas.
 
 
 \subsubsection{Base de conocimiento}
 
-La base de conocimiento (también llamada sistema de producción) de un
+La base de conocimiento (también llamada \emph{sistema de producción}) de un
 sistema experto es el conjunto formado por todo el conocimiento que
 tiene el sistema en un momento dado. Existen sistemas en los que el
 conocimiento se mantiene constante a través del tiempo (la mayoría), y
@@ -477,16 +465,24 @@ todo en sistemas en tiempo real) la memoria activa puede estar
 recibiendo información constantemente, lo que provoca muchas
 modificaciones en la agenda. \\
 
+En concreto, el método seguido para determinar qué regla de la agenda
+se dispara se denomina \emph{estrategia de resolución de
+  conflictos}. Existen muchas de ellas, que pueden ser combinadas:
+asignando prioridades a las reglas, disparar primero las reglas menos
+usadas (o más las usadas), disparar las reglas con mayor (o menor)
+número de condiciones, etc.
+
 El algoritmo más simple para implementar el motor de inferencia
-(llamado regla de aproximación a la búsqueda de hechos) sería recorrer
-circularmente de modo indefinido el conjunto de reglas, buscando
-reglas que se satisfagan y ejecutándolas. El problema es su enorme
-ineficiencia. Tiene una complejidad computacional del orden de
-$O(R*F^P)$, siendo \emph{R} el número de reglas, \emph{P} la media de
-comprobaciones por el \emph{L.H.S.} de cada regla y \emph{F} la
-cantidad de reglas de la base de conocimiento. Evidentemente, este
-orden no es deseable para sistemas grandes, pues se dispara al incrementarse las
-comprobaciones por regla.
+(llamado \emph{regla de aproximación a la búsqueda de hechos}) sería
+recorrer circularmente de modo indefinido el conjunto de reglas,
+buscando reglas que se satisfagan y ejecutándolas. El problema es que
+tiene una complejidad computacional de orden $O(R*F^P)$, siendo
+\emph{R} el número de reglas, \emph{P} la media de comprobaciones por
+el \emph{L.H.S.} de cada regla y \emph{F} la cantidad de reglas de la
+base de conocimiento. Evidentemente, este orden no es deseable para
+sistemas grandes, pues se dispara al incrementarse las comprobaciones
+por regla. Sin embargo, como veremos, es suficiente para problemas
+pequeños como puede ser jugar una partida de dominó.
 
 
 

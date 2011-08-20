@@ -169,8 +169,13 @@ Por otro lado, para gestionar toda la documentación del proyecto se decidió ut
 
 \subsection{Sistema de control de versiones}
 
-El código del proyecto Dominous, está alojado por completo dentro del sistema que proporciona Rediris, que básicamente
-consiste en un entorno completo basado en Subversion -- SVN. \\ 
+El código del proyecto Dominous, está alojado por completo dentro de
+la forja que proporciona Rediris, la red española para Interconexión
+de los Recursos InformáticoS de las universidades y centros de
+investigación, donde tiene su web
+oficial~\cite{website:dominous}. Esta forja es básicamente una
+instalación de GForge~\cite{website:gforge} con un repositorio
+Subversion (SVN) asociado a cada proyecto. \\
 
 Subversion permite llevar un control exahustivo de todos los ficheros e iteraciones de código que se realizan en él,
 permitiendo volver a versiones anteriores de código, comprobar diferencias entre versiones o ficheros y cualquier otra
@@ -217,12 +222,14 @@ realizar un diagrama Entidad -- Relación con este fin.
 
 \section{Diagrama de clases de diseño}
 
-A continuación se muestra el diagrama de clases de diseño para \textbf{Dominous}.
+A continuación se muestra el diagrama de clases de diseño para \textbf{Dominous} (figura~\vref{fig:diagrama_clases_diseno}).
 
 \begin{figure}[h]
-  \label{diagrama_clases_diseno}
+  \label{fig:diagrama_clases_diseno}
   \begin{center}
-    \includegraphics[scale=0.23]{diagrama_clases_diseno.png}
+%    \includegraphics[scale=0.23]{diagrama_clases_diseno.png}
+%    \includegraphics[width=0.9\textwidth]{diagrama_clases_diseno.png}
+    \includegraphics[width=1\textwidth]{diagrama_clases_diseno.png}
   \end{center}
   \caption{Diagrama de diseño del sistema}
 \end{figure}
@@ -357,3 +364,17 @@ las que va a llevarse a cabo la simulación del sistema experto de dominó. \\
 Lo primero que observamos es que la estrategia que siga cada jugador depende enteramente del rol que desempeñe el mismo.
 Como vimos en el capítulo ~\ref{juegoporparejas} es importante definir una estrategia personalizada para cada jugador,
 dependiendo del lugar respecto al jugador mano.
+
+\subsection{Modelado}
+
+Tras realizar un análisis del sistema, se han identificado los siguientes hechos necesarios para que el sistema experto razone:
+
+\begin{description}
+\item[Ficha]
+\item[Turno]
+\item[Jugador que manda]
+\end{description}
+
+En cuanto al motor de inferencia se ha implementado un sencillo motor basado en prioridades de las reglas.
+
+
