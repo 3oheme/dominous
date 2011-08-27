@@ -92,7 +92,7 @@ mueva ficha hasta que ese movimiento sea correcto, momento en el cual se contin�
 El juego del dominó es un juego con un amplio universo de acciones y con conocimiento limitado de la situación de la partida,
 por lo que no se puede estimar que una acción sea óptima (puede haber varias opciones válidas), pero a pesar de esto sí existe
 un requisito que debe cumplirse (y se exige el cumplimiento) a la hora de realizar un movimiento, y es o pasar o colocar una
-ficha cualquiera que pueda colocarse.
+ficha cualquiera que pueda colocarse. \\
 
 Esta acción se definió y se tomó como opción por defecto (también llamado fallback) en caso de que todas las demás reglas
 de IA no se cumplan, y antes de que el sistema quede colgado o no se pueda continuar, se toma esta acción y se continúa
@@ -103,6 +103,14 @@ con la partida.
 
 Según se iban desarrollando módulos y éstos cumplían las pruebas unitarias desarrolladas para estos apartados, era necesario
 integrar los diferentes módulos para corroborar y contrastar el correcto funcionamiento de la conjunción de ambos módulos.
+
+\begin{figure}[h]
+  \label{pruebas_integracion}
+  \begin{center}
+    \includegraphics[scale=0.5]{pruebas_integracion.png}
+  \end{center}
+  \caption{Esquema de relaciones entre módulos para las pruebas de integración}
+\end{figure}
 
 \subsubsection{Sistema de Gestión de Partida de Dominó y Sistema de Inteligencia Artificial}
 
