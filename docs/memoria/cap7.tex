@@ -9,6 +9,83 @@
 
 \section{Pruebas}
 
-La fase de prueba es de las más importantes de un proyecto software~\cite{art}. Existen diferentes enfoques a la hora de hacer la prueba de software, siendo todos ellos complementarios~\cite{beizer_software_1990}. En este proyecto 
+La fase de prueba es de las más importantes de un proyecto software~\cite{art}. El objetivo de este paso es, como razón
+última, la verificación de que el proyecto cumple con todos los requisitos iniciales que se plantearon al comienzo 
+del desarrollo. Según la metodología clásica de desarrollo de pruebas existen diferentes enfoques a la hora de realizar
+este tipo de pruebas de software, siendo todos complementarios~\cite{beizer_software_1990}, pero para el caso
+concreto que tenemos entre manos debemos tener en cuenta la naturaleza del proyecto. \\
 
-Comentar que al ser un videojuego las pruebas tiene que ser en su mayoría, manuales.
+Los videojuegos presentan dos facetas distintas que deben ser abordadas de diferentes maneras cuando se realiza la fase
+de pruebas:
+\begin{itemize}
+    \item Por un lado tenemos las pruebas clásicas que se realizan a cualquier desarrollo de software, como pueden
+            ser las pruebas unitarias o de integración, destinadas a verificar el correcto funcionamiento del
+            código.
+    \item Y por otro lado, al requerir de una interacción directa con el usuario (y estar destinado a divertir,
+            entretener y proporcionar un rato ameno al mismo) se deben realizar varios tipos de pruebas orientadas
+            a comprobar que se cumplen requisitos más abstractos como puede ser el testeo o análisis de la jugabilidad
+            o usabilidad de la aplicación, interfaces, medir el entretenimiento que proporciona la aplicación (relacionado
+            directamente con el desarrollo de la inteligencia artificial de los contrincantes, entre otros)
+\end{itemize}
+
+El primer conjunto de pruebas se pueden realizar con comprobaciones de código, compilación (o en este caso concreto,
+interpretación) del mismo y diferentes métodos, pero el segundo conjunto de pruebas es necesario que se desarrollen
+con diferentes tipos de usuarios reales manejando la aplicación y realizando cuestionarios que nos ayuden a valorar
+el éxito o fracaso de estos apartados. \\
+
+Para los apartados de pruebas unitarias y de integración se va a trabajar principalmente con los tres módulos que
+forman el núcleo fuerte de la aplicación (y sobre las que cae el peso de la misma):
+
+\begin{itemize}
+    \item Sistema de gestión de partida de dominó
+    \item Sistema de inteligencia artificial
+    \item Motor gráfico de la aplicación
+\end{itemize}
+
+\subsection{Pruebas unitarias}
+
+Durante la fase de implementación se fueron realizando pruebas unitarias no automatizadas de cada conjunto o subconjunto
+de módulos que se iban desarrollando, evitando así encontrar errores en las pruebas de integración que no sean propiamente
+de integración sino de errores en la codificación de los diferentes módulos. \\
+
+\subsubsection{Sistema de gestión de partida de dominó}
+
+En este módulo las pruebas unitarias están claras: el módulo debe velar por el correcto cumplimiento de todas y cada
+una de las reglas del dominó internacional. Para ello debe vigilarse cada movimiento de los jugadores, repasando
+el estado del juego y las diferentes posibilidades que tiene el jugador, entrándose en modo error cuando se realiza
+una acción ilegal. \\
+
+En este momento del desarrollo se tuvo que tomar una decisión respecto a cómo contemplar los errores o incumplimiento de
+normas que puedan producirse (de forma intencionada o no) por parte de los jugadores:
+
+\begin{itemize}
+    \item Una opción era permitir que los jugadores incumplan las normas y actuar en consecuencia contra el jugador.
+            En ningún momento se puede permitir que los jugadores coloquen fichas en lugares donde está prohibido
+            ese movimiento, por lo que, de todas las normas que posee el dominó las únicas candidatas a entrar en este
+            grupo son las que hacen del dominó un \textbf{juego de señores}, es decir, todas aquellas que están destinadas
+            a dotar de información a los demás jugadores de forma obligatoria (como puede ser la falta de un palo mediante
+            acortar el tiempo que transcurre en su turno). \\
+
+            Para esta opción teníamos nuevamente otras dos opciones:
+            \begin{itemize}
+                \item Podemos permitir y \emph{mirar hacia otro lado}, permitiendo que los jugadores engañen de forma
+                        clara a los demás jugadores, incluyendo compañeros, o
+                \item Podemos actuar como jueces y penalizar a los jugadores que cometan este tipo de faltas.
+            \end{itemize}
+    \item La otra opción es no permitir este tipo de acciones, volviendo hacia atrás en la acción del jugador y
+            pidiendo de nuevo que actúe, hasta que la acción satisfaga las reglas del juego del dominó.
+\end{itemize}
+
+Finalmente se decidió que, dado que esta aplicación tiene como requisito el favorecer el aprendizaje del juego del dominó,
+no existe cabida alguna a jugadas deshonrosas o que puedan llevar a equivocación al usuario que desea aprender a jugar. \\
+
+Por lo tanto, cuando un jugador intenta realizar una acción equivocada, se deshace esa acción y se le pide de nuevo que
+mueva ficha hasta que ese movimiento sea correcto, momento en el cual se continúa con naturalidad la partida.
+
+
+
+\subsection{Pruebas de integración}
+
+Según se iban desarrollando módulos y éstos cumplían las pruebas unitarias desarrolladas para estos apartados, era necesario
+integrar los diferentes módulos para corroborar y contrastar el correcto funcionamiento de la conjunción de ambos módulos.
+
