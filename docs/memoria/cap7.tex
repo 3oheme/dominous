@@ -107,7 +107,7 @@ integrar los diferentes módulos para corroborar y contrastar el correcto funcio
 \begin{figure}[h]
   \label{pruebas_integracion}
   \begin{center}
-    \includegraphics[scale=0.5]{pruebas_integracion.png}
+    \includegraphics[scale=0.8]{pruebas_integracion.png}
   \end{center}
   \caption{Esquema de relaciones entre módulos para las pruebas de integración}
 \end{figure}
@@ -136,3 +136,59 @@ con un gran número de métodos de todo tipo para obtener información del estad
 se pudo realizar la integración de forma sencilla y sin retrasarnos en demasía en la estimación de tiempos.
 
 
+\subsection{Pruebas de Jugabilidad, usabilidad y experiencia de usuario}
+
+La jugabilidad en Dominous abarca dos ámbitos diferenciados: por un lado se desea que el juego transcurra fluido, sin
+parones bruscos o bajadas en la velocidad de cálculo y dibujado de la pantalla, y por otro lado que el jugador, al mover
+fichas y desenvolverse por el juego y los menús. \\
+
+El desempeño o velocidad de la aplicación está asegurado por varios factores:
+
+\begin{itemize}
+    \item Utilización de una librería de bajo nivel como es PyGame, cuya velocidad está garantizada y testeada en profundidad.
+    \item La naturaleza propia de la aplicación, que se desarrolla a un ritmo bajo, no necesita de grandes cálculos ni
+            uso avanzado de la CPU.
+    \item El motor de inteligencia artificial es rápido, y en casos en los que las posibilidades del usuario se limiten
+            a pasar o colocar una única ficha, el motor salta todas las comprobaciones de reglas que sabe que van a
+            fallar --- redundando así en una mayor velocidad y rendimiento.
+\end{itemize}
+
+La jugabilidad de la aplicación, dado que el movimiento más común que realizará el usuario será mover las fichas,
+se trabajó haciendo que el movimiento de arrastrar y soltar la ficha sea satisfactorio, cuidando que la ficha siga
+al cursor de forma fiel, el error de soltar una ficha en un lugar equivocado no sea frustrante --- sino que se convierta
+en un hecho más de la partida --- que la zona donde el usuario suelta la ficha sea grande y no se produzcan errores
+no deseados y funcionalidades y pequeñas mejoras que buscan que el jugador se divierta con la aplicación.
+
+\begin{figure}[h]
+  \label{superficie_drop}
+  \begin{center}
+    \includegraphics[scale=0.5]{superficie_drop.png}
+  \end{center}
+  \caption{Superficie sobre la cual el usuario puede dejar la ficha satisfactoriamente}
+\end{figure}
+
+
+Dado que la aplicación está orientado a un público adulto --- que, probablemente, no goce de una habilidad muy desarrollada
+con los dispositivos de entrada --- la zona de click sobre menús y demás elementos de la interfaz se ha agrandado, con lo
+cual las posibilidades de éxito del click aumentan, así como la satisfacción del usuario con la herramienta.
+
+\begin{figure}[h]
+  \label{superficie_click}
+  \begin{center}
+    \includegraphics[scale=0.5]{superficie_click.png}
+  \end{center}
+  \caption{Superficie en la cual el usuario puede realizar el click de forma satisfactoria}
+\end{figure}
+
+Por último, se han realizado numerosas pruebas con usuarios reales durante el desarrollo del proyecto, recibiendo
+feedback real y realizando y estudiando pequeñas modificaciones que hagan que el mismo disfrute de la experiencia de
+jugar a este producto.
+
+Los usuarios sobre los que se han realizado las diferentes pruebas son los siguientes:
+
+\begin{description}
+    \item[Usuario 1] Mujer, 28 años, estudios universitarios de la rama de letras, nivel de informática alto, con conocimientos
+        de ofimática, poca experiencia en videojuegos, bajo nivel de las reglas y normas del dominó internacional.
+    \item[Usuario 2] Hombre, 63 años, estudios universitarios de economía, nivel de informática medio, nula experiencia en
+        videojuegos, jugador experimentado de dominó
+\end{description}
