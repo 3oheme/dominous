@@ -46,7 +46,7 @@ forman el núcleo fuerte de la aplicación (y sobre las que cae el peso de la mi
 
 Durante la fase de implementación se fueron realizando pruebas unitarias no automatizadas de cada conjunto o subconjunto
 de módulos que se iban desarrollando, evitando así encontrar errores en las pruebas de integración que no sean propiamente
-de integración sino de errores en la codificación de los diferentes módulos. \\
+de integración sino de errores en la codificación de los diferentes módulos.
 
 \subsubsection{Sistema de gestión de partida de dominó}
 
@@ -64,7 +64,7 @@ normas que puedan producirse (de forma intencionada o no) por parte de los jugad
             ese movimiento, por lo que, de todas las normas que posee el dominó las únicas candidatas a entrar en este
             grupo son las que hacen del dominó un \textbf{juego de señores}, es decir, todas aquellas que están destinadas
             a dotar de información a los demás jugadores de forma obligatoria (como puede ser la falta de un palo mediante
-            acortar el tiempo que transcurre en su turno). \\
+            acortar el tiempo que transcurre en su turno).
 
             Para esta opción teníamos nuevamente otras dos opciones:
             \begin{itemize}
@@ -82,6 +82,16 @@ no existe cabida alguna a jugadas deshonrosas o que puedan llevar a equivocació
 Por lo tanto, cuando un jugador intenta realizar una acción equivocada, se deshace esa acción y se le pide de nuevo que
 mueva ficha hasta que ese movimiento sea correcto, momento en el cual se continúa con naturalidad la partida.
 
+
+\subsection{Sistema de Inteligencia Artificial}
+
+El juego del dominó es un juego con un amplio universo de acciones y con conocimiento limitado de la situación de la partida,
+por lo que no se puede estimar que una acción sea óptima (puede haber varias opciones válidas), pero a pesar de esto sí existe
+un requisito que debe cumplirse (y se exige el cumplimiento) a la hora de realizar un movimiento, y es o pasar o colocar una
+ficha cualquiera que pueda colocarse.
+
+Esta acción se definió y se tomó como fallback en caso de que todas las demás reglas de IA no se cumplan, y antes de que el
+sistema quede colgado o no se pueda continuar, se toma esta acción y se continúa con la partida.
 
 
 \subsection{Pruebas de integración}
