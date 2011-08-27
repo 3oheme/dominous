@@ -48,6 +48,10 @@ Durante la fase de implementación se fueron realizando pruebas unitarias no aut
 de módulos que se iban desarrollando, evitando así encontrar errores en las pruebas de integración que no sean propiamente
 de integración sino de errores en la codificación de los diferentes módulos.
 
+En cuanto a los diferentes módulos que conforman Dominous, existen varios casos inherentes a cada módulo que deben
+tratarse de forma individual (ya que dependen de la naturaleza del módulo) y de forma manual (ya que no se puede abordar su
+solución de forma automática).
+
 \subsubsection{Sistema de gestión de partida de dominó}
 
 En este módulo las pruebas unitarias están claras: el módulo debe velar por el correcto cumplimiento de todas y cada
@@ -83,19 +87,44 @@ Por lo tanto, cuando un jugador intenta realizar una acción equivocada, se desh
 mueva ficha hasta que ese movimiento sea correcto, momento en el cual se continúa con naturalidad la partida.
 
 
-\subsection{Sistema de Inteligencia Artificial}
+\subsubsection{Sistema de Inteligencia Artificial}
 
 El juego del dominó es un juego con un amplio universo de acciones y con conocimiento limitado de la situación de la partida,
 por lo que no se puede estimar que una acción sea óptima (puede haber varias opciones válidas), pero a pesar de esto sí existe
 un requisito que debe cumplirse (y se exige el cumplimiento) a la hora de realizar un movimiento, y es o pasar o colocar una
 ficha cualquiera que pueda colocarse.
 
-Esta acción se definió y se tomó como fallback en caso de que todas las demás reglas de IA no se cumplan, y antes de que el
-sistema quede colgado o no se pueda continuar, se toma esta acción y se continúa con la partida.
+Esta acción se definió y se tomó como opción por defecto (también llamado fallback) en caso de que todas las demás reglas
+de IA no se cumplan, y antes de que el sistema quede colgado o no se pueda continuar, se toma esta acción y se continúa
+con la partida.
 
 
 \subsection{Pruebas de integración}
 
 Según se iban desarrollando módulos y éstos cumplían las pruebas unitarias desarrolladas para estos apartados, era necesario
 integrar los diferentes módulos para corroborar y contrastar el correcto funcionamiento de la conjunción de ambos módulos.
+
+\subsubsection{Sistema de Gestión de Partida de Dominó y Sistema de Inteligencia Artificial}
+
+Una vez definida la interfaz de comunicación entre el Sistema de Gestión de Partida de Dominó y Sistema de Inteligencia
+Artificial, para comprobar la consistencia de esta integración se desarrolló un jugador de dominó muy simple que debía
+cumplir con dos premisas:
+
+\begin{enumerate}
+    \item El jugador debe cumplir con éxito las especificaciones de la interfaz.
+    \item El jugador debe poner una ficha cualquiera (si puede colocar una ficha) o debe pasar (si no existe la posibilidad
+            de mover).
+\end{enumerate}
+
+Durante el desarrollo del Sistema de Gestión de Partida de Dominó se fue comprobando el éxito de la comunicación entre ambos
+módulos, de tal modo que cuando se realizó la integración con los dos sistemas totalmente finalizados no se encontraron
+problemas graves, obteniéndose una integración suave y sin errores costosos de solventar.
+
+\subsubsection{Sistema de Gestión de Partida de Dominó y Motor gráfico de la aplicación}
+
+La integración fue más costosa que la comentada anteriormente, ya que no se pudo realizar un sistema de pruebas que
+cumpliera las especificaciones de integración, pero gracias a que el Sistema de Gestión de Partida de Dominó contaba
+con un gran número de métodos de todo tipo para obtener información del estado del tablero, jugadores y otros,
+se pudo realizar la integración de forma sencilla y sin retrasarnos en demasía en la estimación de tiempos.
+
 
