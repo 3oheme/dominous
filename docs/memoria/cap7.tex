@@ -48,6 +48,12 @@ Durante la fase de implementación se fueron realizando pruebas unitarias no aut
 de módulos que se iban desarrollando, evitando así encontrar errores en las pruebas de integración que no sean propiamente
 de integración sino de errores en la codificación de los diferentes módulos. \\
 
+Una herramienta cuyo uso ha resultado muy interesante y útil ha sido \textbf{PyFlakes}. Esta herramienta es un programa que
+analiza otros programas escritos en Python y detecta un gran conjunto de errores analizando el código fuente. Existen otras
+herramientas de análisis automático de código Python, como PyChecker o PyLint, pero se decidió utilizar PyFlakes
+principalmente por la rapidez de análisis y seguridad ante caídas, ya que no requiere ejecutar el código, sino que realiza
+un análisis mediante \emph{parseo} del código. \\
+
 En cuanto a los diferentes módulos que conforman Dominous, existen varios casos inherentes a cada módulo que deben
 tratarse de forma individual (ya que dependen de la naturaleza del módulo) y de forma manual (ya que no se puede abordar su
 solución de forma automática).

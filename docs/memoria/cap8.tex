@@ -77,8 +77,8 @@ recordar los diferentes movimientos que ha realizado cada jugador) y cuya divers
 ya que el juego en equipo --- sin posibilidad de comunicación entre ellos --- añade mucha complejidad y humanidad a un
 juego que dista muchísimo de estar basado simplemente en estadística o probabilidades. \\
 
-Y gracias a todo lo aprendido ahora puedo ver el dominó con otra mirada y respeto y admiro a los grandes jugadores
-de dominó.
+Y gracias a todo lo aprendido ahora puedo observar el mundo del dominó con otra mirada y, por supuesto, respetar y admirar
+a los grandes jugadores de dominó.
 
 \subsection{Primer proyecto que realizo de manera íntegra}
 
@@ -129,6 +129,10 @@ de la aplicación con conocimientos más amplios como pueden ser:
         web en la que volcar la información y documentación que se iba generando, aplicaciones de screencast para
         animar a la comunidad a participar o Latex y Dia para diseño de documentación y diagramas, entre otros muchos.
 
+    \item[Usabilidad y Experiencia de Usuario] Se ha intentado aplicar mucho sentido común e iteraciones al diseño de la
+        interfaz de la aplicación, para que su facilidad de uso sea un aliciente para usarlo, y no un escollo que
+        dificulte el acceso a ella.
+
 \end{description}
 
 \section{Trabajos futuros}
@@ -153,16 +157,58 @@ muy interesantes de implementar:
 
 \subsection{Juego en red}
 
-lorem ipsum
+En la fase de especificación de requisitos se barajó la opción de que Dominous presentara opciones para desarrollar una
+partida en red, pero después de un profundo análisis se desechó esta opción; el juego en red plantea varias problemáticas
+que resultan verdaderamente dificultosas y que explicamos a continuación:
+
+\begin{itemize}
+    \item La principal razón es que existe el problema conceptual de desarrollar una partida a un juego con conocimiento parcial 
+        de forma remota --- la base del dominó reside en que los jugadores no pueden conocer las fichas de sus compañeros,
+        y si la partida se juega en red nada impide que los equipos intercambien información mediante otras vías de
+        comunicación. \\
+        Se podría argumentar que depende del jugador y de la moral y ética que lo gobierne el utilizar estas trampas
+        para conseguir una victoria de forma poco correcta, y que el videojuego no debe entrar en este terreno, pero
+        es cierto que dejar una puerta abierta a este tipo de jugadores es crear un juego con un gran fallo conceptual,
+        que no permitiría las principales premisas de la aplicación, que son entretener y enseñar el mundo del dominó.
+
+    \item Tampoco hay que olvidar que, al ofrecer este tipo de juego, estamos cambiando los objetivos principales del
+        juego, que es conseguir profundizar en el mundo de la Inteligencia Artificial orientado al dominó.
+
+    \item Finalmente tampoco podemos obviar las limitaciones técnicas y de escasez de mercado, que nos obligaría en
+        principio a tener que desarrollar la aplicación para otro tipo de medios con más proyección --- como podría
+        ser dispositivos móviles, aplicaciones en flash o directamente orientado a web --- que obligaría a reorientar
+        todo el desarrollo del proyecto.
+\end{itemize}
 
 \subsection{Servidor web para compartir sistemas expertos}
 
-lorem ipsum
+También sería muy interesante poder ofrecer una forma de disponer de los diferentes sistemas expertos de forma remota.
+Así sería sencillo poder realizar torneos entre diferentes jugadores y equipos, cada uno programado por un participante
+del torneo. \\
 
-\subsection{Analizador de partidas con aprendizaje automático}
+Para ello sería necesario buscar un formato estándar de compartición de sistemas expertos basados en Dominous, desarrollando
+unas especificaciones lo suficientemente generales para dar potencia al la Inteligencia Artificial, y relativamente
+simple para que no suponga una curva de aprendizaje agresiva al nuevo jugador. \\
 
-lorem ipsum
+Todo esto sin olvidar que es necesario que la ejecución de los sistemas expertos se realice en la misma máquina; ya que
+si se facilita una API para comunicación con otros sistemas estaríamos cayendo en el mismo error que en el juego en red, 
+esto es, permitiendo que equipos pudieran utilizar canales de comunicación alternativos y jugar con ventaja frente a otros.
 
-\subsection{Comunicación mediante servicios web}
+\subsection{Analizador de partidas con aprendizaje automático o semiautomático}
 
-lorem ipsum
+Existen multitud de herramientas de Inteligencia Artificial orientadas a simular sistemas expertos, comportamientos y 
+y razonamiento humano. Una de ellas es el \textbf{aprendizaje automático}; sería un proyecto muy interesante generar un sistema
+que reciba como entrada ficheros con históricos de partidas --- como las que genera Dominous, por ejemplo --- y obtenga
+información mediante el análisis de cada movimiento, dependiendo de la posición del jugador en la mesa y de las fichas
+existentes en cada mano. \\
+
+Para conseguir este fin se podrían utilizar técnicas como las redes neuronales o árboles de decisión. Y si se quiere
+dar un paso más se podría apoyar en aprendizaje supervisado --- utilizando a algún experto real en el mundo del dominó
+que evalúe los posibles movimientos, animando o corrigiendo según la valoración del mismo y creando un sistema que
+vaya mejorando con cada uso.
+
+\subsection{Migración de la aplicación a otros sistemas}
+
+Dominous se ha programado con los requisitos de correcto funcionamiento bajo sistemas operativos basados en GNU/Linux (como
+Ubuntu) y Microsoft Windows, pero sería un proyecto interesante intentar migrar el sistema a otros entornos como podrían ser
+dispositivos móviles, consolas portátiles o tablets.
