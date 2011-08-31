@@ -72,7 +72,81 @@ sistema se encarga de realizar diferentes cálculos y comprobaciones:
 
 \subsection{Configuración de la aplicación}
 
-La configuración de la aplicación (y almacenaje de la misma) se realiza mediante ficheros \textbf{ini}
+La configuración de la aplicación (y almacenaje de la misma) se realiza mediante ficheros de tipo \textbf{INI}. Un archivo
+INI consiste en un simple archivo de texto ASCII que contiene dos tipos de entradas:
+
+\begin{description}
+    \item[Secciones] permiten agrupar parámetros relacionados. Por ejemplo: "Parámetros de red".
+    \item[Valores] definen parámetros y su valor. Primero se define el nombre del parámetro y después su valor separado por
+            el signo de igualdad (=).
+    \item[Comentarios] permiten explicar el propósito de una sección o parámetro. Los comentarios comienzan con el carácter
+            punto y coma (;).
+\end{description}
+
+El significado de secciones y valores no está bien definido y cada aplicación puede reaccionar de manera diferente ante:
+
+\begin{itemize}
+    \item Secciones duplicadas.
+    \item Parámetros duplicados.
+    \item El carácter de barra invertida (\textbackslash). A veces se usa para romper una línea en dos.
+    \item Valores. Los valores pueden consistir en texto, números, listas separadas por comas, etc. Esto depende de la aplicación.
+\end{itemize}
+
+Las ventajas de este tipo de ficheros es su estandarización y comodidad a la hora de leer y guardar valores en fichero,
+de tal forma que podemos guardar información por defecto sobre el juego de la siguiente forma:
+
+\begin{lstlisting} [language=Python, numbers=left]
+config.add_section('General')
+config.set('General', 'name', 'Dominous')
+config.set('General', 'window_caption', 'Dominous, an open source dominoes simulator')
+config.set('General', 'lang', 'en')
+config.set('General', 'points_per_game', '200')
+config.add_section('Screen')
+config.set('Screen', 'window_width', '800')
+config.set('Screen', 'window_height', '600')
+config.set('Screen', 'full_screen', 'False')
+config.set('Screen', 'window_favicon', os.path.join('images', 'favicon.png'))
+config.add_section('Theme')
+config.set('Theme', 'theme', 'spanish')
+config.add_section('Game')
+config.set('Game', 'player2', 'easy')
+config.set('Game', 'player3', 'easy')
+config.set('Game', 'player4', 'easy')
+# write our configuration file to file
+with open(file, 'wb') as configfile:
+    config.write(configfile)
+\end{lstlisting}
+
+Y más tarde leerlo simplemente con:
+
+\begin{lstlisting} [language=Python, numbers=left]
+config = ConfigParser.RawConfigParser()
+config.read(file)
+config_default = {
+    'name': config.get('General', 'name'),
+    'window_caption': config.get('General', 'window_caption'),
+    'window_width': config.getint('Screen', 'window_width'),
+    'window_height': config.getint('Screen', 'window_height'),
+    'full_screen': config.get('Screen', 'full_screen'),
+    'window_favicon': config.get('Screen', 'window_favicon'),
+    'tile_width': 525,
+    'tile_height': 270,
+    'scale': 0.2,
+    'theme': config.get('Theme', 'theme'),
+    'lang': config.get('General', 'lang'),
+    'points_per_game': config.get('General', 'points_per_game'),
+    'gametype': 'human',
+    'gametype_current': 'single',
+    'player1': 'easy',
+    'player2': 'easy',
+    'player3': 'easy',
+    'player4': 'easy',
+    'speed': '1',
+}
+\end{lstlisting}
+
+Todo ello encapsulado dentro del módulo \textbf{config.py} de la aplicación.
+
 
 \subsection{Inteligencia Artificial}
 
