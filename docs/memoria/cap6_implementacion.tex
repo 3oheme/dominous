@@ -9,3 +9,40 @@
 
 \section{Implementación}
 
+Una vez terminadas las dos fases previas --- análisis y diseño --- es hora de enfrentarnos a la codificación e implementación
+en sí de la aplicación. Este apartado es largo y entretenido, y va descubriendo a cada momento nuevas problemáticas que
+no se han tenido en cuenta antes y es necesario resolver, pero también es apasionante, porque vamos viendo de forma
+empírica cómo nuestra aplicación va tomando forma y se va haciendo tangible a cada momento que avanza. \\
+
+El desarrollo de Dominous ha presentado en diferentes momentos varios problemas y dificultades que creemos interesante destacar,
+y que se pasamos a comentar a continuación.
+
+\subsection{Entorno gráfico}
+
+El entorno gráfico se puede dividir en dos apartados de diferente complejidad: por un lado tenemos la gestión de menús,
+opciones, pantallas y secciones de la aplicación, y por otro lado tenemos la gestión de una partida de dominó, con todas
+sus interacciones, animaciones y movimientos de fichas, eventos y demás.
+
+\subsubsection{Sistema de secciones}
+
+Todo el sistema de secciones lo gobierna el objeto principal de la aplicación, llamado \textbf{dominous}. Este objeto posee
+diferentes objetos como atributos, y estos atributos son las diferentes secciones de la aplicación. Cuando queremos
+que el flujo de la aplicación pase de una sección a otra no tenemos más que llamarla; al llamarla estaremos ejecutando
+el siguiente fragmento
+
+\begin{lstlisting}[caption={[]Cambio de flujo de la aplicación}, numbers=left]
+
+def goto_tutorial(self):
+    self.flow.stop()
+    self.flow = self.tutorial
+    self.flow.start()
+
+\end{lstlisting}
+
+\subsubsection{Gestión de partida}
+
+Lorem ipsum
+
+\subsection{Inteligencia Artificial}
+
+Dolor sit amet
