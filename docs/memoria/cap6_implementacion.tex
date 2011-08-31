@@ -14,8 +14,8 @@ en sí de la aplicación. Este apartado es largo y entretenido, y va descubriend
 no se han tenido en cuenta antes y es necesario resolver, pero también es apasionante, porque vamos viendo de forma
 empírica cómo nuestra aplicación va tomando forma y se va haciendo tangible a cada momento que avanza. \\
 
-El desarrollo de Dominous ha presentado en diferentes momentos varios problemas y dificultades que creemos interesante destacar,
-y que se pasamos a comentar a continuación.
+El desarrollo de Dominous ha presentado muchas características interesantes, problemas, dificultades y otras circunstancias
+que creemos interesante destacar, y que se pasamos a comentar a continuación.
 
 \subsection{Entorno gráfico}
 
@@ -28,7 +28,7 @@ sus interacciones, animaciones y movimientos de fichas, eventos y demás.
 Todo el sistema de secciones lo gobierna el objeto principal de la aplicación, llamado \textbf{dominous}. Este objeto posee
 diferentes objetos como atributos, y estos atributos son las diferentes secciones de la aplicación. Cuando queremos
 que el flujo de la aplicación pase de una sección a otra no tenemos más que llamarla; al llamarla estaremos ejecutando
-el siguiente fragmento
+el siguiente fragmento:
 
 \begin{lstlisting} [language=Python, numbers=left]
 def goto_tutorial(self):
@@ -37,9 +37,38 @@ def goto_tutorial(self):
     self.flow.start()
 \end{lstlisting}
 
+Gracias a este tipo de llamadas podemos subdividir cómodamente la aplicación en módulos muy acotados, a los cuales se aplica
+primero una función de inicialización --- por si es necesario que actualicen estructuras, datos o cualquier otra labor
+de preparación que puedan requerir --- y una vez se termina también se ejecuta una función de finalización. \\
+
+Y mientras el flujo esté asociado a una sección, todas las funciones de eventos, dibujado y actualización de la pantalla
+se disparan dentro de la sección correspondiente. \\
+
+Gracias a esta metodología hemos podido acotar de forma muy cómoda las diferentes secciones (cada una con sus peculiaridades)
+y gestionar de forma independiente cada apartado, evitando posibles problemas colaterales, asegurando una buena
+integración y minimizando el hecho de que errores de un apartado puedan afectar a otros. \\
+
+
+
 \subsubsection{Gestión de partida}
 
 Lorem ipsum
+
+
+\subsection{Interfaz de sonido}
+
+La interfaz de sonido se ha diseñado de tal forma que se gestione de forma independiente para que su uso sea sencillo,
+realizando llamadas al objeto \textbf{sound} con los métodos que estimemos oportunos en cada momento, y el propio
+sistema se encarga de realizar diferentes cálculos y comprobaciones:
+
+\begin{itemize} 
+    \item Por ejemplo, a la hora de ejecutar un determinado fragmento musical, controla si ya se está escuchando música
+        en ese momento; si es ese el caso realiza un pequeño fundido de la pista actual, e inicia la ejecución de la
+        nueva, evitando así los desagradables clicks que se podrían escuchar cuando se para y se inicia la canción.
+    \item O también, para ejecutar un sonido de ficha de dominó sobre el tablero, el sistema realiza la precarga de todos
+        los sonidos --- similares pero no iguales --- y dispara uno aleatoriamente, evitando que cada apartado tenga
+        que gestionarlo de forma autónoma
+\end{itemize}
 
 \subsection{Inteligencia Artificial}
 
