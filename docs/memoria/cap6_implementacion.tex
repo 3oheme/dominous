@@ -221,6 +221,7 @@ y gracias a que el dominó es un juego de caballeros podemos utilizar esta infor
 para conseguir la victoria. \\
 
 Los posibles valores que puede presentar este campo son:
+
 \begin{description}
     \item[0] El usuario no ha requerido tiempo para decidir qué ficha colocaba.
     \item[1] El usuario ha pensado entre diferentes opciones, y ha necesitado de cierto tiempo para decidir la ficha.
@@ -229,7 +230,60 @@ Los posibles valores que puede presentar este campo son:
 
 \subsubsection{Base de Hechos}
 
-Lorem ipsum
+La Base de Hechos se ha modularizado en pequeñas funciones o reglas, de tal forma que pueden ser fácilmente reutilizadas en
+el Sistema Experto de cualquier jugador de Dominous. La estructura básica de una regla es la siguiente:
+
+\begin{lstlisting} [language=Python, numbers=left]
+class nombre_de_la_regla:
+    def __init__(self):
+        # inicializamos los atributos que sean necesarios
+        pass
+    def go(self, left_tile, right_tile, board, tiles, log):
+        return ficha, lado, tiempo_pensando
+\end{lstlisting}
+
+Como vemos la estructura es sencilla, implementada mediante clases Python, y tiene una inicialización para definir los
+atributos que sean necesarios, y por otra parte un método que, para una situación concreta de estado de la partida
+(tablero, fichas propias, posición del jugador y toda la información generada por la partida). \\
+
+Veamos un ejemplo práctico. Vamos a definir una regla que intente colocar sobre el tablero una ficha doble, cualquiera
+que tengamos. Esta regla se implementaría de la siguiente forma:
+
+\begin{lstlisting} [language=Python, numbers=left]
+class put_any_double:
+    def __init__(self):
+        pass
+    def go(self, left_tile, right_tile, board, tiles, log):
+        for item in tiles:
+            if item[0] == item[1]:
+                if item[0] == left_tile or item[1] == left_tile:
+                    tiles.remove(item)
+                    return item, "left", 1
+                    break
+                elif item[0] == right_tile or item[1] == right_tile or left_tile == None:
+                    tiles.remove(item)
+                    return item, "right", 1
+                    break
+        return None, "pass", 0
+\end{lstlisting}
+
+En la inicialización no requerimos dar de alta ningún atributo, y el método \textbf{go} simplemente comprueba que, para
+alguna de nuestras fichas dobles, algún lado de la mesa tenga ese mismo valor. Si lo tiene hemos conseguido realizar
+esta regla, devolvemos el valor y listo. Y si no, devolvemos una señal de que no hemos tenido éxito y salimos. \\
+
+Gracias a este sistema, simplificamos mucho el desarrollo de nuevos Sistemas Expertos, ya que:
+\begin{itemize}
+    \item Es muy sencillo crear nuevas reglas. Como ya vimos en El Libro del dominó de Benito Ruipérez \cite{mora90},
+        muchas reglas, funciones o herramientas se basan en frases o hechos que, si se cumplen, \emph{interesa}
+        \footnote{Como vemos, debemos ser cuidadosos al emplear verbos como \emph{interesa} o \emph{debemos} al hablar
+        de colocar fichas. El juego del Dominó es lo suficientemente complejo y goza de muchas estrategias como para poder
+        simplificarlo o decir objetivamente que debemos realizar una acción.} cumplirlos.
+        Por poner un caso simple, al comenzar la partida \emph{interesa} comenzar con un doble --- o, mejor dicho, hay
+        estrategias interesadas en comenzar con un doble. Para emplear este razonamiento en estas estrategias simplemente
+        tenemos que añadir esta regla con el peso suficiente, y ya lo tendremos implementado.
+    \item Es fácil crear nuevos sistemas, creando pilas de reglas con pesos que se van disparando si pueden cumplirse.
+        Así se van creando diferentes jugadores y dotamos al juego de más variedad y diversión.
+\end{itemize}
 
 \subsubsection{Motor de Inferencia}
 
