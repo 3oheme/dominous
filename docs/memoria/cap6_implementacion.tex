@@ -147,7 +147,90 @@ config_default = {
 
 Todo ello encapsulado dentro del módulo \textbf{config.py} de la aplicación.
 
+Con esto conseguimos un sistema para almacenar la configuración del sistema mediante un método portable, cómodo, sencillo y 
+editable por el usuario mediante cualquier tipo de editor de texto (en caso de que existiera cualquier tipo de problema).
 
 \subsection{Inteligencia Artificial}
 
-Dolor sit amet
+En Dominous, el Sistema Experto de Inteligencia Artificial se reparte entre varios módulos, simplificando la implementación
+de las diferentes partes. Según la estructura clásica en las que se divide un Sistema Experto, podemos ver que cada
+apartado genera información o conocimiento para la Inteligencia Artificial:
+
+\begin{description}
+    \item[Base de conocimientos] Contiene conocimiento modelado extraído del diálogo con un experto --- Esta base de
+        conocimiento se almacena, por un lado en la biblioteca de funciones y herramientas para desempeñar una partida,
+        y físicamente se almacena en el módulo de IA
+    \item[Base de hechos (Memoria de trabajo)] contiene los hechos sobre un problema que se ha descubierto durante el análisis
+        --- Los hechos se van creando y almacenando gracias al módulo de \textbf{Gestión de Partida de Dominó}, que
+        gobierna la partida y guarda toda la información, movimientos, pasos y tiempos al colocar las fichas.
+    \item[Motor de Inferencia] Modela el proceso de razonamiento humano --- gracias a la biblioteca de funciones podemos
+        crear un motor de inferencia fácilmente, utilizando pequeñas reglas y dotando de peso o importancia a cada una,
+        modelando exactamente el proceso de razonamiento que queramos, e incluso ofertando la posibilidad de crear
+        cuantos queramos, de una forma fácil y rápida.
+    \item[Módulos de justificación] Explica el razonamiento utilizado por el sistema para llegar a una determinada conclusión
+        --- ya que en el dominó no se puede evaluar por sí mismo la efectividad o conveniencia de un movimiento, esta
+        justificación llega del conocimiento del experto en valorar con mayor o menor peso una regla.
+    \item[Interfaz de usuario] es la interacción entre el Sistema Experto y el usuario, y se realiza mediante el lenguaje
+        natural --- y, en el caso de Dominous, la interfaz se comunica con el usuario mediante el módulo del motor
+        gráfico del juego, que muestra fichas, movimientos y jugadores.
+\end{description}
+
+Pasemos a describir cada apartado para conocer a fondo la implementación del sistema experto.
+
+\subsubsection{Base de conocimientos}
+
+La base de conocimiento se obtiene desde el módulo \textbf{Gestión de Partida de Dominó}, que almacena la información
+de forma global, esto es, relativa a toda la partida:
+
+\begin{lstlisting} [language=Python, numbers=left]
+self.info = {
+    "date" : date,
+    "place" : place,
+    "max_points" : max_points,
+    "player1" : player1,
+    "player2" : player2,
+    "player3" : player3,
+    "player4" : player4,
+    "team1" : player1 + " " + player3,
+    "team2" : player2 + " " + player4,
+    "description" : description,
+    "winner_team" : "",
+    "team1_points" : 0,
+    "team2_points" : 0,
+}
+\end{lstlisting}
+
+El identificador de cada campo es bastante descriptivo
+
+Y también se almacena información de la mano actual y de cada movimiento de la siguiente forma:
+
+\begin{lstlisting} [language=Python, numbers=left]
+movement = {
+    'player' : player,
+    'tile' : tile,
+    'side' : side,
+    'left' : left,
+    'right' : right,
+    'mtime' : mtime,
+}
+\end{lstlisting}
+
+Entre los campos almacenados vemos uno que nos resultará de mucho interés en posteriores usos de esta información, y es
+el campo \textbf{mtime}. Este campo almacena el tiempo que ha estado el jugador pensando antes de colocar una ficha,
+y gracias a que el dominó es un juego de caballeros podemos utilizar esta información para elaborar una estrategia
+para conseguir la victoria. \\
+
+Los posibles valores que puede presentar este campo son:
+\begin{description}
+    \item[0] El usuario no ha requerido tiempo para decidir qué ficha colocaba.
+    \item[1] El usuario ha pensado entre diferentes opciones, y ha necesitado de cierto tiempo para decidir la ficha.
+    \item[2] El usuario ha utilizado una cantidad de tiempo considerable para decidir la ficha a colocar.
+\end{description}
+
+\subsubsection{Base de Hechos}
+
+Lorem ipsum
+
+\subsubsection{Motor de Inferencia}
+
+Dolor site
