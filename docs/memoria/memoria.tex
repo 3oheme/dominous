@@ -62,28 +62,40 @@
 
 \mainmatter % Contenido en si ...
 
+% Los \addtocontents{lol}{\protect\addvspace{10pt}}
+% Son para que los listados de cada capítulo
+% Se separen de los del anterior en el índice de lstlisting
+
 \chapter{Introducción}
+\addtocontents{lol}{\protect\addvspace{10pt}}
 \input{cap1.tex}
 
 \chapter{Conceptos básicos}
+\addtocontents{lol}{\protect\addvspace{10pt}}
 \input{cap2.tex}
 
 \chapter{Planificación}
+\addtocontents{lol}{\protect\addvspace{10pt}}
 \input{cap3.tex}
 
 \chapter{Análisis}
+\addtocontents{lol}{\protect\addvspace{10pt}}
 \input{cap4_analisis.tex}
 
 \chapter{Diseño}
+\addtocontents{lol}{\protect\addvspace{10pt}}
 \input{cap5_diseno.tex}
 
 \chapter{Implementación}
+\addtocontents{lol}{\protect\addvspace{10pt}}
 \input{cap6_implementacion.tex}
 
 \chapter{Pruebas}
+\addtocontents{lol}{\protect\addvspace{10pt}}
 \input{cap7.tex}
 
 \chapter{Conclusiones}
+\addtocontents{lol}{\protect\addvspace{10pt}}
 \input{cap8.tex}
 
 %\backmatter % Apéndices, bibliografia ...
@@ -91,12 +103,15 @@
 \appendix
 
 \chapter{Manual de instalación}
+\addtocontents{lol}{\protect\addvspace{10pt}}
 \input{apendice1.tex}
 
 \chapter{Manual de usuario}
+\addtocontents{lol}{\protect\addvspace{10pt}}
 \input{apendice2.tex}
 
 \chapter{Difusión}
+\addtocontents{lol}{\protect\addvspace{10pt}}
 \input{apendice3.tex}
 
 %\addcontentsline{toc}{chapter}{Software usado}
