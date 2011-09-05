@@ -96,12 +96,12 @@ mueva ficha hasta que ese movimiento sea correcto, momento en el cual se contin�
 \subsubsection{Sistema de Inteligencia Artificial}
 
 El juego del dominó es un juego con un amplio universo de acciones y con conocimiento limitado de la situación de la partida,
-por lo que no se puede estimar que una acción sea óptima (puede haber varias opciones válidas), pero a pesar de esto sí existe
+por lo que no se puede estimar que una acción sea óptima (puede haber varias opciones válidas). Pero a pesar de esto sí existe
 un requisito que debe cumplirse (y se exige el cumplimiento) a la hora de realizar un movimiento, y es o pasar o colocar una
 ficha cualquiera que pueda colocarse. \\
 
 Esta acción se definió y se tomó como opción por defecto (también llamado fallback) en caso de que todas las demás reglas
-de IA no se cumplan, y antes de que el sistema quede colgado o no se pueda continuar, se toma esta acción y se continúa
+de Inetligencia Artificial no se cumplan, y antes de que el sistema quede colgado o no se pueda continuar, se toma esta acción y se continúa
 con la partida.
 
 
@@ -113,7 +113,7 @@ integrar los diferentes módulos para corroborar y contrastar el correcto funcio
 \begin{figure}[h]
   \label{pruebas_integracion}
   \begin{center}
-    \includegraphics[scale=0.8]{pruebas_integracion.png}
+    \includegraphics[scale=1.3]{pruebas_integracion.png}
   \end{center}
   \caption{Esquema de relaciones entre módulos para las pruebas de integración}
 \end{figure}
@@ -162,22 +162,22 @@ El desempeño o velocidad de la aplicación está asegurado por varios factores:
 \begin{figure}[h]
   \label{superficie_drop}
   \begin{center}
-    \includegraphics[scale=0.5]{superficie_drop.png}
+    \includegraphics[scale=0.8]{superficie_drop.png}
   \end{center}
   \caption{Superficie sobre la cual el usuario puede dejar la ficha satisfactoriamente}
 \end{figure}
 
 
-La jugabilidad de la aplicación, dado que el movimiento más común que realizará el usuario será mover las fichas,
+La jugabilidad de la aplicación, dado que la acción más común que realizará el usuario será mover las fichas,
 se trabajó haciendo que el movimiento de arrastrar y soltar la ficha sea satisfactorio, cuidando que la ficha siga
 al cursor de forma fiel, el error de soltar una ficha en un lugar equivocado no sea frustrante --- sino que se convierta
-en un hecho más de la partida --- que la zona donde el usuario suelta la ficha sea grande y no se produzcan errores
+en un hecho más de la partida ---, que la zona donde el usuario suelta la ficha sea grande y no se produzcan errores
 no deseados y funcionalidades y pequeñas mejoras que buscan que el jugador se divierta con la aplicación. \\
 
 \begin{figure}[h]
   \label{superficie_click}
   \begin{center}
-    \includegraphics[scale=0.5]{superficie_click.png}
+    \includegraphics[scale=0.8]{superficie_click.png}
   \end{center}
   \caption{Como vemos, la superficie en la cual el usuario puede realizar click de forma satisfactoria es más amplia que el simple texto que incluye}
 \end{figure}
@@ -193,13 +193,13 @@ jugar a este producto. \\
 Los usuarios sobre los que se han realizado las diferentes pruebas son los siguientes:
 
 \begin{description}
-    \item[Sujeto 1] Mujer, 28 años, estudios universitarios de la rama de letras, nivel de informática alto, con conocimientos
+    \item[Sujeto 1] Mujer, 28 años, estudios universitarios de la rama de letras, nivel de informática usuario alto, con conocimientos
         de ofimática, poca experiencia en videojuegos, bajo nivel de las reglas y normas del dominó internacional.
-    \item[Sujeto 2] Hombre, 63 años, estudios universitarios de economía, nivel de informática medio, nula experiencia en
+    \item[Sujeto 2] Hombre, 63 años, estudios universitarios de economía, nivel de informática usuario medio, nula experiencia en
         videojuegos, jugador experimentado de dominó.
-    \item[Sujeto 3] Hombre, 30 años, estudios universitarios de Informática, alto nivel de informática, amplia experiencia
+    \item[Sujeto 3] Hombre, 30 años, estudios universitarios de Informática, alto nivel de informática usuario, amplia experiencia
         en videojuegos, nivel medio de conocimiento del juego de dominó.
-    \item[Sujeto 4] Hombre, 31 años, estudios universitarios de Informática, alto nivel de informática, amplia experiencia
+    \item[Sujeto 4] Hombre, 31 años, estudios universitarios de Informática, alto nivel de informática usuario, amplia experiencia
         en videojuegos, nivel bajo de conocimiento del juego de dominó.
 
 \end{description}

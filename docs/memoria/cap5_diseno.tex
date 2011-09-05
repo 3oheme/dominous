@@ -9,11 +9,13 @@
 
 \section{Introducción}
 
-El primer paso que vamos a dar para describir el diseño de la aplicación será describir los requisitos del
+El primer paso del diseño de la aplicación será describir los requisitos del
 sistema necesarios para poder ejecutar la aplicación, y posteriormente comentaremos las herramientas que se
 van a usar para el desarrollo de la aplicación.
 
 \section{Definición de los requisitos del sistema}
+
+% TODO FIXME: normalizar puntos finales
 
 Los requisitos hardware y software necesarios para poder ejecutar con soltura la aplicación son los siguientes:
 
@@ -34,7 +36,7 @@ Los requisitos hardware y software necesarios para poder ejecutar con soltura la
 		\end{itemize}
 	\item Por otro lado, si el sistema está basado en Microsoft Windows, necesitaremos:
 		\begin{itemize}
-			\item Pygame
+			\item PyGame
 			\item Python OpenGL and Gloss
 		\end{itemize}
 \end{itemize}
@@ -43,7 +45,7 @@ Los requisitos hardware y software necesarios para poder ejecutar con soltura la
 
 \subsection{Librería gráfica}
 
-Para todo el tema del aspecto gráfico, mi tutor me recomendó que utilizara las librerías SDL\footnote{Simple
+Para todo el tema del aspecto gráfico, mis tutores me recomendaron que utilizara las librerías SDL\footnote{Simple
 Directmedia Layer}, ya que son unas librerías orientadas al desarrollo de videojuegos con varias particularidades:
 \begin{itemize}
     \item Son completas, ya que permiten gestionar operaciones de dibujo en dos dimensiones, efectos de
@@ -58,8 +60,8 @@ Directmedia Layer}, ya que son unas librerías orientadas al desarrollo de video
             de programación como entre los que se encuentran C++, Ada, C\#, BASIC, Erlang, Lua, Java o Python, por
             lo que nos da bastante libertad para elegir un lenguaje de programación principal
     \item Publicado bajo licencia LGPL, con todas las ventajas que conlleva.
-    \item Y por último no hay que menospreciar que mi tutor emplea SDL a la hora de impartir la asignatura
-            de diseño de videojuegos, y contar con esa base de conocimiento nos ayudará a desarrollar más rápidamente
+    \item Y por último no hay que menospreciar que uno de mis tutores emplea SDL a la hora de impartir la asignatura
+            de Diseño de Videojuegos de la UCA, y contar con su conocimiento nos ayudará a desarrollar más rápidamente
             y solucionar antes nuestros posible problemas.
 \end{itemize}
 
@@ -84,7 +86,7 @@ utilizar. En principio se pensó emplear el lenguaje C++ por dos sencillas razon
             diferentes ramas, con lo cual la comodidad y familiaridad que podemos tener a la hora de programar
             es un punto importante a tener en cuenta.
     \item Tampoco podemos olvidar que, al ser un lenguaje compilado, la velocidad de ejecución que se consigue
-            es interesante, y mucho más tratándose de temas como la inteligencia artificial (donde puede ser
+            es interesante, y mucho más tratándose de temas como la Inteligencia Artificial (donde puede ser
             necesario un uso intensivo de los recursos del sistema) o el desarrollo de videojuegos (en el que
             la potencia del ordenador repercute en una mejor experiencia del usuario)
 \end{enumerate}
@@ -131,6 +133,8 @@ obtenemos el siguiente listado:
         \end{itemize}
 \end{enumerate}
 
+% TODO FIXME comentar brevemente PyGame
+
 \subsection{Diseño y estilo visual de interfaces}
 
 El diseño visual que se ha desarrollado para la interfaz se ha creado desde cero, buscando los siguientes objetivos:
@@ -143,7 +147,7 @@ El diseño visual que se ha desarrollado para la interfaz se ha creado desde cer
 \begin{figure}[h]
   \label{interfaz}
   \begin{center}
-    \includegraphics[scale=0.5]{ui.png}
+    \includegraphics[scale=0.8]{ui.png}
   \end{center}
   \caption{Diferentes elementos utilizados en la interfaz}
 \end{figure}
@@ -154,36 +158,33 @@ Por otro lado, para gestionar toda la documentación del proyecto se decidió ut
 \begin{itemize}
     \item \LaTeX\ para escribir la memoria, ya que es una forma robusta y fiable de escribir una memoria para
             un Proyecto Fin de Carrera, descartándose otras posibles opciones por no ser adecuadas para la escritura
-            de un documento de estas características. Para facilitar la compilación dispone de la herramienta
+            de un documento de estas características~\cite{mitt04}. Para facilitar la compilación dispone de la herramienta
             GNU Make~\cite{pdf:make}.
     \item Doxygen para la documentación del código fuente, porque además de documentar de manera sencilla y fácil
-            de leer el mismo código fuente, genera una documentación en diferentes formatos. Además,
-        \begin{itemize}
-            \item Doxygen funciona con lenguajes como C++, C, Java, Objective-C, Python, Fortran, VHDL, PHP o C\#
-                    (entre otros), por lo que se puede acomodar a nuestras necesidades. Incluso existe una
-                    herramienta llamada \textbf{Doxypy} que nos permite reutilizar los comentarios \emph{tipo Python}
-                    y adaptarlos a Doxygen, con lo cual ahorramos trabajo y cumplimos con la normativa
-                    de código Python.
-        \end{itemize}
+            de leer el mismo código fuente, genera una documentación en diferentes formatos~\cite{website:doxygen}. Además,
+            Doxygen funciona con lenguajes como C++, C, Java, Objective-C, Python, Fortran, VHDL, PHP o C\#
+            (entre otros), por lo que se puede acomodar a nuestras necesidades. Incluso existe una
+            herramienta llamada \textbf{Doxypy} que nos permite reutilizar los comentarios \emph{tipo Python}
+            y adaptarlos a Doxygen, con lo cual ahorramos trabajo y cumplimos con la normativa recomendada para el código Python.
 \end{itemize}
 
 \subsection{Sistema de control de versiones}
 
 El código del proyecto Dominous, está alojado por completo dentro de
-la forja que proporciona Rediris, la red española para Interconexión
+la forja que proporciona Rediris, la Red Española para Interconexión
 de los Recursos InformáticoS de las universidades y centros de
 investigación, donde tiene su web
 oficial~\cite{website:dominous}. Esta forja es básicamente una
 instalación de GForge~\cite{website:gforge} con un repositorio
 Subversion (SVN) asociado a cada proyecto. \\
 
-Subversion permite llevar un control exahustivo de todos los ficheros e iteraciones de código que se realizan en él,
+Subversion lleva un control exahustivo de todos los ficheros e iteraciones de código que se realizan en él,
 permitiendo volver a versiones anteriores de código, comprobar diferencias entre versiones o ficheros y cualquier otra
 operación propia de un sistema de control de versiones. \\
 
 Se evaluaron otros sistemas de control de versiones distribuidos como GIT, Bazaar o Mercurial, pero se desecharon
 básicamente porque, por un lado, este proyecto cuenta únicamente con un desarrollador, y multitud de ventajas que
-ofrecen los sistemas de control de versiones distribuidos dejan de tener sentido, si tenemos en cuenta esta circunstancia
+ofrecen los sistemas de control de versiones distribuidos dejan de tener sentido. Si tenemos en cuenta esta circunstancia
 del proyecto, y por otro lado la integración de SVN con Rediris (con las ventajas de visualización de código y versiones
 que ofrece ViewCVS) decantaron la decisión sobre el lado de SVN.
 
@@ -210,7 +211,7 @@ las distintas interfaces gráficas desarrolladas para la aplicación. \\
 \begin{figure}[h]
   \label{fig:diagramainteraccioninterfaces}
   \begin{center}
-    \includegraphics[scale=0.15]{diagrama_interfaces.png}
+    \includegraphics[scale=0.15,angle=90]{diagrama_interfaces.png}
   \end{center}
   \caption{Diagrama de interacción entre interfaces}
 \end{figure}
@@ -265,7 +266,7 @@ y \comando{update} del objeto encargado de la interfaz que estemos mostrando act
 
 Este juego de llamadas a ambos métodos se realizará hasta un máximo de 60 veces por segundo, dependiendo del rendimiento
 que se obtenga de los recursos del sistema. De esta forma conseguiremos un máximo de 60 frames o cuadros por segundo,
-que serán los encargados de generar la sensación de movimiento. \\
+que serán los encargados de generar la sensación de movimiento suave. \\
 
 Como vemos, el objeto de la clase dominous no realiza ningún dibujado en pantalla ni cálculos, sino que su único
 cometido es redireccionar el flujo de la aplicación al objeto correspondiente.
@@ -282,7 +283,7 @@ consecutiva, hasta que se de alguna circunstancia de finalización de la mano. \
 Este bucle se repetirá hasta que alguno de los dos equipos alcance o supere los 200 puntos, momento en el cual la partida
 se dará por finalizada. \\
 
-Esta clase también mantendrá activo y actualizado un fichero de log con toda la información generada en la partida. Esta
+Esta clase también mantendrá activo y actualizado un fichero de registro (\emph{log}) con toda la información generada en la partida. Esta
 información se utilizará más tarde en el apartado de inteligencia artificial, y almacenará los datos utilizando
 la siguiente estructura: \\
 
@@ -357,8 +358,7 @@ principales herramientas que se utilizaron fueron:
         comunicar toda esa sabiduría y conocimiento.
 \end{description}
 
-Después de profundizar en el mundo del dominó, y tener cierto conocimiento sobre el mismo --- aunque nada comparado
-con el que pueden tener jugadores más experimentados de este juego --- podemos intentar definir las pautas sobre
+Después de profundizar en el mundo del dominó, y tener cierto conocimiento sobre el mismo podemos intentar definir las pautas sobre
 las que va a llevarse a cabo la simulación del sistema experto de dominó. \\
 
 Lo primero que observamos es que la estrategia que siga cada jugador depende enteramente del rol que desempeñe el mismo.
@@ -372,7 +372,7 @@ una partida de dominó.
 
 Lo primero que observamos es que la estrategia que debe seguir cada jugador depende enteramente del rol que desempeñe el mismo.
 Como vimos en el capítulo ~\ref{juegoporparejas} es importante definir una estrategia personalizada para cada jugador,
-dependiendo del lugar respecto al jugador mano, por lo que nuestro sistema debe 
+dependiendo del lugar respecto al jugador mano, por lo que nuestro sistema debe tener reglas sensibles a esto.
 
 \subsection{Reglas de obligado cumplimiento}
 
@@ -422,7 +422,7 @@ realizar el movimiento descrito en ellas. Esto puede llevar a que, dependiendo d
 saber qué fichas poseen (o qué estrategia están siguiendo). \\
 
 Una de las formas de evitar este problema es dotar al sistema de cierta aleatoriedad. Una aleatoriedad que no sea completa,
-sino que, para un determinado momento, elija una entre las mejores opciones. Esto se puede simular (e implementar) de forma
+sino que, para un determinado momento, elija una entre varias de las mejores opciones. Esto se puede simular (e implementar) de forma
 sencilla otorgando el mismo peso o prioridad a varias reglas y seleccionando una de ellas. De esta forma los jugadores
 humanos no podrán saber ni predecir los movimientos de los jugadores controlados por el ordenador, y el sistema experto
 realizará movimientos que pueden ser igual de buenos pero en diferente orden, añadiendo \emph{humanidad} a la programación
@@ -465,6 +465,8 @@ Así pues, nuestro sistema debe permitir la generación de diferentes niveles de
 y asociarlos de forma cómoda a un jugador.
 
 \subsection{Modelado}
+
+% TODO FIXME
 
 Tras realizar un análisis del sistema, se han identificado los siguientes hechos necesarios para que el sistema experto razone:
 

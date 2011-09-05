@@ -2,29 +2,28 @@
 
 \section{Toma de requisitos}
 
-En el desarrollo de esta aplicación la toma de requisitos se hizo mediante reuniones con el tutor del proyecto,
-que realizaba el papel de cliente potencial de la misma. Después de varias reuniones se obtuvo el listado de requisitos
+En el desarrollo de esta aplicación la toma de requisitos se hizo mediante reuniones con los tutores del proyecto,
+que realizaban el papel de cliente potencial de la misma. Después de varias reuniones se obtuvo el listado de requisitos
 que se muestra en las siguientes secciones:
 
 
 \subsection{Requisitos de interfaces externas}
 
 En este apartado se van a describir los requisitos de conexión entre el software y el hardware, así como la interfaz
-del usuario.\\
-
-De la interfaz entre el software y el hardware se encarga la librería SDL, mediante el wrapper pygame --- y por encima
-la capa que añade Gloss--- que, al ser un sistema preestablecido, no será necesario analizarlo ni diseñarlo,
-simplemente haremos uso de él.\\
-
-Así que pasamos a definir el interfaz entre el videojuego y el usuario. Todas las ventanas de la aplicación podrán
+del usuario. Así que pasamos a definir el interfaz entre el videojuego y el usuario. Todas las ventanas de la aplicación podrán
 ser mostradas a pantalla completa o en formato de ventana con una resolución de 800 por 600 píxeles. A
 continuación se definen las distintas ventanas con las que el usuario se puede encontrar:
+
+%% De la interfaz entre el software y el hardware se encarga la librería SDL, mediante el wrapper pyGame --- y por encima
+%% la capa que añade Gloss--- que, al ser un sistema preestablecido, no será necesario analizarlo ni diseñarlo,
+%% simplemente haremos uso de él.\\
+
 
 \begin{description}
     \item[Ventana de introducción] Esta primera ventana mostrará únicamente el logotipo de Dominous, situando al usuario
             en contexto para iniciarlo en la ejecución del programa
     \item[Ventana del menú principal] La ventana del menú principal muestra el menú de inicio de Dominous, en el que
-            el usuario podrá elegir entre las opciones más generales del juego, entre las que se encuentran:
+            el usuario podrá elegir entre las opciones más generales del juego:
             \begin{itemize}
                 \item Partida clásica
                 \item Laboratorio
@@ -40,14 +39,14 @@ continuación se definen las distintas ventanas con las que el usuario se puede 
             el ordenador más el jugador humano.
     \item[Ventana de partida] Esta será la ventana principal de todo el juego. Mostrará una partida de dominó
             de dos equipos, el tablero e información de la partida, e irá actualizando el tablero según se vaya
-            desarrollando la misma partida. Mediante la pulsación de la tecla ESC o clic sobre el botón menú se
+            desarrollando la misma partida. Mediante la pulsación de la tecla ESC o clic sobre el botón \emph{menú} se
             desplegará el menú interno de la partida, que permitirá abandonarla a pesar de no haberse terminado
             la partida actual.
     \item[Ventana de laboratorio] La ventana de laboratorio proporciona una interfaz para que el usuario de la
             aplicación pueda generar un conjunto elevado de partidas entre dos equipos definidos, con la idea
             de poder decidir qué pareja presenta las mejores características de Inteligencia Artificial.
     \item[Ventana del modo tutorial] Por último la ventana del modo tutorial mostrará al usuario información sobre
-            el juego del dóminó mediante un conjunto de presentaciones, para que el mismo usuario pueda aprender
+            el juego del dominó mediante un conjunto de pantallas explicativas, para que pueda aprender
             más sobre el mundo del dominó sin necesidad de salir de la aplicación.
 \end{description}
 
@@ -57,15 +56,15 @@ continuación se definen las distintas ventanas con las que el usuario se puede 
 Los requisitos funcionales que el sistema debe ofrecer al usuario son los siguientes:
 \begin{itemize}
     \item Poder jugar una partida de dominó con tres jugadores más controlados por el ordenador.
-    \item Enfrentar a dos parejas de jugadores controlados por ordenador, haciendo que jueguen un gran número
+    \item Enfrentar a dos parejas de jugadores controlados por ordenador, haciendo que jueguen un número
             de partidas seguidas en modo automático (esto es, sin visualizar la partida que se desarrolla y
-            mostrando únicamente las victorias), con la finalidad de poder decidir qué pareja posee una
-            inteligencia artificial más avanzada.
+            mostrando únicamente los resultados), con la finalidad de poder decidir qué pareja posee una
+            Inteligencia Artificial más avanzada.
     \item Acceder al modo tutorial, para realizar un aprendizaje de las normas, técnicas y usos del dominó.
     \item Cambiar el tipo de juego para que cuatro jugadores manejados por la máquina puedan desarrollar una
             partida en modo visual.
     \item Seleccionar otro tema gráfico para que, tanto fichas como tablero como otros elementos gráficos, cambien
-            a gusto del usuario, eligiendo entre cierto abanico de temas.
+            a gusto del usuario, eligiendo entre ciertos temas.
     \item Cambiar de modo ventana a modo pantalla completa.
 \end{itemize}
 
@@ -96,7 +95,7 @@ Como bien comentábamos en el punto anterior, a la hora de realizar el diseño d
 primar los tiempos de respuesta sobre el consumo de recursos de la memoria principal o secundaria. Esta
 es la principal restricción que tendrá el diseño de nuestra aplicación.\\
 
-Los videojuegos están pensados para ejecutarse como aplicación principal, no para compartir recurssos
+Los videojuegos están pensados para ejecutarse como aplicación principal, no para compartir recursos
 con otros programas; por esta razón se permite que consuman muchos recursos.
 
 
@@ -106,7 +105,7 @@ La aplicación debe cumplir con los siguientes requisitos de sistema:
 \begin{itemize}
     \item La aplicación debe ejecutarse de forma multiplafatorma, incluyendo como mínimo los sistemas operativos:
         \begin{itemize}
-            \item En Microsoft Windows --- Realizándose las pruebas en la versión Windows 7 con las últimas actualizaciones
+            \item En Microsoft Windows --- Realizándose las pruebas en la versión Windows 7 con las últimas actualizaciones.
             \item En sistemas GNU/Linux --- Utilizando la distribución Ubuntu en su versión 10.04 con su instalación
                     por defecto y con todas las actualizaciones del sistema.
         \end{itemize}
@@ -116,7 +115,7 @@ La aplicación debe cumplir con los siguientes requisitos de sistema:
 
 \section{Modelo de casos de uso}
 
-Para describir los comportamientos que tendrá el sistema, utilizaremos el lenguaje guaje de modelado de sistemas UML;
+Para describir los comportamientos que tendrá el sistema, utilizaremos el lenguaje guaje de modelado de sistemas UML~\cite{pressman};
 éste representa los requisitos funcionales de todo el sistema, centrándose en qué hace pero no en cómo lo hace.\\
 
 A continuación describimos uno por uno cada caso de uso.
@@ -144,6 +143,8 @@ El esquema utilizado es el siguiente:
 
 
 \subsection{Descripción de los casos de uso}
+
+% TODO FIXME: Uniformizar puntos finales
 
 A continuación pasamos a la descripción de los casos de uso. Para ello se va a utilizar una notación formal
 usando plantillas, con la intención y finalidad de que este texto sea legible y comprensible por
@@ -179,7 +180,7 @@ un usuario que no sea experto.
 
 \begin{description}
     \item[Caso de uso] Salir.
-    \item[Descripción] Primeramente se muestra la pantalla de información de la aplicación --- con más datos
+    \item[Descripción] Primeramente se muestra la pantalla de información de la aplicación --- con datos
             sobre desarrolladores, licencias y cualquier otra información que pueda resultar de interés para
             el usuario.
     \item[Actores] Usuario.
@@ -238,7 +239,7 @@ un usuario que no sea experto.
 \begin{description}
     \item[Caso de uso] Laboratorio
     \item[Descripción] El usuario desea realizar pruebas y análisis sobre las diferentes habilidades de cada jugador
-            controlado por la Inteligencia Artificial del programa, enfrentando a dos equipos de jugadores a un alto
+            controlado por la Inteligencia Artificial del programa, enfrentando a dos equipos de jugadores a un 
             número de partidas, y calculando el mejor equipo según el número de victorias alcanzadas.
     \item[Actores] Usuario.
     \item[Precondiciones] Ninguna.
@@ -404,9 +405,9 @@ requisitos obtenidos. \\
 El modelo de comportamiento define cómo debe actuar un sistema; este sistema a considerar es el que
 engloba a todos los objetos, y el modelo consta de dos partes:
 \begin{itemize}
-    \item El Diagrama de secuencias del sistema el cual muestra la secuencia de eventos entre los actores
+    \item El Diagrama de secuencia del sistema, el cual muestra la secuencia de eventos entre los actores
         y el sistema.
-    \item Los Contrato de las operaciones del sistema que describen el efecto que producen las operaciones
+    \item Los Contratos de las operaciones del sistema, que describen el efecto que producen las operaciones
         del sistema.
 \end{itemize}
 
@@ -447,3 +448,6 @@ engloba a todos los objetos, y el modelo consta de dos partes:
     \item[Precondiciones] Ninguna
     \item[Postcondiciones] Selección de personajes para la partida, comienzo de partida
 \end{description}
+
+% TODO FIXME: falta el del desarrollo de una partida: iniciar, jugar cada turno (poniendo ficha o pasando) hasta que se acabe
+
