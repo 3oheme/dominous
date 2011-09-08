@@ -287,13 +287,61 @@ Gracias a este sistema, simplificamos mucho el desarrollo de nuevos Sistemas Exp
         Así se van creando diferentes jugadores y dotamos al juego de más variedad y diversión.
 \end{itemize}
 
+Los jugadores poseen una lista de elementos, utilizando normalmente la nomenclatura \textbf{self.knowledge}, y van
+añadiendo las reglas que estimen oportunas como si fuera una lista clásica de Python, utilizando el método \textbf{append}. \\
+
+Si estamos desarrollando un jugador simple, podemos definir su base de conocimiento de la siguiente forma:
+
+\begin{lstlisting} [caption={Base de conocimiento simple}, language=Python, numbers=left]
+self.knowledge = []
+self.knowledge.append([put_any_double()])
+self.knowledge.append([put_anyone()])
+\end{lstlisting}
+
+Como vemos, estamos definiendo que el jugador intente, inicialmente, colocar una ficha doble. Si esto no es posible,
+intentará colocar una ficha cualquiera. \\
+
+Así, con solamente tres líneas podemos comenzar a desarrollar una inteligencia artificial a nuestro gusto, que juegue
+y valore cada regla con la importancia que estimemos oportuna. \\
+
+Por otro lado, también podemos utilizar reglas con el mismo peso, dotando de aleatoriedad al jugador y permitiendo
+que se comporte de diferente modo en situaciones similares. De este modo, si queremos definir a un jugador un poco
+más complejo, su base de conocimiento podría escribirse así:
+
+\begin{lstlisting} [caption={Base de conocimiento compleja}, language=Python, numbers=left]
+self.knowledge = []
+self.knowledge.append([
+    put_any_double(),
+    weight_matrix()
+])
+self.knowledge.append([put_anyone()])
+\subsubsection{Motor de Inferencia}
+\end{lstlisting}
+
+En un primer momento se ejecutará, aleatoriamente, una regla entre \textbf{put\_any\_double()} y \textbf{weight\_matrix()}.
+Si no hay suerte con la primera, se intentará con la segunda, y si no hay éxito con ninguna se ejecutará el siguiente
+conjunto de reglas --- en este caso, \textbf{put\_anyone()}, es decir, intentar colocar una ficha cualquiera.
+
+El Motor de Inferencia se desarrolla de forma muy sencilla, ya que se utilizan estructuras muy simples proporcionadas
+por el mismo lenguaje Python. \\
+
 \subsubsection{Motor de Inferencia}
 
-% TODO FIXME
+El Motor de Inferencia es el encargado de elegir una regla de entre todas las reglas definidas en la Base de Conocimiento
+del jugador concreto. Este motor, antes de evaluar cualquier regla, realiza diferentes comprobaciones para acelerar
+los tiempos de cálculo en ciertos casos especiales. Así, las reglas no se evaluarán bajo las siguientes circunstancias:
+\begin{itemize}
+    \item El jugador no puede colocar ninguna ficha --- si ninguna de las fichas que posee el jugador son candidatas
+        a utilizarse en el tablero, el Motor de Inferencia pasará automáticamente el turno al siguiente jugador.
+    \item El jugador solo puede colocar una ficha ---  en el caso de que solamente una ficha sea candidata a colocarse
+        en juego, el sistema la colocará automáticamente, dando la información de que el jugador ha estado poco tiempo
+        pensando qué ficha colocar, y pasará el turno al siguiente jugador.
+\end{itemize}
 
-Dolor site
+Solamente en el caso de que más de una ficha sea candidata a colocarse, el Motor de Inferencia hará uso de la Base
+de Conocimiento y aplicará las reglas del sistema experto.
 
-\subsubsection{Música y efectos}
+\subsection{Música y efectos}
 
 % TODO FIXME
 
