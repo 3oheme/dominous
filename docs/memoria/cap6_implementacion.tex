@@ -51,9 +51,24 @@ integración y minimizando el hecho de que errores de un apartado puedan afectar
 
 \subsubsection{Gestión de partida}
 
-% TODO FIXME
+El motor gráfico que participa de la partida consta de varios apartados y, probablemente, uno de los más costosos y
+laboriosos fue el del método que decide en qué lugar se coloca una ficha en el tablero.
 
-Lorem ipsum
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.5]{tiles_position.png}
+  \end{center}
+  \caption{Diferentes posiciones en las que se puede colocar una ficha en el tablero}
+  \label{tiles-position}
+\end{figure}
+
+Como vemos en el gráfico~\ref{fig:tiles-position} existen multitud de posiciones y orientaciones posibles a la hora de colocar
+la nueva ficha --- hasta 20 diferentes posiciones, dependiendo de las siguientes variables:
+\begin{itemize}
+    \item Naturaleza de la ficha que vamos a colocar --- recordemos que las fichas dobles se colocan de forma
+            perpendicular al sentido del flujo de las fichas.
+    \item Orientación de la ficha 
+\end{itemize}
 
 
 \subsection{Interfaz de sonido}
@@ -97,7 +112,7 @@ El significado de secciones y valores no está bien definido y cada aplicación 
 Las ventajas de este tipo de ficheros es su estandarización y comodidad a la hora de leer y guardar valores en fichero,
 de tal forma que podemos guardar información por defecto sobre el juego de la siguiente forma:
 
-\begin{lstlisting} [caption={Ficher INI de ejemplo}, language=Python, numbers=left]
+\begin{lstlisting} [caption={Fichero INI de ejemplo}, language=Python, numbers=left]
 config.add_section('General')
 config.set('General', 'name', 'Dominous')
 config.set('General', 'window_caption', 'Dominous')
@@ -130,7 +145,7 @@ config_default = {
     'window_width': config.getint('Screen', 'window_width'),
     'window_height': config.getint('Screen', 'window_height'),
     'full_screen': config.get('Screen', 'full_screen'),
-    'window_favicon': config.get('Screen', 'window_favicon'),
+    'window_favicon': config.get('Screen', 'window_fav'),
     'tile_width': 525,
     'tile_height': 270,
     'scale': 0.2,
