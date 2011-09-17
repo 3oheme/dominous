@@ -54,22 +54,23 @@ integración y minimizando el hecho de que errores de un apartado puedan afectar
 El motor gráfico que participa de la partida consta de varios apartados y, probablemente, uno de los más costosos y
 laboriosos fue el del método que decide en qué lugar se coloca una ficha en el tablero.
 
-\begin{figure}[h]
-  \begin{center}
-    \includegraphics[scale=0.5]{tiles_position.png}
-  \end{center}
-  \caption{Diferentes posiciones en las que se puede colocar una ficha en el tablero}
-  \label{tiles-position}
-\end{figure}
-
 Como vemos en el gráfico~\ref{fig:tiles-position} existen multitud de posiciones y orientaciones posibles a la hora de colocar
 la nueva ficha --- hasta 20 diferentes posiciones, dependiendo de las siguientes variables:
 \begin{itemize}
     \item Naturaleza de la ficha que vamos a colocar --- recordemos que las fichas dobles se colocan de forma
             perpendicular al sentido del flujo de las fichas.
-    \item Orientación de la ficha 
+    \item Orientación de la ficha de enganche
+    \item Sentido de las fichas en el tablero
+    \item Posición de la ficha de enganche en el tablero respecto a los límites del mismo
 \end{itemize}
 
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.9]{tiles_position.png}
+  \end{center}
+  \caption{Diferentes posiciones en las que se puede colocar una ficha en el tablero}
+  \label{fig:tiles-position}
+\end{figure}
 
 \subsection{Interfaz de sonido}
 
