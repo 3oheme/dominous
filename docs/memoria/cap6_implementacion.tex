@@ -262,7 +262,9 @@ class put_any_double:
                     tiles.remove(item)
                     return item, "left", 1
                     break
-                elif item[0] == right_tile or item[1] == right_tile or left_tile == None:
+                elif item[0] == right_tile or
+                    item[1] == right_tile or
+                    left_tile == None:
                     tiles.remove(item)
                     return item, "right", 1
                     break
