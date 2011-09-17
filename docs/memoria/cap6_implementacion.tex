@@ -107,7 +107,7 @@ config.add_section('Screen')
 config.set('Screen', 'window_width', '800')
 config.set('Screen', 'window_height', '600')
 config.set('Screen', 'full_screen', 'False')
-config.set('Screen', 'window_favicon', os.path.join('images', 'favicon.png'))
+config.set('Screen', 'window_fav', os.path.join('images', 'fav.png'))
 config.add_section('Theme')
 config.set('Theme', 'theme', 'spanish')
 config.add_section('Game')
@@ -262,8 +262,8 @@ class put_any_double:
                     tiles.remove(item)
                     return item, "left", 1
                     break
-                elif item[0] == right_tile or
-                    item[1] == right_tile or
+                elif item[0] == right_tile or \
+                    item[1] == right_tile or \
                     left_tile == None:
                     tiles.remove(item)
                     return item, "right", 1
@@ -317,7 +317,6 @@ self.knowledge.append([
     weight_matrix()
 ])
 self.knowledge.append([put_anyone()])
-\subsubsection{Motor de Inferencia}
 \end{lstlisting}
 
 En un primer momento se ejecutará, aleatoriamente, una regla entre \textbf{put\_any\_double()} y \textbf{weight\_matrix()}.
