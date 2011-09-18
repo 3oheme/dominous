@@ -46,22 +46,76 @@ se disparan dentro de la sección correspondiente. \\
 
 Gracias a esta metodología hemos podido acotar de forma muy cómoda las diferentes secciones (cada una con sus peculiaridades)
 y gestionar de forma independiente cada apartado, evitando posibles problemas colaterales, asegurando una buena
-integración y minimizando el hecho de que errores de un apartado puedan afectar a otros. \\
-
+integración y minimizando el hecho de que errores de un apartado puedan afectar a otros.
 
 \subsubsection{Gestión de partida}
 
-El motor gráfico que participa de la partida consta de varios apartados y, probablemente, uno de los más costosos y
-laboriosos fue el del método que decide en qué lugar se coloca una ficha en el tablero.
+La gestión de la partida se puede dividir en dos apartados principales. El primero de ellos es la gestión de los diferentes
+estados y transiciones en los que se divide la partida, y el segundo es el motor gráfico en sí, que dibuja y mueve
+las fichas, el tablero y todos los diferentes elementos interactivos que incluye el juego. \\
+
+La gestión de estados se ha programado con una máquina finita de estados --- o autómata finito --- ya que este tipo de
+juegos por turnos se controla de forma cómoda y fácil con este tipo de estructuras. Contamos con un atributo \textbf{status}
+de la clase principal; este estado se va comprobando y actualizando en los diferentes estados, tal y como se ve en la
+estructura siguiente:
+
+\begin{lstlisting} [caption={Autómata finito de estados}, language=Python, numbers=left]
+"""
+Status = 0 - game start, reset all, create players
+    1 - fade in
+    2 - deal tiles
+    if game is over:
+        999 - end game, goto menu
+    if hand is over:
+        99 - end hand
+        100 - move tiles to center
+        101 - show full screen scoreboard
+        goto 1
+    else:
+        3 - draw available positions
+        4 - ask tile next player
+        if next player is human:
+            if player must pass:
+                20 - human player must pass
+                21 - waiting to click pass button
+                22 - human pressed pass button
+                23 - pass effect
+                goto 5
+            else:
+                6 - start drag n drop player tile
+                7 - dragging tile
+                8 - mousedown released
+                if player can place tile here:
+                    goto 5
+                else:
+                    goto 6
+        else:
+            if computer must pass:
+                23 - pass effect
+            else:
+                5 - move tile to its place
+            goto 3
+"""
+\end{lstlisting}
+
+Así, siguiendo este diagrama de flujo con las posibles transiciones entre los diferentes estados, podemos definir y acotar
+los posibles movimientos que se llevan a cabo a lo largo de la partida. \\
+
+Por otro lado, el motor gráfico que participa de la partida consta de varios apartados y, probablemente, uno de los más costosos y
+laboriosos fue el del método que decide en qué lugar se coloca una ficha en el tablero. \\
 
 Como vemos en el gráfico~\ref{fig:tiles-position} existen multitud de posiciones y orientaciones posibles a la hora de colocar
-la nueva ficha --- hasta 20 diferentes posiciones, dependiendo de las siguientes variables:
+la nueva ficha --- hasta un total de 20 diferentes posiciones, dependiendo de las siguientes variables:
 \begin{itemize}
     \item Naturaleza de la ficha que vamos a colocar --- recordemos que las fichas dobles se colocan de forma
-            perpendicular al sentido del flujo de las fichas.
-    \item Orientación de la ficha de enganche
-    \item Sentido de las fichas en el tablero
-    \item Posición de la ficha de enganche en el tablero respecto a los límites del mismo
+            perpendicular al sentido del flujo de las fichas, mientras que las fichas que no son dobles continúan con
+            el sentido de las fichas.
+    \item Orientación de la ficha de enganche.
+    \item Sentido de las fichas en el tablero.
+    \item Posición de la ficha de enganche en el tablero respecto a los límites del mismo.
+    \item Número de fichas colocadas en el tablero --- si estamos colocando la primera ficha, ésta debe situarse en
+            el centro justo del tablero.
+    \item Tamaño de las fichas y del área de juego.
 \end{itemize}
 
 \begin{figure}[h]
@@ -71,6 +125,10 @@ la nueva ficha --- hasta 20 diferentes posiciones, dependiendo de las siguientes
   \caption{Diferentes posiciones en las que se puede colocar una ficha en el tablero}
   \label{fig:tiles-position}
 \end{figure}
+
+Para saber dónde colocar las fichas se necesita información de todas estas variables, y dependiendo del caso, optar por
+una posición u otra. Dado que existen multitud de circunstancias y posibles opciones, se decidió encapsular en un método
+y realizar todos los cálculos y comprobaciones para luego mover directamente la ficha.
 
 \subsection{Interfaz de sonido}
 
