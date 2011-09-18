@@ -106,7 +106,6 @@ para que el jugador evalúe las posibilidades de acción y actúe en consecuenci
   \label{logo-python}
 \end{figure}
 
-
 Si tenemos en cuenta estas circunstancias, existen otros lenguajes que también deben entrar en juego,
 como por ejemplo \textbf{Python}. Buscando las diferencias, ventajas y desventajas de Python frente a C++,
 obtenemos el siguiente listado:
@@ -133,7 +132,19 @@ obtenemos el siguiente listado:
         \end{itemize}
 \end{enumerate}
 
-% TODO FIXME comentar brevemente PyGame
+Por otro lado, se consigue la gran ventaja de contar con las librerías PyGame. Pygame es un conjunto de módulos del
+para Python que permiten la creación de videojuegos en dos dimensiones de una manera sencilla.
+Funciona como interfaz de las bibliotecas SDL, y está orientado al manejo de sprites. Las grandes ventajas de PyGame son:
+\begin{itemize}
+    \item Alta portabilidad entre sistemas -- gracias a lo cual cumplimos con el requisito de funcionamiento bajo
+            sistemas Windows y GNU/Linux.
+    \item Libre y gratuito, disponible bajo licencia LGPL --- gracias a la cual sería posible incluso lanzar los juegos
+            de forma comercial, gratuita, libre o incluso shareware.
+    \item Soporta CPUs con varios núcleos, incluye funciones altamente optimizadas y escritas en C o directamente en
+            ensamblador, altamente configurable y adaptable al proyecto a desarrollar, muy modular, incluye funciones
+            para trabajar con eventos y sonidos, y muchas más funcionalidades que lo hacen idóneo para un proyecto
+            de estas características.
+\end{itemize}
 
 \subsection{Diseño y estilo visual de interfaces}
 
@@ -466,16 +477,20 @@ y asociarlos de forma cómoda a un jugador.
 
 \subsection{Modelado}
 
-% TODO FIXME
-
 Tras realizar un análisis del sistema, se han identificado los siguientes hechos necesarios para que el sistema experto razone:
 
 \begin{description}
-    \item[Ficha]
-    \item[Turno]
-    \item[Jugador que manda]
+    \item[Fichas] Las fichas con las que cuenta el jugador --- en principio todas son posibles candidatas para elaborar
+            el movimiento.
+    \item[Turno] Dependiendo del turno en que nos encontremos.
+    \item[Jugador que manda] Si el jugador que manda es nuestro compañero debemos apoyarle. Si nosotros somos el jugador que
+            manda podemos intentar jugar para nosotros.
+    \item[Posición del jugador] El lugar del jugador, estimando nuestras posibilidades de victoria.
+    \item[Histórico de la partida] En definitiva, se requiere de un histórico con todos los movimientos realizados durante el
+            transcurso de la partida, incluyendo el tiempo \emph{pensando} que ha empleado cada jugador.
 \end{description}
 
-En cuanto al motor de inferencia se ha implementado un sencillo motor basado en prioridades de las reglas.
-
-
+En cuanto al motor de inferencia se ha implementado un sencillo motor basado en prioridades de las reglas. Cada jugador
+(o sistema experto) posee un conjunto de reglas, ordenadas por prioridades, almacenadas en la base de conocimiento.
+A la hora de mover ficha, se buscará la regla de más peso cuyas condiciones sean satisfechas por la situación de la partida.
+La regla se dispara y se realiza el movimiento deseado.
