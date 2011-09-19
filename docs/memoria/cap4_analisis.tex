@@ -423,11 +423,11 @@ engloba a todos los objetos, y el modelo consta de dos partes:
 
 \textbf{Contrato de operaciones}
 \begin{description}
-    \item[Operación] Menú principal
-    \item[Actores] Usuario, sistema 
-    \item[Responsabilidades] Seleccionar los personajes que intervendrán en la partida actual
-    \item[Precondiciones] Ninguna
-    \item[Postcondiciones] Selección de personajes para la partida, comienzo de partida
+    \item[Operación] Menú principal.
+    \item[Actores] Usuario, sistema.
+    \item[Responsabilidades] Seleccionar los personajes que intervendrán en la partida actual.
+    \item[Precondiciones] Ninguna.
+    \item[Postcondiciones] Selección de personajes para la partida, comienzo de partida.
 \end{description}
 
 \subsubsection{Modelo de comportamiento modo laboratorio}
@@ -442,12 +442,36 @@ engloba a todos los objetos, y el modelo consta de dos partes:
 
 \textbf{Contrato de operaciones}
 \begin{description}
-    \item[Operación] Menú principal
-    \item[Actores] Usuario, sistema
-    \item[Responsabilidades] Desarrollar un número elevado de partidas automatizadas
-    \item[Precondiciones] Ninguna
-    \item[Postcondiciones] Selección de personajes para la partida, comienzo de partida
+    \item[Operación] Menú principal.
+    \item[Actores] Usuario, sistema.
+    \item[Responsabilidades] Desarrollar un número elevado de partidas automatizadas.
+    \item[Precondiciones] Ninguna.
+    \item[Postcondiciones] Selección de personajes para la partida, comienzo de partida.
 \end{description}
 
 % TODO FIXME: falta el del desarrollo de una partida: iniciar, jugar cada turno (poniendo ficha o pasando) hasta que se acabe
+
+\textbf{Juego clásico}
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.15]{diagrama_clases_juego_clasico.png}
+  \end{center}
+  \caption{Diagrama de secuencia para el caso de uso de un juego clásico}
+  \label{diagrama_clases_juego_clasico}
+\end{figure}
+
+\textbf{Contrato de operaciones}
+\begin{description}
+    \item[Operación] Menú principal.
+    \item[Actores] Usuario, sistema.
+    \item[Responsabilidades] Desarrollar exitosamente una partida entre cuatro jugadores, tres de ellos controlados por el
+            ordenador y un cuarto que es controlado por el usuario.
+    \item[Precondiciones]
+        \begin{itemize}
+            \item El modo de juego de un jugador está seleccionado en la configuración del sistema.
+            \item Se ha pulsado la opción de partida simple.
+            \item Se han seleccionado previamente los jugadores que participarán de la partida.
+        \end{itemize}
+    \item[Postcondiciones] Se devuelve al usuario al menú principal.
+\end{description}
 
