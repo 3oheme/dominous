@@ -60,7 +60,38 @@ apartados:
             interfaces entre el juego y el sistema de gestión de la partida.
 \end{description}
 
-Una vez dividido todo el proyecto en módulos, podemos obtener el siguiente diagrama de Gantt~\ref{fig:diag_gantt}:
+Una vez dividido todo el proyecto en módulos podemos realizar una estimación de tiempos a partir del cual se
+obtiene el diagrama de Gantt~\ref{fig:diag_gantt}.
+
+\begin{itemize}
+    \item Toma de requisitos --- 27d
+        \begin{itemize}
+            \item Requisitos de hardware --- 1d
+            \item Requisitos de software --- 16d
+            \item Comprobación de requisitos --- 9d
+        \end{itemize}
+    \item Investigación preliminar --- 80d
+        \begin{itemize}
+            \item Análisis del estado del arte --- 5d
+            \item Bibliotecas de desarrollo --- 75d
+        \end{itemize}
+    \item Planificación --- 27d
+    \item Análisis del sistema --- 28d
+    \item Diseño del sistema --- 265d
+    \item Implementación --- 236d
+        \begin{itemize}
+            \item Subsistema de gestión de partida --- 130d
+            \item Subsistema de Inteligencia Artificial --- 140d
+            \item Subsistema gráfico --- 80d
+        \end{itemize}
+    \item Pruebas --- 20d
+        \begin{itemize}
+            \item Pruebas unitarias ---16d
+            \item Pruebas de integración --- 1d
+            \item Pruebas de jugabilidad y experiencia de usuario ---3d
+        \end{itemize}
+    \item Redacción de la memoria --- 12d
+\end{itemize}
 
 \begin{figure}[h]
   \begin{center}
