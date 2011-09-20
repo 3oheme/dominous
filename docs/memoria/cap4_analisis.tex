@@ -144,8 +144,6 @@ El esquema utilizado es el siguiente:
 
 \subsection{Descripción de los casos de uso}
 
-% TODO FIXME: Uniformizar puntos finales
-
 A continuación pasamos a la descripción de los casos de uso. Para ello se va a utilizar una notación formal
 usando plantillas, con la intención y finalidad de que este texto sea legible y comprensible por
 un usuario que no sea experto.
@@ -157,21 +155,21 @@ un usuario que no sea experto.
     \item[Descripción] Se muestra el menú principal de la aplicación, desde donde es posible acceder a los
         diferentes modos de juego y a las opciones.
     \item[Actores] Usuario
-    \item[Precondiciones] Ninguna
-    \item[Postcondiciones] Ninguna
+    \item[Precondiciones] Ninguna.
+    \item[Postcondiciones] Ninguna.
     \item[Escenario principal] $\quad$
         \begin{enumerate}
-            \item El sistema muestra el menú principal del juego en la pantalla
-            \item El usuario selecciona el modo \textbf{partida simple}
-            \item El sistema inicia el modo de elección de jugadores
+            \item El sistema muestra el menú principal del juego en la pantalla.
+            \item El usuario selecciona el modo \textbf{partida simple}.
+            \item El sistema inicia el modo de elección de jugadores.
         \end{enumerate}
     \item[Extensiones --- flujo alternativo] $\quad$
         \begin{description}
-            \item[*a ] El usuario cierra la ventana de la aplicación y sale de la aplicación
-            \item[2a ] El usuario pulsa sobre el botón de laboratorio, dirigiéndose a ese apartado de la aplicación
-            \item[2b ] El usuario pulsa el botón de tutorial, dirigiéndose a ese apartado de la aplicación
-            \item[2c ] El usuario pulsa sobre las opciones, dirigiéndose a ese apartado de la aplicación
-            \item[2d ] El usuario pulsa sobre el botón de salir, cerrándose la aplicación
+            \item[*a ] El usuario cierra la ventana de la aplicación y sale de la aplicación.
+            \item[2a ] El usuario pulsa sobre el botón de laboratorio, dirigiéndose a ese apartado de la aplicación.
+            \item[2b ] El usuario pulsa el botón de tutorial, dirigiéndose a ese apartado de la aplicación.
+            \item[2c ] El usuario pulsa sobre las opciones, dirigiéndose a ese apartado de la aplicación.
+            \item[2d ] El usuario pulsa sobre el botón de salir, cerrándose la aplicación.
         \end{description}
    
 \end{description}
@@ -206,16 +204,16 @@ un usuario que no sea experto.
     \item[Descripción] El usuario pulsa el botón partida simple con la intención de comenzar una partida
             de dominó con las opciones por defecto, esto es, jugando por parejas con tres jugadores más
             controlados por el ordenador. El usuario selecciona su pareja de equipo y sus dos adversarios, y
-            da comienzo la partida
+            da comienzo la partida.
     \item[Actores] Usuario.
     \item[Precondiciones] Ninguna.
-    \item[Postcondiciones] Se jugará una partida de \textbf{Dominous}
+    \item[Postcondiciones] Se jugará una partida de \textbf{Dominous}.
     \item[Escenario principal] $\quad$
         \begin{enumerate}
             \item El usuario desea jugar una partida.
             \item El usuario selecciona la opción de menú \textbf{partida simple}.
             \item \texttt{include} \textsc{selección de jugadores}.
-            \item El sistema inicializa y muestra la partida actual por pantalla
+            \item El sistema inicializa y muestra la partida actual por pantalla.
             \item Por cada mano que se desarrolle:
                 \begin{enumerate}
                     \item El usuario y el sistema interactúan durante la partida.
@@ -237,7 +235,7 @@ un usuario que no sea experto.
 \subsubsection{Caso de uso: Laboratorio}
 
 \begin{description}
-    \item[Caso de uso] Laboratorio
+    \item[Caso de uso] Laboratorio.
     \item[Descripción] El usuario desea realizar pruebas y análisis sobre las diferentes habilidades de cada jugador
             controlado por la Inteligencia Artificial del programa, enfrentando a dos equipos de jugadores a un 
             número de partidas, y calculando el mejor equipo según el número de victorias alcanzadas.
@@ -250,8 +248,8 @@ un usuario que no sea experto.
             \item El usuario desea acceder al modo laboratorio.
             \item El usuario selecciona la opción de menú \textbf{laboratorio}.
             \item \texttt{include} \textsc{selección de jugadores}.
-            \item El sistema comienza con los enfrentamientos entre ambas parejas
-            \item El sistema finaliza los enfrentamientos y destaca al equipo ganador
+            \item El sistema comienza con los enfrentamientos entre ambas parejas.
+            \item El sistema finaliza los enfrentamientos y destaca al equipo ganador.
             \item El sistema cierra el modo laboratorio y muestra de nuevo el menú principal.
         \end{enumerate}
     \item[Extensiones --- flujo alternativo] $\quad$
@@ -262,7 +260,7 @@ un usuario que no sea experto.
                     partida simple --- se rompe el flujo y se redirige al usuario a la opción elegida.
             \item[4a ] El usuario pulsa el botón de pausa --- se realiza una pausa en el desarrollo de las
                     partidas, hasta el momento en el que el usuario vuelve a pulsar el botón de pausa y se
-                    reanudan los enfrentamientos
+                    reanudan los enfrentamientos.
             \item[4b ] El usuario pulsa el botón de reiniciar --- se resetean a cero los contadores de partidas,
                     puntos y cualquier otra estadística sobre la que se realice el conteo, y se comienza a
                     desarrollar de nuevo un nuevo conjunto de enfrentamientos.
@@ -329,7 +327,7 @@ un usuario que no sea experto.
             posterior desarrollo del juego.
     \item[Escenario principal] $\quad$
         \begin{enumerate}
-            \item El usuario debe seleccionar los personajes que participarán en el juego
+            \item El usuario debe seleccionar los personajes que participarán en el juego.
             \item El sistema muestra los jugadores actuales.
             \item El usuario selecciona los personajes que jugarán la partida o partidas siguientes.
             \item El usuario está satisfecho con su elección y pulsa el botón de jugar.
@@ -368,7 +366,7 @@ mediante la indentación de cada ítem del listado.
         \item[Motor gráfico] Encargado de gestionar el apartado de la representación de la información por pantalla.
         \begin{description}
             \item[Ficha] Las fichas que utiliza el motor gráfico no son fichas lógicas, sino que simplemente se
-                emplean para colocarlas por pantalla y que el usuario pueda hacer un uso cómodo de la aplicación
+                emplean para colocarlas por pantalla y que el usuario pueda hacer un uso cómodo de la aplicación.
         \end{description}
         \item[Partida] Se encarga de llevar el control de la partida a nivel lógico, vigilando que se cumplan
                 en todo momento las reglas de juego y guardando información detallada sobre toda la partida.
