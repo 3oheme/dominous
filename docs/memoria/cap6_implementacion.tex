@@ -10,7 +10,7 @@
 \section{Implementación}
 
 Una vez terminadas las dos fases previas --- análisis y diseño --- es hora de enfrentarnos a la codificación e implementación
-en sí de la aplicación. Este apartado es largo y entretenido, y va descubriendo a cada momento nuevas problemáticas que
+en sí de la aplicación. Este apartado es largo y entretenido, ya que va descubriendo a cada momento nuevas problemáticas que
 no se han tenido en cuenta antes y es necesario resolver, pero también es apasionante, porque vamos viendo de forma
 empírica cómo nuestra aplicación va tomando forma y se va haciendo tangible a cada momento que avanza. \\
 
@@ -236,7 +236,7 @@ apartado genera información o conocimiento para la Inteligencia Artificial:
     \item[Base de conocimientos] Contiene conocimiento modelado extraído del diálogo con un experto --- Esta base de
         conocimiento se almacena, por un lado en la biblioteca de funciones y herramientas para desempeñar una partida,
         y físicamente se almacena en el módulo de IA
-    \item[Base de hechos (Memoria de trabajo)] contiene los hechos sobre un problema que se ha descubierto durante el análisis
+    \item[Base de hechos (Memoria de trabajo)] Posee los hechos sobre un problema que se ha descubierto durante el análisis
         --- Los hechos se van creando y almacenando gracias al módulo de \textbf{Gestión de Partida de Dominó}, que
         gobierna la partida y guarda toda la información, movimientos, pasos y tiempos al colocar las fichas.
     \item[Motor de Inferencia] Modela el proceso de razonamiento humano --- gracias a la biblioteca de funciones podemos
@@ -246,9 +246,9 @@ apartado genera información o conocimiento para la Inteligencia Artificial:
     \item[Módulos de justificación] Explica el razonamiento utilizado por el sistema para llegar a una determinada conclusión
         --- ya que en el dominó no se puede evaluar por sí mismo la efectividad o conveniencia de un movimiento, esta
         justificación llega del conocimiento del experto en valorar con mayor o menor peso una regla.
-    \item[Interfaz de usuario] es la interacción entre el Sistema Experto y el usuario, y se realiza mediante el lenguaje
-        natural --- y, en el caso de Dominous, la interfaz se comunica con el usuario mediante el módulo del motor
-        gráfico del juego, que muestra fichas, movimientos y jugadores.
+    \item[Interfaz de usuario] Esta última capa es la interacción entre el Sistema Experto y el usuario, se realiza
+        mediante el lenguaje natural --- y, en el caso de Dominous, la interfaz se comunica con el usuario mediante el
+        módulo del motor gráfico del juego, que muestra fichas, movimientos y jugadores.
 \end{description}
 
 Pasemos a describir cada apartado para conocer a fondo la implementación del sistema experto.
@@ -276,9 +276,10 @@ self.info = {
 }
 \end{lstlisting}
 
-El identificador de cada campo es bastante descriptivo
+Como vemos, el identificador de cada campo es bastante descriptivo, añadiéndose mucha información complementaria que pueda
+necesitarse en un futuro. \\
 
-Y también se almacena información de la mano actual y de cada movimiento de la siguiente forma:
+El sistema también almacena información de la mano actual y de cada movimiento de la siguiente forma:
 
 \begin{lstlisting} [caption={Información de la mano actual}, language=Python, numbers=left]
 movement = {
@@ -421,7 +422,7 @@ de Conocimiento y aplicará las reglas del sistema experto.
 La música también juega un papel importante en un videojuego, y no debe ser elegida a la ligera, sino
         debe buscarse una razón y un estilo que encaje con los objetivos definidos. Esta aplicación está orientada a un
         público muy general, y el ritmo del juego es tranquilo y pausado, así que se eligió el jazz como estilo base
-        para acompañar al juego.
+        para acompañar al juego. \\
 
 \begin{figure}[h]
   \begin{center}
