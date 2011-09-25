@@ -15,7 +15,7 @@ A continuación se detalla una breve historia del juego del dominó y similares 
 
 \subsection{Historia del dominó}
 
-El dominó, deporte y pasatiempo a un tiempo, es un juego que ha ganado adeptos a lo largo de la historia. Según explica \textbf{Miguel Lugo} en su libro Dominó Competitivo \cite{lugo08} éste “es entretenido y fácil de
+El dominó, deporte y pasatiempo, es un juego que ha ganado adeptos a lo largo de la historia. Según explica \textbf{Miguel Lugo} en su libro Dominó Competitivo \cite{lugo08} éste “es entretenido y fácil de
 aprender. Ya desde pequeños comenzamos a jugar al dominó con frutas o con animales en lugar de hacerlo
 con puntos”. Además, éste ha ganado popularidad durante los últimos años hasta el punto de televisar
 torneos en Europa, Norteamérica y Latinoamérica.
@@ -109,7 +109,7 @@ juega con el sistema occidental. \\
   \begin{center}
     \includegraphics[scale=0.6]{chinese.jpg}
   \end{center}
-  \caption{Cartas de dominó chino \textbf{“Double Happiness”} --- los símbolos representan diferentes
+  \caption{Cartas de dominó chino Double Happiness --- los símbolos representan diferentes
             circunstancias y bendiciones de la vida }
   \label{}
 \end{figure}
@@ -124,7 +124,7 @@ y palos al clásico. \\
 Por otro lado, otros autores (desde la página Dominó en Línea \cite{website:dominoenlinea}) apuntan que el dominó
 de origen más antiguo se habría encontrado en la tumba de Touthankamon en Egipto. Y que los dominós nacieron de la derivación del juego de dados indio, conocido en Europa bajo el dado a seis-cara, los chinos modificaron este dado en parte plana reversible representando puntos, de 1 en 6 puntos. En Europa sería apareció una cara suplementaria, el blanco. \\
 
-En el apartado de curiosidades que se apunta en esta web podemos destacar que la palabra “dominó”
+En el apartado de curiosidades podemos destacar que la palabra “dominó”
 sería a causa de la semejanza entre las partes de las fichas del juego y la ropa de las religiosas
 de las Dominicas (blanco cubierto de un cabo negro). Sin embargo, el autor Ruipérez en el Libro
 del Dominó apunta otros posibles orígenes al término, algunos muy parecidos al ya apuntado. De hecho, existe una variante del juego que se juega con fichas de tres caras y se llama \emph{Trimino}, haciendo un juego de do(s)-mino por tri-mino \cite{website:trimino}\\
@@ -428,7 +428,7 @@ A la hora de afrontar un proyecto que simule cierto comportamiento \emph{humano}
 Para implementar la inteligencia de los contrincantes de Dominous se utilizará un
 \textbf{sistema experto}~\cite{Giarratano:1989:ESP:583478}.
 El desarrollo de sistemas expertos es una rama de la Inteligencia Artificial, que imita los mecanismos y la forma de
-pensar de un experto en cierta materia para resolver problemas de su campo de aplicación. Esto lo hace adecuado ara un juego como el dominó, cuyas estrategias ganadoras son conocidas. Estos sistemas tiene un gran implantación en diversas ramas de la ciencia, como medicina, ingeniería o sistemas de decisiones para negocios.\\
+pensar de un experto en cierta materia para resolver problemas de su campo de aplicación. Esto lo hace adecuado ara un juego como el dominó, cuyas estrategias ganadoras son conocidas. Estos sistemas tiene un gran implantación en diversas ramas de la ciencia, como medicina, ingeniería o sistemas de decisiones para negocios.
 
 \subsubsection{Arquitectura general}
 
@@ -436,7 +436,7 @@ Si consideramos el sistema una caja negra, el usuario del sistema experto sólo 
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[scale=1]{sistexp.png}
+    \includegraphics[scale=1.3]{sistexp.png}
   \end{center}
   \caption{Esquema conceptual de un sistema experto}
   \label{fig:sistexp}
@@ -448,7 +448,7 @@ El proceso de construcción de un sistema experto se denomina ingeniería del co
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[scale=1.2]{des_sistexp.png}
+    \includegraphics[scale=1.6]{des_sistexp.png}
   \end{center}
   \caption{Desarrollo de un sistema experto}
   \label{fig:des_sistexp}
@@ -468,7 +468,7 @@ detallan cada una de ellas.
 
 \begin{figure}[h]
   \begin{center}
-    \resizebox{0,8\linewidth}{!}{\includegraphics{arq_sistexp_reg.png}}
+    \includegraphics[scale=0.8]{arq_sistexp_reg.png}
   \end{center}
   \caption{Arquitectura general de un sistema experto basado en reglas.}
   \label{fig:arq_sistexp_reg}
@@ -526,10 +526,10 @@ ACCIÓN''. Un ejemplo sería:
 
 \begin{lstlisting}[caption={Regla en pseudocódigo}, numbers=left]
   (defrule biblioteca-regla-1
-    (libro (titulo ?X) (estado retraso) (prestado-a ?Y))
-    (persona (nombre ?Y) (domicilio ?Z))
+    (libro (titulo ?X) (estado retraso) (prestado-a ?W))
+    (persona (nombre ?W) (domicilio ?Z))
     =>
-    (mandar-nota-retraso ?X ?Y ?Z))
+    (mandar-nota-retraso ?X ?W ?Z))
 \end{lstlisting}
 
 Esta regla en lenguaje natural se podría leer línea a línea:
@@ -537,15 +537,15 @@ Esta regla en lenguaje natural se podría leer línea a línea:
 Regla 1:
   Si
     hay un libro, titulado X, con retraso, y 
-    prestado a una persona de nombre Y
+        prestado a una persona de nombre W
     Y
-    el domicilio de la persona Y es Z
+    el domicilio de la persona W es Z
   Entonces
-    mandarle una nota de retraso a Y en Z del libro X
+    mandarle una nota de retraso a W en Z del libro X
 \end{lstlisting}
 
 El libro y persona en concreto deben de estar en la memoria activa. Y
-las acciones (como ``mandar-nota-retraso'' del ejemplo) se definen en
+las acciones (como "mandar-nota-retraso" del ejemplo) se definen en
 funciones escritas por el usuario. \\
 
 En la bibliografía se suele denominar antecedente (o parte izquierda

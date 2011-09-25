@@ -121,7 +121,7 @@ obtenemos el siguiente listado:
             desventaja ya que al ser interpretado puede resultar más lento, pero analicemos pausadamente estos
             factores:
         \begin{itemize}
-            \item Como ya hemos comentado previamente, nuestra aplicación, a pesar de enmarcarse dentro de las
+            \item Como ya hemos comentado previamente, nuestra aplicación, aunque se enmarca dentro de las
                     facciones de un videojuego, no requiere de grandes alardes de potencia gráfica como podría
                     suponerse, ya que es un tipo de juego pausado y donde cómo se muestra la información
                     es mucho más importante que la velocidad o los efectos de vídeo e imágenes.
@@ -204,7 +204,7 @@ que ofrece ViewCVS) decantaron la decisión sobre el lado de SVN.
 Tomando los resultados obtenidos en la fase de análisis es necesario diseñar una interfaz gráfica amigable
 para el usuario y desde la cual se pueda interactuar con la aplicación. Para el diseño de las interfaces
 se intentará en todo momento que sean usables además de intentar conseguir que el usuario no pueda
-introducir datos erróneas para que no produzca comportamientos anómalos. \\
+introducir datos erróneas para que no produzca comportamientos anómalos.
 
 \begin{figure}[h]
   \begin{center}
@@ -217,11 +217,11 @@ introducir datos erróneas para que no produzca comportamientos anómalos. \\
 \subsection{Diagrama de interacción entre interfaces gráficas}
 
 En el siguiente diagrama~\ref{fig:diagramainteraccioninterfaces} podemos observar la interacción entre
-las distintas interfaces gráficas desarrolladas para la aplicación. \\
+las distintas interfaces gráficas desarrolladas para la aplicación.
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[scale=0.15,angle=90]{diagrama_interfaces.png}
+    \includegraphics[scale=0.18,angle=90]{diagrama_interfaces.png}
   \end{center}
   \caption{Diagrama de interacción entre interfaces}
   \label{fig:diagramainteraccioninterfaces}
@@ -255,7 +255,7 @@ todos los apartados cuya funcionalidad merezca ser destacada.
 
 \subsection{Clase dominous}
 
-La clase dominous genera el objeto principal que soporta el peso principal de toda la aplicación. Al inicio de la
+La clase \comando{dominous} genera el objeto principal que soporta el peso principal de toda la aplicación. Al inicio de la
 ejecución se crea un objeto de esta clase; este objeto va creando --- según las necesidades del flujo que tome
 la ejecución de la misma --- los diferentes objetos, controlando y dando paso a la interfaz activa, llamando a
 las principales funciones y permitiendo la captura de los eventos de entrada. \\
@@ -323,8 +323,8 @@ por cada movimiento que se realice en la partida, y se agrupa por manos:
     \item[player] Jugador que ha realizado el movimiento.
     \item[tile] Ficha que ha colocado.
     \item[side] Lado del tablero por donde ha colocado la ficha.
-    \item[left] Cifra, del cero al siete, que se tiene como resultante del movimiento por el lado izquierdo del tablero.
-    \item[right] Cifra, del cero al siete, que se tiene como resultante del movimiento por el lado derecho del tablero.
+    \item[left] Cifra, del cero al seis, que se tiene como resultante del movimiento por el lado izquierdo del tablero.
+    \item[right] Cifra, del cero al seis, que se tiene como resultante del movimiento por el lado derecho del tablero.
     \item[mtime] Tiempo (en segundos) que ha estado pensando el jugador antes de colocar la ficha.
 \end{description}
 
@@ -382,7 +382,7 @@ una partida de dominó.
 \subsection{Estrategia según la posición}
 
 Lo primero que observamos es que la estrategia que debe seguir cada jugador depende enteramente del rol que desempeñe el mismo.
-Como vimos en el capítulo ~\ref{juegoporparejas} es importante definir una estrategia personalizada para cada jugador,
+Como vimos en el capítulo~\ref{juegoporparejas} es importante definir una estrategia personalizada para cada jugador,
 dependiendo del lugar respecto al jugador mano, por lo que nuestro sistema debe tener reglas sensibles a esto.
 
 \subsection{Reglas de obligado cumplimiento}
@@ -391,11 +391,14 @@ Si leemos el apartado \emph{Normas fundamentales para el juego del dominó por p
 Benito Ruipérez \cite{mora90}, la primera regla que se destaca es la siguiente:
 
 \begin{quote}
-    \textbf{Defender el doble del palo iniciado por el compañero} \\
+    \textbf{Defender el doble del palo iniciado por el compañero} 
+\end{quote}
+\begin{quote}
     Al iniciar, por obligación, el palo más largo que se lleva, se salga o no, sea o no mano. ¿Cuál ha de ser nuestra
-    obligación?\\
-    Lo más importante para el éxito de este juego es \emph{volver lo primero} (sin excusas ni pretextos) la que ha iniciado
-    el compañero, aunque sólo lleves una de ellas, seas mano, te quedes fallo o ambas cosas, no importa.\\
+    obligación? Lo más importante para el éxito de este juego es \emph{volver lo primero} (sin excusas ni pretextos)
+    la que ha iniciado el compañero, aunque sólo lleves una de ellas, seas mano, te quedes fallo o ambas cosas, no importa.
+\end{quote}
+\begin{quote}
     Si tu compañero lleva cuatro de doble, como más normal en el dominó, al volverle una de éstas, lo has hecho \emph{fuerte}
     en el palo que ha iniciado. Si él ha hecho lo mismo para ti, con otro palo distinto, mandáis en dos palos en
     esa mano: ¿Qué más se puede pedir? El resto de las fichas que lleváis sirve para contrarrestar a los oponentes en sus
@@ -458,7 +461,14 @@ Por lo tanto, nuestro sistema experto debe permitir definir cómodamente el conj
 
 Para simplificar y humanizar comportamientos, y representar los diferentes tipos de inteligencias o sistemas expertos,
 se ha optado por definir un conjunto de jugadores que se podrán elegir como adversario o pareja a la hora de jugar
-una partida de dominó.
+una partida de dominó. \\
+
+Cada jugador poseerá unas reglas y unos pesos asociados a esas reglas, con la intención de que el jugador humano pueda
+elegir compañeros y adversarios adaptados al nivel concreto que posea el mismo, y de este modo identificamos de forma
+sencilla y rápida una \emph{inteligencia} con un avatar definido. \\
+
+Así pues, nuestro sistema debe permitir la generación de diferentes niveles de dificultad o pilas de reglas y pesos,
+y asociarlos de forma cómoda a un jugador.
 
 \begin{figure}[h]
   \begin{center}
@@ -467,13 +477,6 @@ una partida de dominó.
   \caption{Diferentes imágenes que identifican al conjunto de jugadores de Dominous}
   \label{fig:jugadores_dominous}
 \end{figure}
-
-Cada jugador poseerá unas reglas y unos pesos asociados a esas reglas, con la intención de que el jugador humano pueda
-elegir compañeros y adversarios adaptados al nivel concreto que posea el mismo, y de este modo identificamos de forma
-sencilla y rápida una \emph{inteligencia} con un avatar definido.
-
-Así pues, nuestro sistema debe permitir la generación de diferentes niveles de dificultad o pilas de reglas y pesos,
-y asociarlos de forma cómoda a un jugador.
 
 \subsection{Modelado}
 

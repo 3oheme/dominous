@@ -31,11 +31,6 @@ the section entitled "GNU Free Documentation License".\\
 
 \section*{Notación y formato}
 
-Aquí incluiremos los aspectos relevantes a la notación y el formato a
-lo largo del documento. Para simplificar podemos generar comandos
-nuevos que nos ayuden a ello, ver \texttt{comandos.sty} para más
-información. \\
-
 Cuando nos refiramos a un programa en concreto, utilizaremos la
 notación: \programa{emacs}.\\
 
@@ -44,7 +39,11 @@ la notación: \comando{quicksort}.\\
 
 Extractos de ficheros con texto plano o código aparecerán
 
-\begin{lstlisting}[caption={[]Ejemplo de listado}, numbers=left]
-dentro de un recuadro como este, con numeracion a la izquierda
-Y sin acentos, por compatibilidad con cualquier codificacion
+\begin{lstlisting} [caption{language=Python, numbers=left]
+class nombre_de_la_regla:
+    def __init__(self):
+        # inicializamos los atributos que sean necesarios
+        pass
+    def go(self, left_tile, right_tile, board, tiles, log):
+        return ficha, lado, tiempo_pensando
 \end{lstlisting}
