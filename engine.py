@@ -594,7 +594,7 @@ class Engine:
             self.debug.add('Gloss.running_slowly')
         self.debug.add('elapsed_seconds = %s' % str(Gloss.elapsed_seconds))
         self.debug.add('scoreboard (%s, %s)' % (str(self.domino.points_team1()), str(self.domino.points_team2())))
-        self.debug.show()
+        #self.debug.show()
     def update(self):
         for key, tile in self.tiles.iteritems():
             tile.update()
