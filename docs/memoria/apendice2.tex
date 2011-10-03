@@ -211,4 +211,63 @@ encuentro~\ref{fig:screenshotsgamefinish3}. Para terminar pulsamos cualquier tec
 
 \section{Modo laboratorio}
 
-Lorem ipsum
+Por último, la opción laboratorio nos permite someter a dos parejas de jugadores a un alto número de partidas
+de dominó, con la intención de buscar qué pareja es mejor en la larga distancia. Para llegar a esta decisión se
+juegan cien partidas a doscientos puntos, y mientras estas partidas se desarrollan podemos disfrutar de una página
+con información sobre cómo se van desarrollando las partidas. \\
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.8]{screenshots_select_players_lab.png}
+  \end{center}
+  \caption{Pantalla de selección de pareja de equipo y contrincantes para el modo laboratorio}
+  \label{fig:screenshotsselectplayerslab}
+\end{figure}
+
+Para entrar en el modo laboratorio pulsamos la opción \textbf{laboratorio} en el menú principal y se nos dirige directamente
+a la pantalla de selección de equipos. \\
+
+La selección de equipos~\ref{fig:screenshotsselectplayerslab} nos muestra la pantalla clásica de selección de jugadores,
+con la novedad de que en este caso --- a diferencia del modo norma --- nos obliga a seleccionar cuatro jugadores, ya que
+las partidas se desarrollan automáticamente y nosotros no podremos participar de ellas. \\
+
+Una vez decididos los cuatro jugadores que se enfrentarán en las partidas, pulsamos el botón de avanzar y comienzan
+a jugarse las cien partidas mientras se muestra la pantalla de laboratorio~\ref{fig:screenshots_lab}. \\
+ 
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.8]{screenshots_lab.png}
+  \end{center}
+  \caption{Dos equipos enfrentándose en el modo laboratorio}
+  \label{fig:screenshots_lab}
+\end{figure}
+
+La pantalla nos muestra la siguiente información:
+\begin{itemize}
+    \item Primeramente aparecen los cuatro jugadores, agrupados por equipos, identificados por el avatar asociado a cada jugador.
+    \item La barra de porcentaje más grande indica el número de partidas ganadas por cada equipo --- según el total
+            de partidas jugadas por el momento. Este porcentaje está ponderado para evitar oscilaciones muy agresivas
+            en los primeros momentos del modo laboratorio, en los que pocas victorias podrían crear variaciones muy altas
+            en cuanto al porcentaje de victorias. Esta barra también incluye el número de victorias que lleva cada equipo.
+    \item Luego observamos una barra más pequeña, que nos proporciona información sobre los puntos que tiene cada
+            equipo en la partida actual. El punto central son doscientos puntos, la cifra a alcanzar para ganar la partida. 
+    \item Ocupando la zona principal tenemos una gráfica en la que observamos el transcurso de las cien partidas. El
+            eje X indica las partidas jugadas y el eje Y las victorias de cada equipo. Cuando un equipo alcanza la mitad
+            de la gráfica más una partida --- es decir, ha ganado 51 partidas de 100 aparece una pequeña marca que le
+            distingue como ganador.
+    \item Por último tenemos los controles para realizar una pausa en el transcurso de las partidas, otro para reiniciar
+            y comenzar desde cero y el control para volver al menú principal.
+\end{itemize}
+
+En el momento que acaban las cien partidas se marca el equipo ganador~\ref{fig:screenshots_lab2} y se da por concluida
+la sesión de laboratorio.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.8]{screenshots_lab2.png}
+  \end{center}
+  \caption{El equipo 1 ha ganado el 73 por ciento de las partidas}
+  \label{fig:screenshots_lab2}
+\end{figure}
+
+
