@@ -13,7 +13,9 @@
 
 Dominous se ha diseñado teniendo en mente que el sistema debe ser extensible en varias dimensiones. Antes hemos
 explicado que es posible crear nuevos jugadores, dotarlos de una inteligencia artificial adaptada a nuestras necesidades
-e incluso asignarles un avatar que los identifique. Pero además de oponentes, podemos dar un paso más en la
+e incluso asignarles un avatar que los identifique. \\
+
+Pero además de oponentes, podemos dar un paso más en la
 personalización de nuestra aplicación y crear nuevos temas gráficos, que nos permita sentirnos cómodos dentro de la
 aplicación y disfrutar del juego de forma más cómoda. \\
 
@@ -36,4 +38,63 @@ un nuevo tema gráfico de nombre \textbf{mytheme} --- se describe a continuació
       \tiles
 \end{lstlisting}
 
+Cada uno de los directorios tiene la siguiente utilidad y requiere de un número concreto de ficheros:
 
+\begin{description}
+    \item[themes] Engloba todos los temas gráficos instalados en el sistema.
+        \item[themes\textbackslash{}mytheme] Nombre del tema que aparecerá más tarde en el submenú de opciones de juego.
+             \item[themes\textbackslash{}mytheme\textbackslash{}images] Aquí se encontrarán todas las imágenes que se utilizarán en el tema gráfico. Recuerda que
+                todas las imágenes deben estar en formato PNG\footnote{El formato PNG --- Portable Network Graphics --- es de 
+                tipo rasterizado comprimido sin pérdidas} para aprovechar la máxima calidad gracias a la compresión
+                sin pérdida y utilizando el canal alfa de transparencias para poder hacer las fichas redondas o con
+                muescas.
+                \item[themes\textbackslash{}mytheme\textbackslash{}images\textbackslash{}background] Este directorio alojará todas las posibles imágenes de fondo sobre las que aparecerán
+                    las fichas. Puedes colocar tantas imágenes como quieras, ya que luego estas imágenes se leerán
+                    de forma aleatoria --- así conseguimos más dinamismo en los temas gráficos.
+                \item[themes\textbackslash{}mytheme\textbackslash{}images\textbackslash{}gui] Aquí se encuentran las imágenes propias de la interfaz de usuario. En principio únicamente
+                    alberga la imagen que remarca el jugador activo en el momento actual, pero está creada para que
+                    en un futuro pueda utilizarse para nuevos elementos que se puedan añadir al sistema.
+                \item[themes\textbackslash{}mytheme\textbackslash{}images\textbackslash{}tiles] Por último, dentro de images tenemos el listado con todas las 27 fichas. En un principio
+                    se pensó en generar las fichas de forma automática --- recibiendo únicamente una imagen de cada
+                    número --- pero se desechó la idea porque recorta libertades a la hora de diseñar, y se optó
+                    por utilizar una imagen por ficha. Recuerda añadir también el reverso de las fichas.
+            \item[themes\textbackslash{}mytheme\textbackslash{}sounds] El directorio sounds almacena sonidos, música y efectos de audio para que nuestro tema sea mucho
+                    más completo.
+                \item[themes\textbackslash{}mytheme\textbackslash{}sounds\textbackslash{}ambient] Este primer directorio nos sirve para alojar sonidos de ambiente. Los sonidos de ambiente
+                    se escuchan de fondo de la partida, a un volumen mucho más bajo de lo normal, y también se pueden
+                    dejar varios ficheros para que se utilicen de forma aleatoria.
+                \item[themes\textbackslash{}mytheme\textbackslash{}sounds\textbackslash{}music] La música es un apartado muy importante, y gracias a este directorio podemos dejar toda
+                    la música que queramos y que vaya acorde con el tema que estemos desarrollando. Al igual que con el
+                    sonido ambiente, se pueden dejar varios ficheros para que se utilicen de forma aleatoria.
+                \item[themes\textbackslash{}mytheme\textbackslash{}sounds\textbackslash{}tiles] Y para finalizar el directorio tiles almacena sonidos sueltos de fichas golpeando la mesa.
+                    Se recomienda que este sonido no sea muy fuerte ni largo, ya que se utilizará muchas veces a lo largo
+                    del juego y si no es agradable y corto acabará cansando.
+\end{description}
+
+Los ficheros siempre deben estar en formato PNG para gráficos y OGG para audio, y respetando los siguientes formatos o tipos:
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | l | p{5cm} |}
+    \hline
+    Elemento & Tipo de fichero & Formato & Aleatorio & Otros \\ \hline
+    background & PNG & 1024 x 768 píxeles & Sí &  \\ \hline
+    gui & PNG & 679 x 246 píxeles & No & Es importante añadir transparencia a la imagen de fondo de la interfaz 
+    para que resulte más agradable a la vista \\ \hline
+    tiles & PNG & 218 x 114 píxeles & No & Recuerda colocar la imagen del reverso de la ficha \\ \hline
+    ambient & OGG & 128 kbps / 44.1 Khz & Sí &  \\ \hline
+    music & OGG & 128 kbps / 44.1 Khz & Sí &  \\ \hline
+    tiles & OGG & 128 kbps / 44.1 Khz & Sí & Utiliza sonidos similares para conseguir un efecto más sutil \\ \hline
+    \hline
+    \end{tabular}
+\end{center}
+
+\section{Recomendaciones para crear un nuevo tema}
+
+La principal recomendación es que se utilice un tema ya existente a la hora de crear uno nuevo; así evitamos problemas
+por falta de ficheros, errores de escritura en directorios y otros fallos que pueden hacer que la aplicación deje de funcionar.
+El flujo de trabajo cómodo sería elegir un tema que sea parecido o que el estilo visual se asemeje a lo que queremos conseguir,
+copiarlo a un nuevo directorio con el nuevo nombre y editar las imágenes y sonidos para conseguir lo que queramos. \\
+
+Por otro lado, hay que cuidar que las fichas sean claras para que no pueda haber equivocaciones o confusiones de ningún
+tipo. Este consejo se puede extender al sonido de las fichas y a los elementos de la interfaz de usuario --- recordando
+siempre que estamos creando un producto cuya principal utilidad es permitirnos jugar cómodamente al dominó. \\
