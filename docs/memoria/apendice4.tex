@@ -9,6 +9,75 @@
 
 % MANUAL PARA AÑADIR NUEVOS JUGADORES
 
-\section{Manual para añadir nuevos jugadores}
+\section{Nuevos jugadores}
+
+El diseño de Dominous permite que se puedan añadir nuevos jugadores al sistema de forma sencilla y sin que se requiera
+conocimientos de Inteligencia Artificial por parte del usuario, aunque sí se necesitarán ciertas habilidades que se
+comentarán a continuación. Podemos crear nuevos usuario \\
+
+Los jugadores de Dominous se guardan dentro del directorio \comando{players}. Cada jugador cuenta con un directorio
+donde se almacenan los tres ficheros principales que necesita, que son los siguientes:
+
+\begin{description}
+    \item[player.ini] Configuración e información sobre el jugador.
+    \item[player.py] Lógica o base de conocimiento del jugador.
+    \item[image.png] Avatar o fotografía del jugador, que permite identificarlo y diferenciarlo en el juego.
+\end{description}
+
+Para crear un nuevo jugador basta con utilizar estos tres ficheros, colocarlos dentro de su directorio y listo. Automáticamente
+el sistema detectará al arrancar que existe un jugador nuevo y lo mostrará disponible en las pantallas de juego y en el
+modo laboratorio. \\
+
+A continuación vamos a describir cada uno de los ficheros que se requieren para el correcto funcionamiento de 
+nuestro jugador.
+
+\section{Configuración del jugador --- player.ini}
+
+Este fichero de configuración sigue el formato de los ficheros INI --- descrito en el capítulo de implementación --- por
+comodidad y rapidez de edición, ya que se puede modificar con cualquier editor de texto plano. El contenido del fichero
+debe mostrar los siguientes pares de clave -- valor dentro del grupo \comando{Player}:
+
+\begin{description}
+    \item[name] Nombre del jugador. Se utilizará en menús, pantallas, juego o cualquier otro sitio que requiera su uso,
+        y también se almacenará en los ficheros de partida.
+    \item[image] Avatar o imagen del jugador. Desde aquí podemos definir el nombre del fichero, aunque se recomienda que
+        se emplee el nombre por defecto \comando{image.png}. La imagen debe estar en formato PNG, no se requiere transparencia
+        y debe tener un tamaño de 150 por 150 píxeles.
+    \item[weight] Peso relativo que se utilizará cuando se muestre al jugador dentro de una colección mayor de jugadores.
+        Principalmente se usa para la página de selección de jugador, con la idea de que puedan estar ordenados según
+        el criterio que se quiera --- en principio, estarán ordenados por nivel de dificultad. El peso debe ser un número
+        entero positivo.
+\end{description}
+
+Un ejemplo de fichero es el siguiente:
+
+\begin{lstlisting} [language=Python, numbers=left]
+[Player]
+name = ignacio
+image = image.png
+weight = 6
+\end{lstlisting}
+
+Como vemos, la idea es que el juego sea extensible y, en un futuro, se puedan añadir cómodamente más características
+al fichero INI y dotar a los jugadores de más posibilidades.
+
+
+\section{Base de conocimiento --- player.py}
+
+Lorem ipsum
+
+\section{Imagen o avatar --- image.png}
+
+Como ya hemos comentado antes, esta será la imagen que identifique al jugador, debe estar en formato PNG y debe un tamaño
+de 150 por 150 píxeles. Se recomienda que sea una imagen clara y sencilla, y para seguir con la misma línea gráfica debería
+ser una fotografía real con un cierto efecto de envejecimiento con un tintado de color naranja.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.5]{avatar_jugador.png}
+  \end{center}
+  \caption{Ejemplo de imagen válida como avatar de jugador.}
+  \label{fig:avatar_jugador}
+\end{figure}
 
 
