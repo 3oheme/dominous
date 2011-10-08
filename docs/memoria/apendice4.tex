@@ -74,7 +74,49 @@ lo hacen perfecto para que usuarios sin grandes conocimientos de programación p
 de forma sencilla y cómoda, sin miedo a provocar errores lógicos al definir una variable o sintácticos al olvidar
 un punto y coma. \\
 
-La forma más cómoda de comenzar a desarrollar un 
+La forma más cómoda de comenzar a desarrollar un nuevo jugador es partir de uno ya existente --- al igual que sucede
+con la creación de nuevos temas gráficos, que veremos en el siguiente apéndice. A la hora de crear un nuevo jugador
+controlado por la máquina debemos prestar atención a la función de inicialización de nuestra clase jugador:
+
+\begin{lstlisting} [caption={Inicialización básica de un jugador}, language=Python, numbers=left]
+class Player:
+    def __init__(self, dealed_tiles):
+        self.knowledge = []
+        self.knowledge.append([put_any_double()])
+        self.knowledge.append([put_anyone()])
+\end{lstlisting}
+
+Para mayor legibilidad del ejemplo, eliminamos parte del contenido para destacar el núcleo de nuestro jugador. La base de
+conocimiento se define en el atributo \comando{knowledge}, que no es más que una lista del tipo de contenido nativo de Python.
+Dentro de esta lista vamos introduciendo las funciones de la librería que queremos que utilice nuestro jugador, de forma
+ordenada según la prioridad que queramos que tenga cada función. \\
+
+En el ejemplo, vemos que nuestro jugador, cada vez que tenga que colocar una ficha, intentará, por este orden:
+\begin{enumerate}
+    \item Colocar una ficha doble, es decir, una ficha cuyos dos lados tengan el mismo número.
+    \item Si esto no es posible, intentará colocar una ficha cualquiera.
+\end{enumerate}
+
+Como opción por defecto, si ninguna de nuestras reglas se puede ejecutar, el sistema colocará una ficha al azar --- de entre
+las posibles candidatas --- o pasará el turno al siguiente jugador. \\
+
+También podemos dotar de cierta aleatoriedad a nuestro sistema. Si en lugar de una lista básica definimos una lista de listas,
+se ejecutará aleatoriamente cualquiera de las definidas para un mismo peso. Veamos el siguiente ejemplo:
+
+\begin{lstlisting} [caption={Base de conocimiento avanzada}, language=Python, numbers=left]
+class Player:
+    def __init__(self, dealed_tiles):
+        self.knowledge = []
+        self.knowledge.append([
+            put_any_double(),
+            weight_matrix()
+        ])
+        self.knowledge.append([put_anyone()])
+\end{lstlisting}
+
+En un primer momento se ejecutará, aleatoriamente, una regla entre \textbf{put\_any\_double()} y \textbf{weight\_matrix()}.
+Si no hay suerte con la primera, se intentará con la segunda, y si no hay éxito con ninguna se ejecutará el siguiente
+conjunto de reglas --- en este caso, \textbf{put\_anyone()}, es decir, intentar colocar una ficha cualquiera.
 
 
 \section{Imagen o avatar --- image.png}
@@ -90,5 +132,4 @@ ser una fotografía real con un cierto efecto de envejecimiento con un tintado d
   \caption{Ejemplo de imagen válida como avatar de jugador.}
   \label{fig:avatar_jugador}
 \end{figure}
-
 
