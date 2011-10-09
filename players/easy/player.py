@@ -9,6 +9,7 @@ class Player:
     def __init__(self, dealed_tiles):
         self.tiles = dealed_tiles
         self.knowledge = []
+        self.knowledge.append([force_passing()])
         self.knowledge.append([put_any_double()])
         self.knowledge.append([put_anyone()])
         self.player_position = "1" # player_pos = 1 - Player that starts this hand
@@ -22,7 +23,8 @@ class Player:
     def player_pos(self, pos):
         self.player_position = pos
     def down_tile(self, left_tile, right_tile, board, tiles, log):
-        ai = AI(left_tile, right_tile, board, self.tiles, log)
+        #print "i am player " + str(self.player_position)
+        ai = AI(left_tile, right_tile, board, self.tiles, log, self.player_position)
         return ai.go(self.knowledge)
     def game_status(self):
         pass

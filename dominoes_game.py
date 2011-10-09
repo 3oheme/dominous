@@ -290,7 +290,7 @@ class domino_game:
     def ask_tile(self, player_pos, new_tile = None, side = None, mtime = 1):
         """ Ask a player for a tile """
         if new_tile == None or side == None:
-            new_tile, side, mtime = self.players[player_pos].down_tile(self.left_tile, self.right_tile, copy.deepcopy(self.board), None, None)
+            new_tile, side, mtime = self.players[player_pos].down_tile(self.left_tile, self.right_tile, copy.deepcopy(self.board), None, self.gamelog)
         log.write("player %s puts %s tile in the %s" % (player_pos + 1, new_tile, side))
         self.gamelog.move(player_pos+1, new_tile, side, self.left_tile, self.right_tile, mtime)
         if new_tile != None or side != 'pass':

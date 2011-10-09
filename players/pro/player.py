@@ -40,7 +40,8 @@ class Player:
         #print right_tile
         if left_tile is None and right_tile is None:
             #print "tanto left_tile como right_tile son none, y yo soy el jugador " + str(self.player_position)
-        ai = AI(left_tile, right_tile, board, self.tiles, log)
+            pass
+        ai = AI(left_tile, right_tile, board, self.tiles, log, self.player_position)
         return ai.go(self.global_knowledge[self.player_position-1])
     def game_status(self):
         pass

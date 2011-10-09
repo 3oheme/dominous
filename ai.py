@@ -1,12 +1,13 @@
 from tools import *
 
 class AI:
-    def __init__(self, left_tile, right_tile, board, tiles, log):
+    def __init__(self, left_tile, right_tile, board, tiles, log, mypos):
         self.left_tile = left_tile
         self.right_tile = right_tile
         self.board = board
         self.tiles = tiles
         self.log = log
+        self.mypos = mypos
     def go(self, knowledge):
         # primero vemos cuantas podemos poner
         tiles_i_can_put = []
@@ -35,12 +36,12 @@ class AI:
                 if len(priority) > 1:
                     iterator = random.sample(range(0, len(priority)), len(priority))
                     for step in iterator:
-                        tile, side, mtime = priority[step].go(self.left_tile, self.right_tile, self.board, self.tiles, self.log)
+                        tile, side, mtime = priority[step].go(self.left_tile, self.right_tile, self.board, self.tiles, self.log, self.mypos)
                         if tile != None:
                             return tile, side, mtime
                             break
                 else:
-                    tile, side, mtime = priority[0].go(self.left_tile, self.right_tile, self.board, self.tiles, self.log)
+                    tile, side, mtime = priority[0].go(self.left_tile, self.right_tile, self.board, self.tiles, self.log, self.mypos)
                     if tile != None:
                         return tile, side, mtime
                         break
@@ -49,7 +50,7 @@ class AI:
 class put_anyone:
     def __init__(self):
         pass
-    def go(self, left_tile, right_tile, board, tiles, log):
+    def go(self, left_tile, right_tile, board, tiles, log, mypos):
         for item in tiles:
             if item[0] == left_tile or item[1] == left_tile:
                 tiles.remove(item)
@@ -64,7 +65,7 @@ class put_anyone:
 class put_any_double:
     def __init__(self):
         pass
-    def go(self, left_tile, right_tile, board, tiles, log):
+    def go(self, left_tile, right_tile, board, tiles, log, mypos):
         for item in tiles:
             if item[0] == item[1]:
                 if item[0] == left_tile or item[1] == left_tile:
@@ -80,7 +81,7 @@ class put_any_double:
 class starting_classic:
     def __init__(self):
         pass
-    def go(self, left_tile, right_tile, board, tiles, log):
+    def go(self, left_tile, right_tile, board, tiles, log, mypos):
         if not board:
             # generamos la matriz
             matriz = _weight_matrix(tiles)
@@ -90,13 +91,37 @@ class starting_classic:
         else:
             return None, "pass", 0
 
+class force_passing:
+    def __init__(self):
+        pass
+    def go(self, left_tile, right_tile, board, tiles, log, mypos):
+        passed_tiles = _tiles_passed_next_player(mypos, log)
+        """print "***************************"
+        print var
+        print "***************************"
+        print "" """
+        for item in tiles:
+            if (item[0] == left_tile and item[1] in passed_tiles) or (item[1] == left_tile and item[0] in passed_tiles):
+                tiles.remove(item)
+                nextplayer = (mypos % 4) + 1
+                print "yuhu! como el usuario " + str(nextplayer) + " antes paso, nosotros colocamos el " + item
+                return item, "left", 1
+                break
+            elif (item[0] == right_tile and item[1] in passed_tiles) or (item[1] == right_tile and item[0] in passed_tiles):
+                tiles.remove(item)
+                nextplayer = (mypos % 4) + 1
+                print "yuhu! como el usuario " + str(nextplayer) + " antes paso, nosotros colocamos el " + item
+                return item, "right", 1
+                break
+        return None, "pass", 0
+            
 class weight_matrix:
     def __init__(self, mnumber = 1000, mdouble = 100, msiblings = 10, msize = 1):
         self.number = mnumber
         self.double = mdouble
         self.siblings = msiblings
         self.size = msize
-    def go(self, left_tile, right_tile, board, tiles, log):
+    def go(self, left_tile, right_tile, board, tiles, log, mypos):
         matriz = _weight_matrix(tiles, self.number, self.double, self.siblings, self.size)
         fin, side, mtime = _max_matrix(matriz, left_tile, right_tile)
         if fin != None:
@@ -108,6 +133,24 @@ class weight_matrix:
 #
 # Helping functions
 #
+
+def _tiles_passed_next_player(myposition, log):
+    """@brief returns an array of numbers player in my right has passed
+    
+    example: if I'm player 2, and player 3 has passed with 4 and 6, it will return an array
+        with 4 and 6, so I can try to make him pass again
+    """
+    next_player = (myposition % 4) + 1
+    #print "we are player " + str(myposition) + " and we are looking to player " + str(next_player)
+    passed_tiles = []
+    for movement in log.hands[log.current_hand]:
+        #print movement
+        if movement['player'] == next_player and movement['tile'] == None:
+            passed_tiles.append(movement['left']);
+            passed_tiles.append(movement['right']);
+    # remove duplicates
+    passed_tiles = list(set(passed_tiles))
+    return passed_tiles
 
 def _weight_matrix(tiles, number = 1000, double = 100, siblings = 10, size = 1):
     """@brief returns a weight matrix
