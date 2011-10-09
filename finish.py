@@ -23,7 +23,7 @@ class FinishText():
     def __init__(self):
         self.position = (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2)
         self.font_main = SpriteFont("fonts/Comfortaa Regular.ttf", 24, False, False, 32, 255)
-        self.str_text = "Gracias por jugar con nosotros \n\nDominous es un proyecto desarrollado \npor Ignacio Palomo Duarte \nRecuerda que tienes mas informacion y\nnoticias en http://www.3oheme.com/dominous"
+        self.str_text = "Gracias por jugar con nosotros \n\nDominous es un proyecto desarrollado \npor Ignacio Palomo Duarte \nRecuerda que puedes ver las novedades \nde Dominous en http://www.3oheme.com/dominous"
         self.fontsize1 = self.font_main.measure_string(self.str_text)
         
     def draw(self):

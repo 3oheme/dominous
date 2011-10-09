@@ -337,10 +337,10 @@ class Tile(Sprite):
         self.goto_angle = rotation
         self.play_sound = sound
     def stopped(self):
-        if (self.goto_pos[0]-self.position[0])<0.1 and (self.goto_pos[1]-self.position[1])<0.1 \
-            and (self.goto_angle-self.angle)<0.1 and self.scale == self.from_scale:
+        if (self.goto_pos[0]-self.position[0])<0.1 and (self.goto_pos[1]-self.position[1])<0.1:
+            #and (self.goto_angle-self.angle)<0.1 and self.scale == self.from_scale:
             self.position = self.goto_pos
-            self.angle = self.goto_angle
+            #self.angle = self.goto_angle
             return True
         else:
             return False
