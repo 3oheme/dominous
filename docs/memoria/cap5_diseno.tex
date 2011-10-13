@@ -25,7 +25,7 @@ Los requisitos hardware y software necesarios para poder ejecutar con soltura la
 	\item Procesador igual o superior a 1,6 GHz.
 	\item Memoria RAM igual o superior a 512 MB.
 	\item Tarjeta gráfica con aceleración 3D con un mínimo de 128 MB.
-	\item En versiones basadas en Linux, se requieren las siguientes librerías:
+	\item En versiones basadas en Linux, se requieren las siguientes bibliotecas:
 		\begin{itemize}
 			\item python-pygame.
 			\item python-setuptools.
@@ -43,15 +43,15 @@ Los requisitos hardware y software necesarios para poder ejecutar con soltura la
 
 \section{Herramientas utilizadas}
 
-\subsection{Librería gráfica}
+\subsection{Biblioteca gráfica}
 
-Para todo el tema del aspecto gráfico, mis tutores me recomendaron que utilizara las librerías SDL\footnote{Simple
-Directmedia Layer}, ya que son unas librerías orientadas al desarrollo de videojuegos con varias particularidades:
+Para todo el tema del aspecto gráfico, mis tutores me recomendaron que utilizara las bibliotecas SDL\footnote{Simple
+Directmedia Layer}, ya que son unas bibliotecas orientadas al desarrollo de videojuegos con varias particularidades:
 \begin{itemize}
     \item Son completas, ya que permiten gestionar operaciones de dibujo en dos dimensiones, efectos de
             sonido y música, carga y gestión de imágenes, subsistemas de control de métodos de entrada,
             etcétera, por lo que contamos con una solución global para desarrollar videojuegos.
-    \item Están programas en C, por lo que se puede esperar un buen rendimiento de las librerías en
+    \item Están programadas en C, por lo que se puede esperar un buen rendimiento de las bibliotecas en
             diferentes entornos.
     \item Multiplataforma: es compatible oficialmente con los sistemas Microsoft Windows, GNU/Linux,
             Mac OS y QNX, además de otras arquitecturas y sistemas menos comunes como Sega Dreamcast, Sony PSP,
@@ -61,7 +61,7 @@ Directmedia Layer}, ya que son unas librerías orientadas al desarrollo de video
             lo que nos da bastante libertad para elegir un lenguaje de programación principal.
     \item Publicado bajo licencia LGPL, con todas las ventajas que conlleva.
     \item Y por último no hay que menospreciar que uno de mis tutores emplea SDL a la hora de impartir la asignatura
-            de Diseño de Videojuegos de la UCA, y contar con su conocimiento nos ayudará a desarrollar más rápidamente
+            de Diseño de Videojuegos de la UCA, y contar con su conocimiento nos ha ayudado a desarrollar más rápidamente
             y solucionar antes nuestros posible problemas.
 \end{itemize}
 
@@ -69,11 +69,11 @@ Directmedia Layer}, ya que son unas librerías orientadas al desarrollo de video
   \begin{center}
     \includegraphics[scale=0.5]{SDL.png}
   \end{center}
-  \caption{Logotipo de la librería Simple DirectMedia Layer}
+  \caption{Logotipo de la biblioteca Simple DirectMedia Layer}
   \label{logo-sdl}
 \end{figure}
 
-En este aspecto, la utilización de las librerías SDL estaba clara. Potencia, comodidad, multiplataforma y con la posibilidad
+En este aspecto, la utilización de las biblioteca SDL estaba clara. Potencia, comodidad, multiplataforma y con la posibilidad
 de utilizar diferentes lenguajes de programación.\\
 
 \subsection{Lenguaje de programación}
@@ -125,14 +125,14 @@ obtenemos el siguiente listado:
                     facciones de un videojuego, no requiere de grandes alardes de potencia gráfica como podría
                     suponerse, ya que es un tipo de juego pausado y donde cómo se muestra la información
                     es mucho más importante que la velocidad o los efectos de vídeo e imágenes.
-            \item A pesar de ser interpretado, un gran conjunto de las funcionalidades de python --- como librerías o
+            \item A pesar de ser interpretado, un gran conjunto de las funcionalidades de python --- como bibliotecas o
                     funciones básicas del lenguaje --- están programadas internamente en C, así que podríamos
                     verlo como que estamos utilizando la comodidad de Python sobre la potencia de C, uniendo
                     lo mejor de ambos mundos.
         \end{itemize}
 \end{enumerate}
 
-Por otro lado, se consigue la gran ventaja de contar con las librerías PyGame. Pygame es un conjunto de módulos del
+Por otro lado, se consigue la gran ventaja de contar con las bibliotecas PyGame. Pygame es un conjunto de módulos
 para Python que permiten la creación de videojuegos en dos dimensiones de una manera sencilla.
 Funciona como interfaz de las bibliotecas SDL, y está orientado al manejo de sprites. Las grandes ventajas de PyGame son:
 \begin{itemize}
@@ -284,7 +284,7 @@ cometido es redireccionar el flujo de la aplicación al objeto correspondiente.
 
 La labor de esta clase es llevar el control de una partida completa de dominó, siguiendo las reglas del \textbf{dominó
 internacional}. Dependiendo de la configuración de la partida, creará los jugadores según la selección que se haya
-realizado en la pantalla de selección de personajes y comenzará con el bucle principal: \\
+realizado en la pantalla de selección de personajes y comenzará con el bucle principal. \\
 
 Repartirá las fichas entre los diferentes participantes del juego e irá pidiendo fichas a los jugadores de forma
 consecutiva, hasta que se de alguna circunstancia de finalización de la mano. \\
@@ -329,7 +329,7 @@ por cada movimiento que se realice en la partida, y se agrupa por manos:
 
 \section{Sistemas expertos}
 
-En este apartado de la memoria requiere de una especial explicación, ya que a la hora de realizar un videojuego de
+Este apartado de la memoria requiere de una especial explicación, ya que a la hora de realizar un videojuego de
 dominó goza de gran importancia los diferentes sistemas expertos que participarán en la partida. Estos sistemas expertos,
 como bien su nombre indica, simulan el comportamiento de un ser humano experto en una materia, en este caso del juego
 de dominó, y su realismo debe hacer sentir al jugador humano que está desempeñando una partida real contra jugadores
@@ -371,7 +371,7 @@ Después de profundizar en el mundo del dominó, y tener cierto conocimiento sob
 las que va a llevarse a cabo la simulación del sistema experto de dominó. \\
 
 Lo primero que observamos es que la estrategia que siga cada jugador depende enteramente del rol que desempeñe el mismo.
-Como vimos en el capítulo ~\ref{juegoporparejas} es importante definir una estrategia personalizada para cada jugador,
+Como vimos en la sección ~\ref{juegoporparejas} es importante definir una estrategia personalizada para cada jugador,
 dependiendo del lugar respecto al jugador mano. \\
 
 A continuación mostramos las áreas, campos o ámbitos que debemos tener en cuenta a la hora de resolver con éxito
@@ -380,7 +380,7 @@ una partida de dominó.
 \subsection{Estrategia según la posición}
 
 Lo primero que observamos es que la estrategia que debe seguir cada jugador depende enteramente del rol que desempeñe el mismo.
-Como vimos en el capítulo~\ref{juegoporparejas} es importante definir una estrategia personalizada para cada jugador,
+Como vimos en la sección ~\ref{juegoporparejas} es importante definir una estrategia personalizada para cada jugador,
 dependiendo del lugar respecto al jugador mano, por lo que nuestro sistema debe tener reglas sensibles a esto.
 
 \subsection{Reglas de obligado cumplimiento}
