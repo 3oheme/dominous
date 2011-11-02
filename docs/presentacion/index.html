@@ -14,7 +14,7 @@
 
 <html>
   <head>
-    <title>Presentation</title>
+    <title>Presentación PFC Dominous</title>
 
     <meta charset='utf-8'>
     <script src='slides.js'></script>
@@ -34,7 +34,9 @@
     strong { color: #000 }
     .slides > article { font-size: 36px !important }
     table.spacing20 td, table.spacing20 th { padding: 20px }
-    
+	.smallest { font-size: 26px }    
+    .same-width td { width: 33% } 
+
 @font-face {
     font-family: 'DroidSansMonoRegular';
     src: url('fonts/droidsansmono-webfont.eot');
@@ -133,9 +135,7 @@
       <article>
         <h1>Dominous<br>Simulador libre de dominó</h1>
         <p>Ignacio Palomo Duarte<br>Proyecto Fin de Carrera</p>
-        <p class="dom_small">
-          Ingeniería Técnica en Informática de Gestión, Universidad de Cádiz
-        </p>
+        <p class="dom_small">Ingeniería Técnica en Informática de Gestión, Universidad de Cádiz<br>Noviembre, 2011</p>
       </article>
       
       <!-- INTRODUCCION  -->
@@ -175,8 +175,8 @@
           <li>Lenguaje de programación — <strong>Python</strong> </li>
           <li>Librerías gráficas — <strong>SDL + PyGame/Gloss</strong></li>
           <li>Documentación — <strong>Latex, Doxygen/Doxypy</strong></li>
-          <li><strong>Forja Rediris</strong> — SVN, sistema tickets y bugtracking, foros, listas de correo</li>
-          <li>IA — <strong>Python</strong></li>
+          <li><strong>Forja RedIRIS</strong> — SVN, sistema tickets y bugtracking, foros, listas de correo</li>
+	  <li>Otros — PyLint, Photoshop, GIMP, Audacity, vim, make...</li>
         </ul>
       </article>
       
@@ -188,10 +188,10 @@
           <tr>
             <th colspan="3" style="text-align: center">
               Dominous
-          <tr>
-            <td><strong>Motor gráfico</strong> de la aplicación
-            <td>Sistema de <strong>Gestión de partida de dominó</strong>
-            <td>Sistema de <strong>Inteligencia Artificial</strong>
+          <tr class="same-width">
+            <td style="border-bottom: 15px solid #A0A1CD"><strong>Motor gráfico</strong> de la aplicación
+            <td style="border-bottom: 15px solid #F2B56F">Sistema de <strong>Gestión de partida de dominó</strong>
+            <td style="border-bottom: 15px solid #FCAED5">Sistema de <strong>Inteligencia Artificial</strong>
         </table>
       </article>
       
@@ -222,16 +222,34 @@
         </ul>
       </article>
       
+	  <article>
+        <h1>Difusión</h1>
+        <ul>
+            <li>Inclusión en distribución <strong>Guadalinex v8</strong></li>
+            <li><strong>Finalista</strong> dentro del <strong>IV Concurso Universitario de Software Libre</strong></li>
+            <li><strong>Accésit</strong> en el <strong>V Concurso Universitario de Software Libre</strong></li>
+			<li>RedIRIS, web ADVUCA, oslUCA, canal YouTUBE, página personal...</li>
+		</ul>
+	  </article>
+
       <article>
         <h1>Bibliografía</h1>
-        <p>Para más información y descargas:</p>
-        <ul>
-            <li>http://dominous.forja.rediris.es</li>
-            <li>https://forja.rediris.es/projects/dominous</li>
-            <li>http://www.3oheme.com/dominous</li>
+        <ul class="smallest">
+            <li>B. Ruipérez Moral. Libro del dominó. Otero Ediciones, 1990.</li>
+            <li>Mark Pilgrim. Dive Into Python. APress, 2004. ISBN 1590593561.</li>
+			<li>http://docs.python.org</li>
+			<li>http://www.pygame.org/docs</li>
+			<li>[Qui10] Pablo Recio Quijano. Ampliación y reingeniería de un sistema experto basado en reglas con fines educativos. PFC Ingeniería Técnica en Informática de Sistemas.</li>
+            <li>http://idiginbpel.wordpress.com/2010/03/11/doxygen-python/</li>
         </ul>
       </article>
-      
+
+      <article>
+      	<h1>Demostración</h1>
+			<p>Dominous bajo entorno Windows</p>
+			<p><img class='centered' style='height: 300px' src='images/ejecutar.png'></p>
+      </article>
+     
       <article>
         <h1>Gracias por su atención</h1>
         <p>Para más <strong>información y descargas</strong>:</p>
@@ -247,6 +265,16 @@
       <article>
       </article>
       
+
+
+
+
+
+
+
+
+
+
       <!-- A PARTIR DE AQUI ESTAN LOS EJEMPLOS -->
       
       <article>
