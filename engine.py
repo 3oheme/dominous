@@ -265,12 +265,6 @@ class Tile(Sprite):
         self.passing_status = 0
         self.play_sound = True
         Sprite.__init__(self, self.texture_original, (Gloss.screen_resolution[0]/2, Gloss.screen_resolution[1]/2))
-    def __str__(self):
-        print "Ficha: " + self.tile
-        print "Position: " + str(self.position)
-        print "Frompos : " + str(self.from_pos)
-        print "Gotopos : " + str(self.goto_pos)
-        return ""
     def draw(self):
         Sprite.draw(self, origin = (self.texture.half_width, self.texture.half_height), scale = self.scale, rotation = self.angle)
     def update(self):
@@ -347,9 +341,6 @@ class Tile(Sprite):
             and (self.goto_angle-self.angle)<0.1 and self.scale == self.from_scale:
             self.position = self.goto_pos
             self.angle = self.goto_angle
-            print "soy gay y me tengo que parar"
-            print self
-            
             return True
         else:
             return False
@@ -382,8 +373,7 @@ def load_tiles(domino):
 def stopped(tiles):
     moving = False
     for key, tile in tiles.iteritems():
-        tilestopped = tile.stopped()
-        moving = tilestopped or moving
+        moving = moving or tile.stopped()
     return moving
 
 def draw_tiles(tiles):
@@ -628,11 +618,6 @@ class Engine:
                 self.place_player_tiles(1)
                 self.place_player_tiles(2)
                 self.place_player_tiles(3)
-                
-                # FIXME
-                #for key, tilex in self.tiles.iteritems():
-                #    print self.tiles[key]
-                    
                 if self.domino.player_type[0] == "h":
                     self.side_up_player_tiles(0)
                 else:
@@ -690,7 +675,7 @@ class Engine:
                     self.status = 23
         # Status = 5 - move tile to its place
         elif self.status == 5:
-            if self.new_tile == "XX" or stopped(self.tiles):
+            if self.new_tile == "XX" or self.tiles[self.new_tile].stopped():
                 self.status = 3
         # Status = 6 - start drag n drop player tile
         elif self.status == 6:
@@ -794,14 +779,14 @@ class Engine:
             pass
         # Status = 100 - move tiles to center
         elif self.status == 100:
-            if stopped(self.tiles):
+            if self.tiles['00'].stopped():
                 self.status = 101
         # Status = 101 - move tiles to center
         elif self.status == 101:
             pass
        # Status = 102 - move tiles to center again
         elif self.status == 102:
-            if stopped(self.tiles):
+            if self.tiles['00'].stopped():
                 self.status = 2
         # Status = 500 - show ingame menu
         elif self.status == 500:
