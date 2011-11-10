@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>StatSVN - Directory trunk/docs/presentacion/images/</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <meta name="Generator" content="StatSVN 0.7.0"/>
+<link rel="stylesheet" href="objectlab-statcvs.css" type="text/css"/>
+<script type="text/javascript" charset="utf-8" src="http://bit.ly/javascript-api.js?version=latest&#38;login=statsvn&#38;apiKey=R_2c362b417d0517c27876cbaca1bb68cc"></script>
+<script type="text/javascript" charset="utf-8">
+   // wait until page is loaded to call API
+   var redir_url;
+   var short_url;
+   BitlyCB.myShortenCallback = function(data) {
+      // this is how to get a result of shortening a single url
+      var result;
+      short_url=null;
+      for (var r in data.results) {
+         result = data.results[r];
+         result['longUrl'] = r;
+         short_url = result['shortUrl'];
+         break;
+      }
+      if (short_url==null) // bit.ly failed
+      document.location=redir_url;
+      else
+      redirToTwitter();
+   };
+   function shortenTweet(url) {
+      if (short_url == null || redir_url!=url) {
+      redir_url = url;
+      BitlyClient.shorten(document.location, 'BitlyCB.myShortenCallback');
+      }
+      else
+      redirToTwitter();
+      return false;
+   }
+   function redirToTwitter() { 
+      // replace {0} which is visible as %7B0} in the link
+      document.location = redir_url.replace('%7B0}', short_url);
+   }
+</script>
+  </head>
+
+<body>
+
+<h1>Directory trunk/docs/presentacion/images/</h1>
+<div id="parentlink">&#171; <a href="index.html">Development Statistics for </a></div>
+<dl class="attributes">
+    <dt>Directory Created:</dt>
+    <dd><span class="date">2011-10-30 11:50</span></dd>
+    <dt>Total Files:</dt>
+    <dd>79</dd>
+    <dt>Deleted Files:</dt>
+    <dd>2</dd>
+    <dt>Lines of Code:</dt>
+    <dd>125</dd>
+</dl>
+<p class="dirtree">
+<a href="dir.html">[root]</a>/<a href="dir_trunk.html">trunk</a>/<a href="dir_trunk_docs.html">docs</a>/<a href="dir_trunk_docs_presentacion.html">presentacion</a>/<strong>images</strong><br/>
+</p>
+
+<div class="section">
+<h2>Lines of Code</h2>
+<p class="chart"><img src="loc_module_trunk_docs_presentacion_images.png" alt="trunk/docs/presentacion/images/ Lines of Code" width="800" height="500" /></p></div>
+<div class="section">
+<h2>Developers</h2>
+  <table  rules="groups" summary="All authors and the number of their changes and lines of code in this directory">
+    <colgroup align="left"/>
+    <colgroup align="right"/>
+    <colgroup align="right"/>
+    <colgroup align="right"/>
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Changes</th>
+        <th>Lines of Code</th>
+        <th>Lines per Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  class="odd">
+        <th><a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a></th>
+        <td>85 (100.0%)</td>
+        <td>125 (100.0%)</td>
+        <td>1.4</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="section">
+<h2>Most Recent Commits</h2>
+<dl class="commitlist">
+  <dt><a name="7"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-11-10 00:45</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">513</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">8 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/presentacion/images</strong>:
+        41786_374426074817_6794225_n.jpg&#160;<span class="del">(del)</span>,
+        SDL.png&#160;<span class="change">(changed)</span>,
+        audacity.png&#160;<span class="new">(new)</span>,
+        latex_logo.png&#160;<span class="new">(new)</span>,
+        pygame-logo.gif&#160;<span class="new">(new)</span>,
+        python-logo.png&#160;<span class="new">(new)</span>,
+        subversion_logo-384x332.png&#160;<span class="new">(new)</span>,
+        vim-editor_logo.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="6"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-11-10 00:34</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">512</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">12 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/presentacion/images</strong>:
+        41786_374426074817_6794225_n.jpg&#160;<span class="new">(new)</span>,
+        advuca.png&#160;<span class="new">(new)</span>,
+        dominous_ico.png&#160;<span class="new">(new)</span>,
+        dominous_windows.png&#160;<span class="change">(changed)</span>,
+        ejecutar.png&#160;<span class="del">(del)</span>,
+        guadalinex.png&#160;<span class="new">(new)</span>,
+        logo-rosa-cusl4.png&#160;<span class="new">(new)</span>,
+        logo.png&#160;<span class="new">(new)</span>,
+        logo_cusl_uca.png&#160;<span class="new">(new)</span>,
+        osluca.png&#160;<span class="new">(new)</span>,
+        rediris.png&#160;<span class="new">(new)</span>,
+        youtube-logo.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="5"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-11-05 17:22</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">509</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/presentacion/images</strong>:
+        basico.jpg&#160;<span class="new">(new)</span>,
+        basico_fin.jpg&#160;<span class="new">(new)</span>,
+        marker.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="4"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-11-05 13:31</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">507</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/presentacion/images</strong>:
+        personajes.jpg&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="3"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-11-05 13:12</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">506</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/presentacion/images</strong>:
+        estructura.cpt&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="2"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-11-02 20:29</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">505</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">4 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/presentacion/images</strong>:
+        ejecutar.png&#160;<span class="new">(new)</span>,
+        gestion_partida.png&#160;<span class="new">(new)</span>,
+        ia.png&#160;<span class="new">(new)</span>,
+        motor_grafico.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="1"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-10-30 11:50</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">502</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+added presentacion to svn
+    </p>
+    <p class="commitdetails"><strong>125</strong> lines of code changed in <span class="files">56 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/presentacion/images</strong>:
+        Auctex.png&#160;<span class="new">(new)</span>,
+        CUSL1.jpg&#160;<span class="new">(new)</span>,
+        CUSL2.jpg&#160;<span class="new">(new)</span>,
+        Dominoes.jpg&#160;<span class="new">(new)</span>,
+        ERe.png&#160;<span class="new">(new)</span>,
+        Martin_Gardner.jpeg&#160;<span class="new">(new)</span>,
+        SDL.png&#160;<span class="new">(new)</span>,
+        TuxBajo.png&#160;<span class="new">(new)</span>,
+        arq_sistexp_reg.fig&#160;<span class="new">(new&#160;61)</span>,
+        arq_sistexp_reg.png&#160;<span class="new">(new)</span>,
+        avatar_jugador.png&#160;<span class="new">(new)</span>,
+        chinese.jpg&#160;<span class="new">(new)</span>,
+        cierre.png&#160;<span class="new">(new)</span>,
+        des_sistexp.fig&#160;<span class="new">(new&#160;31)</span>,
+        des_sistexp.png&#160;<span class="new">(new)</span>,
+        dia.png&#160;<span class="new">(new)</span>,
+        diagrama_casos_de_uso.png&#160;<span class="new">(new)</span>,
+        diagrama_clases_diseno.png&#160;<span class="new">(new)</span>,
+        diagrama_clases_juego_clasico.png&#160;<span class="new">(new)</span>,
+        diagrama_clases_partida.dia&#160;<span class="new">(new)</span>,
+        diagrama_clases_partida.png&#160;<span class="new">(new)</span>,
+        diagrama_gantt.png&#160;<span class="new">(new)</span>,
+        diagrama_interfaces.dia&#160;<span class="new">(new)</span>,
+        diagrama_interfaces.png&#160;<span class="new">(new)</span>,
+        dominous_ubuntu.png&#160;<span class="new">(new)</span>,
+        dominous_windows.png&#160;<span class="new">(new)</span>,
+        gantt.png&#160;<span class="new">(new)</span>,
+        interfaz.png&#160;<span class="new">(new)</span>,
+        jamendo.jpg&#160;<span class="new">(new)</span>,
+        jugadores_dominous.png&#160;<span class="new">(new)</span>,
+        logo_uca.png&#160;<span class="new">(new)</span>,
+        mybob-calimetux.png&#160;<span class="new">(new)</span>,
+        pagina_oficial_dominous.png&#160;<span class="new">(new)</span>,
+        pruebas_integracion.png&#160;<span class="new">(new)</span>,
+        python.png&#160;<span class="new">(new)</span>,
+        screenshots_game.png&#160;<span class="new">(new)</span>,
+        screenshots_game_finish.png&#160;<span class="new">(new)</span>,
+        screenshots_game_finish2.png&#160;<span class="new">(new)</span>,
+        screenshots_game_finish3.png&#160;<span class="new">(new)</span>,
+        screenshots_game_fruits.png&#160;<span class="new">(new)</span>,
+        screenshots_lab.png&#160;<span class="new">(new)</span>,
+        screenshots_lab2.png&#160;<span class="new">(new)</span>,
+        screenshots_menu.png&#160;<span class="new">(new)</span>,
+        screenshots_options.png&#160;<span class="new">(new)</span>,
+        screenshots_select_players_game.png&#160;<span class="new">(new)</span>,
+        screenshots_select_players_lab.png&#160;<span class="new">(new)</span>,
+        screenshots_tutorial.png&#160;<span class="new">(new)</span>,
+        sistexp.fig&#160;<span class="new">(new&#160;33)</span>,
+        sistexp.png&#160;<span class="new">(new)</span>,
+        superficie_click.png&#160;<span class="new">(new)</span>,
+        superficie_drop.png&#160;<span class="new">(new)</span>,
+        tiles_position.png&#160;<span class="new">(new)</span>,
+        ui.png&#160;<span class="new">(new)</span>,
+        ui2.png&#160;<span class="new">(new)</span>,
+        uml.png&#160;<span class="new">(new)</span>,
+        wyvern-jabba-the-tux.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+</dl>
+
+</div><div id="generatedby">Generated by <a href="http://www.statsvn.org">StatSVN</a> 0.7.0</div>
+</body>
+</html>

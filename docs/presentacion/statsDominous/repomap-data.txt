@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<root>
+  <label>[root]</label>
+    <branch>
+        <label>trunk</label>
+      <branch>
+          <label>artwork</label>
+        <branch>
+            <label>logo</label>
+            <leaf><label>dominous - logo.ai</label><weight>554</weight><value>0.0</value></leaf>
+            <leaf><label>dominous - logo.pdf</label><weight>267</weight><value>0.0</value></leaf>
+        </branch>
+      </branch>
+
+      <branch>
+          <label>docs</label>
+        <branch>
+            <label>memoria</label>
+          <branch>
+              <label>estilos</label>
+              <leaf><label>comandos.sty</label><weight>144</weight><value>0.0</value></leaf>
+          </branch>
+
+          <branch>
+              <label>imagenes</label>
+              <leaf><label>arq_sistexp_reg.fig</label><weight>61</weight><value>0.0</value></leaf>
+              <leaf><label>arq_sistexp_reg.png</label><weight>482</weight><value>0.0</value></leaf>
+              <leaf><label>des_sistexp.fig</label><weight>31</weight><value>0.0</value></leaf>
+              <leaf><label>sistexp.fig</label><weight>33</weight><value>0.0</value></leaf>
+          </branch>
+            <leaf><label>ERe.tex</label><weight>314</weight><value>0.0</value></leaf>
+            <leaf><label>apendice1.tex</label><weight>66</weight><value>0.0</value></leaf>
+            <leaf><label>apendice2.tex</label><weight>273</weight><value>0.0</value></leaf>
+            <leaf><label>apendice3.tex</label><weight>24</weight><value>0.0</value></leaf>
+            <leaf><label>apendice4.tex</label><weight>135</weight><value>0.0</value></leaf>
+            <leaf><label>apendice5.tex</label><weight>103</weight><value>2.912621359223301</value></leaf>
+            <leaf><label>bibliografia.bib</label><weight>288</weight><value>0.0</value></leaf>
+            <leaf><label>cap1.tex</label><weight>87</weight><value>4.597701149425287</value></leaf>
+            <leaf><label>cap2.tex</label><weight>596</weight><value>0.0</value></leaf>
+            <leaf><label>cap3.tex</label><weight>102</weight><value>0.0</value></leaf>
+            <leaf><label>cap4_analisis.tex</label><weight>467</weight><value>0.0</value></leaf>
+            <leaf><label>cap5_diseno.tex</label><weight>497</weight><value>0.0</value></leaf>
+            <leaf><label>cap6_implementacion.tex</label><weight>450</weight><value>0.0</value></leaf>
+            <leaf><label>cap7.tex</label><weight>249</weight><value>0.0</value></leaf>
+            <leaf><label>cap8.tex</label><weight>213</weight><value>-0.9389671361502347</value></leaf>
+            <leaf><label>instalacion.tex</label><weight>37</weight><value>0.0</value></leaf>
+            <leaf><label>memoria.pdf</label><weight>91577</weight><value>-0.008735817945554015</value></leaf>
+            <leaf><label>memoria.tex</label><weight>141</weight><value>0.0</value></leaf>
+            <leaf><label>portada.tex</label><weight>37</weight><value>0.0</value></leaf>
+            <leaf><label>previo.tex</label><weight>50</weight><value>2.0</value></leaf>
+            <leaf><label>primerahoja.tex</label><weight>44</weight><value>0.0</value></leaf>
+            <leaf><label>programas.tex</label><weight>75</weight><value>0.0</value></leaf>
+            <leaf><label>spanish.bst</label><weight>1562</weight><value>0.0</value></leaf>
+        </branch>
+
+        <branch>
+            <label>presentacion</label>
+          <branch>
+              <label>fonts</label>
+              <leaf><label>droidsansmono-webfont.svg</label><weight>234</weight><value>100.0</value></leaf>
+              <leaf><label>opensans-bold-webfont.svg</label><weight>235</weight><value>100.0</value></leaf>
+              <leaf><label>opensans-extrabold-webfont.svg</label><weight>235</weight><value>100.0</value></leaf>
+              <leaf><label>opensans-italic-webfont.svg</label><weight>235</weight><value>100.0</value></leaf>
+              <leaf><label>opensans-regular-webfont.svg</label><weight>236</weight><value>100.0</value></leaf>
+              <leaf><label>opensans-semibold-webfont.svg</label><weight>235</weight><value>100.0</value></leaf>
+              <leaf><label>opensans-semibolditalic-webfont.svg</label><weight>235</weight><value>100.0</value></leaf>
+          </branch>
+
+          <branch>
+              <label>images</label>
+              <leaf><label>arq_sistexp_reg.fig</label><weight>61</weight><value>100.0</value></leaf>
+              <leaf><label>des_sistexp.fig</label><weight>31</weight><value>100.0</value></leaf>
+              <leaf><label>sistexp.fig</label><weight>33</weight><value>100.0</value></leaf>
+          </branch>
+            <leaf><label>index.html</label><weight>629</weight><value>100.0</value></leaf>
+            <leaf><label>prettify.js</label><weight>1391</weight><value>100.0</value></leaf>
+            <leaf><label>slides.js</label><weight>634</weight><value>100.0</value></leaf>
+            <leaf><label>styles.css</label><weight>612</weight><value>100.0</value></leaf>
+        </branch>
+          <leaf><label>estructura xml.txt</label><weight>35</weight><value>0.0</value></leaf>
+      </branch>
+
+      <branch>
+          <label>players</label>
+        <branch>
+            <label>bearded</label>
+            <leaf><label>player.ini</label><weight>4</weight><value>0.0</value></leaf>
+            <leaf><label>player.py</label><weight>25</weight><value>0.0</value></leaf>
+        </branch>
+
+        <branch>
+            <label>easy</label>
+            <leaf><label>player.ini</label><weight>4</weight><value>0.0</value></leaf>
+            <leaf><label>player.py</label><weight>30</weight><value>0.0</value></leaf>
+        </branch>
+
+        <branch>
+            <label>lonely</label>
+            <leaf><label>player.ini</label><weight>4</weight><value>0.0</value></leaf>
+            <leaf><label>player.py</label><weight>24</weight><value>0.0</value></leaf>
+        </branch>
+
+        <branch>
+            <label>medium</label>
+            <leaf><label>player.ini</label><weight>4</weight><value>0.0</value></leaf>
+            <leaf><label>player.py</label><weight>28</weight><value>0.0</value></leaf>
+        </branch>
+
+        <branch>
+            <label>pro</label>
+            <leaf><label>player.ini</label><weight>4</weight><value>0.0</value></leaf>
+            <leaf><label>player.py</label><weight>47</weight><value>0.0</value></leaf>
+        </branch>
+      </branch>
+
+      <branch>
+          <label>themes</label>
+        <branch>
+            <label>classic</label>
+          <branch>
+              <label>images</label>          </branch>
+        </branch>
+
+        <branch>
+            <label>fruits</label>
+          <branch>
+              <label>images</label>          </branch>
+
+          <branch>
+              <label>sounds</label>          </branch>
+        </branch>
+
+        <branch>
+            <label>spanish</label>
+          <branch>
+              <label>images</label>          </branch>
+        </branch>
+
+        <branch>
+            <label>tron</label>
+          <branch>
+              <label>images</label>          </branch>
+
+          <branch>
+              <label>sounds</label>          </branch>
+        </branch>
+      </branch>
+        <leaf><label>Doxyfile</label><weight>1514</weight><value>0.0</value></leaf>
+        <leaf><label>LICENSE</label><weight>674</weight><value>99.85163204747775</value></leaf>
+        <leaf><label>README</label><weight>26</weight><value>0.0</value></leaf>
+        <leaf><label>ai.py</label><weight>218</weight><value>0.0</value></leaf>
+        <leaf><label>config.py</label><weight>86</weight><value>0.0</value></leaf>
+        <leaf><label>dominoes_game.py</label><weight>335</weight><value>0.0</value></leaf>
+        <leaf><label>dominous.pot</label><weight>21</weight><value>0.0</value></leaf>
+        <leaf><label>dominous.py</label><weight>88</weight><value>0.0</value></leaf>
+        <leaf><label>engine.py</label><weight>1221</weight><value>0.0</value></leaf>
+        <leaf><label>es.po</label><weight>21</weight><value>0.0</value></leaf>
+        <leaf><label>finish.py</label><weight>67</weight><value>0.0</value></leaf>
+        <leaf><label>gloss.py</label><weight>1303</weight><value>0.0</value></leaf>
+        <leaf><label>intro.py</label><weight>48</weight><value>0.0</value></leaf>
+        <leaf><label>lab.py</label><weight>300</weight><value>0.0</value></leaf>
+        <leaf><label>log.py</label><weight>10</weight><value>0.0</value></leaf>
+        <leaf><label>menu.py</label><weight>290</weight><value>0.0</value></leaf>
+        <leaf><label>player_basic.py</label><weight>28</weight><value>0.0</value></leaf>
+        <leaf><label>player_human.py</label><weight>18</weight><value>0.0</value></leaf>
+        <leaf><label>selectplayers.py</label><weight>193</weight><value>0.0</value></leaf>
+        <leaf><label>sound.py</label><weight>44</weight><value>0.0</value></leaf>
+        <leaf><label>tools.py</label><weight>78</weight><value>0.0</value></leaf>
+        <leaf><label>tutorial.py</label><weight>128</weight><value>0.0</value></leaf>
+    </branch>
+</root>
