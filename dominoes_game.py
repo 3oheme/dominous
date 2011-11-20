@@ -28,13 +28,14 @@ class GameLog:
         }
         self.hands = [[]]
         self.current_hand = 0
-    def move(self, player, tile, side, left, right, mtime = 0):
+    def move(self, player, position, tile, side, left, right, mtime = 0):
         # time is the time player took while thinking.
         # values:   0 = I din't have to think, just one tile available to play
         #           1 = I have many posibilities
         #           2 = Really long time thinking
         movement = {
             'player' : player,
+            'position' : position,
             'tile' : tile,
             'side' : side,
             'left' : left,
@@ -62,7 +63,7 @@ class GameLog:
             print "MANO NUM " + str(iter)
             iter += 1
             for move in hand:
-                print " " + str(move['player']) + " - " + str(move['tile']) + " - " + str(move['side']) \
+                print " " + str(move['position']) + " - " + str(move['tile']) + " - " + str(move['side']) \
                     + " - " + str(move['left']) + " - " + str(move['right']) + " - " + str(move['mtime'])
             print ""
         return ""
@@ -205,7 +206,7 @@ class domino_game:
         del self.players_tiles[2][:]
         del self.players_tiles[3][:]
         #random.seed(1) #starts player 3
-        #random.seed(2) #starts player 1
+        random.seed(2) #starts player 1
         #random.seed(4) #starts player 2
         #random.seed(5) #starts player 4
         random.shuffle(self.tiles)
@@ -292,7 +293,23 @@ class domino_game:
         if new_tile == None or side == None:
             new_tile, side, mtime = self.players[player_pos].down_tile(self.left_tile, self.right_tile, copy.deepcopy(self.board), None, self.gamelog)
         log.write("player %s puts %s tile in the %s" % (player_pos + 1, new_tile, side))
-        self.gamelog.move(player_pos+1, new_tile, side, self.left_tile, self.right_tile, mtime)
+        if (self.player_started == 0 and player_pos == 0): log_player_pos = 1
+        elif (self.player_started == 0 and player_pos == 1): log_player_pos = 2
+        elif (self.player_started == 0 and player_pos == 2): log_player_pos = 3
+        elif (self.player_started == 0 and player_pos == 3): log_player_pos = 4
+        elif (self.player_started == 1 and player_pos == 0): log_player_pos = 4
+        elif (self.player_started == 1 and player_pos == 1): log_player_pos = 1
+        elif (self.player_started == 1 and player_pos == 2): log_player_pos = 2
+        elif (self.player_started == 1 and player_pos == 3): log_player_pos = 3
+        elif (self.player_started == 2 and player_pos == 0): log_player_pos = 3
+        elif (self.player_started == 2 and player_pos == 1): log_player_pos = 4
+        elif (self.player_started == 2 and player_pos == 2): log_player_pos = 1
+        elif (self.player_started == 2 and player_pos == 3): log_player_pos = 2
+        elif (self.player_started == 3 and player_pos == 0): log_player_pos = 2
+        elif (self.player_started == 3 and player_pos == 1): log_player_pos = 3
+        elif (self.player_started == 3 and player_pos == 2): log_player_pos = 4
+        elif (self.player_started == 3 and player_pos == 3): log_player_pos = 1
+        self.gamelog.move(player_pos+1, log_player_pos, new_tile, side, self.left_tile, self.right_tile, mtime)
         if new_tile != None or side != 'pass':
             self.player_pass = 0
             if len(self.board) == 0:
@@ -327,6 +344,8 @@ class domino_game:
         
         self.left_tile = None
         self.right_tile = None
+        
+        self.gamelog = GameLog(datetime.datetime.now(), "home", self.points, "hola1", "hola2", "hola3", "hola4", "lorem ipsum")
         
         # restart stats
         self.stats['player_pass'] = [0, 0, 0, 0]

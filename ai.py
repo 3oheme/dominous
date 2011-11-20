@@ -105,12 +105,16 @@ class force_passing:
                 tiles.remove(item)
                 nextplayer = (mypos % 4) + 1
                 print "yuhu! como el usuario " + str(nextplayer) + " antes paso, nosotros colocamos el " + item
+                print log
+                raw_input("Press any Key")
                 return item, "left", 1
                 break
             elif (item[0] == right_tile and item[1] in passed_tiles) or (item[1] == right_tile and item[0] in passed_tiles):
                 tiles.remove(item)
                 nextplayer = (mypos % 4) + 1
                 print "yuhu! como el usuario " + str(nextplayer) + " antes paso, nosotros colocamos el " + item
+                print log
+                raw_input("Press any Key")
                 return item, "right", 1
                 break
         return None, "pass", 0

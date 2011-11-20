@@ -337,10 +337,7 @@ class Tile(Sprite):
         self.goto_angle = rotation
         self.play_sound = sound
     def stopped(self):
-        if (self.goto_pos[0]-self.position[0])<0.1 and (self.goto_pos[1]-self.position[1])<0.1 \
-            and (self.goto_angle-self.angle)<0.1 and self.scale == self.from_scale:
-            self.position = self.goto_pos
-            self.angle = self.goto_angle
+        if self.goto_pos == self.position and self.goto_angle == self.angle and self.scale == self.from_scale:
             return True
         else:
             return False
@@ -594,7 +591,7 @@ class Engine:
             self.debug.add('Gloss.running_slowly')
         self.debug.add('elapsed_seconds = %s' % str(Gloss.elapsed_seconds))
         self.debug.add('scoreboard (%s, %s)' % (str(self.domino.points_team1()), str(self.domino.points_team2())))
-        #self.debug.show()
+        self.debug.show()
     def update(self):
         for key, tile in self.tiles.iteritems():
             tile.update()
