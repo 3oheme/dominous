@@ -1,0 +1,141 @@
+% -*-memoria.tex-*-
+% Este fichero es parte de la plantilla LaTeX para
+% la realización de Proyectos Final de Carrera, protegido
+% bajo los términos de la licencia GFDL.
+% Para más información, la licencia completa viene incluida en el
+% fichero fdl-1.3.tex
+
+% Copyright (C) 2009 Pablo Recio Quijano 
+
+%-------------------------------------------------------
+% ---- Plantilla para libros / memorias PFC -----
+
+% Realizada por Pablo Recio Quijano y Noelia Sales Montes 
+% Formato de portada y primera página tomado del PFC de
+% Francisco Javier Vázquez Púa, en su proyecto 'libgann'
+% -------------------------------------------------------
+
+\documentclass[a4paper,11pt,spanish]{book}
+
+\usepackage{./estilos/estiloBase} % Basicamente son todas las
+                                  % bibliotecas usadas. En caso de que
+                                  % falten bibliotecas se van añadiendo
+                                  % al fichero.
+\usepackage{./estilos/colores}  % Algunos colores ya generados, para
+                                % los algunos estilos más avanzados.
+\usepackage{./estilos/comandos} % Algunos comandos personalizados
+
+\graphicspath{{./imagenes/}} % Indicamos la ruta donde se encuentran
+                             % las imagenes, para ahorrarnos la ruta
+                             % completa, y solo modificar aquí si en
+                             % un momento dado lo movemos
+\usepackage{varioref} % Permite usar vref
+
+\begin{document}
+
+% Renombramos las figuras y las tablas
+\renewcommand{\figurename}{Figura}
+\renewcommand{\listfigurename}{Índice de figuras}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\listtablename}{Índice de tablas}
+\renewcommand{\lstlistingname}{Listado}
+\renewcommand*\lstlistlistingname{Índice de listados}
+
+\pagestyle{empty}
+\input{portada.tex}
+\cleardoublepage
+
+\input{primerahoja.tex}
+\cleardoublepage
+\pagestyle{plain}
+
+\frontmatter % Introducción, índices ...
+
+\input{previo.tex}
+\cleardoublepage
+
+\tableofcontents
+\listoffigures
+\listoftables
+\lstlistoflistings
+
+
+\mainmatter % Contenido en si ...
+
+% Los \addtocontents{lol}{\protect\addvspace{10pt}}
+% Son para que los listados de cada capítulo
+% Se separen de los del anterior en el índice de lstlisting
+
+\chapter{Introducción}
+\addtocontents{lol}{\protect\addvspace{10pt}}
+\input{cap1.tex}
+
+\chapter{Conceptos básicos}
+\addtocontents{lol}{\protect\addvspace{10pt}}
+\input{cap2.tex}
+
+\chapter{Planificación}
+\addtocontents{lol}{\protect\addvspace{10pt}}
+\input{cap3.tex}
+
+\chapter{Análisis}
+\addtocontents{lol}{\protect\addvspace{10pt}}
+\input{cap4_analisis.tex}
+
+\chapter{Diseño}
+\addtocontents{lol}{\protect\addvspace{10pt}}
+\input{cap5_diseno.tex}
+
+\chapter{Implementación}
+\addtocontents{lol}{\protect\addvspace{10pt}}
+\input{cap6_implementacion.tex}
+
+\chapter{Pruebas}
+\addtocontents{lol}{\protect\addvspace{10pt}}
+\input{cap7.tex}
+
+\chapter{Conclusiones}
+\addtocontents{lol}{\protect\addvspace{10pt}}
+\input{cap8.tex}
+
+%\backmatter % Apéndices, bibliografia ...
+
+\appendix
+
+\chapter{Manual de instalación}
+\addtocontents{lol}{\protect\addvspace{10pt}}
+\input{apendice1.tex}
+
+\chapter{Manual de usuario}
+\addtocontents{lol}{\protect\addvspace{10pt}}
+\input{apendice2.tex}
+
+\chapter{Manual para añadir nuevos jugadores}
+\addtocontents{lol}{\protect\addvspace{10pt}}
+\input{apendice4.tex}
+
+\chapter{Manual para añadir nuevos temas gráficos}
+\addtocontents{lol}{\protect\addvspace{10pt}}
+\input{apendice5.tex}
+
+\chapter{Difusión}
+\addtocontents{lol}{\protect\addvspace{10pt}}
+\input{apendice3.tex}
+
+%\addcontentsline{toc}{chapter}{Software usado}
+%\chapter*{Software utilizado}
+%\input{programas.tex}
+
+%\addcontentsline{toc}{chapter}{Instalación de \LaTeX}
+%\chapter*{Instalación de \LaTeX}
+%\input{instalacion.tex}
+
+\clearpage
+\addcontentsline{toc}{chapter}{Bibliografia y referencias}
+%%\bibliographystyle{plain}
+\bibliographystyle{spanish}
+\bibliography{bibliografia}
+
+\input{fdl-1.3.tex}
+
+\end{document}

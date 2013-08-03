@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>StatSVN - Directory trunk/tutorial/</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <meta name="Generator" content="StatSVN 0.7.0"/>
+<link rel="stylesheet" href="objectlab-statcvs.css" type="text/css"/>
+<script type="text/javascript" charset="utf-8" src="http://bit.ly/javascript-api.js?version=latest&#38;login=statsvn&#38;apiKey=R_2c362b417d0517c27876cbaca1bb68cc"></script>
+<script type="text/javascript" charset="utf-8">
+   // wait until page is loaded to call API
+   var redir_url;
+   var short_url;
+   BitlyCB.myShortenCallback = function(data) {
+      // this is how to get a result of shortening a single url
+      var result;
+      short_url=null;
+      for (var r in data.results) {
+         result = data.results[r];
+         result['longUrl'] = r;
+         short_url = result['shortUrl'];
+         break;
+      }
+      if (short_url==null) // bit.ly failed
+      document.location=redir_url;
+      else
+      redirToTwitter();
+   };
+   function shortenTweet(url) {
+      if (short_url == null || redir_url!=url) {
+      redir_url = url;
+      BitlyClient.shorten(document.location, 'BitlyCB.myShortenCallback');
+      }
+      else
+      redirToTwitter();
+      return false;
+   }
+   function redirToTwitter() { 
+      // replace {0} which is visible as %7B0} in the link
+      document.location = redir_url.replace('%7B0}', short_url);
+   }
+</script>
+  </head>
+
+<body>
+
+<h1>Directory trunk/tutorial/</h1>
+<div id="parentlink">&#171; <a href="index.html">Development Statistics for </a></div>
+<dl class="attributes">
+    <dt>Directory Created:</dt>
+    <dd><span class="date">2011-03-12 23:04</span></dd>
+    <dt>Total Files:</dt>
+    <dd>17</dd>
+    <dt>Deleted Files:</dt>
+    <dd>8</dd>
+    <dt>Lines of Code:</dt>
+    <dd>0</dd>
+</dl>
+<p class="dirtree">
+<a href="dir.html">[root]</a>/<a href="dir_trunk.html">trunk</a>/<strong>tutorial</strong><br/>
+</p>
+
+<div class="section">
+<h2>Developers</h2>
+  <table  rules="groups" summary="All authors and the number of their changes and lines of code in this directory">
+    <colgroup align="left"/>
+    <colgroup align="right"/>
+    <colgroup align="right"/>
+    <colgroup align="right"/>
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Changes</th>
+        <th>Lines of Code</th>
+        <th>Lines per Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  class="odd">
+        <th><a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a></th>
+        <td>35 (100.0%)</td>
+        <td>0 (-)</td>
+        <td>0.0</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="section">
+<h2>Most Recent Commits</h2>
+<dl class="commitlist">
+  <dt><a name="6"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-25 12:37</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">462</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/tutorial</strong>:
+        default.cpt&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="5"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-24 19:24</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">458</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/tutorial</strong>:
+        3_tecnicas_avanzadas.png&#160;<span class="del">(del)</span>,
+        4_juego_equipo.png&#160;<span class="del">(del)</span>,
+        5_puntuacion_final.png&#160;<span class="del">(del)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="4"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-24 19:00</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">457</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">16 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/tutorial</strong>:
+        1_intro.png&#160;<span class="change">(changed)</span>,
+        2_reglas basicas.png&#160;<span class="change">(changed)</span>,
+        31_jugar_partida.png&#160;<span class="new">(new)</span>,
+        32_jugar_partida.png&#160;<span class="new">(new)</span>,
+        33_jugar_partida.png&#160;<span class="new">(new)</span>,
+        34_jugar_partida.png&#160;<span class="new">(new)</span>,
+        41_jugar_partida.png&#160;<span class="new">(new)</span>,
+        42_jugar_partida.png&#160;<span class="new">(new)</span>,
+        43_jugar_partida.png&#160;<span class="new">(new)</span>,
+        51_modo_laboratorio.png&#160;<span class="new">(new)</span>,
+        52_modo_laboratorio.png&#160;<span class="new">(new)</span>,
+        53_modo_laboratorio.png&#160;<span class="new">(new)</span>,
+        54_modo_laboratorio.png&#160;<span class="new">(new)</span>,
+        61_como_jugar.png&#160;<span class="new">(new)</span>,
+        62_como_jugar.png&#160;<span class="new">(new)</span>,
+        63_como_jugar.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="3"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-03-21 20:53</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">227</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+stats por partida
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">5 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/tutorial</strong>:
+        1_intro.png&#160;<span class="new">(new)</span>,
+        2_reglas basicas.png&#160;<span class="new">(new)</span>,
+        3_tecnicas_avanzadas.png&#160;<span class="new">(new)</span>,
+        4_juego_equipo.png&#160;<span class="new">(new)</span>,
+        5_puntuacion_final.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="2"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-03-20 14:03</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">226</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+modo tutorial y varias mejoras
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">5 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/tutorial</strong>:
+        tutorial_bg.png&#160;<span class="del">(del)</span>,
+        tutorial_bg2.png&#160;<span class="del">(del)</span>,
+        tutorial_bg3.png&#160;<span class="del">(del)</span>,
+        tutorial_bg4.png&#160;<span class="del">(del)</span>,
+        tutorial_bg5.png&#160;<span class="del">(del)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="1"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-03-12 23:04</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">225</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">5 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/tutorial</strong>:
+        tutorial_bg.png&#160;<span class="new">(new)</span>,
+        tutorial_bg2.png&#160;<span class="new">(new)</span>,
+        tutorial_bg3.png&#160;<span class="new">(new)</span>,
+        tutorial_bg4.png&#160;<span class="new">(new)</span>,
+        tutorial_bg5.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+</dl>
+
+</div><div id="generatedby">Generated by <a href="http://www.statsvn.org">StatSVN</a> 0.7.0</div>
+</body>
+</html>

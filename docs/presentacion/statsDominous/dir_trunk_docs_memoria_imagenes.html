@@ -1,0 +1,753 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>StatSVN - Directory trunk/docs/memoria/imagenes/</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <meta name="Generator" content="StatSVN 0.7.0"/>
+<link rel="stylesheet" href="objectlab-statcvs.css" type="text/css"/>
+<script type="text/javascript" charset="utf-8" src="http://bit.ly/javascript-api.js?version=latest&#38;login=statsvn&#38;apiKey=R_2c362b417d0517c27876cbaca1bb68cc"></script>
+<script type="text/javascript" charset="utf-8">
+   // wait until page is loaded to call API
+   var redir_url;
+   var short_url;
+   BitlyCB.myShortenCallback = function(data) {
+      // this is how to get a result of shortening a single url
+      var result;
+      short_url=null;
+      for (var r in data.results) {
+         result = data.results[r];
+         result['longUrl'] = r;
+         short_url = result['shortUrl'];
+         break;
+      }
+      if (short_url==null) // bit.ly failed
+      document.location=redir_url;
+      else
+      redirToTwitter();
+   };
+   function shortenTweet(url) {
+      if (short_url == null || redir_url!=url) {
+      redir_url = url;
+      BitlyClient.shorten(document.location, 'BitlyCB.myShortenCallback');
+      }
+      else
+      redirToTwitter();
+      return false;
+   }
+   function redirToTwitter() { 
+      // replace {0} which is visible as %7B0} in the link
+      document.location = redir_url.replace('%7B0}', short_url);
+   }
+</script>
+  </head>
+
+<body>
+
+<h1>Directory trunk/docs/memoria/imagenes/</h1>
+<div id="parentlink">&#171; <a href="index.html">Development Statistics for </a></div>
+<dl class="attributes">
+    <dt>Total Files:</dt>
+    <dd>53</dd>
+    <dt>Deleted Files:</dt>
+    <dd>3</dd>
+    <dt>Lines of Code:</dt>
+    <dd>607</dd>
+</dl>
+<p class="dirtree">
+<a href="dir.html">[root]</a>/<a href="dir_trunk.html">trunk</a>/<a href="dir_trunk_docs.html">docs</a>/<a href="dir_trunk_docs_memoria.html">memoria</a>/<strong>imagenes</strong><br/>
+</p>
+
+<div class="section">
+<h2>Lines of Code</h2>
+<p class="chart"><img src="loc_module_trunk_docs_memoria_imagenes.png" alt="trunk/docs/memoria/imagenes/ Lines of Code" width="800" height="500" /></p></div>
+<div class="section">
+<h2>Developers</h2>
+  <table  rules="groups" summary="All authors and the number of their changes and lines of code in this directory">
+    <colgroup align="left"/>
+    <colgroup align="right"/>
+    <colgroup align="right"/>
+    <colgroup align="right"/>
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Changes</th>
+        <th>Lines of Code</th>
+        <th>Lines per Change</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th>Totals</th>
+        <td>65 (100.0%)</td>
+        <td>999 (100.0%)</td>
+        <td>15.3</td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr  class="odd">
+        <th><a href="user_manuelpalomo.html" class="author">manuelpalomo</a></th>
+        <td>14 (21.5%)</td>
+        <td>520 (52.1%)</td>
+        <td>37.1</td>
+      </tr>
+      <tr  class="even">
+        <th><a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a></th>
+        <td>51 (78.5%)</td>
+        <td>479 (47.9%)</td>
+        <td>9.3</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="section">
+<h2>Most Recent Commits</h2>
+<dl class="commitlist">
+  <dt><a name="34"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-10-13 18:54</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">497</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        gantt.cdr&#160;<span class="new">(new)</span>,
+        tiles_positions.cdr&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="33"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-10-09 13:59</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">483</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        diagrama_gantt.png&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="32"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-10-05 19:42</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">478</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+mensaje de control por defecto
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        avatar_jugador.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="31"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-25 13:37</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">463</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        screenshots_themes.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="30"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-25 12:35</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">461</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">12 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        screenshots_game.png&#160;<span class="new">(new)</span>,
+        screenshots_game_finish.png&#160;<span class="new">(new)</span>,
+        screenshots_game_finish2.png&#160;<span class="new">(new)</span>,
+        screenshots_game_finish3.png&#160;<span class="new">(new)</span>,
+        screenshots_game_fruits.png&#160;<span class="new">(new)</span>,
+        screenshots_lab.png&#160;<span class="new">(new)</span>,
+        screenshots_lab2.png&#160;<span class="new">(new)</span>,
+        screenshots_menu.png&#160;<span class="new">(new)</span>,
+        screenshots_options.png&#160;<span class="new">(new)</span>,
+        screenshots_select_players_game.png&#160;<span class="new">(new)</span>,
+        screenshots_select_players_lab.png&#160;<span class="new">(new)</span>,
+        screenshots_tutorial.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="29"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-20 20:27</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">450</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        diagrama_gantt.png&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="28"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-19 22:12</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">444</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        diagrama_clases_juego_clasico.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="27"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-19 21:13</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">441</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        pagina_oficial_dominous.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="26"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-19 20:37</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">437</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>479</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        arq_sistexp_reg.png&#160;<span class="change">(+479&#160;-50)</span>,
+        des_sistexp.png&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="25"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-19 20:23</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">436</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        sistexp.png&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="24"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-18 19:06</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">432</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        CUSL1.jpg&#160;<span class="new">(new)</span>,
+        CUSL2.jpg&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="23"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-18 18:08</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">430</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        diagrama_gantt.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="22"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-17 17:34</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">426</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        tiles_position.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="21"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-09-09 00:12</span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        dominous_ubuntu.png&#160;<span class="new">(new)</span>,
+        dominous_windows.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="20"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-09-05 17:24</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">413</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Revision a 1 y 2, referencias
+    </p>
+    <p class="commitdetails"><strong>12</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        sistexp.fig&#160;<span class="change">(+12&#160;-6)</span>,
+        sistexp.png&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="19"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-08-30 18:57</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">399</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        jamendo.jpg&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="18"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-08-27 19:48</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">386</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        superficie_drop.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="17"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-08-27 19:36</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">385</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        superficie_click.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="16"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-08-27 19:19</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">383</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        pruebas_integracion.cdr&#160;<span class="new">(new)</span>,
+        pruebas_integracion.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="15"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-08-20 18:38</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">376</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        jugadores_dominous.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="14"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-08-20 00:03</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">368</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Fundamentos de sistemas expertos
+    </p>
+    <p class="commitdetails"><strong>114</strong> lines of code changed in <span class="files">6 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        arq_sistexp_reg.fig&#160;<span class="new">(new&#160;61)</span>,
+        arq_sistexp_reg.png&#160;<span class="new">(new&#160;53)</span>,
+        des_sistexp.eps&#160;<span class="del">(del)</span>,
+        des_sistexp.png&#160;<span class="new">(new)</span>,
+        sistexp.eps&#160;<span class="del">(del)</span>,
+        sistexp.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="13"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-08-19 23:31</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">367</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Figuras
+    </p>
+    <p class="commitdetails"><strong>394</strong> lines of code changed in <span class="files">4 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        des_sistexp.eps&#160;<span class="new">(new&#160;175)</span>,
+        des_sistexp.fig&#160;<span class="new">(new&#160;31)</span>,
+        sistexp.eps&#160;<span class="new">(new&#160;161)</span>,
+        sistexp.fig&#160;<span class="new">(new&#160;27)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="12"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-08-17 16:38</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">362</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+added python image
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        python.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="11"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-07-20 19:13</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">354</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        diagrama_clases_diseno.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="10"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-07-16 16:43</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">349</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        cierre.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="9"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-07-16 13:25</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">346</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        interfaz.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="8"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-07-12 18:50</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">343</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        diagrama_interfaces.dia&#160;<span class="new">(new)</span>,
+        diagrama_interfaces.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="7"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-07-11 19:11</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">340</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        ui.cpt&#160;<span class="new">(new)</span>,
+        ui.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="6"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-07-11 00:02</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">336</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        diagrama_clases_partida.dia&#160;<span class="new">(new)</span>,
+        diagrama_clases_partida.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="5"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-07-07 23:56</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">333</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        chinese.jpg&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="4"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-07-07 19:03</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">330</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        Dominoes.jpg&#160;<span class="new">(new)</span>,
+        Martin_Gardner.jpeg&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="3"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-07-02 11:53</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">313</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+diagrama casos de uso
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        diagrama_casos_de_uso.cdr&#160;<span class="new">(new)</span>,
+        diagrama_casos_de_uso.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="2"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-07-02 10:01</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">311</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Modo de colocar el Gantt
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        gannt.png&#160;<span class="del">(del)</span>,
+        gantt.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="1"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-06-19 16:26</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">290</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+nueva imagen
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        SDL.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+</dl>
+
+</div><div id="generatedby">Generated by <a href="http://www.statsvn.org">StatSVN</a> 0.7.0</div>
+</body>
+</html>

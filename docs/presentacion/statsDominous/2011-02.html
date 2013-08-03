@@ -1,0 +1,901 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>StatSVN - February 2011 Commit Log</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <meta name="Generator" content="StatSVN 0.7.0"/>
+<link rel="stylesheet" href="objectlab-statcvs.css" type="text/css"/>
+<script type="text/javascript" charset="utf-8" src="http://bit.ly/javascript-api.js?version=latest&#38;login=statsvn&#38;apiKey=R_2c362b417d0517c27876cbaca1bb68cc"></script>
+<script type="text/javascript" charset="utf-8">
+   // wait until page is loaded to call API
+   var redir_url;
+   var short_url;
+   BitlyCB.myShortenCallback = function(data) {
+      // this is how to get a result of shortening a single url
+      var result;
+      short_url=null;
+      for (var r in data.results) {
+         result = data.results[r];
+         result['longUrl'] = r;
+         short_url = result['shortUrl'];
+         break;
+      }
+      if (short_url==null) // bit.ly failed
+      document.location=redir_url;
+      else
+      redirToTwitter();
+   };
+   function shortenTweet(url) {
+      if (short_url == null || redir_url!=url) {
+      redir_url = url;
+      BitlyClient.shorten(document.location, 'BitlyCB.myShortenCallback');
+      }
+      else
+      redirToTwitter();
+      return false;
+   }
+   function redirToTwitter() { 
+      // replace {0} which is visible as %7B0} in the link
+      document.location = redir_url.replace('%7B0}', short_url);
+   }
+</script>
+  </head>
+
+<body>
+
+<h1>February 2011 Commit Log</h1>
+<div id="parentlink">&#171; <a href="index.html">Development Statistics for </a></div>
+
+<div id="nav" class="section">
+<h2>Commit Logs</h2>
+<ul>
+    <li><a href="commitlog.html">November 2011</a></li>
+    <li><a href="2011-10.html">October 2011</a></li>
+    <li><a href="2011-09.html">September 2011</a></li>
+    <li><a href="2011-08.html">August 2011</a></li>
+    <li><a href="2011-07.html">July 2011</a></li>
+    <li><a href="2011-06.html">June 2011</a></li>
+    <li><a href="2011-05.html">May 2011</a></li>
+    <li><a href="2011-04.html">April 2011</a></li>
+    <li><a href="2011-03.html">March 2011</a></li>
+    <li><span class="here">February 2011</span></li>
+    <li><a href="2011-01.html">January 2011</a></li>
+    <li><a href="2010-12.html">December 2010</a></li>
+    <li><a href="2010-11.html">November 2010</a></li>
+    <li><a href="2010-10.html">October 2010</a></li>
+    <li><a href="2010-09.html">September 2010</a></li>
+    <li><a href="2010-08.html">August 2010</a></li>
+    <li><a href="2010-07.html">July 2010</a></li>
+    <li><a href="2010-06.html">June 2010</a></li>
+    <li><a href="2010-05.html">May 2010</a></li>
+    <li><a href="2010-04.html">April 2010</a></li>
+    <li><a href="2010-03.html">March 2010</a></li>
+    <li><a href="2010-02.html">February 2010</a></li>
+    <li><a href="2010-01.html">January 2010</a></li>
+    <li><a href="2009-12.html">December 2009</a></li>
+    <li><a href="2009-11.html">November 2009</a></li>
+    <li><a href="2009-10.html">October 2009</a></li>
+</ul>
+</div><dl class="attributes">
+    <dt>Number of Commits:</dt>
+    <dd>32</dd>
+    <dt>Number of Active Developers:</dt>
+    <dd>1</dd>
+</dl>
+<dl class="commitlist">
+  <dt><a name="32"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-28 16:30</span>
+    <a class="permalink" title="Permalink to this commit" href="#32">#32</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">214</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/images</strong>:
+        lab_bg.png&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="31"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-28 14:23</span>
+    <a class="permalink" title="Permalink to this commit" href="#31">#31</a>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>19</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        lab.py&#160;<span class="change">(+15&#160;-4)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="30"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-28 13:46</span>
+    <a class="permalink" title="Permalink to this commit" href="#30">#30</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">210</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>3</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        lab.py&#160;<span class="change">(+3&#160;-4)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="29"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-28 13:32</span>
+    <a class="permalink" title="Permalink to this commit" href="#29">#29</a>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>24</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        lab.py&#160;<span class="change">(+4&#160;-4)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="28"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-28 13:18</span>
+    <a class="permalink" title="Permalink to this commit" href="#28">#28</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">206</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>7</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        lab.py&#160;<span class="change">(+7&#160;-5)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="27"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-28 13:13</span>
+    <a class="permalink" title="Permalink to this commit" href="#27">#27</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">205</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+lab mode switched to an finite-state machine
+    </p>
+    <p class="commitdetails"><strong>23</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        lab.py&#160;<span class="change">(+23&#160;-15)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="26"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-24 01:48</span>
+    <a class="permalink" title="Permalink to this commit" href="#26">#26</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">204</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>10</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        dominoes_game.py&#160;<span class="change">(+9&#160;-9)</span>,
+        lab.py&#160;<span class="change">(+1&#160;-4)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="25"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-24 01:29</span>
+    <a class="permalink" title="Permalink to this commit" href="#25">#25</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">203</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+new lab mode\!
+    </p>
+    <p class="commitdetails"><strong>55</strong> lines of code changed in <span class="files">9 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        ai.py&#160;<span class="change">(-3)</span>,
+        dominoes_game.py&#160;<span class="change">(+3)</span>,
+        dominous.py&#160;<span class="change">(+6)</span>,
+        lab.py&#160;<span class="change">(+38&#160;-6)</span>,
+        menu.py&#160;<span class="change">(+4&#160;-1)</span>,
+        selectplayers.py&#160;<span class="change">(+4&#160;-1)</span>
+      </li>
+      <li>
+        <strong>trunk/players/easy</strong>:
+        player.py&#160;<span class="change">(-1)</span>
+      </li>
+      <li>
+        <strong>trunk/players/medium</strong>:
+        player.py&#160;<span class="change">(-1)</span>
+      </li>
+      <li>
+        <strong>trunk/players/pro</strong>:
+        player.py&#160;<span class="change">(-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="24"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-23 23:37</span>
+    <a class="permalink" title="Permalink to this commit" href="#24">#24</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">202</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/images</strong>:
+        lab_bg.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="23"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-23 23:36</span>
+    <a class="permalink" title="Permalink to this commit" href="#23">#23</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">201</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+added lab
+    </p>
+    <p class="commitdetails"><strong>25</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        lab.py&#160;<span class="new">(new&#160;25)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="22"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-22 19:25</span>
+    <a class="permalink" title="Permalink to this commit" href="#22">#22</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">200</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+resize tiles
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">60 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/themes/classic/images/tiles</strong>:
+        tile_00.png&#160;<span class="change">(changed)</span>,
+        tile_01.png&#160;<span class="change">(changed)</span>,
+        tile_02.png&#160;<span class="new">(new)</span>,
+        tile_03.png&#160;<span class="change">(changed)</span>,
+        tile_04.png&#160;<span class="new">(new)</span>,
+        tile_05.png&#160;<span class="new">(new)</span>,
+        tile_06.png&#160;<span class="new">(new)</span>,
+        tile_11.png&#160;<span class="new">(new)</span>,
+        tile_12.png&#160;<span class="change">(changed)</span>,
+        tile_13.png&#160;<span class="change">(changed)</span>,
+        tile_14.png&#160;<span class="change">(changed)</span>,
+        tile_15.png&#160;<span class="change">(changed)</span>,
+        tile_16.png&#160;<span class="change">(changed)</span>,
+        tile_22.png&#160;<span class="change">(changed)</span>,
+        tile_23.png&#160;<span class="new">(new)</span>,
+        tile_24.png&#160;<span class="change">(changed)</span>,
+        tile_25.png&#160;<span class="new">(new)</span>,
+        tile_26.png&#160;<span class="change">(changed)</span>,
+        tile_33.png&#160;<span class="change">(changed)</span>,
+        tile_34.png&#160;<span class="new">(new)</span>,
+        tile_35.png&#160;<span class="change">(changed)</span>,
+        tile_36.png&#160;<span class="change">(changed)</span>,
+        tile_44.png&#160;<span class="new">(new)</span>,
+        tile_45.png&#160;<span class="change">(changed)</span>,
+        tile_46.png&#160;<span class="change">(changed)</span>,
+        tile_55.png&#160;<span class="change">(changed)</span>,
+        tile_56.png&#160;<span class="change">(changed)</span>,
+        tile_66.png&#160;<span class="new">(new)</span>,
+        tile_hidden.png&#160;<span class="change">(changed)</span>,
+        tile_horizontal_empty.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="21"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-21 01:54</span>
+    <a class="permalink" title="Permalink to this commit" href="#21">#21</a>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>12</strong> lines of code changed in <span class="files">34 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        README&#160;<span class="change">(+4)</span>,
+        menu.py&#160;<span class="change">(+3)</span>,
+        selectplayers.py&#160;<span class="change">(+5&#160;-31)</span>
+      </li>
+      <li>
+        <strong>trunk/themes/fruits/images/background</strong>:
+        background.png&#160;<span class="change">(changed)</span>,
+        background2.png&#160;<span class="change">(changed)</span>
+      </li>
+      <li>
+        <strong>trunk/themes/fruits/images/tiles</strong>:
+        tile_00.png&#160;<span class="change">(changed)</span>,
+        tile_01.png&#160;<span class="change">(changed)</span>,
+        tile_02.png&#160;<span class="change">(changed)</span>,
+        tile_03.png&#160;<span class="change">(changed)</span>,
+        tile_04.png&#160;<span class="change">(changed)</span>,
+        tile_05.png&#160;<span class="change">(changed)</span>,
+        tile_06.png&#160;<span class="change">(changed)</span>,
+        tile_11.png&#160;<span class="change">(changed)</span>,
+        tile_12.png&#160;<span class="change">(changed)</span>,
+        tile_13.png&#160;<span class="change">(changed)</span>,
+        tile_14.png&#160;<span class="change">(changed)</span>,
+        tile_15.png&#160;<span class="change">(changed)</span>,
+        tile_16.png&#160;<span class="change">(changed)</span>,
+        tile_22.png&#160;<span class="change">(changed)</span>,
+        tile_23.png&#160;<span class="change">(changed)</span>,
+        tile_24.png&#160;<span class="change">(changed)</span>,
+        tile_25.png&#160;<span class="change">(changed)</span>,
+        tile_26.png&#160;<span class="change">(changed)</span>,
+        tile_33.png&#160;<span class="change">(changed)</span>,
+        tile_34.png&#160;<span class="change">(changed)</span>,
+        tile_35.png&#160;<span class="change">(changed)</span>,
+        tile_36.png&#160;<span class="change">(changed)</span>,
+        tile_44.png&#160;<span class="change">(changed)</span>,
+        tile_45.png&#160;<span class="change">(changed)</span>,
+        tile_46.png&#160;<span class="change">(changed)</span>,
+        tile_55.png&#160;<span class="change">(changed)</span>,
+        tile_56.png&#160;<span class="change">(changed)</span>,
+        tile_66.png&#160;<span class="change">(changed)</span>,
+        tile_hidden.png&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="20"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-21 00:29</span>
+    <a class="permalink" title="Permalink to this commit" href="#20">#20</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">197</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+fruits theme
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">44 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/themes/fruits/images/background</strong>:
+        background.png&#160;<span class="new">(new)</span>,
+        background2.png&#160;<span class="new">(new)</span>,
+        background3.png&#160;<span class="new">(new)</span>
+      </li>
+      <li>
+        <strong>trunk/themes/fruits/images/gui</strong>:
+        active_player.png&#160;<span class="new">(new)</span>
+      </li>
+      <li>
+        <strong>trunk/themes/fruits/images/tiles</strong>:
+        tile_00.png&#160;<span class="new">(new)</span>,
+        tile_01.png&#160;<span class="new">(new)</span>,
+        tile_02.png&#160;<span class="new">(new)</span>,
+        tile_03.png&#160;<span class="new">(new)</span>,
+        tile_04.png&#160;<span class="new">(new)</span>,
+        tile_05.png&#160;<span class="new">(new)</span>,
+        tile_06.png&#160;<span class="new">(new)</span>,
+        tile_11.png&#160;<span class="new">(new)</span>,
+        tile_12.png&#160;<span class="new">(new)</span>,
+        tile_13.png&#160;<span class="new">(new)</span>,
+        tile_14.png&#160;<span class="new">(new)</span>,
+        tile_15.png&#160;<span class="new">(new)</span>,
+        tile_16.png&#160;<span class="new">(new)</span>,
+        tile_22.png&#160;<span class="new">(new)</span>,
+        tile_23.png&#160;<span class="new">(new)</span>,
+        tile_24.png&#160;<span class="new">(new)</span>,
+        tile_25.png&#160;<span class="new">(new)</span>,
+        tile_26.png&#160;<span class="new">(new)</span>,
+        tile_33.png&#160;<span class="new">(new)</span>,
+        tile_34.png&#160;<span class="new">(new)</span>,
+        tile_35.png&#160;<span class="new">(new)</span>,
+        tile_36.png&#160;<span class="new">(new)</span>,
+        tile_44.png&#160;<span class="new">(new)</span>,
+        tile_45.png&#160;<span class="new">(new)</span>,
+        tile_46.png&#160;<span class="new">(new)</span>,
+        tile_55.png&#160;<span class="new">(new)</span>,
+        tile_56.png&#160;<span class="new">(new)</span>,
+        tile_66.png&#160;<span class="new">(new)</span>,
+        tile_hidden.png&#160;<span class="new">(new)</span>,
+        tile_horizontal_empty.png&#160;<span class="new">(new)</span>,
+        tile_next.png&#160;<span class="new">(new)</span>
+      </li>
+      <li>
+        <strong>trunk/themes/fruits/sounds/ambient</strong>:
+        pub_crowd.ogg&#160;<span class="new">(new)</span>
+      </li>
+      <li>
+        <strong>trunk/themes/fruits/sounds/music</strong>:
+        music1.ogg&#160;<span class="new">(new)</span>
+      </li>
+      <li>
+        <strong>trunk/themes/fruits/sounds/tiles</strong>:
+        tile1.ogg&#160;<span class="new">(new)</span>,
+        tile2.ogg&#160;<span class="new">(new)</span>,
+        tile3.ogg&#160;<span class="new">(new)</span>,
+        tile4.ogg&#160;<span class="new">(new)</span>,
+        tile5.ogg&#160;<span class="new">(new)</span>,
+        tile6.ogg&#160;<span class="new">(new)</span>,
+        tile7.ogg&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="19"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-20 21:37</span>
+    <a class="permalink" title="Permalink to this commit" href="#19">#19</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">196</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/images</strong>:
+        select_player_bg.png&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="18"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-20 20:14</span>
+    <a class="permalink" title="Permalink to this commit" href="#18">#18</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">195</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/images</strong>:
+        human.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="17"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-20 19:41</span>
+    <a class="permalink" title="Permalink to this commit" href="#17">#17</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">194</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+new option in menu - tutorial
+    </p>
+    <p class="commitdetails"><strong>15</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        menu.py&#160;<span class="change">(+15&#160;-5)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="16"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-20 13:53</span>
+    <a class="permalink" title="Permalink to this commit" href="#16">#16</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">193</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+fixed player order
+    </p>
+    <p class="commitdetails"><strong>13</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        engine.py&#160;<span class="change">(+9&#160;-9)</span>,
+        selectplayers.py&#160;<span class="change">(+4&#160;-4)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="15"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-20 12:49</span>
+    <a class="permalink" title="Permalink to this commit" href="#15">#15</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">192</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/artwork</strong>:
+        select_player_bg.cpt&#160;<span class="new">(new)</span>,
+        select_player_bg.png&#160;<span class="new">(new)</span>
+      </li>
+      <li>
+        <strong>trunk/images</strong>:
+        select_player_bg.png&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="14"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-18 00:53</span>
+    <a class="permalink" title="Permalink to this commit" href="#14">#14</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">191</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+select player page finished
+    </p>
+    <p class="commitdetails"><strong>8</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        dominous.py&#160;<span class="change">(+1&#160;-1)</span>,
+        engine.py&#160;<span class="change">(+2&#160;-2)</span>,
+        selectplayers.py&#160;<span class="change">(+5&#160;-5)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="13"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-17 00:54</span>
+    <a class="permalink" title="Permalink to this commit" href="#13">#13</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">190</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+adding an animation to falling images
+    </p>
+    <p class="commitdetails"><strong>10</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        dominous.py&#160;<span class="change">(+1&#160;-1)</span>,
+        selectplayers.py&#160;<span class="change">(+9&#160;-9)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="12"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-16 23:54</span>
+    <a class="permalink" title="Permalink to this commit" href="#12">#12</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">189</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+actualizadas las imagenes de los jugadores al tamano correcto
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/players/easy</strong>:
+        image.png&#160;<span class="change">(changed)</span>
+      </li>
+      <li>
+        <strong>trunk/players/medium</strong>:
+        image.png&#160;<span class="change">(changed)</span>
+      </li>
+      <li>
+        <strong>trunk/players/pro</strong>:
+        image.png&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="11"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-16 23:52</span>
+    <a class="permalink" title="Permalink to this commit" href="#11">#11</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">188</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>10</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        selectplayers.py&#160;<span class="change">(+10&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="10"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-16 20:34</span>
+    <a class="permalink" title="Permalink to this commit" href="#10">#10</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">187</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        selectplayers.py&#160;<span class="change">(-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="9"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-16 20:29</span>
+    <a class="permalink" title="Permalink to this commit" href="#9">#9</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">186</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>13</strong> lines of code changed in <span class="files">5 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        dominous.py&#160;<span class="change">(+4&#160;-5)</span>,
+        selectplayers.py&#160;<span class="change">(+6&#160;-1)</span>
+      </li>
+      <li>
+        <strong>trunk/players/easy</strong>:
+        player.ini&#160;<span class="change">(+1)</span>
+      </li>
+      <li>
+        <strong>trunk/players/medium</strong>:
+        player.ini&#160;<span class="change">(+1)</span>
+      </li>
+      <li>
+        <strong>trunk/players/pro</strong>:
+        player.ini&#160;<span class="change">(+1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="8"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-13 20:22</span>
+    <a class="permalink" title="Permalink to this commit" href="#8">#8</a>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>4</strong> lines of code changed in <span class="files">5 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        config.py&#160;<span class="change">(+1)</span>,
+        selectplayers.py&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+      <li>
+        <strong>trunk/images</strong>:
+        selec_player_bg.png&#160;<span class="del">(del)</span>,
+        select_player_bg.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="7"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-13 18:56</span>
+    <a class="permalink" title="Permalink to this commit" href="#7">#7</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">183</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/images</strong>:
+        selec_player_bg.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="6"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-11 01:53</span>
+    <a class="permalink" title="Permalink to this commit" href="#6">#6</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">182</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>4</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        selectplayers.py&#160;<span class="change">(+4&#160;-4)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="5"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-11 01:47</span>
+    <a class="permalink" title="Permalink to this commit" href="#5">#5</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">181</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Toooooooooooma\!
+    </p>
+    <p class="commitdetails"><strong>1</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        selectplayers.py&#160;<span class="change">(+1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="4"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-11 01:42</span>
+    <a class="permalink" title="Permalink to this commit" href="#4">#4</a>
+  </dt>
+  <dd>
+    <p class="comment">
+bug - function doesnt load proper players
+    </p>
+    <p class="commitdetails"><strong>73</strong> lines of code changed in <span class="files">7 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        dominoes_game.py&#160;<span class="change">(+18&#160;-13)</span>,
+        engine.py&#160;<span class="change">(+2&#160;-2)</span>,
+        selectplayers.py&#160;<span class="change">(+41&#160;-28)</span>
+      </li>
+      <li>
+        <strong>trunk/players/easy</strong>:
+        player.py&#160;<span class="change">(+2&#160;-1)</span>
+      </li>
+      <li>
+        <strong>trunk/players/medium</strong>:
+        player.py&#160;<span class="change">(+2&#160;-1)</span>
+      </li>
+      <li>
+        <strong>trunk/players/pro</strong>:
+        player.py&#160;<span class="change">(+2&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="3"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-04 01:06</span>
+    <a class="permalink" title="Permalink to this commit" href="#3">#3</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">178</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+go go power rangeeeeeers\!
+    </p>
+    <p class="commitdetails"><strong>68</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk</strong>:
+        selectplayers.py&#160;<span class="change">(+68&#160;-24)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="2"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-03 22:40</span>
+    <a class="permalink" title="Permalink to this commit" href="#2">#2</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">177</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/players/medium</strong>:
+        image.png&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="1"></a>
+    <a href="user_ignaciopalomo.html" class="author">ignaciopalomo</a>
+    <span class="date">2011-02-03 22:32</span>
+    <a class="permalink" title="Permalink to this commit" href="#1">#1</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">176</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>39</strong> lines of code changed in <span class="files">7 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/players/easy</strong>:
+        player.ini&#160;<span class="new">(new&#160;3)</span>,
+        player.py&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+      <li>
+        <strong>trunk/players/medium</strong>:
+        image.png&#160;<span class="new">(new)</span>,
+        player.ini&#160;<span class="new">(new&#160;3)</span>,
+        player.py&#160;<span class="new">(new&#160;28)</span>
+      </li>
+      <li>
+        <strong>trunk/players/pro</strong>:
+        player.ini&#160;<span class="new">(new&#160;3)</span>,
+        player.py&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+</dl>
+
+<p class="previous"><a href="2011-01.html">January 2011</a> &#187; </p>
+<div id="generatedby">Generated by <a href="http://www.statsvn.org">StatSVN</a> 0.7.0</div>
+</body>
+</html>

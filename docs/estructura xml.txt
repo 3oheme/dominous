@@ -1,0 +1,35 @@
+Ejemplo de xml para una partida de dominó:
+__________________________________________
+
+<?xml version="1.0" encoding='UTF-8'?>
+<partida>
+	<informacion>
+		<fecha>timestamp</fecha>
+		<lugar>String</lugar>
+		<jugador id="1" nombre="" direccion="" />
+		<jugador id="2" nombre="" direccion="" />
+		<jugador id="3" nombre="" direccion="" />
+		<jugador id="4" nombre="" direccion="" />
+		<puntos>300</puntos>
+	</informacion>
+	<mano>
+		<jugador id="1">
+			<ficha side="right">66</ficha>
+		</jugador>
+        <jugador id="2">
+			<ficha side="left">56</ficha>
+		</jugador>
+	</mano>
+	<mano>	
+		<...>
+	</mano>
+</partida>
+
+
+
+XML schema asociado:
+__________________________________________
+
+<?xml version="1.0" encoding="UTF-8"?> 
+<xsd:schema xmlns:xsd="http://www.w3c.org/2001/XMLSchema">
+

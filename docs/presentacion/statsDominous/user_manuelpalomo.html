@@ -1,0 +1,547 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>StatSVN -  Developers: manuelpalomo</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <meta name="Generator" content="StatSVN 0.7.0"/>
+<link rel="stylesheet" href="objectlab-statcvs.css" type="text/css"/>
+<script type="text/javascript" charset="utf-8" src="http://bit.ly/javascript-api.js?version=latest&#38;login=statsvn&#38;apiKey=R_2c362b417d0517c27876cbaca1bb68cc"></script>
+<script type="text/javascript" charset="utf-8">
+   // wait until page is loaded to call API
+   var redir_url;
+   var short_url;
+   BitlyCB.myShortenCallback = function(data) {
+      // this is how to get a result of shortening a single url
+      var result;
+      short_url=null;
+      for (var r in data.results) {
+         result = data.results[r];
+         result['longUrl'] = r;
+         short_url = result['shortUrl'];
+         break;
+      }
+      if (short_url==null) // bit.ly failed
+      document.location=redir_url;
+      else
+      redirToTwitter();
+   };
+   function shortenTweet(url) {
+      if (short_url == null || redir_url!=url) {
+      redir_url = url;
+      BitlyClient.shorten(document.location, 'BitlyCB.myShortenCallback');
+      }
+      else
+      redirToTwitter();
+      return false;
+   }
+   function redirToTwitter() { 
+      // replace {0} which is visible as %7B0} in the link
+      document.location = redir_url.replace('%7B0}', short_url);
+   }
+</script>
+  </head>
+
+<body>
+
+<h1> Developers: manuelpalomo</h1>
+<div id="parentlink">&#171; <a href="index.html">Development Statistics for </a> &#171; <a href="developers.html">Developers</a></div>
+<dl class="attributes">
+    <dt>Login name:</dt>
+    <dd>manuelpalomo</dd>
+    <dt>Total Commits:</dt>
+    <dd>138 (6,4%)</dd>
+    <dt>Lines of Code:</dt>
+    <dd>45.412 (14,1%)</dd>
+    <dt>Most Recent Commit:</dt>
+    <dd><span class="date">2011-09-21 17:04</span></dd>
+    <dt>Tweet this:</dt>
+    <dd><a onclick="return shortenTweet(this.href);" href="http://twitter.com/home?status=manuelpalomo%20contributed%2045.412%20(14%2C1%25)%20lines%20to%20%20%7B0}%20most%20recent%20commit%202011-09-21%20stats%20by%20StatSVN%20http%3A%2F%2Fstatsvn.org"><img style="border:0px" alt="Tweet this" src="tweet-this.png"/></a></dd>
+</dl>
+
+<div class="section">
+<h2>Activity by Clock Time</h2>
+<p class="chart"><img src="activity_time_manuelpalomo.png" alt="Activity by Hour of Day for manuelpalomo" width="800" height="500" /></p><p class="chart"><img src="activity_day_manuelpalomo.png" alt="Activity by Day of Week for manuelpalomo" width="800" height="500" /></p></div>
+<div class="section">
+<h2>Activity in Directories</h2>
+  <table  rules="groups" summary="Overview of this author's activities in different directories">
+    <colgroup align="left"/>
+    <colgroup align="right"/>
+    <colgroup align="right"/>
+    <colgroup align="right"/>
+    <thead>
+      <tr>
+        <th>Directory</th>
+        <th>Changes</th>
+        <th>Lines of Code</th>
+        <th>Lines per Change</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th>Totals</th>
+        <td>138 (100.0%)</td>
+        <td>45412 (100.0%)</td>
+        <td>329.0</td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr  class="odd">
+        <th><a href="dir_trunk_docs_memoria.html" class="directory">trunk/docs/memoria/</a></th>
+        <td>124 (89.9%)</td>
+        <td>44892 (98.9%)</td>
+        <td>362.0</td>
+      </tr>
+      <tr  class="even">
+        <th><a href="dir_trunk_docs_memoria_imagenes.html" class="directory">trunk/docs/memoria/imagenes/</a></th>
+        <td>14 (10.1%)</td>
+        <td>520 (1.1%)</td>
+        <td>37.1</td>
+      </tr>
+    </tbody>
+  </table>
+
+<p class="chart"><img src="directory_sizes_manuelpalomo.png" alt="Activity of manuelpalomo" width="800" height="500" /></p></div>
+<div class="section">
+<h2>Most Recent Commits</h2>
+<dl class="commitlist">
+  <dt><a name="20"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-09-21 17:04</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">455</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Errata menor
+    </p>
+    <p class="commitdetails"><strong>1</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        bibliografia.bib&#160;<span class="change">(+1&#160;-2)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="19"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-09-20 23:09</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">454</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+DOI de Make
+    </p>
+    <p class="commitdetails"><strong>335</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        bibliografia.bib&#160;<span class="change">(+1&#160;-1)</span>,
+        memoria.pdf&#160;<span class="change">(+334&#160;-332)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="18"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-09-20 10:43</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">449</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Referencia
+    </p>
+    <p class="commitdetails"><strong>1019</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        bibliografia.bib&#160;<span class="change">(+10)</span>,
+        cap6_implementacion.tex&#160;<span class="change">(+1&#160;-1)</span>,
+        memoria.pdf&#160;<span class="change">(+1008&#160;-990)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="17"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-09-20 09:50</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">448</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Cambios menores
+    </p>
+    <p class="commitdetails"><strong>2267</strong> lines of code changed in <span class="files">4 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        bibliografia.bib&#160;<span class="change">(+25)</span>,
+        cap1.tex&#160;<span class="change">(+1&#160;-1)</span>,
+        cap8.tex&#160;<span class="change">(+3&#160;-5)</span>,
+        memoria.pdf&#160;<span class="change">(+2238&#160;-2183)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="16"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-09-20 09:32</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">447</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+aclaración
+    </p>
+    <p class="commitdetails"><strong>30</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        apendice3.tex&#160;<span class="change">(+1&#160;-1)</span>,
+        memoria.pdf&#160;<span class="change">(+29&#160;-21)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="15"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-09-05 23:57</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">418</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Arregladas refrencais
+    </p>
+    <p class="commitdetails"><strong>895</strong> lines of code changed in <span class="files">4 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        cap2.tex&#160;<span class="change">(+2&#160;-2)</span>,
+        cap4_analisis.tex&#160;<span class="change">(+3&#160;-3)</span>,
+        cap5_diseno.tex&#160;<span class="change">(+7&#160;-7)</span>,
+        memoria.pdf&#160;<span class="change">(+883&#160;-904)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="14"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-09-05 23:36</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">417</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Listados
+    </p>
+    <p class="commitdetails"><strong>844</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        memoria.pdf&#160;<span class="change">(+829&#160;-836)</span>,
+        memoria.tex&#160;<span class="change">(+15)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="13"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-09-05 23:34</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">416</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Cambio menor
+    </p>
+    <p class="commitdetails"><strong>6</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        bibliografia.bib&#160;<span class="change">(+1&#160;-1)</span>,
+        cap4_analisis.tex&#160;<span class="change">(+2&#160;-2)</span>,
+        memoria.pdf&#160;<span class="change">(+3&#160;-3)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="12"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-09-05 23:17</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">415</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+bibliografia en español
+    </p>
+    <p class="commitdetails"><strong>2738</strong> lines of code changed in <span class="files">4 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        bibliografia.bib&#160;<span class="change">(+4&#160;-16)</span>,
+        memoria.pdf&#160;<span class="change">(+1170&#160;-1129)</span>,
+        memoria.tex&#160;<span class="change">(+2&#160;-1)</span>,
+        spanish.bst&#160;<span class="new">(new&#160;1562)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="11"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-09-05 20:04</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">414</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Revisión general
+    </p>
+    <p class="commitdetails"><strong>4463</strong> lines of code changed in <span class="files">14 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        apendice1.tex&#160;<span class="change">(+2)</span>,
+        apendice2.tex&#160;<span class="change">(+3&#160;-1)</span>,
+        apendice3.tex&#160;<span class="change">(+5&#160;-1)</span>,
+        bibliografia.bib&#160;<span class="change">(+26&#160;-6)</span>,
+        cap1.tex&#160;<span class="change">(+1&#160;-1)</span>,
+        cap2.tex&#160;<span class="change">(+1&#160;-1)</span>,
+        cap3.tex&#160;<span class="change">(+6&#160;-3)</span>,
+        cap4_analisis.tex&#160;<span class="change">(+27&#160;-23)</span>,
+        cap5_diseno.tex&#160;<span class="change">(+28&#160;-26)</span>,
+        cap6_implementacion.tex&#160;<span class="change">(+45&#160;-7)</span>,
+        cap7.tex&#160;<span class="change">(+11&#160;-11)</span>,
+        cap8.tex&#160;<span class="change">(+6&#160;-32)</span>,
+        instalacion.tex&#160;<span class="change">(+2&#160;-2)</span>,
+        memoria.pdf&#160;<span class="change">(+4300&#160;-4121)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="10"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-09-05 17:24</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">413</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Revision a 1 y 2, referencias
+    </p>
+    <p class="commitdetails"><strong>2976</strong> lines of code changed in <span class="files">7 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        bibliografia.bib&#160;<span class="change">(+24)</span>,
+        cap1.tex&#160;<span class="change">(+13&#160;-10)</span>,
+        cap2.tex&#160;<span class="change">(+46&#160;-34)</span>,
+        cap3.tex&#160;<span class="change">(+1&#160;-1)</span>,
+        memoria.pdf&#160;<span class="change">(+2880&#160;-2868)</span>
+      </li>
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        sistexp.fig&#160;<span class="change">(+12&#160;-6)</span>,
+        sistexp.png&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="9"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-08-23 18:14</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">378</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Apuntes menores
+    </p>
+    <p class="commitdetails"><strong>2386</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        apendice1.tex&#160;<span class="change">(+4)</span>,
+        apendice2.tex&#160;<span class="change">(+7&#160;-1)</span>,
+        memoria.pdf&#160;<span class="change">(+2375&#160;-2349)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="8"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-08-23 18:08</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">377</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Organizando ideas
+    </p>
+    <p class="commitdetails"><strong>335</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        cap7.tex&#160;<span class="change">(+2)</span>,
+        cap8.tex&#160;<span class="change">(+8&#160;-4)</span>,
+        memoria.pdf&#160;<span class="change">(+325&#160;-323)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="7"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-08-20 01:57</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">371</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Referencias
+    </p>
+    <p class="commitdetails"><strong>2180</strong> lines of code changed in <span class="files">4 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        bibliografia.bib&#160;<span class="change">(+34)</span>,
+        cap1.tex&#160;<span class="change">(+3&#160;-3)</span>,
+        cap2.tex&#160;<span class="change">(+11&#160;-7)</span>,
+        memoria.pdf&#160;<span class="change">(+2132&#160;-2109)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="6"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-08-20 01:24</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">370</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Primer domino libre y trabajos futuros
+    </p>
+    <p class="commitdetails"><strong>580</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        cap1.tex&#160;<span class="change">(+4)</span>,
+        cap8.tex&#160;<span class="change">(+11)</span>,
+        memoria.pdf&#160;<span class="change">(+565&#160;-564)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="5"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-08-20 01:16</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">369</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Difusión
+    </p>
+    <p class="commitdetails"><strong>3540</strong> lines of code changed in <span class="files">7 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        apendice1.tex&#160;<span class="change">(+6&#160;-1)</span>,
+        apendice3.tex&#160;<span class="new">(new&#160;19)</span>,
+        bibliografia.bib&#160;<span class="change">(+13)</span>,
+        cap2.tex&#160;<span class="change">(+44&#160;-48)</span>,
+        cap5_diseno.tex&#160;<span class="change">(+26&#160;-5)</span>,
+        memoria.pdf&#160;<span class="change">(+3429&#160;-3184)</span>,
+        memoria.tex&#160;<span class="change">(+3)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="4"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-08-20 00:03</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">368</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Fundamentos de sistemas expertos
+    </p>
+    <p class="commitdetails"><strong>4270</strong> lines of code changed in <span class="files">9 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        cap2.tex&#160;<span class="change">(+130&#160;-29)</span>,
+        memoria.pdf&#160;<span class="change">(+4024&#160;-3805)</span>,
+        memoria.tex&#160;<span class="change">(+2&#160;-1)</span>
+      </li>
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        arq_sistexp_reg.fig&#160;<span class="new">(new&#160;61)</span>,
+        arq_sistexp_reg.png&#160;<span class="new">(new&#160;53)</span>,
+        des_sistexp.eps&#160;<span class="del">(del)</span>,
+        des_sistexp.png&#160;<span class="new">(new)</span>,
+        sistexp.eps&#160;<span class="del">(del)</span>,
+        sistexp.png&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="3"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-08-19 23:31</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">367</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Figuras
+    </p>
+    <p class="commitdetails"><strong>2429</strong> lines of code changed in <span class="files">6 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        cap2.tex&#160;<span class="change">(+60&#160;-10)</span>,
+        memoria.pdf&#160;<span class="change">(+1975&#160;-1852)</span>
+      </li>
+      <li>
+        <strong>trunk/docs/memoria/imagenes</strong>:
+        des_sistexp.eps&#160;<span class="new">(new&#160;175)</span>,
+        des_sistexp.fig&#160;<span class="new">(new&#160;31)</span>,
+        sistexp.eps&#160;<span class="new">(new&#160;161)</span>,
+        sistexp.fig&#160;<span class="new">(new&#160;27)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="2"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-08-19 18:37</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">366</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Comentario
+    </p>
+    <p class="commitdetails"><strong>2</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        cap2.tex&#160;<span class="change">(+2)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="1"></a>
+    <a href="user_manuelpalomo.html" class="author">manuelpalomo</a>
+    <span class="date">2011-08-19 18:29</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">365</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Referencias
+    </p>
+    <p class="commitdetails"><strong>2782</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>trunk/docs/memoria</strong>:
+        bibliografia.bib&#160;<span class="change">(+64&#160;-1)</span>,
+        cap2.tex&#160;<span class="change">(+6&#160;-3)</span>,
+        memoria.pdf&#160;<span class="change">(+2712&#160;-2523)</span>
+      </li>
+    </ul>
+  </dd>
+
+</dl>
+
+<p>(15 more)</p>
+</div><div id="generatedby">Generated by <a href="http://www.statsvn.org">StatSVN</a> 0.7.0</div>
+</body>
+</html>
